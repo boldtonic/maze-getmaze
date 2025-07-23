@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
   Palette, 
   Type, 
   Layout,
-  Sparkles
+  MousePointer
 } from "lucide-react";
 
 export function StyleCustomizer() {
@@ -16,7 +16,8 @@ export function StyleCustomizer() {
     accentColor: "#6366f1",
     fontFamily: "Inter",
     borderRadius: 12,
-    theme: "light"
+    theme: "light",
+    hoverStyle: "fade"
   });
 
   const colorPresets = [
@@ -41,175 +42,162 @@ export function StyleCustomizer() {
 
   return (
     <div className="space-y-6">
-      {/* Color Scheme */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center space-x-2">
-            <Palette className="h-5 w-5" />
-            <span>Color Scheme</span>
-          </CardTitle>
-          <CardDescription>
-            Choose colors that match your brand or personality
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="space-y-3">
-            <Label>Color Presets</Label>
-            <div className="grid grid-cols-3 gap-3">
-              {colorPresets.map((preset) => (
-                <button
-                  key={preset.name}
-                  onClick={() => updateStyle('accentColor', preset.primary)}
-                  className="group relative h-16 rounded-lg border-2 border-border hover:border-primary transition-colors overflow-hidden"
-                >
-                  <div 
-                    className="h-full w-full"
-                    style={{ 
-                      background: `linear-gradient(135deg, ${preset.primary}, ${preset.secondary})` 
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
-                  <span className="absolute bottom-1 left-2 text-xs font-medium text-white drop-shadow">
-                    {preset.name}
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
+      <Tabs defaultValue="colors" className="w-full">
+        <TabsList className="grid w-full grid-cols-4">
+          <TabsTrigger value="colors" className="flex items-center space-x-2">
+            <Palette className="h-4 w-4" />
+            <span className="hidden sm:inline">Colors</span>
+          </TabsTrigger>
+          <TabsTrigger value="typography" className="flex items-center space-x-2">
+            <Type className="h-4 w-4" />
+            <span className="hidden sm:inline">Typography</span>
+          </TabsTrigger>
+          <TabsTrigger value="layout" className="flex items-center space-x-2">
+            <Layout className="h-4 w-4" />
+            <span className="hidden sm:inline">Layout</span>
+          </TabsTrigger>
+          <TabsTrigger value="hover" className="flex items-center space-x-2">
+            <MousePointer className="h-4 w-4" />
+            <span className="hidden sm:inline">Hover</span>
+          </TabsTrigger>
+        </TabsList>
 
-          <div className="space-y-3">
-            <Label>Custom Accent Color</Label>
-            <div className="flex items-center space-x-3">
-              <input
-                type="color"
-                value={style.accentColor}
-                onChange={(e) => updateStyle('accentColor', e.target.value)}
-                className="h-10 w-20 rounded border border-border cursor-pointer"
-              />
-              <div className="flex-1">
+        <div className="mt-6">
+          <TabsContent value="colors" className="space-y-6">
+            <div className="space-y-3">
+              <Label>Color Presets</Label>
+              <div className="grid grid-cols-3 gap-3">
+                {colorPresets.map((preset) => (
+                  <button
+                    key={preset.name}
+                    onClick={() => updateStyle('accentColor', preset.primary)}
+                    className="group relative h-16 rounded-lg border-2 border-border hover:border-primary transition-colors overflow-hidden"
+                  >
+                    <div 
+                      className="h-full w-full"
+                      style={{ 
+                        background: `linear-gradient(135deg, ${preset.primary}, ${preset.secondary})` 
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
+                    <span className="absolute bottom-1 left-2 text-xs font-medium text-white drop-shadow">
+                      {preset.name}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <Label>Custom Accent Color</Label>
+              <div className="flex items-center space-x-3">
                 <input
-                  type="text"
+                  type="color"
                   value={style.accentColor}
                   onChange={(e) => updateStyle('accentColor', e.target.value)}
-                  className="w-full px-3 py-2 border border-border rounded-md"
-                  placeholder="#6366f1"
+                  className="h-10 w-20 rounded border border-border cursor-pointer"
                 />
+                <div className="flex-1">
+                  <input
+                    type="text"
+                    value={style.accentColor}
+                    onChange={(e) => updateStyle('accentColor', e.target.value)}
+                    className="w-full px-3 py-2 border border-border rounded-md"
+                    placeholder="#6366f1"
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        </CardContent>
-      </Card>
+          </TabsContent>
 
-      {/* Typography */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center space-x-2">
-            <Type className="h-5 w-5" />
-            <span>Typography</span>
-          </CardTitle>
-          <CardDescription>
-            Select the font that best represents your style
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="space-y-3">
-            <Label>Font Family</Label>
-            <div className="grid grid-cols-2 gap-3">
-              {fontOptions.map((font) => (
-                <button
-                  key={font.value}
-                  onClick={() => updateStyle('fontFamily', font.value)}
-                  className={`p-4 text-left border-2 rounded-lg transition-colors ${
-                    style.fontFamily === font.value 
-                      ? 'border-primary bg-primary/5' 
-                      : 'border-border hover:border-primary/50'
-                  }`}
-                  style={{ fontFamily: font.value }}
-                >
-                  <div className="font-semibold">{font.name}</div>
-                  <div className="text-sm text-muted-foreground">The quick brown fox</div>
-                </button>
-              ))}
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Layout */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center space-x-2">
-            <Layout className="h-5 w-5" />
-            <span>Layout & Spacing</span>
-          </CardTitle>
-          <CardDescription>
-            Adjust the visual style of your SLUG window
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="space-y-3">
-            <div className="flex justify-between items-center">
-              <Label>Border Radius</Label>
-              <span className="text-sm text-muted-foreground">{style.borderRadius}px</span>
-            </div>
-            <Slider
-              value={[style.borderRadius]}
-              onValueChange={(value) => updateStyle('borderRadius', value[0])}
-              max={24}
-              min={0}
-              step={2}
-              className="w-full"
-            />
-            <div className="flex justify-between text-xs text-muted-foreground">
-              <span>Sharp</span>
-              <span>Rounded</span>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Preview */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center space-x-2">
-            <Sparkles className="h-5 w-5" />
-            <span>Preview</span>
-          </CardTitle>
-          <CardDescription>
-            See how your styling choices look
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div 
-            className="p-6 border rounded-lg bg-gradient-to-br from-background to-surface-variant"
-            style={{ 
-              borderRadius: `${style.borderRadius}px`,
-              fontFamily: style.fontFamily 
-            }}
-          >
-            <div className="text-center space-y-4">
-              <div 
-                className="h-16 w-16 mx-auto rounded-full flex items-center justify-center text-white font-semibold"
-                style={{ backgroundColor: style.accentColor }}
-              >
-                JD
+          <TabsContent value="typography" className="space-y-4">
+            <div className="space-y-3">
+              <Label>Font Family</Label>
+              <div className="grid grid-cols-2 gap-3">
+                {fontOptions.map((font) => (
+                  <button
+                    key={font.value}
+                    onClick={() => updateStyle('fontFamily', font.value)}
+                    className={`p-4 text-left border-2 rounded-lg transition-colors ${
+                      style.fontFamily === font.value 
+                        ? 'border-primary bg-primary/5' 
+                        : 'border-border hover:border-primary/50'
+                    }`}
+                    style={{ fontFamily: font.value }}
+                  >
+                    <div className="font-semibold">{font.name}</div>
+                    <div className="text-sm text-muted-foreground">The quick brown fox</div>
+                  </button>
+                ))}
               </div>
-              <div>
-                <h3 className="font-semibold">Jane Doe</h3>
-                <p className="text-sm text-muted-foreground">Creative Designer</p>
-              </div>
-              <button 
-                className="px-4 py-2 rounded-lg text-white font-medium transition-opacity hover:opacity-90"
-                style={{ backgroundColor: style.accentColor }}
-              >
-                Featured Link
-              </button>
             </div>
-          </div>
-        </CardContent>
-      </Card>
+          </TabsContent>
 
-      {/* Save Button */}
+          <TabsContent value="layout" className="space-y-6">
+            <div className="space-y-3">
+              <div className="flex justify-between items-center">
+                <Label>Border Radius</Label>
+                <span className="text-sm text-muted-foreground">{style.borderRadius}px</span>
+              </div>
+              <Slider
+                value={[style.borderRadius]}
+                onValueChange={(value) => updateStyle('borderRadius', value[0])}
+                max={24}
+                min={0}
+                step={2}
+                className="w-full"
+              />
+              <div className="flex justify-between text-xs text-muted-foreground">
+                <span>Sharp</span>
+                <span>Rounded</span>
+              </div>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="hover" className="space-y-6">
+            <div className="space-y-3">
+              <Label>Hover Animation Style</Label>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { name: "Fade In", value: "fade" },
+                  { name: "Scale Up", value: "scale" },
+                  { name: "Slide Up", value: "slide" },
+                  { name: "Pop", value: "pop" }
+                ].map((hoverStyle) => (
+                  <button
+                    key={hoverStyle.value}
+                    onClick={() => updateStyle('hoverStyle', hoverStyle.value)}
+                    className={`p-4 text-left border-2 rounded-lg transition-colors ${
+                      style.hoverStyle === hoverStyle.value 
+                        ? 'border-primary bg-primary/5' 
+                        : 'border-border hover:border-primary/50'
+                    }`}
+                  >
+                    <div className="font-semibold">{hoverStyle.name}</div>
+                    <div className="text-sm text-muted-foreground">Animation preview</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <Label>Highlight Color for Mentions</Label>
+              <div className="flex items-center space-x-3">
+                <input
+                  type="color"
+                  value={style.accentColor}
+                  onChange={(e) => updateStyle('accentColor', e.target.value)}
+                  className="h-10 w-20 rounded border border-border cursor-pointer"
+                />
+                <span className="text-sm text-muted-foreground">
+                  This color will highlight your name when mentioned
+                </span>
+              </div>
+            </div>
+          </TabsContent>
+        </div>
+      </Tabs>
+
       <Button className="w-full bg-gradient-primary hover:opacity-90 transition-opacity">
         Save Style Changes
       </Button>
