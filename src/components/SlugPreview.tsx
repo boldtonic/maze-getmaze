@@ -78,8 +78,8 @@ export function SlugPreview({ mode, brandMode }: SlugPreviewProps) {
 
       {/* Main SLUG Window Preview */}
       <div className={`${containerClass} relative`}>
-        {/* Desktop-oriented rectangular window */}
-        <Card className="overflow-hidden shadow-elevation-3 bg-gradient-to-br from-background to-surface-variant border-0">
+        {/* Material 3 Elevated Card */}
+        <Card className="overflow-hidden shadow-elevation-2 bg-surface-container border-0 rounded-3xl">
           <CardContent className="p-8 space-y-8">
             {/* Profile Section - Horizontal Layout for Desktop */}
             <div className="flex items-start space-x-6">
@@ -129,12 +129,12 @@ export function SlugPreview({ mode, brandMode }: SlugPreviewProps) {
                 
                 <div className="space-y-3">
                   <Button 
-                    variant="outline" 
-                    className="w-full justify-between bg-surface hover:bg-surface-variant transition-colors h-12"
+                    variant="elevated" 
+                    className="w-full justify-between h-12 rounded-2xl"
                   >
                     <div className="flex items-center space-x-3">
-                      <div className="h-8 w-8 rounded-lg bg-gradient-primary flex items-center justify-center">
-                        <ExternalLink className="h-4 w-4 text-white" />
+                      <div className="h-8 w-8 rounded-xl bg-primary flex items-center justify-center">
+                        <ExternalLink className="h-4 w-4 text-primary-foreground" />
                       </div>
                       <span>Latest Portfolio</span>
                     </div>
@@ -143,12 +143,12 @@ export function SlugPreview({ mode, brandMode }: SlugPreviewProps) {
 
                   {brandMode && (
                     <Button 
-                      variant="outline" 
-                      className="w-full justify-between bg-surface hover:bg-surface-variant transition-colors h-12"
+                      variant="elevated" 
+                      className="w-full justify-between h-12 rounded-2xl"
                     >
                       <div className="flex items-center space-x-3">
-                        <div className="h-8 w-8 rounded-lg bg-accent flex items-center justify-center">
-                          <ShoppingBag className="h-4 w-4 text-white" />
+                        <div className="h-8 w-8 rounded-xl bg-accent flex items-center justify-center">
+                          <ShoppingBag className="h-4 w-4 text-accent-foreground" />
                         </div>
                         <span>Shop Products</span>
                       </div>
@@ -157,11 +157,11 @@ export function SlugPreview({ mode, brandMode }: SlugPreviewProps) {
                   )}
 
                   <Button 
-                    variant="outline" 
-                    className="w-full justify-between bg-surface hover:bg-surface-variant transition-colors h-12"
+                    variant="elevated" 
+                    className="w-full justify-between h-12 rounded-2xl"
                   >
                     <div className="flex items-center space-x-3">
-                      <div className="h-8 w-8 rounded-lg bg-red-500 flex items-center justify-center">
+                      <div className="h-8 w-8 rounded-xl bg-red-500 flex items-center justify-center">
                         <Youtube className="h-4 w-4 text-white" />
                       </div>
                       <span>Watch Process</span>
@@ -175,19 +175,19 @@ export function SlugPreview({ mode, brandMode }: SlugPreviewProps) {
               <div className="space-y-4">
                 <h3 className="font-medium text-foreground">Connect</h3>
                 <div className="grid grid-cols-4 gap-3">
-                  <Button size="sm" variant="ghost" className="h-12 w-full flex-col">
+                  <Button size="sm" variant="ghost" className="h-12 w-full flex-col rounded-2xl">
                     <Twitter className="h-5 w-5 mb-1" />
                     <span className="text-xs">Twitter</span>
                   </Button>
-                  <Button size="sm" variant="ghost" className="h-12 w-full flex-col">
+                  <Button size="sm" variant="ghost" className="h-12 w-full flex-col rounded-2xl">
                     <Instagram className="h-5 w-5 mb-1" />
                     <span className="text-xs">Instagram</span>
                   </Button>
-                  <Button size="sm" variant="ghost" className="h-12 w-full flex-col">
+                  <Button size="sm" variant="ghost" className="h-12 w-full flex-col rounded-2xl">
                     <Linkedin className="h-5 w-5 mb-1" />
                     <span className="text-xs">LinkedIn</span>
                   </Button>
-                  <Button size="sm" variant="ghost" className="h-12 w-full flex-col">
+                  <Button size="sm" variant="ghost" className="h-12 w-full flex-col rounded-2xl">
                     <Music className="h-5 w-5 mb-1" />
                     <span className="text-xs">Music</span>
                   </Button>
@@ -195,10 +195,10 @@ export function SlugPreview({ mode, brandMode }: SlugPreviewProps) {
 
                 {brandMode && (
                   <div className="space-y-3 pt-3 border-t border-border">
-                    <Button className="w-full bg-gradient-primary hover:opacity-90 transition-opacity">
+                    <Button className="w-full rounded-2xl">
                       Schedule Consultation
                     </Button>
-                    <p className="text-xs text-center text-muted-foreground">
+                    <p className="text-xs text-center text-on-surface-variant">
                       Powered by SLUG Network
                     </p>
                   </div>
@@ -208,9 +208,9 @@ export function SlugPreview({ mode, brandMode }: SlugPreviewProps) {
           </CardContent>
         </Card>
 
-        {/* Preview Badge */}
-        <div className="absolute -top-2 -right-2">
-          <Badge className="bg-accent shadow-elevation-2">
+        {/* Material 3 Floating Action Button Style Badge */}
+        <div className="absolute -top-3 -right-3">
+          <Badge className="bg-accent text-accent-foreground shadow-elevation-3 rounded-full px-3 py-1 border-0">
             Live Preview
           </Badge>
         </div>

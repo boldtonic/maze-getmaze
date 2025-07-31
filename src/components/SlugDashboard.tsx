@@ -27,32 +27,32 @@ export function SlugDashboard() {
   const [previewMode, setPreviewMode] = useState<"mobile" | "desktop">("mobile");
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-surface via-background to-surface-variant">
-      {/* Header */}
-      <header className="border-b bg-background/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div className="min-h-screen bg-surface">
+      {/* Material 3 Top App Bar */}
+      <header className="border-b border-border bg-surface-container/80 backdrop-blur-sm sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-4">
-              <div className="h-8 w-8 rounded-lg bg-gradient-primary flex items-center justify-center">
-                <span className="text-white font-bold text-sm">S</span>
+              <div className="h-10 w-10 rounded-2xl bg-primary flex items-center justify-center shadow-elevation-1">
+                <span className="text-primary-foreground font-medium text-lg">S</span>
               </div>
               <div>
-                <h1 className="text-xl font-semibold text-foreground">SLUG Manager</h1>
-                <p className="text-sm text-muted-foreground">Your semantic identity window</p>
+                <h1 className="text-2xl font-normal text-on-surface">SLUG Manager</h1>
+                <p className="text-sm text-on-surface-variant">Your semantic identity window</p>
               </div>
             </div>
             
             <div className="flex items-center space-x-3">
               <Button
-                variant={brandMode ? "default" : "outline"}
-                size="sm"
+                variant={brandMode ? "default" : "elevated"}
+                size="default"
                 onClick={() => setBrandMode(!brandMode)}
                 className="flex items-center space-x-2"
               >
                 <Crown className="h-4 w-4" />
                 <span>{brandMode ? "Brand Mode" : "Creator Mode"}</span>
               </Button>
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="default">
                 <Eye className="h-4 w-4 mr-2" />
                 Preview Live
               </Button>
@@ -61,36 +61,50 @@ export function SlugDashboard() {
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Panel - Editor */}
           <div className="space-y-6">
-            <Card className="shadow-elevation-2">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <User className="h-5 w-5" />
+            <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl">
+              <CardHeader className="pb-4">
+                <CardTitle className="flex items-center space-x-3 text-xl font-normal text-on-surface">
+                  <div className="p-2 bg-primary/10 rounded-full">
+                    <User className="h-5 w-5 text-primary" />
+                  </div>
                   <span>Edit Your SLUG</span>
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="text-on-surface-variant">
                   Customize your semantic identity window that appears when you're mentioned online
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <Tabs value={activeTab} onValueChange={setActiveTab}>
-                  <TabsList className="grid w-full grid-cols-4">
-                    <TabsTrigger value="profile" className="flex items-center space-x-2">
+                  <TabsList className="grid w-full grid-cols-4 bg-surface-container-high rounded-2xl p-1">
+                    <TabsTrigger 
+                      value="profile" 
+                      className="flex items-center space-x-2 data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
+                    >
                       <User className="h-4 w-4" />
                       <span className="hidden sm:inline">Profile</span>
                     </TabsTrigger>
-                    <TabsTrigger value="links" className="flex items-center space-x-2">
+                    <TabsTrigger 
+                      value="links" 
+                      className="flex items-center space-x-2 data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
+                    >
                       <Link className="h-4 w-4" />
                       <span className="hidden sm:inline">Links</span>
                     </TabsTrigger>
-                    <TabsTrigger value="style" className="flex items-center space-x-2">
+                    <TabsTrigger 
+                      value="style" 
+                      className="flex items-center space-x-2 data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
+                    >
                       <Palette className="h-4 w-4" />
                       <span className="hidden sm:inline">Style</span>
                     </TabsTrigger>
-                    <TabsTrigger value="analytics" className="flex items-center space-x-2">
+                    <TabsTrigger 
+                      value="analytics" 
+                      className="flex items-center space-x-2 data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
+                    >
                       <BarChart3 className="h-4 w-4" />
                       <span className="hidden sm:inline">Analytics</span>
                     </TabsTrigger>
@@ -115,32 +129,34 @@ export function SlugDashboard() {
             </Card>
 
             {brandMode && (
-              <Card className="shadow-elevation-2 border-accent">
-                <CardHeader>
-                  <CardTitle className="flex items-center space-x-2 text-accent">
-                    <Crown className="h-5 w-5" />
+              <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl ring-2 ring-accent/20">
+                <CardHeader className="pb-4">
+                  <CardTitle className="flex items-center space-x-3 text-xl font-normal text-on-surface">
+                    <div className="p-2 bg-accent/10 rounded-full">
+                      <Crown className="h-5 w-5 text-accent" />
+                    </div>
                     <span>Brand Features</span>
-                    <Badge variant="secondary">Pro</Badge>
+                    <Badge variant="secondary" className="bg-accent/10 text-accent border-0 rounded-full">Pro</Badge>
                   </CardTitle>
-                  <CardDescription>
+                  <CardDescription className="text-on-surface-variant">
                     Advanced features for brands and businesses
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-2 gap-4">
-                    <Button variant="outline" className="h-20 flex-col">
+                    <Button variant="elevated" className="h-20 flex-col rounded-2xl">
                       <Plus className="h-6 w-6 mb-2" />
                       <span className="text-sm">Product Carousel</span>
                     </Button>
-                    <Button variant="outline" className="h-20 flex-col">
+                    <Button variant="elevated" className="h-20 flex-col rounded-2xl">
                       <Plus className="h-6 w-6 mb-2" />
                       <span className="text-sm">Newsletter Embed</span>
                     </Button>
-                    <Button variant="outline" className="h-20 flex-col">
+                    <Button variant="elevated" className="h-20 flex-col rounded-2xl">
                       <Plus className="h-6 w-6 mb-2" />
                       <span className="text-sm">CTA Buttons</span>
                     </Button>
-                    <Button variant="outline" className="h-20 flex-col">
+                    <Button variant="elevated" className="h-20 flex-col rounded-2xl">
                       <Plus className="h-6 w-6 mb-2" />
                       <span className="text-sm">Shop Integration</span>
                     </Button>
@@ -152,28 +168,35 @@ export function SlugDashboard() {
 
           {/* Right Panel - Preview */}
           <div className="space-y-6">
-            <Card className="shadow-elevation-2">
-              <CardHeader>
+            <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl sticky top-24">
+              <CardHeader className="pb-4">
                 <div className="flex justify-between items-center">
-                  <CardTitle>Live Preview</CardTitle>
-                  <div className="flex items-center space-x-2">
+                  <CardTitle className="flex items-center space-x-3 text-xl font-normal text-on-surface">
+                    <div className="p-2 bg-secondary/10 rounded-full">
+                      <Eye className="h-5 w-5 text-secondary-foreground" />
+                    </div>
+                    <span>Live Preview</span>
+                  </CardTitle>
+                  <div className="flex items-center space-x-2 bg-surface-container-high rounded-xl p-1">
                     <Button
-                      variant={previewMode === "mobile" ? "default" : "outline"}
+                      variant={previewMode === "mobile" ? "secondary" : "ghost"}
                       size="sm"
                       onClick={() => setPreviewMode("mobile")}
+                      className="rounded-lg"
                     >
                       <Smartphone className="h-4 w-4" />
                     </Button>
                     <Button
-                      variant={previewMode === "desktop" ? "default" : "outline"}
+                      variant={previewMode === "desktop" ? "secondary" : "ghost"}
                       size="sm"
                       onClick={() => setPreviewMode("desktop")}
+                      className="rounded-lg"
                     >
                       <Monitor className="h-4 w-4" />
                     </Button>
                   </div>
                 </div>
-                <CardDescription>
+                <CardDescription className="text-on-surface-variant">
                   See how your SLUG will appear when you're mentioned
                 </CardDescription>
               </CardHeader>

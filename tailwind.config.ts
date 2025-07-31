@@ -65,16 +65,31 @@ export default {
 				/* Material Design 3 Surface Colors */
 				surface: 'hsl(var(--surface))',
 				'surface-variant': 'hsl(var(--surface-variant))',
-				'on-surface-variant': 'hsl(var(--on-surface-variant))'
+				'surface-container': 'hsl(var(--surface-container))',
+				'surface-container-high': 'hsl(var(--surface-container-high))',
+				'surface-container-highest': 'hsl(var(--surface-container-highest))',
+				'on-surface': 'hsl(var(--on-surface))',
+				'on-surface-variant': 'hsl(var(--on-surface-variant))',
+				
+				/* Material 3 Button Colors */
+				'filled-button': 'hsl(var(--filled-button))',
+				'filled-button-foreground': 'hsl(var(--filled-button-foreground))',
+				'filled-tonal-button': 'hsl(var(--filled-tonal-button))',
+				'filled-tonal-button-foreground': 'hsl(var(--filled-tonal-button-foreground))',
+				'elevated-button': 'hsl(var(--elevated-button))',
+				'elevated-button-foreground': 'hsl(var(--elevated-button-foreground))'
 			},
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
 				'gradient-surface': 'var(--gradient-surface)'
 			},
 			boxShadow: {
+				'elevation-0': 'var(--elevation-0)',
 				'elevation-1': 'var(--elevation-1)',
 				'elevation-2': 'var(--elevation-2)',
-				'elevation-3': 'var(--elevation-3)'
+				'elevation-3': 'var(--elevation-3)',
+				'elevation-4': 'var(--elevation-4)',
+				'elevation-5': 'var(--elevation-5)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

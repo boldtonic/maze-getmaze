@@ -39,21 +39,43 @@ All colors MUST be HSL.
     --input: 259 14% 93%;
     --ring: 259 87% 56%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
     
     /* Material 3 Surface variants */
     --surface: 253 100% 99%;
     --surface-variant: 259 14% 96%;
+    --surface-container: 259 14% 98%;
+    --surface-container-high: 259 14% 95%;
+    --surface-container-highest: 259 14% 92%;
+    --on-surface: 259 15% 14%;
     --on-surface-variant: 259 9% 43%;
+    
+    /* Material 3 State Layers */
+    --state-hover: 259 87% 56% / 0.08;
+    --state-focus: 259 87% 56% / 0.12;
+    --state-pressed: 259 87% 56% / 0.16;
+    --state-selected: 259 87% 56% / 0.12;
+    --state-disabled: 259 9% 57% / 0.12;
+    
+    /* Material 3 Button variants */
+    --filled-button: var(--primary);
+    --filled-button-foreground: var(--primary-foreground);
+    --filled-tonal-button: 259 87% 94%;
+    --filled-tonal-button-foreground: 259 87% 30%;
+    --elevated-button: var(--surface-container-low);
+    --elevated-button-foreground: var(--primary);
     
     /* Custom gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(259 100% 70%));
     --gradient-surface: linear-gradient(180deg, hsl(var(--surface)), hsl(var(--surface-variant)));
     
-    /* Elevations */
-    --elevation-1: 0 1px 3px 0 hsl(259 15% 14% / 0.1), 0 1px 2px 0 hsl(259 15% 14% / 0.06);
-    --elevation-2: 0 4px 6px -1px hsl(259 15% 14% / 0.1), 0 2px 4px -1px hsl(259 15% 14% / 0.06);
-    --elevation-3: 0 10px 15px -3px hsl(259 15% 14% / 0.1), 0 4px 6px -2px hsl(259 15% 14% / 0.05);
+    /* Material 3 Elevations */
+    --elevation-0: none;
+    --elevation-1: 0px 1px 2px 0px hsl(0 0% 0% / 0.3), 0px 1px 3px 1px hsl(0 0% 0% / 0.15);
+    --elevation-2: 0px 1px 2px 0px hsl(0 0% 0% / 0.3), 0px 2px 6px 2px hsl(0 0% 0% / 0.15);
+    --elevation-3: 0px 1px 3px 0px hsl(0 0% 0% / 0.3), 0px 4px 8px 3px hsl(0 0% 0% / 0.15);
+    --elevation-4: 0px 2px 3px 0px hsl(0 0% 0% / 0.3), 0px 6px 10px 4px hsl(0 0% 0% / 0.15);
+    --elevation-5: 0px 4px 4px 0px hsl(0 0% 0% / 0.3), 0px 8px 12px 6px hsl(0 0% 0% / 0.15);
 
     --sidebar-background: 0 0% 98%;
 
@@ -111,10 +133,34 @@ All colors MUST be HSL.
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(259 100% 70%));
     --gradient-surface: linear-gradient(180deg, hsl(var(--surface)), hsl(var(--surface-variant)));
     
-    /* Dark elevations */
-    --elevation-1: 0 1px 3px 0 hsl(0 0% 0% / 0.3), 0 1px 2px 0 hsl(0 0% 0% / 0.2);
-    --elevation-2: 0 4px 6px -1px hsl(0 0% 0% / 0.3), 0 2px 4px -1px hsl(0 0% 0% / 0.2);
-    --elevation-3: 0 10px 15px -3px hsl(0 0% 0% / 0.3), 0 4px 6px -2px hsl(0 0% 0% / 0.25);
+    /* Material 3 Dark Surface variants */
+    --surface-container: 259 15% 10%;
+    --surface-container-high: 259 15% 12%;
+    --surface-container-highest: 259 15% 16%;
+    --on-surface: 253 47% 97%;
+    
+    /* Dark State Layers */
+    --state-hover: 259 100% 85% / 0.08;
+    --state-focus: 259 100% 85% / 0.12;
+    --state-pressed: 259 100% 85% / 0.16;
+    --state-selected: 259 100% 85% / 0.12;
+    --state-disabled: 259 9% 70% / 0.12;
+    
+    /* Dark Button variants */
+    --filled-button: var(--primary);
+    --filled-button-foreground: var(--primary-foreground);
+    --filled-tonal-button: 259 100% 25%;
+    --filled-tonal-button-foreground: 259 100% 85%;
+    --elevated-button: var(--surface-container-low);
+    --elevated-button-foreground: var(--primary);
+    
+    /* Material 3 Dark Elevations */
+    --elevation-0: none;
+    --elevation-1: 0px 1px 2px 0px hsl(0 0% 0% / 0.3), 0px 1px 3px 1px hsl(0 0% 0% / 0.15);
+    --elevation-2: 0px 1px 2px 0px hsl(0 0% 0% / 0.3), 0px 2px 6px 2px hsl(0 0% 0% / 0.15);
+    --elevation-3: 0px 1px 3px 0px hsl(0 0% 0% / 0.3), 0px 4px 8px 3px hsl(0 0% 0% / 0.15);
+    --elevation-4: 0px 2px 3px 0px hsl(0 0% 0% / 0.3), 0px 6px 10px 4px hsl(0 0% 0% / 0.15);
+    --elevation-5: 0px 4px 4px 0px hsl(0 0% 0% / 0.3), 0px 8px 12px 6px hsl(0 0% 0% / 0.15);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
