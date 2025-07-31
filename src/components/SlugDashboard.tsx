@@ -11,9 +11,7 @@ import {
   Settings, 
   Crown,
   Plus,
-  Eye,
-  Smartphone,
-  Monitor
+  Eye
 } from "lucide-react";
 import { SlugPreview } from "./SlugPreview";
 import { ProfileEditor } from "./ProfileEditor";
@@ -24,7 +22,7 @@ import { Analytics } from "./Analytics";
 export function SlugDashboard() {
   const [activeTab, setActiveTab] = useState("profile");
   const [brandMode, setBrandMode] = useState(false);
-  const [previewMode, setPreviewMode] = useState<"mobile" | "desktop">("mobile");
+  
 
   return (
     <div className="min-h-screen bg-surface">
@@ -170,38 +168,18 @@ export function SlugDashboard() {
           <div className="space-y-6">
             <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl sticky top-24">
               <CardHeader className="pb-4">
-                <div className="flex justify-between items-center">
-                  <CardTitle className="flex items-center space-x-3 text-xl font-normal text-on-surface">
-                    <div className="p-2 bg-secondary/10 rounded-full">
-                      <Eye className="h-5 w-5 text-secondary-foreground" />
-                    </div>
-                    <span>Live Preview</span>
-                  </CardTitle>
-                  <div className="flex items-center space-x-2 bg-surface-container-high rounded-xl p-1">
-                    <Button
-                      variant={previewMode === "mobile" ? "secondary" : "ghost"}
-                      size="sm"
-                      onClick={() => setPreviewMode("mobile")}
-                      className="rounded-lg"
-                    >
-                      <Smartphone className="h-4 w-4" />
-                    </Button>
-                    <Button
-                      variant={previewMode === "desktop" ? "secondary" : "ghost"}
-                      size="sm"
-                      onClick={() => setPreviewMode("desktop")}
-                      className="rounded-lg"
-                    >
-                      <Monitor className="h-4 w-4" />
-                    </Button>
+                <CardTitle className="flex items-center space-x-3 text-xl font-normal text-on-surface">
+                  <div className="p-2 bg-secondary/10 rounded-full">
+                    <Eye className="h-5 w-5 text-secondary-foreground" />
                   </div>
-                </div>
+                  <span>Live Preview</span>
+                </CardTitle>
                 <CardDescription className="text-on-surface-variant">
                   See how your SLUG will appear when you're mentioned
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <SlugPreview mode={previewMode} brandMode={brandMode} />
+                <SlugPreview brandMode={brandMode} />
               </CardContent>
             </Card>
           </div>

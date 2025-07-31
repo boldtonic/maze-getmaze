@@ -14,14 +14,10 @@ import {
 } from "lucide-react";
 
 interface SlugPreviewProps {
-  mode: "mobile" | "desktop";
   brandMode: boolean;
 }
 
-export function SlugPreview({ mode, brandMode }: SlugPreviewProps) {
-  const containerClass = mode === "mobile" 
-    ? "max-w-sm mx-auto" 
-    : "max-w-2xl mx-auto";
+export function SlugPreview({ brandMode }: SlugPreviewProps) {
 
   return (
     <div className="space-y-6">
@@ -76,50 +72,51 @@ export function SlugPreview({ mode, brandMode }: SlugPreviewProps) {
         </div>
       </div>
 
-      {/* Main SLUG Window Preview */}
-      <div className={`${containerClass} relative`}>
-        {/* Material 3 Elevated Card */}
-        <Card className="overflow-hidden shadow-elevation-2 bg-surface-container border-0 rounded-3xl">
-          <CardContent className="p-8 space-y-8">
-            {/* Profile Section - Horizontal Layout for Desktop */}
+      {/* Main SLUG Window Preview - 16:9 Format */}
+      <div className="relative">
+        {/* 16:9 Aspect Ratio Container */}
+        <div className="aspect-video w-full">
+          <Card className="overflow-hidden shadow-elevation-2 bg-surface-container border-0 rounded-3xl h-full">
+            <CardContent className="p-6 h-full flex flex-col justify-between">
+            {/* Profile Section - Horizontal Layout optimized for 16:9 */}
             <div className="flex items-start space-x-6">
-              <Avatar className="h-24 w-24 ring-4 ring-primary/20 flex-shrink-0">
+              <Avatar className="h-16 w-16 ring-2 ring-primary/20 flex-shrink-0">
                 <AvatarImage src="/placeholder.svg" alt="Profile" />
-                <AvatarFallback className="bg-gradient-primary text-white text-xl font-semibold">
+                <AvatarFallback className="bg-gradient-primary text-white text-lg font-semibold">
                   JD
                 </AvatarFallback>
               </Avatar>
               
-              <div className="flex-1 space-y-3">
+              <div className="flex-1 space-y-2">
                 <div>
-                  <h2 className="text-2xl font-semibold text-foreground flex items-center">
+                  <h2 className="text-xl font-semibold text-foreground flex items-center">
                     Jane Doe
                     {brandMode && (
-                      <Badge variant="secondary" className="ml-3">
+                      <Badge variant="secondary" className="ml-2 text-xs">
                         Verified
                       </Badge>
                     )}
                   </h2>
-                  <p className="text-muted-foreground">
+                  <p className="text-sm text-muted-foreground">
                     {brandMode ? "Creative Director & Brand Strategist" : "Content Creator & Designer"}
                   </p>
                 </div>
 
-                <p className="text-sm text-on-surface-variant leading-relaxed">
+                <p className="text-xs text-on-surface-variant leading-relaxed">
                   {brandMode 
-                    ? "Helping brands tell their story through design. 10+ years experience in creative direction and visual identity development."
-                    : "Sharing my journey in design and creativity. Coffee enthusiast ☕ Always exploring new ways to create meaningful digital experiences."
+                    ? "Helping brands tell their story through design. 10+ years experience in creative direction."
+                    : "Sharing my journey in design and creativity. Coffee enthusiast ☕"
                   }
                 </p>
               </div>
             </div>
 
-            {/* Content Grid - Drag & Drop Style Sections */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Content Grid - Compact for 16:9 */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               {/* Featured Links Section */}
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-medium text-foreground">Featured Links</h3>
+                  <h3 className="text-sm font-medium text-foreground">Featured Links</h3>
                   {brandMode && (
                     <Badge variant="outline" className="text-xs">
                       Pro
@@ -127,75 +124,75 @@ export function SlugPreview({ mode, brandMode }: SlugPreviewProps) {
                   )}
                 </div>
                 
-                <div className="space-y-3">
+                <div className="space-y-2">
                   <Button 
                     variant="elevated" 
-                    className="w-full justify-between h-12 rounded-2xl"
+                    className="w-full justify-between h-10 rounded-2xl text-sm"
                   >
-                    <div className="flex items-center space-x-3">
-                      <div className="h-8 w-8 rounded-xl bg-primary flex items-center justify-center">
-                        <ExternalLink className="h-4 w-4 text-primary-foreground" />
+                    <div className="flex items-center space-x-2">
+                      <div className="h-6 w-6 rounded-lg bg-primary flex items-center justify-center">
+                        <ExternalLink className="h-3 w-3 text-primary-foreground" />
                       </div>
                       <span>Latest Portfolio</span>
                     </div>
-                    <ExternalLink className="h-4 w-4" />
+                    <ExternalLink className="h-3 w-3" />
                   </Button>
 
                   {brandMode && (
                     <Button 
                       variant="elevated" 
-                      className="w-full justify-between h-12 rounded-2xl"
+                      className="w-full justify-between h-10 rounded-2xl text-sm"
                     >
-                      <div className="flex items-center space-x-3">
-                        <div className="h-8 w-8 rounded-xl bg-accent flex items-center justify-center">
-                          <ShoppingBag className="h-4 w-4 text-accent-foreground" />
+                      <div className="flex items-center space-x-2">
+                        <div className="h-6 w-6 rounded-lg bg-accent flex items-center justify-center">
+                          <ShoppingBag className="h-3 w-3 text-accent-foreground" />
                         </div>
                         <span>Shop Products</span>
                       </div>
-                      <ExternalLink className="h-4 w-4" />
+                      <ExternalLink className="h-3 w-3" />
                     </Button>
                   )}
 
                   <Button 
                     variant="elevated" 
-                    className="w-full justify-between h-12 rounded-2xl"
+                    className="w-full justify-between h-10 rounded-2xl text-sm"
                   >
-                    <div className="flex items-center space-x-3">
-                      <div className="h-8 w-8 rounded-xl bg-red-500 flex items-center justify-center">
-                        <Youtube className="h-4 w-4 text-white" />
+                    <div className="flex items-center space-x-2">
+                      <div className="h-6 w-6 rounded-lg bg-red-500 flex items-center justify-center">
+                        <Youtube className="h-3 w-3 text-white" />
                       </div>
                       <span>Watch Process</span>
                     </div>
-                    <Play className="h-4 w-4" />
+                    <Play className="h-3 w-3" />
                   </Button>
                 </div>
               </div>
 
               {/* Social & Connect Section */}
-              <div className="space-y-4">
-                <h3 className="font-medium text-foreground">Connect</h3>
-                <div className="grid grid-cols-4 gap-3">
-                  <Button size="sm" variant="ghost" className="h-12 w-full flex-col rounded-2xl">
-                    <Twitter className="h-5 w-5 mb-1" />
+              <div className="space-y-3">
+                <h3 className="text-sm font-medium text-foreground">Connect</h3>
+                <div className="grid grid-cols-4 gap-2">
+                  <Button size="sm" variant="ghost" className="h-10 w-full flex-col rounded-2xl">
+                    <Twitter className="h-4 w-4 mb-1" />
                     <span className="text-xs">Twitter</span>
                   </Button>
-                  <Button size="sm" variant="ghost" className="h-12 w-full flex-col rounded-2xl">
-                    <Instagram className="h-5 w-5 mb-1" />
+                  <Button size="sm" variant="ghost" className="h-10 w-full flex-col rounded-2xl">
+                    <Instagram className="h-4 w-4 mb-1" />
                     <span className="text-xs">Instagram</span>
                   </Button>
-                  <Button size="sm" variant="ghost" className="h-12 w-full flex-col rounded-2xl">
-                    <Linkedin className="h-5 w-5 mb-1" />
+                  <Button size="sm" variant="ghost" className="h-10 w-full flex-col rounded-2xl">
+                    <Linkedin className="h-4 w-4 mb-1" />
                     <span className="text-xs">LinkedIn</span>
                   </Button>
-                  <Button size="sm" variant="ghost" className="h-12 w-full flex-col rounded-2xl">
-                    <Music className="h-5 w-5 mb-1" />
+                  <Button size="sm" variant="ghost" className="h-10 w-full flex-col rounded-2xl">
+                    <Music className="h-4 w-4 mb-1" />
                     <span className="text-xs">Music</span>
                   </Button>
                 </div>
 
                 {brandMode && (
-                  <div className="space-y-3 pt-3 border-t border-border">
-                    <Button className="w-full rounded-2xl">
+                  <div className="space-y-2 pt-2 border-t border-border">
+                    <Button className="w-full rounded-2xl h-9 text-sm">
                       Schedule Consultation
                     </Button>
                     <p className="text-xs text-center text-on-surface-variant">
@@ -207,6 +204,7 @@ export function SlugPreview({ mode, brandMode }: SlugPreviewProps) {
             </div>
           </CardContent>
         </Card>
+      </div>
 
         {/* Material 3 Floating Action Button Style Badge */}
         <div className="absolute -top-3 -right-3">
