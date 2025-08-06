@@ -76,135 +76,59 @@ export function SlugPreview({ brandMode }: SlugPreviewProps) {
       <div className="relative">
         {/* 16:9 Aspect Ratio Container */}
         <div className="aspect-video w-full">
-          <Card className="overflow-hidden shadow-elevation-2 bg-surface-container border-0 rounded-3xl h-full">
-            <CardContent className="p-6 h-full flex flex-col justify-between">
-            {/* Profile Section - Horizontal Layout optimized for 16:9 */}
-            <div className="flex items-start space-x-6">
-              <Avatar className="h-16 w-16 ring-2 ring-primary/20 flex-shrink-0">
-                <AvatarImage src="/placeholder.svg" alt="Profile" />
-                <AvatarFallback className="bg-gradient-primary text-white text-lg font-semibold">
-                  JD
+          <Card className="overflow-hidden shadow-elevation-1 bg-surface border-0 rounded-3xl h-full">
+            <CardContent className="p-8 h-full flex flex-col items-center justify-center text-center">
+              {/* Profile Photo */}
+              <Avatar className="h-24 w-24 mb-6">
+                <AvatarImage src="/lovable-uploads/3f2bcb08-2c27-47b6-aaee-ee9686785e8d.png" alt="Profile" />
+                <AvatarFallback className="bg-gradient-primary text-white text-xl font-semibold">
+                  SB
                 </AvatarFallback>
               </Avatar>
               
-              <div className="flex-1 space-y-2">
-                <div>
-                  <h2 className="text-xl font-semibold text-foreground flex items-center">
-                    Jane Doe
-                    {brandMode && (
-                      <Badge variant="secondary" className="ml-2 text-xs">
-                        Verified
-                      </Badge>
-                    )}
-                  </h2>
-                  <p className="text-sm text-muted-foreground">
-                    {brandMode ? "Creative Director & Brand Strategist" : "Content Creator & Designer"}
-                  </p>
-                </div>
-
-                <p className="text-xs text-on-surface-variant leading-relaxed">
-                  {brandMode 
-                    ? "Helping brands tell their story through design. 10+ years experience in creative direction."
-                    : "Sharing my journey in design and creativity. Coffee enthusiast ☕"
-                  }
-                </p>
-              </div>
-            </div>
-
-            {/* Content Grid - Compact for 16:9 */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-              {/* Featured Links Section */}
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-medium text-foreground">Featured Links</h3>
-                  {brandMode && (
-                    <Badge variant="outline" className="text-xs">
-                      Pro
-                    </Badge>
-                  )}
-                </div>
-                
-                <div className="space-y-2">
-                  <Button 
-                    variant="elevated" 
-                    className="w-full justify-between h-10 rounded-2xl text-sm"
-                  >
-                    <div className="flex items-center space-x-2">
-                      <div className="h-6 w-6 rounded-lg bg-primary flex items-center justify-center">
-                        <ExternalLink className="h-3 w-3 text-primary-foreground" />
-                      </div>
-                      <span>Latest Portfolio</span>
-                    </div>
-                    <ExternalLink className="h-3 w-3" />
-                  </Button>
-
-                  {brandMode && (
-                    <Button 
-                      variant="elevated" 
-                      className="w-full justify-between h-10 rounded-2xl text-sm"
-                    >
-                      <div className="flex items-center space-x-2">
-                        <div className="h-6 w-6 rounded-lg bg-accent flex items-center justify-center">
-                          <ShoppingBag className="h-3 w-3 text-accent-foreground" />
-                        </div>
-                        <span>Shop Products</span>
-                      </div>
-                      <ExternalLink className="h-3 w-3" />
-                    </Button>
-                  )}
-
-                  <Button 
-                    variant="elevated" 
-                    className="w-full justify-between h-10 rounded-2xl text-sm"
-                  >
-                    <div className="flex items-center space-x-2">
-                      <div className="h-6 w-6 rounded-lg bg-red-500 flex items-center justify-center">
-                        <Youtube className="h-3 w-3 text-white" />
-                      </div>
-                      <span>Watch Process</span>
-                    </div>
-                    <Play className="h-3 w-3" />
-                  </Button>
-                </div>
-              </div>
-
-              {/* Social & Connect Section */}
-              <div className="space-y-3">
-                <h3 className="text-sm font-medium text-foreground">Connect</h3>
-                <div className="grid grid-cols-4 gap-2">
-                  <Button size="sm" variant="ghost" className="h-10 w-full flex-col rounded-2xl">
-                    <Twitter className="h-4 w-4 mb-1" />
-                    <span className="text-xs">Twitter</span>
-                  </Button>
-                  <Button size="sm" variant="ghost" className="h-10 w-full flex-col rounded-2xl">
-                    <Instagram className="h-4 w-4 mb-1" />
-                    <span className="text-xs">Instagram</span>
-                  </Button>
-                  <Button size="sm" variant="ghost" className="h-10 w-full flex-col rounded-2xl">
-                    <Linkedin className="h-4 w-4 mb-1" />
-                    <span className="text-xs">LinkedIn</span>
-                  </Button>
-                  <Button size="sm" variant="ghost" className="h-10 w-full flex-col rounded-2xl">
-                    <Music className="h-4 w-4 mb-1" />
-                    <span className="text-xs">Music</span>
-                  </Button>
-                </div>
-
-                {brandMode && (
-                  <div className="space-y-2 pt-2 border-t border-border">
-                    <Button className="w-full rounded-2xl h-9 text-sm">
-                      Schedule Consultation
-                    </Button>
-                    <p className="text-xs text-center text-on-surface-variant">
-                      Powered by SLUG Network
-                    </p>
+              {/* Name and Verification */}
+              <div className="mb-4">
+                <h2 className="text-2xl font-medium text-foreground flex items-center justify-center gap-2">
+                  Sophie Bennett
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
                   </div>
-                )}
+                </h2>
               </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+
+              {/* Bio */}
+              <p className="text-muted-foreground text-base leading-relaxed mb-8 max-w-sm">
+                Product Designer who focuses on simplicity & usability.
+              </p>
+
+              {/* Stats and Follow Button */}
+              <div className="flex items-center gap-8">
+                {/* Stats */}
+                <div className="flex items-center gap-6 text-sm">
+                  <div className="flex items-center gap-1">
+                    <svg className="w-4 h-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <span className="font-medium text-foreground">312</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <svg className="w-4 h-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span className="font-medium text-foreground">48</span>
+                  </div>
+                </div>
+
+                {/* Follow Button */}
+                <Button className="rounded-full px-6 h-9 text-sm font-medium bg-foreground text-background hover:bg-foreground/90">
+                  Follow <span className="ml-1 text-lg">+</span>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
 
         {/* Material 3 Floating Action Button Style Badge */}
         <div className="absolute -top-3 -right-3">
