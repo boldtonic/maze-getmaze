@@ -26,7 +26,7 @@ export function SlugPreview({ brandMode }: SlugPreviewProps) {
         <h4 className="font-medium text-foreground">How it appears on websites</h4>
         <div className="relative bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-lg p-6 overflow-hidden">
           {/* Simulated website content with blur */}
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-200/50 to-slate-300/50 dark:from-slate-700/50 dark:to-slate-800/50" />
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-200/50 to-slate-300/50 dark:from-slate-700/50 dark:to-slate-800/50 -z-10" />
           <div className="relative space-y-4 blur-sm opacity-60">
             <div className="h-4 bg-slate-300 dark:bg-slate-600 rounded w-3/4" />
             <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-1/2" />
