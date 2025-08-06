@@ -75,23 +75,20 @@ export function SlugPreview({ brandMode }: SlugPreviewProps) {
       {/* Main SLUG Window Preview - 16:9 Format */}
       <div className="relative">
         {/* 16:9 Aspect Ratio Container */}
-        <div className="aspect-video w-full">
-          <Card className="overflow-hidden shadow-elevation-1 bg-surface border-0 rounded-3xl h-full">
-            <CardContent className="p-8 h-full flex flex-col items-center justify-center text-center">
-              {/* Profile Photo */}
-              <Avatar className="h-24 w-24 mb-6">
-                <AvatarImage src="/lovable-uploads/3f2bcb08-2c27-47b6-aaee-ee9686785e8d.png" alt="Profile" />
-                <AvatarFallback className="bg-gradient-primary text-white text-xl font-semibold">
-                  SB
-                </AvatarFallback>
-              </Avatar>
+        <div className="aspect-video w-full max-w-sm mx-auto">
+          <Card className="overflow-hidden shadow-elevation-1 bg-background border border-border/50 rounded-2xl h-full">
+            <CardContent className="p-6 h-full flex flex-col items-center justify-center text-center">
+              {/* Profile Photo - Rounded square like the reference */}
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-800 mb-4 overflow-hidden">
+                <div className="w-full h-full bg-gradient-primary opacity-20"></div>
+              </div>
               
               {/* Name and Verification */}
-              <div className="mb-4">
-                <h2 className="text-2xl font-medium text-foreground flex items-center justify-center gap-2">
-                  Sophie Bennett
-                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
-                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <div className="mb-3">
+                <h2 className="text-xl font-semibold text-foreground flex items-center justify-center gap-2 mb-1">
+                  Jane Doe
+                  <div className="w-4 h-4 bg-green-500 rounded-full flex items-center justify-center">
+                    <svg className="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                   </div>
@@ -99,31 +96,34 @@ export function SlugPreview({ brandMode }: SlugPreviewProps) {
               </div>
 
               {/* Bio */}
-              <p className="text-muted-foreground text-base leading-relaxed mb-8 max-w-sm">
+              <p className="text-muted-foreground text-sm leading-relaxed mb-6 max-w-[200px]">
                 Product Designer who focuses on simplicity & usability.
               </p>
 
-              {/* Stats and Follow Button */}
-              <div className="flex items-center gap-8">
+              {/* Stats and Follow Button Row */}
+              <div className="flex items-center justify-between w-full max-w-[240px] text-sm">
                 {/* Stats */}
-                <div className="flex items-center gap-6 text-sm">
+                <div className="flex items-center gap-4">
                   <div className="flex items-center gap-1">
                     <svg className="w-4 h-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
-                    <span className="font-medium text-foreground">312</span>
+                    <span className="font-semibold text-foreground">312</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <svg className="w-4 h-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    <span className="font-medium text-foreground">48</span>
+                    <span className="font-semibold text-foreground">48</span>
                   </div>
                 </div>
 
                 {/* Follow Button */}
-                <Button className="rounded-full px-6 h-9 text-sm font-medium bg-foreground text-background hover:bg-foreground/90">
-                  Follow <span className="ml-1 text-lg">+</span>
+                <Button 
+                  size="sm" 
+                  className="rounded-full px-4 h-8 text-sm font-medium bg-foreground text-background hover:bg-foreground/90"
+                >
+                  Follow +
                 </Button>
               </div>
             </CardContent>
