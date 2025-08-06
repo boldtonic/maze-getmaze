@@ -22,6 +22,7 @@ import { Analytics } from "./Analytics";
 export function SlugDashboard() {
   const [activeTab, setActiveTab] = useState("profile");
   const [brandMode, setBrandMode] = useState(false);
+  const [previewMode, setPreviewMode] = useState<"card" | "mention">("card");
   
 
   return (
@@ -179,40 +180,42 @@ export function SlugDashboard() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                {/* Preview Options */}
-                <div className="grid grid-cols-2 gap-3">
-                  <Button 
-                    variant="outline" 
-                    className="h-auto p-4 flex-col space-y-2 rounded-2xl border-2"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-2 5a2 2 0 100 4 2 2 0 000-4z" />
-                      </svg>
-                    </div>
-                    <div className="text-center">
-                      <div className="font-medium text-sm">Card Preview</div>
-                      <div className="text-xs text-muted-foreground">Your profile card</div>
-                    </div>
-                  </Button>
-                  
-                  <Button 
-                    variant="outline" 
-                    className="h-auto p-4 flex-col space-y-2 rounded-2xl border-2"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center">
-                      <svg className="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V3a1 1 0 011 1v4a1 1 0 01-1 1H8a1 1 0 01-1-1V4a1 1 0 011-1m8 0H8m8 0h2a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2h2" />
-                      </svg>
-                    </div>
-                    <div className="text-center">
-                      <div className="font-medium text-sm">Mention Effect</div>
-                      <div className="text-xs text-muted-foreground">How it appears on sites</div>
-                    </div>
-                  </Button>
+                {/* Floating Preview Options */}
+                <div className="bg-surface-container-high rounded-2xl p-1">
+                  <div className="grid grid-cols-2 gap-1">
+                    <Button 
+                      variant={previewMode === "card" ? "default" : "ghost"}
+                      onClick={() => setPreviewMode("card")}
+                      className="h-auto p-3 flex-col space-y-2 rounded-xl transition-all duration-200"
+                    >
+                      <div className="w-6 h-6 rounded-lg bg-primary/10 flex items-center justify-center">
+                        <svg className="w-3 h-3 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-2 5a2 2 0 100 4 2 2 0 000-4z" />
+                        </svg>
+                      </div>
+                      <div className="text-center">
+                        <div className="font-medium text-xs">Card Preview</div>
+                      </div>
+                    </Button>
+                    
+                    <Button 
+                      variant={previewMode === "mention" ? "default" : "ghost"}
+                      onClick={() => setPreviewMode("mention")}
+                      className="h-auto p-3 flex-col space-y-2 rounded-xl transition-all duration-200"
+                    >
+                      <div className="w-6 h-6 rounded-lg bg-accent/10 flex items-center justify-center">
+                        <svg className="w-3 h-3 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V3a1 1 0 011 1v4a1 1 0 01-1 1H8a1 1 0 01-1-1V4a1 1 0 011-1m8 0H8m8 0h2a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2h2" />
+                        </svg>
+                      </div>
+                      <div className="text-center">
+                        <div className="font-medium text-xs">Mention Effect</div>
+                      </div>
+                    </Button>
+                  </div>
                 </div>
                 
-                <SlugPreview brandMode={brandMode} />
+                <SlugPreview brandMode={brandMode} previewMode={previewMode} />
               </CardContent>
             </Card>
           </div>
