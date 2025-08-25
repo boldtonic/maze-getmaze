@@ -86,74 +86,63 @@ export function SlugPreview({ brandMode, previewMode = "card" }: SlugPreviewProp
       {/* Show card preview when previewMode is "card" */}
       {previewMode === "card" && (
         <div className="relative">
-          {/* 16:9 Aspect Ratio Container */}
-          <div className="aspect-video w-full max-w-sm mx-auto">
-            <Card className="overflow-hidden shadow-elevation-1 bg-background border border-border/50 rounded-2xl h-full">
-              <CardContent className="p-6 h-full flex flex-col items-center justify-center text-center">
-                {/* Profile Photo - Rounded square like the reference */}
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-800 mb-4 overflow-hidden">
-                  <div className="w-full h-full bg-gradient-primary opacity-20"></div>
-                </div>
-                
-                {/* Name and Verification */}
-                <div className="mb-3">
-                  <h2 className="text-xl font-semibold text-foreground flex items-center justify-center gap-2 mb-1">
-                    Jane Doe
-                    <div className="w-4 h-4 bg-green-500 rounded-full flex items-center justify-center">
-                      <svg className="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20">
+          {/* Fixed dimensions: 236w x 420h */}
+          <div className="w-[236px] h-[420px] mx-auto">
+            <Card className="overflow-hidden shadow-elevation-1 bg-background border border-border/50 rounded-2xl h-full w-full">
+              <CardContent className="p-3 h-full">
+                {/* Bento Grid Layout */}
+                <div className="grid grid-cols-2 grid-rows-4 gap-2 h-full">
+                  {/* Profile Section - Top Left */}
+                  <div className="col-span-1 row-span-2 bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl p-3 flex flex-col items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-primary mb-2 flex items-center justify-center">
+                      <span className="text-white text-sm font-bold">JD</span>
+                    </div>
+                    <h3 className="text-xs font-semibold text-foreground text-center leading-tight">Jane Doe</h3>
+                    <div className="w-3 h-3 bg-green-500 rounded-full mt-1 flex items-center justify-center">
+                      <svg className="w-1.5 h-1.5 text-white" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
                     </div>
-                  </h2>
-                </div>
-
-                {/* Bio */}
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4 max-w-[200px]">
-                  Product Designer who focuses on simplicity & usability.
-                </p>
-
-                {/* Image Carousel */}
-                <div className="w-full max-w-[200px] mb-4">
-                  <Carousel className="w-full">
-                    <CarouselContent>
-                      <CarouselItem>
-                        <div className="w-full h-20 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg flex items-center justify-center">
-                          <Play className="w-6 h-6 text-white" />
-                        </div>
-                      </CarouselItem>
-                      <CarouselItem>
-                        <div className="w-full h-20 bg-gradient-to-br from-pink-400 to-red-500 rounded-lg flex items-center justify-center">
-                          <Heart className="w-6 h-6 text-white" />
-                        </div>
-                      </CarouselItem>
-                      <CarouselItem>
-                        <div className="w-full h-20 bg-gradient-to-br from-green-400 to-teal-500 rounded-lg flex items-center justify-center">
-                          <MessageCircle className="w-6 h-6 text-white" />
-                        </div>
-                      </CarouselItem>
-                    </CarouselContent>
-                    <CarouselPrevious className="left-2" />
-                    <CarouselNext className="right-2" />
-                  </Carousel>
-                </div>
-
-                {/* Stats */}
-                <div className="flex items-center justify-center gap-6 text-sm">
-                  <div className="flex items-center gap-1">
-                    <Heart className="w-4 h-4 text-muted-foreground" />
-                    <span className="font-semibold text-foreground">1.2k</span>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <svg className="w-4 h-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    <span className="font-semibold text-foreground">156</span>
+
+                  {/* Image 1 - Top Right */}
+                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-blue-400 to-purple-500 rounded-xl flex items-center justify-center">
+                    <Play className="w-5 h-5 text-white" />
                   </div>
-                  <div className="flex items-center gap-1">
-                    <svg className="w-4 h-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                    <span className="font-semibold text-foreground">892</span>
+
+                  {/* Stats - Middle Right */}
+                  <div className="col-span-1 row-span-1 bg-muted/50 rounded-xl p-2 flex flex-col justify-center">
+                    <div className="flex items-center justify-between text-xs">
+                      <div className="flex items-center gap-1">
+                        <Heart className="w-3 h-3 text-muted-foreground" />
+                        <span className="font-semibold text-foreground">1.2k</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <svg className="w-3 h-3 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 818 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                        <span className="font-semibold text-foreground">892</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Bio Text - Bottom Left */}
+                  <div className="col-span-1 row-span-1 bg-accent/10 rounded-xl p-2 flex items-center">
+                    <p className="text-xs text-muted-foreground leading-tight">Product Designer focused on simplicity</p>
+                  </div>
+
+                  {/* Image 2 - Bottom Right */}
+                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-pink-400 to-red-500 rounded-xl flex items-center justify-center">
+                    <MessageCircle className="w-5 h-5 text-white" />
+                  </div>
+
+                  {/* Large Image - Bottom Full Width */}
+                  <div className="col-span-2 row-span-1 bg-gradient-to-r from-green-400 to-teal-500 rounded-xl flex items-center justify-center relative overflow-hidden">
+                    <div className="absolute inset-0 bg-black/20"></div>
+                    <div className="relative z-10 text-center">
+                      <Instagram className="w-6 h-6 text-white mx-auto mb-1" />
+                      <span className="text-xs text-white font-medium">Latest Work</span>
+                    </div>
                   </div>
                 </div>
               </CardContent>
