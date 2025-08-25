@@ -112,11 +112,7 @@ export function SlugPreview({ brandMode, previewMode = "card" }: SlugPreviewProp
 
                   {/* Stats - Middle Right */}
                   <div className="col-span-1 row-span-1 bg-muted/50 rounded-xl p-2 flex flex-col justify-center">
-                    <div className="flex items-center justify-between text-xs">
-                      <div className="flex items-center gap-1">
-                        <Heart className="w-3 h-3 text-muted-foreground" />
-                        <span className="font-semibold text-foreground">1.2k</span>
-                      </div>
+                    <div className="flex items-center justify-center text-xs">
                       <div className="flex items-center gap-1">
                         <svg className="w-3 h-3 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 818 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
