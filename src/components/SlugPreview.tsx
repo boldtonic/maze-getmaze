@@ -110,9 +110,9 @@ export function SlugPreview({ brandMode, previewMode = "card" }: SlugPreviewProp
                     <Play className="w-5 h-5 text-white" />
                   </div>
 
-                  {/* Bento Label - Middle Right */}
-                  <div className="col-span-1 row-span-1 bg-muted/50 rounded-xl p-2 flex items-center justify-center">
-                    <span className="text-xs font-semibold text-foreground">bento</span>
+                  {/* Image 3 - Middle Right */}
+                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-orange-400 to-yellow-500 rounded-xl flex items-center justify-center">
+                    <ShoppingBag className="w-5 h-5 text-white" />
                   </div>
 
                   {/* Bio Text - Bottom Left */}
