@@ -1,7 +1,13 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { 
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { 
   Twitter, 
   Instagram, 
@@ -10,7 +16,9 @@ import {
   ExternalLink,
   Music,
   Play,
-  ShoppingBag
+  ShoppingBag,
+  Heart,
+  MessageCircle
 } from "lucide-react";
 
 interface SlugPreviewProps {
@@ -100,35 +108,53 @@ export function SlugPreview({ brandMode, previewMode = "card" }: SlugPreviewProp
                 </div>
 
                 {/* Bio */}
-                <p className="text-muted-foreground text-sm leading-relaxed mb-6 max-w-[200px]">
+                <p className="text-muted-foreground text-sm leading-relaxed mb-4 max-w-[200px]">
                   Product Designer who focuses on simplicity & usability.
                 </p>
 
-                {/* Stats and Follow Button Row */}
-                <div className="flex items-center justify-between w-full max-w-[240px] text-sm">
-                  {/* Stats */}
-                  <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-1">
-                      <svg className="w-4 h-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                      <span className="font-semibold text-foreground">312</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <svg className="w-4 h-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                      <span className="font-semibold text-foreground">48</span>
-                    </div>
-                  </div>
+                {/* Image Carousel */}
+                <div className="w-full max-w-[200px] mb-4">
+                  <Carousel className="w-full">
+                    <CarouselContent>
+                      <CarouselItem>
+                        <div className="w-full h-20 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg flex items-center justify-center">
+                          <Play className="w-6 h-6 text-white" />
+                        </div>
+                      </CarouselItem>
+                      <CarouselItem>
+                        <div className="w-full h-20 bg-gradient-to-br from-pink-400 to-red-500 rounded-lg flex items-center justify-center">
+                          <Heart className="w-6 h-6 text-white" />
+                        </div>
+                      </CarouselItem>
+                      <CarouselItem>
+                        <div className="w-full h-20 bg-gradient-to-br from-green-400 to-teal-500 rounded-lg flex items-center justify-center">
+                          <MessageCircle className="w-6 h-6 text-white" />
+                        </div>
+                      </CarouselItem>
+                    </CarouselContent>
+                    <CarouselPrevious className="left-2" />
+                    <CarouselNext className="right-2" />
+                  </Carousel>
+                </div>
 
-                  {/* Follow Button */}
-                  <Button 
-                    size="sm" 
-                    className="rounded-full px-4 h-8 text-sm font-medium bg-foreground text-background hover:bg-foreground/90"
-                  >
-                    Follow +
-                  </Button>
+                {/* Stats */}
+                <div className="flex items-center justify-center gap-6 text-sm">
+                  <div className="flex items-center gap-1">
+                    <Heart className="w-4 h-4 text-muted-foreground" />
+                    <span className="font-semibold text-foreground">1.2k</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <svg className="w-4 h-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span className="font-semibold text-foreground">156</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <svg className="w-4 h-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                    <span className="font-semibold text-foreground">892</span>
+                  </div>
                 </div>
               </CardContent>
             </Card>
