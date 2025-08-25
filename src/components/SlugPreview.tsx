@@ -110,16 +110,9 @@ export function SlugPreview({ brandMode, previewMode = "card" }: SlugPreviewProp
                     <Play className="w-5 h-5 text-white" />
                   </div>
 
-                  {/* Stats - Middle Right */}
-                  <div className="col-span-1 row-span-1 bg-muted/50 rounded-xl p-2 flex flex-col justify-center">
-                    <div className="flex items-center justify-center text-xs">
-                      <div className="flex items-center gap-1">
-                        <svg className="w-3 h-3 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 818 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                        <span className="font-semibold text-foreground">892</span>
-                      </div>
-                    </div>
+                  {/* Bento Label - Middle Right */}
+                  <div className="col-span-1 row-span-1 bg-muted/50 rounded-xl p-2 flex items-center justify-center">
+                    <span className="text-xs font-semibold text-foreground">bento</span>
                   </div>
 
                   {/* Bio Text - Bottom Left */}
