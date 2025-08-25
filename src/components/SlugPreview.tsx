@@ -86,13 +86,13 @@ export function SlugPreview({ brandMode, previewMode = "card" }: SlugPreviewProp
       {/* Show card preview when previewMode is "card" */}
       {previewMode === "card" && (
         <div className="relative">
-          {/* Fixed dimensions: 236w x 420h */}
-          <div className="w-[236px] h-[420px] mx-auto">
+          {/* Fixed dimensions: 400w x 225h (16:9 aspect ratio) */}
+          <div className="w-[400px] h-[225px] mx-auto">
             <Card className="overflow-hidden shadow-elevation-1 bg-background border border-border/50 rounded-2xl h-full w-full">
               <CardContent className="p-3 h-full">
-                {/* Bento Grid Layout */}
-                <div className="grid grid-cols-2 grid-rows-4 gap-2 h-full">
-                  {/* Profile Section - Top Left */}
+                {/* Bento Grid Layout - Horizontal */}
+                <div className="grid grid-cols-4 grid-rows-2 gap-2 h-full">
+                  {/* Profile Section - Left */}
                   <div className="col-span-1 row-span-2 bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl p-3 flex flex-col items-center justify-center">
                     <div className="w-12 h-12 rounded-xl bg-gradient-primary mb-2 flex items-center justify-center">
                       <span className="text-white text-sm font-bold">JD</span>
@@ -105,33 +105,33 @@ export function SlugPreview({ brandMode, previewMode = "card" }: SlugPreviewProp
                     </div>
                   </div>
 
-                  {/* Image 1 - Top Right */}
+                  {/* Image 1 - Top */}
                   <div className="col-span-1 row-span-1 bg-gradient-to-br from-blue-400 to-purple-500 rounded-xl flex items-center justify-center">
                     <Play className="w-5 h-5 text-white" />
                   </div>
 
-                  {/* Image 3 - Middle Right */}
+                  {/* Image 2 - Top */}
                   <div className="col-span-1 row-span-1 bg-gradient-to-br from-orange-400 to-yellow-500 rounded-xl flex items-center justify-center">
                     <ShoppingBag className="w-5 h-5 text-white" />
                   </div>
 
-                  {/* Bio Text - Bottom Left */}
-                  <div className="col-span-1 row-span-1 bg-accent/10 rounded-xl p-2 flex items-center">
-                    <p className="text-xs text-muted-foreground leading-tight">Product Designer focused on simplicity</p>
-                  </div>
-
-                  {/* Image 2 - Bottom Right */}
-                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-pink-400 to-red-500 rounded-xl flex items-center justify-center">
-                    <MessageCircle className="w-5 h-5 text-white" />
-                  </div>
-
-                  {/* Large Image - Bottom Full Width */}
-                  <div className="col-span-2 row-span-1 bg-gradient-to-r from-green-400 to-teal-500 rounded-xl flex items-center justify-center relative overflow-hidden">
+                  {/* Large Image - Top Right */}
+                  <div className="col-span-1 row-span-2 bg-gradient-to-r from-green-400 to-teal-500 rounded-xl flex items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 bg-black/20"></div>
                     <div className="relative z-10 text-center">
                       <Instagram className="w-6 h-6 text-white mx-auto mb-1" />
                       <span className="text-xs text-white font-medium">Latest Work</span>
                     </div>
+                  </div>
+
+                  {/* Bio Text - Bottom Left */}
+                  <div className="col-span-1 row-span-1 bg-accent/10 rounded-xl p-2 flex items-center">
+                    <p className="text-xs text-muted-foreground leading-tight">Product Designer</p>
+                  </div>
+
+                  {/* Image 3 - Bottom */}
+                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-pink-400 to-red-500 rounded-xl flex items-center justify-center">
+                    <MessageCircle className="w-5 h-5 text-white" />
                   </div>
                 </div>
               </CardContent>
