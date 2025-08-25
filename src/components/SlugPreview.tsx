@@ -86,8 +86,8 @@ export function SlugPreview({ brandMode, previewMode = "card" }: SlugPreviewProp
       {/* Show card preview when previewMode is "card" */}
       {previewMode === "card" && (
         <div className="relative">
-          {/* Fixed dimensions: 400w x 225h (16:9 aspect ratio) */}
-          <div className="w-[400px] h-[225px] mx-auto">
+          {/* Fixed dimensions: 420w x 236h (16:9 aspect ratio) */}
+          <div className="w-[420px] h-[236px] mx-auto">
             <Card className="overflow-hidden shadow-elevation-1 bg-background border border-border/50 rounded-2xl h-full w-full">
               <CardContent className="p-3 h-full">
                 {/* Bento Grid Layout - Horizontal */}
