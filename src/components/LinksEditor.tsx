@@ -23,6 +23,7 @@ interface Link {
   title: string;
   url: string;
   icon: string;
+  thumbnail?: string;
   type: "featured" | "social";
 }
 
@@ -48,12 +49,6 @@ export function LinksEditor({ brandMode }: LinksEditorProps) {
     }
   ]);
 
-  const [socialLinks, setSocialLinks] = useState([
-    { platform: "twitter", url: "https://twitter.com/janedoe", icon: Twitter },
-    { platform: "instagram", url: "https://instagram.com/janedoe", icon: Instagram },
-    { platform: "linkedin", url: "https://linkedin.com/in/janedoe", icon: Linkedin },
-    { platform: "soundcloud", url: "", icon: Music },
-  ]);
 
   const addLink = () => {
     const newLink: Link = {
@@ -76,11 +71,6 @@ export function LinksEditor({ brandMode }: LinksEditorProps) {
     setLinks(links.filter(link => link.id !== id));
   };
 
-  const updateSocialLink = (platform: string, url: string) => {
-    setSocialLinks(socialLinks.map(social => 
-      social.platform === platform ? { ...social, url } : social
-    ));
-  };
 
   const getIconComponent = (iconName: string) => {
     const iconMap: { [key: string]: any } = {
@@ -126,6 +116,12 @@ export function LinksEditor({ brandMode }: LinksEditorProps) {
                       value={link.url}
                       onChange={(e) => updateLink(link.id, 'url', e.target.value)}
                       placeholder="https://..."
+                      type="url"
+                    />
+                    <Input
+                      value={link.thumbnail || ""}
+                      onChange={(e) => updateLink(link.id, 'thumbnail', e.target.value)}
+                      placeholder="Thumbnail image URL (optional)"
                       type="url"
                     />
                   </div>
@@ -181,42 +177,6 @@ export function LinksEditor({ brandMode }: LinksEditorProps) {
         </Card>
       )}
 
-      {/* Social Links */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center space-x-2">
-            <Twitter className="h-5 w-5" />
-            <span>Social Media</span>
-          </CardTitle>
-          <CardDescription>
-            Connect your social media profiles
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          {socialLinks.map((social) => {
-            const IconComponent = social.icon;
-            return (
-              <div key={social.platform} className="flex items-center space-x-3">
-                <div className="h-8 w-8 rounded-lg bg-muted flex items-center justify-center">
-                  <IconComponent className="h-4 w-4" />
-                </div>
-                <div className="flex-1">
-                  <Label className="text-sm font-medium capitalize">
-                    {social.platform}
-                  </Label>
-                  <Input
-                    value={social.url}
-                    onChange={(e) => updateSocialLink(social.platform, e.target.value)}
-                    placeholder={`Your ${social.platform} URL`}
-                    type="url"
-                    className="mt-1"
-                  />
-                </div>
-              </div>
-            );
-          })}
-        </CardContent>
-      </Card>
 
       {/* Save Button */}
       <Button className="w-full bg-gradient-primary hover:opacity-90 transition-opacity">
