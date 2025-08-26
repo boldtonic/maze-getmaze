@@ -92,19 +92,27 @@ export function SlugPreview({ brandMode }: SlugPreviewProps) {
       </div>
 
       {/* Mention Effect Preview */}
-      <div className="space-y-3">
-        <h4 className="font-medium text-foreground">How it appears when mentioned</h4>
-        <div className="relative bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-lg p-6 overflow-hidden">
-          {/* Simulated website content with blur */}
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-200/50 to-slate-300/50 dark:from-slate-700/50 dark:to-slate-800/50 -z-10" />
-          <div className="relative space-y-4 blur-sm opacity-60">
-            <div className="h-4 bg-slate-300 dark:bg-slate-600 rounded w-3/4" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-1/2" />
-            <div className="space-y-2">
-              <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded" />
-              <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-5/6" />
-            </div>
+      <div className="relative bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-lg p-6 overflow-hidden min-h-[400px]">
+        {/* Simulated website content with blur */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-200/50 to-slate-300/50 dark:from-slate-700/50 dark:to-slate-800/50 -z-10" />
+        <div className="relative space-y-4 blur-sm opacity-60">
+          <div className="h-4 bg-slate-300 dark:bg-slate-600 rounded w-3/4" />
+          <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-1/2" />
+          <div className="space-y-2">
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-5/6" />
           </div>
+          <div className="space-y-2 mt-8">
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-4/5" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-3/5" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-5/6" />
+          </div>
+          <div className="space-y-2 mt-8">
+            <div className="h-4 bg-slate-300 dark:bg-slate-600 rounded w-2/3" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-4/5" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-3/4" />
+          </div>
+        </div>
           
           {/* Highlighted mention with pop-up preview */}
           <div className="absolute top-4 left-6 right-6">
@@ -139,7 +147,6 @@ export function SlugPreview({ brandMode }: SlugPreviewProps) {
               {" "}about the future of design.
             </p>
           </div>
-        </div>
       </div>
     </div>
   );
