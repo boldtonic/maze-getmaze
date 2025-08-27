@@ -102,7 +102,7 @@ export function SlugPreview({ brandMode }: SlugPreviewProps) {
         </div>
 
         {/* Highlighted mention */}
-        <div className="absolute top-16 left-6 right-6">
+        <div className="absolute top-20 left-6 right-6">
           <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
             {currentArticle.text}{" "}
             <span 
@@ -116,7 +116,7 @@ export function SlugPreview({ brandMode }: SlugPreviewProps) {
         </div>
 
         {/* Card floating over the blurred background */}
-        <div className="absolute top-32 left-1/2 transform -translate-x-1/2">
+        <div className="absolute top-40 left-1/2 transform -translate-x-1/2">
           <div className="w-[420px] h-[236px]">
             <Card 
               className="overflow-hidden bg-background border border-border/50 rounded-2xl h-full w-full"
