@@ -118,32 +118,12 @@ export function SlugPreview({ brandMode }: SlugPreviewProps) {
           <div className="absolute top-4 left-6 right-6">
             <p className="text-sm text-slate-700 dark:text-slate-300">
               Great article by{" "}
-              <span 
-                className="px-1 rounded font-medium cursor-pointer relative group"
-                style={{ backgroundColor: "hsl(var(--accent))", color: "white" }}
-              >
-                @janedoe
-                
-                {/* Hover preview window */}
-                <div className="absolute top-full left-0 mt-2 opacity-0 group-hover:opacity-100 transition-all duration-200 transform group-hover:translate-y-0 translate-y-2 z-10">
-                  <div className="w-64 bg-background border border-border rounded-lg shadow-elevation-3 p-4">
-                    <div className="flex items-center space-x-3">
-                      <Avatar className="h-10 w-10">
-                        <AvatarFallback className="bg-gradient-primary text-white text-sm">
-                          JD
-                        </AvatarFallback>
-                      </Avatar>
-                      <div>
-                        <div className="font-medium text-sm">Jane Doe</div>
-                        <div className="text-xs text-muted-foreground">Creative Designer</div>
-                      </div>
-                    </div>
-                    <p className="text-xs text-muted-foreground mt-2">
-                      Sharing my journey in design and creativity...
-                    </p>
-                  </div>
-                </div>
-              </span>
+                <span 
+                  className="px-1 rounded font-medium"
+                  style={{ backgroundColor: "hsl(var(--accent))", color: "white" }}
+                >
+                  @janedoe
+                </span>
               {" "}about the future of design.
             </p>
           </div>
