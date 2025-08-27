@@ -122,18 +122,6 @@ Accessibility in micro-interactions has gained significant attention, with new g
         {/* Simulated website content with blur */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-200/50 to-slate-300/50 dark:from-slate-700/50 dark:to-slate-800/50 -z-10" />
           
-        {/* Refresh Button */}
-        <div className="absolute top-4 right-6">
-          <Button
-            size="sm"
-            variant="outline"
-            onClick={refreshArticle}
-            className="bg-background/80 backdrop-blur-sm border-border/50 hover:bg-background/90"
-          >
-            <RefreshCw className="w-4 h-4 mr-2" />
-            New Article
-          </Button>
-        </div>
 
         {/* Full article text with highlighted mention */}
         <div className="absolute top-20 left-6 right-6 max-h-[460px] overflow-y-auto">
@@ -215,6 +203,19 @@ Accessibility in micro-interactions has gained significant attention, with new g
             <Badge className="bg-accent text-accent-foreground shadow-elevation-3 rounded-full px-3 py-1 border-0">
               Live Preview
             </Badge>
+          </div>
+
+          {/* Refresh Button - Bottom Center */}
+          <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={refreshArticle}
+              className="bg-background/80 backdrop-blur-sm border-border/50 hover:bg-background/90"
+            >
+              <RefreshCw className="w-4 h-4 mr-2" />
+              New Article
+            </Button>
           </div>
         </div>
       </div>
