@@ -70,79 +70,51 @@ export function SlugPreview({ brandMode }: SlugPreviewProps) {
       <div className="relative bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-lg p-6 overflow-hidden min-h-[500px]">
         {/* Simulated website content with blur */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-200/50 to-slate-300/50 dark:from-slate-700/50 dark:to-slate-800/50 -z-10" />
-        <div className="relative space-y-3 opacity-60">
-          {/* Header */}
-          <div className="h-5 bg-slate-300 dark:bg-slate-600 rounded w-2/3" />
-          <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-1/3" />
+        <div className="relative space-y-4 text-sm text-foreground/80 leading-relaxed">
+          <h2 className="text-lg font-semibold text-foreground">The Evolution of Design Systems</h2>
           
-          {/* Paragraph 1 */}
-          <div className="space-y-2 mt-6">
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-11/12" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-4/5" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-9/10" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-3/4" />
-          </div>
+          <p>
+            Modern web development has fundamentally transformed how we approach user interface design. 
+            The shift towards component-based architectures has revolutionized the way teams collaborate 
+            and maintain consistency across digital products. Design systems have emerged as the backbone 
+            of scalable user experiences, providing a unified language between designers and developers.
+          </p>
           
-          {/* Paragraph 2 */}
-          <div className="space-y-2 mt-6">
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-5/6" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-4/5" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-11/12" />
-          </div>
+          <p>
+            Component libraries now serve as living documentation, enabling rapid prototyping and 
+            consistent implementation. The integration of design tokens has further streamlined 
+            the process, allowing teams to maintain visual coherence while adapting to different 
+            platforms and accessibility requirements. This systematic approach reduces technical 
+            debt and accelerates development cycles significantly.
+          </p>
           
-          {/* Paragraph 3 */}
-          <div className="space-y-2 mt-6">
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-4/5" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-11/12" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-3/4" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-5/6" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-2/3" />
-          </div>
+          <p>
+            Cross-functional collaboration has become more efficient through shared design principles 
+            and reusable components. Teams can now iterate faster while maintaining brand consistency 
+            across multiple touchpoints. The emphasis on accessibility and inclusive design has shaped 
+            how modern design systems are architected, ensuring digital products serve diverse user needs.
+          </p>
           
-          {/* Paragraph 4 */}
-          <div className="space-y-2 mt-6">
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-5/6" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-4/5" />
-          </div>
+          <p>
+            Emerging technologies continue to influence design system evolution, with artificial 
+            intelligence and machine learning opening new possibilities for automated design decisions. 
+            The future promises even more intelligent systems that can adapt to user preferences 
+            and context while maintaining coherent visual hierarchies.
+          </p>
           
-          {/* Paragraph 5 */}
-          <div className="space-y-2 mt-6">
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-3/4" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-11/12" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-5/6" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-4/5" />
-          </div>
+          <p>
+            Performance optimization has become integral to design system development, with teams 
+            focusing on efficient component delivery and runtime performance. Modern build tools 
+            and bundlers enable sophisticated optimizations that ensure fast loading times without 
+            compromising design quality or functionality.
+          </p>
           
-          {/* Paragraph 6 */}
-          <div className="space-y-2 mt-6">
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-5/6" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-3/4" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-4/5" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-11/12" />
-          </div>
-          
-          {/* Paragraph 7 */}
-          <div className="space-y-2 mt-6">
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-5/6" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-2/3" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-3/4" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-11/12" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-4/5" />
-          </div>
-          
-          {/* Paragraph 8 */}
-          <div className="space-y-2 mt-6">
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-4/5" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-11/12" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-3/4" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-5/6" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-2/3" />
-          </div>
+          <p>
+            The democratization of design tools has empowered more team members to contribute to 
+            design systems, leading to more inclusive and comprehensive component libraries. 
+            This collaborative approach ensures that design systems truly serve the needs of 
+            both creators and end users in the digital ecosystem.
+          </p>
         </div>
           
         {/* Refresh Button */}
