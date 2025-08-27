@@ -126,7 +126,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
   return (
     <div className="space-y-6">
       {/* Mention Effect Preview with Card Overlay */}
-      <div className="relative bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-lg p-6 overflow-hidden min-h-[500px]">
+      <div className="relative bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-lg p-6 overflow-hidden min-h-[650px]">
         {/* Simulated website content with blur */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-200/50 to-slate-300/50 dark:from-slate-700/50 dark:to-slate-800/50 -z-10" />
           
@@ -144,7 +144,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
         </div>
 
         {/* Full article text with highlighted mention */}
-        <div className="absolute top-20 left-6 right-6 max-h-[310px] overflow-y-auto">
+        <div className="absolute top-20 left-6 right-6 max-h-[460px] overflow-y-auto">
           <div className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed space-y-3">
             <p>
               {currentArticle.highlightText}{" "}
@@ -163,7 +163,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
         </div>
 
         {/* Card floating over the blurred background */}
-        <div className="absolute top-40 left-1/2 transform -translate-x-1/2">
+        <div className="absolute top-60 left-1/2 transform -translate-x-1/2">
           <div className="w-[420px] h-[236px]">
             <Card 
               className="overflow-hidden bg-background border border-border/50 rounded-2xl h-full w-full"
