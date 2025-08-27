@@ -55,14 +55,14 @@ export function SlugPreview({ brandMode }: SlugPreviewProps) {
         {/* Highlighted mention */}
         <div className="absolute top-4 left-6 right-6">
           <p className="text-sm text-slate-700 dark:text-slate-300">
-            The article mentions{" "}
+            The future of web design is rapidly evolving with new technologies. As{" "}
               <span 
                 className="px-1 rounded font-medium"
                 style={{ backgroundColor: "hsl(var(--accent))", color: "white" }}
               >
                 Jane Doe
               </span>
-            {" "}and her insights on design trends.
+            {" "}noted in her recent conference talk, minimalism continues to dominate the industry landscape.
           </p>
         </div>
 
