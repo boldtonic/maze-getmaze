@@ -143,18 +143,23 @@ Accessibility in micro-interactions has gained significant attention, with new g
           </Button>
         </div>
 
-        {/* Highlighted mention */}
-        <div className="absolute top-20 left-6 right-6">
-          <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-            {currentArticle.highlightText}{" "}
-            <span 
-              className="px-1 rounded font-medium"
-              style={{ backgroundColor: "hsl(var(--accent))", color: "white" }}
-            >
-              {currentArticle.mention}
-            </span>
-            {" "}{currentArticle.continuation}
-          </p>
+        {/* Full article text with highlighted mention */}
+        <div className="absolute top-20 left-6 right-6 max-h-[280px] overflow-y-auto">
+          <div className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed space-y-3">
+            <p>
+              {currentArticle.highlightText}{" "}
+              <span 
+                className="px-1 rounded font-medium"
+                style={{ backgroundColor: "hsl(var(--accent))", color: "white" }}
+              >
+                {currentArticle.mention}
+              </span>
+              {" "}{currentArticle.continuation}
+            </p>
+            {currentArticle.fullText.split('\n\n').slice(1).map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
         </div>
 
         {/* Card floating over the blurred background */}
