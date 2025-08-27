@@ -105,9 +105,6 @@ Modern design systems now include comprehensive micro-interaction libraries, ena
       <div className="relative bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-lg p-6 overflow-hidden min-h-[500px]">
         {/* Simulated website content with blur */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-200/50 to-slate-300/50 dark:from-slate-700/50 dark:to-slate-800/50 -z-10" />
-        <div className="relative space-y-4 text-sm text-foreground/80 leading-relaxed whitespace-pre-line">
-          {currentArticle.fullText}
-        </div>
           
         {/* Refresh Button */}
         <div className="absolute top-4 right-6">
