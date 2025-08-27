@@ -55,14 +55,14 @@ export function SlugPreview({ brandMode }: SlugPreviewProps) {
         {/* Highlighted mention */}
         <div className="absolute top-4 left-6 right-6">
           <p className="text-sm text-slate-700 dark:text-slate-300">
-            Great article by{" "}
+            The article mentions{" "}
               <span 
                 className="px-1 rounded font-medium"
                 style={{ backgroundColor: "hsl(var(--accent))", color: "white" }}
               >
                 Jane Doe
               </span>
-            {" "}about the future of design.
+            {" "}and her insights on design trends.
           </p>
         </div>
 
