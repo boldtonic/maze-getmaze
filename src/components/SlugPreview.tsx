@@ -33,7 +33,7 @@ export function SlugPreview({ brandMode }: SlugPreviewProps) {
       <div className="relative bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-lg p-6 overflow-hidden min-h-[400px]">
         {/* Simulated website content with blur */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-200/50 to-slate-300/50 dark:from-slate-700/50 dark:to-slate-800/50 -z-10" />
-        <div className="relative space-y-4 blur-sm opacity-60">
+        <div className="relative space-y-4 opacity-60">
           <div className="h-4 bg-slate-300 dark:bg-slate-600 rounded w-3/4" />
           <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-1/2" />
           <div className="space-y-2">
@@ -69,7 +69,10 @@ export function SlugPreview({ brandMode }: SlugPreviewProps) {
         {/* Card floating over the blurred background */}
         <div className="absolute top-16 left-1/2 transform -translate-x-1/2">
           <div className="w-[420px] h-[236px]">
-            <Card className="overflow-hidden shadow-elevation-1 bg-background border border-border/50 rounded-2xl h-full w-full">
+            <Card 
+              className="overflow-hidden bg-background border border-border/50 rounded-2xl h-full w-full"
+              style={{ boxShadow: '0 0 80px 20px rgba(0, 0, 0, 0.2)' }}
+            >
               <CardContent className="p-3 h-full">
                 {/* Bento Grid Layout - Horizontal */}
                 <div className="grid grid-cols-4 grid-rows-2 gap-2 h-full">
