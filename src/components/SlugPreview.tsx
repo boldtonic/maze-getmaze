@@ -60,7 +60,7 @@ export function SlugPreview({ brandMode }: SlugPreviewProps) {
                 className="px-1 rounded font-medium"
                 style={{ backgroundColor: "hsl(var(--accent))", color: "white" }}
               >
-                @janedoe
+                Jane Doe
               </span>
             {" "}about the future of design.
           </p>
