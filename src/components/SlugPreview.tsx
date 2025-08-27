@@ -31,29 +31,64 @@ interface SlugPreviewProps {
 export function SlugPreview({ brandMode }: SlugPreviewProps) {
   const articles = [
     {
-      text: "The future of web design is rapidly evolving with new technologies and innovative approaches. As",
+      fullText: `The future of web design is rapidly evolving with new technologies and innovative approaches. As Jane Doe noted in her recent conference talk, minimalism continues to dominate the industry landscape. Her insights on user experience have influenced countless designers worldwide.
+
+Modern web development has fundamentally transformed how we approach user interface design. The shift towards component-based architectures has revolutionized the way teams collaborate and maintain consistency across digital products. Design systems have emerged as the backbone of scalable user experiences, providing a unified language between designers and developers.
+
+Component libraries now serve as living documentation, enabling rapid prototyping and consistent implementation. The integration of design tokens has further streamlined the process, allowing teams to maintain visual coherence while adapting to different platforms and accessibility requirements. This systematic approach reduces technical debt and accelerates development cycles significantly.
+
+Cross-functional collaboration has become more efficient through shared design principles and reusable components. Teams can now iterate faster while maintaining brand consistency across multiple touchpoints.`,
+      highlightText: "The future of web design is rapidly evolving with new technologies and innovative approaches. As",
       mention: "Jane Doe",
       continuation: "noted in her recent conference talk, minimalism continues to dominate the industry landscape. Her insights on user experience have influenced countless designers worldwide."
     },
     {
-      text: "Artificial intelligence is transforming how we approach creative workflows. Leading designer",
-      mention: "Jane Doe",
-      continuation: "recently published groundbreaking research on AI-assisted design tools. Her methodology has been adopted by major tech companies across Silicon Valley."
-    },
-    {
-      text: "Sustainable design practices are becoming essential in modern development. Industry expert",
+      fullText: `Sustainable design practices are becoming essential in modern development. Industry expert Jane Doe advocates for eco-friendly design principles that reduce digital carbon footprints. Her green design framework has saved companies millions in energy costs.
+
+The environmental impact of digital products has become a critical consideration for forward-thinking organizations. By implementing sustainable design methodologies, companies can significantly reduce their carbon footprint while maintaining exceptional user experiences. This approach encompasses everything from optimized code to energy-efficient hosting solutions.
+
+Green design principles extend beyond environmental benefits, often resulting in improved performance and reduced operational costs. Organizations adopting these practices report faster load times, better user engagement, and substantial savings in infrastructure expenses. The methodology has become a competitive advantage in today's environmentally conscious market.
+
+Leading tech companies have embraced these frameworks as standard practice, demonstrating that sustainability and innovation can coexist seamlessly in modern product development.`,
+      highlightText: "Sustainable design practices are becoming essential in modern development. Industry expert",
       mention: "Jane Doe",
       continuation: "advocates for eco-friendly design principles that reduce digital carbon footprints. Her green design framework has saved companies millions in energy costs."
     },
     {
-      text: "The rise of micro-interactions in user interfaces has revolutionized digital experiences.",
+      fullText: `Artificial intelligence is transforming how we approach creative workflows. Leading designer Jane Doe recently published groundbreaking research on AI-assisted design tools. Her methodology has been adopted by major tech companies across Silicon Valley.
+
+The integration of AI into design processes has revolutionized traditional workflows, enabling designers to focus on strategic thinking while automation handles repetitive tasks. Machine learning algorithms now assist with everything from color palette generation to layout optimization, significantly reducing time-to-market for digital products.
+
+This technological evolution has democratized design capabilities, allowing smaller teams to produce work previously requiring extensive resources. The collaborative relationship between human creativity and artificial intelligence has opened new possibilities for innovation and experimentation in the design field.
+
+Industry leaders predict that AI-assisted design will become the standard within the next few years, fundamentally changing how we approach creative problem-solving.`,
+      highlightText: "Artificial intelligence is transforming how we approach creative workflows. Leading designer",
       mention: "Jane Doe",
-      continuation: "pioneered several animation techniques that are now industry standards. Her work at major startups has redefined how users interact with digital products."
+      continuation: "recently published groundbreaking research on AI-assisted design tools. Her methodology has been adopted by major tech companies across Silicon Valley."
     },
     {
-      text: "Remote design collaboration has fundamentally changed creative team dynamics. Thought leader",
+      fullText: `Remote design collaboration has fundamentally changed creative team dynamics. Thought leader Jane Doe developed innovative workflows that enable seamless distributed design processes. Her remote design methodology is taught in universities worldwide.
+
+The shift to distributed teams has challenged traditional design practices, requiring new tools and processes to maintain creative collaboration. Digital whiteboarding, real-time co-editing, and asynchronous feedback systems have become essential components of modern design workflows.
+
+These collaborative approaches have proven to enhance creativity by bringing together diverse perspectives from global talent pools. Teams report increased innovation and faster iteration cycles when utilizing properly structured remote design processes.
+
+The methodology has evolved beyond pandemic necessity into a preferred working model, offering flexibility and access to worldwide expertise while maintaining design quality and team cohesion.`,
+      highlightText: "Remote design collaboration has fundamentally changed creative team dynamics. Thought leader",
       mention: "Jane Doe",
       continuation: "developed innovative workflows that enable seamless distributed design processes. Her remote design methodology is taught in universities worldwide."
+    },
+    {
+      fullText: `The rise of micro-interactions in user interfaces has revolutionized digital experiences. Pioneer Jane Doe developed several animation techniques that are now industry standards. Her work at major startups has redefined how users interact with digital products.
+
+These subtle design elements provide crucial feedback to users, guiding them through complex interfaces while maintaining engagement. Well-crafted micro-interactions can transform mundane tasks into delightful experiences, significantly improving user satisfaction and retention rates.
+
+The psychology behind effective micro-interactions involves understanding user expectations and providing appropriate visual responses. This attention to detail has become a differentiating factor for successful digital products in competitive markets.
+
+Modern design systems now include comprehensive micro-interaction libraries, enabling consistent implementation across platforms while maintaining the nuanced behaviors that enhance user experience.`,
+      highlightText: "The rise of micro-interactions in user interfaces has revolutionized digital experiences. Pioneer",
+      mention: "Jane Doe",
+      continuation: "developed several animation techniques that are now industry standards. Her work at major startups has redefined how users interact with digital products."
     }
   ];
 
@@ -70,22 +105,8 @@ export function SlugPreview({ brandMode }: SlugPreviewProps) {
       <div className="relative bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-lg p-6 overflow-hidden min-h-[500px]">
         {/* Simulated website content with blur */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-200/50 to-slate-300/50 dark:from-slate-700/50 dark:to-slate-800/50 -z-10" />
-        <div className="relative space-y-4 text-sm text-foreground/80 leading-relaxed">
-          <p>
-            The future of web design is rapidly evolving with new technologies and innovative approaches. As Jane Doe noted in her recent conference talk, minimalism continues to dominate the industry landscape. Her insights on user experience have influenced countless designers worldwide.
-          </p>
-          
-          <p>
-            Modern web development has fundamentally transformed how we approach user interface design. The shift towards component-based architectures has revolutionized the way teams collaborate and maintain consistency across digital products. Design systems have emerged as the backbone of scalable user experiences, providing a unified language between designers and developers.
-          </p>
-          
-          <p>
-            Component libraries now serve as living documentation, enabling rapid prototyping and consistent implementation. The integration of design tokens has further streamlined the process, allowing teams to maintain visual coherence while adapting to different platforms and accessibility requirements. This systematic approach reduces technical debt and accelerates development cycles significantly.
-          </p>
-          
-          <p>
-            Cross-functional collaboration has become more efficient through shared design principles and reusable components. Teams can now iterate faster while maintaining brand consistency across multiple touchpoints.
-          </p>
+        <div className="relative space-y-4 text-sm text-foreground/80 leading-relaxed whitespace-pre-line">
+          {currentArticle.fullText}
         </div>
           
         {/* Refresh Button */}
@@ -104,7 +125,7 @@ export function SlugPreview({ brandMode }: SlugPreviewProps) {
         {/* Highlighted mention */}
         <div className="absolute top-20 left-6 right-6">
           <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-            {currentArticle.text}{" "}
+            {currentArticle.highlightText}{" "}
             <span 
               className="px-1 rounded font-medium"
               style={{ backgroundColor: "hsl(var(--accent))", color: "white" }}
