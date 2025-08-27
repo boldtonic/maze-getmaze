@@ -1,6 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { 
   Carousel,
   CarouselContent,
@@ -18,56 +19,133 @@ import {
   Play,
   ShoppingBag,
   Heart,
-  MessageCircle
+  MessageCircle,
+  RefreshCw
 } from "lucide-react";
+import { useState } from "react";
 
 interface SlugPreviewProps {
   brandMode: boolean;
 }
 
 export function SlugPreview({ brandMode }: SlugPreviewProps) {
+  const articles = [
+    {
+      text: "The future of web design is rapidly evolving with new technologies and innovative approaches. As",
+      mention: "Jane Doe",
+      continuation: "noted in her recent conference talk, minimalism continues to dominate the industry landscape. Her insights on user experience have influenced countless designers worldwide."
+    },
+    {
+      text: "Artificial intelligence is transforming how we approach creative workflows. Leading designer",
+      mention: "Jane Doe",
+      continuation: "recently published groundbreaking research on AI-assisted design tools. Her methodology has been adopted by major tech companies across Silicon Valley."
+    },
+    {
+      text: "Sustainable design practices are becoming essential in modern development. Industry expert",
+      mention: "Jane Doe",
+      continuation: "advocates for eco-friendly design principles that reduce digital carbon footprints. Her green design framework has saved companies millions in energy costs."
+    },
+    {
+      text: "The rise of micro-interactions in user interfaces has revolutionized digital experiences.",
+      mention: "Jane Doe",
+      continuation: "pioneered several animation techniques that are now industry standards. Her work at major startups has redefined how users interact with digital products."
+    },
+    {
+      text: "Remote design collaboration has fundamentally changed creative team dynamics. Thought leader",
+      mention: "Jane Doe",
+      continuation: "developed innovative workflows that enable seamless distributed design processes. Her remote design methodology is taught in universities worldwide."
+    }
+  ];
+
+  const [currentArticleIndex, setCurrentArticleIndex] = useState(0);
+  const currentArticle = articles[currentArticleIndex];
+
+  const refreshArticle = () => {
+    setCurrentArticleIndex((prev) => (prev + 1) % articles.length);
+  };
 
   return (
     <div className="space-y-6">
       {/* Mention Effect Preview with Card Overlay */}
-      <div className="relative bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-lg p-6 overflow-hidden min-h-[400px]">
+      <div className="relative bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-lg p-6 overflow-hidden min-h-[500px]">
         {/* Simulated website content with blur */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-200/50 to-slate-300/50 dark:from-slate-700/50 dark:to-slate-800/50 -z-10" />
-        <div className="relative space-y-4 opacity-60">
-          <div className="h-4 bg-slate-300 dark:bg-slate-600 rounded w-3/4" />
-          <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-1/2" />
-          <div className="space-y-2">
+        <div className="relative space-y-3 opacity-60">
+          {/* Header */}
+          <div className="h-5 bg-slate-300 dark:bg-slate-600 rounded w-2/3" />
+          <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-1/3" />
+          
+          {/* Paragraph 1 */}
+          <div className="space-y-2 mt-6">
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-11/12" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-4/5" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-9/10" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-3/4" />
+          </div>
+          
+          {/* Paragraph 2 */}
+          <div className="space-y-2 mt-6">
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-5/6" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-4/5" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-11/12" />
+          </div>
+          
+          {/* Paragraph 3 */}
+          <div className="space-y-2 mt-6">
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-4/5" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-11/12" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-3/4" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-5/6" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-2/3" />
+          </div>
+          
+          {/* Paragraph 4 */}
+          <div className="space-y-2 mt-6">
             <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded" />
             <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-5/6" />
-          </div>
-          <div className="space-y-2 mt-8">
             <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-4/5" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-3/5" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-5/6" />
           </div>
-          <div className="space-y-2 mt-8">
-            <div className="h-4 bg-slate-300 dark:bg-slate-600 rounded w-2/3" />
-            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-4/5" />
+          
+          {/* Paragraph 5 */}
+          <div className="space-y-2 mt-6">
             <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-3/4" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-11/12" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-5/6" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-4/5" />
           </div>
         </div>
           
+        {/* Refresh Button */}
+        <div className="absolute top-4 right-6">
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={refreshArticle}
+            className="bg-background/80 backdrop-blur-sm border-border/50 hover:bg-background/90"
+          >
+            <RefreshCw className="w-4 h-4 mr-2" />
+            New Article
+          </Button>
+        </div>
+
         {/* Highlighted mention */}
-        <div className="absolute top-4 left-6 right-6">
-          <p className="text-sm text-slate-700 dark:text-slate-300">
-            The future of web design is rapidly evolving with new technologies. As{" "}
-              <span 
-                className="px-1 rounded font-medium"
-                style={{ backgroundColor: "hsl(var(--accent))", color: "white" }}
-              >
-                Jane Doe
-              </span>
-            {" "}noted in her recent conference talk, minimalism continues to dominate the industry landscape.
+        <div className="absolute top-16 left-6 right-6">
+          <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+            {currentArticle.text}{" "}
+            <span 
+              className="px-1 rounded font-medium"
+              style={{ backgroundColor: "hsl(var(--accent))", color: "white" }}
+            >
+              {currentArticle.mention}
+            </span>
+            {" "}{currentArticle.continuation}
           </p>
         </div>
 
         {/* Card floating over the blurred background */}
-        <div className="absolute top-16 left-1/2 transform -translate-x-1/2">
+        <div className="absolute top-32 left-1/2 transform -translate-x-1/2">
           <div className="w-[420px] h-[236px]">
             <Card 
               className="overflow-hidden bg-background border border-border/50 rounded-2xl h-full w-full"
