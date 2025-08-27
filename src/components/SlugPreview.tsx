@@ -115,6 +115,34 @@ export function SlugPreview({ brandMode }: SlugPreviewProps) {
             <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-5/6" />
             <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-4/5" />
           </div>
+          
+          {/* Paragraph 6 */}
+          <div className="space-y-2 mt-6">
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-5/6" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-3/4" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-4/5" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-11/12" />
+          </div>
+          
+          {/* Paragraph 7 */}
+          <div className="space-y-2 mt-6">
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-5/6" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-2/3" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-3/4" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-11/12" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-4/5" />
+          </div>
+          
+          {/* Paragraph 8 */}
+          <div className="space-y-2 mt-6">
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-4/5" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-11/12" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-3/4" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-5/6" />
+            <div className="h-3 bg-slate-300 dark:bg-slate-600 rounded w-2/3" />
+          </div>
         </div>
           
         {/* Refresh Button */}
