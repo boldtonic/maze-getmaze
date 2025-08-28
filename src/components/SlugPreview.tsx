@@ -122,7 +122,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
           
 
         {/* Full article text with highlighted mention */}
-        <div className="absolute top-20 left-5 right-5">
+        <div className="absolute top-5 left-5 right-5">
           <div className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed space-y-3">
             <p>
               {currentArticle.highlightText}{" "}
