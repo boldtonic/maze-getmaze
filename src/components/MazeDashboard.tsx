@@ -97,8 +97,8 @@ export function MazeDashboard() {
               </CardHeader>
               <CardContent className="relative">
                 <Tabs value={activeTab} onValueChange={setActiveTab}>
-                  <div className="sticky top-0 bg-surface-container/95 backdrop-blur-sm z-10 -mx-6 px-6 pb-4 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-4 after:bg-gradient-to-b after:from-transparent after:to-surface-container/95 after:pointer-events-none">
-                    <TabsList className="grid w-full grid-cols-4 bg-surface-container-high/90 backdrop-blur-sm rounded-2xl p-1 shadow-sm">
+                  <div className="sticky top-0 bg-surface-container/80 backdrop-blur-md z-10 -mx-6 px-6 pb-6 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-8 after:bg-gradient-to-b after:from-transparent after:to-surface-container/80 after:pointer-events-none">
+                    <TabsList className="grid w-full grid-cols-4 bg-surface-container-high/70 backdrop-blur-md rounded-2xl p-1 shadow-sm border border-white/5">
                       <TabsTrigger 
                         value="profile" 
                         className="flex items-center space-x-2 data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
