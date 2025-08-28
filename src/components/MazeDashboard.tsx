@@ -82,7 +82,7 @@ export function MazeDashboard() {
           </div>
 
           {/* Right Panel - Editor */}
-          <div className="space-y-6">
+          <div className="space-y-6 overflow-y-auto max-h-[calc(100vh-8rem)]">
             <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl">
               <CardHeader className="pb-4">
                 <CardTitle className="flex items-center space-x-3 text-xl font-normal text-on-surface">
