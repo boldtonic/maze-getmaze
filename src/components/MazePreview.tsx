@@ -29,6 +29,16 @@ import {
 import mazeIsotype from "@/assets/maze-isotype.png";
 import { useState, useRef } from "react";
 
+interface Link {
+  id: string;
+  title: string;
+  url: string;
+  icon: string;
+  thumbnail?: string;
+  type: "featured" | "social";
+  position: "A2" | "A3" | "B3";
+}
+
 interface MazePreviewProps {
   brandMode: boolean;
   coverImage: string | null;
@@ -38,9 +48,10 @@ interface MazePreviewProps {
     title: string;
     bio: string;
   };
+  links: Link[];
 }
 
-export function MazePreview({ brandMode, coverImage, onImageUpload, profile }: MazePreviewProps) {
+export function MazePreview({ brandMode, coverImage, onImageUpload, profile, links }: MazePreviewProps) {
   const articles = [
     {
       fullText: `The future of web design is rapidly evolving with new technologies and innovative approaches. As Jane Doe noted in her recent conference talk, minimalism continues to dominate the industry landscape. Her insights on user experience have influenced countless designers worldwide.
@@ -125,6 +136,25 @@ Accessibility in micro-interactions has gained significant attention, with new g
     setCurrentArticleIndex((prev) => (prev + 1) % articles.length);
   };
 
+  const getLinkByPosition = (position: "A2" | "A3" | "B3") => {
+    return links.find(link => link.position === position);
+  };
+
+  const getDefaultThumbnail = (url: string) => {
+    // Simple domain-based thumbnail logic
+    if (url.includes('youtube.com') || url.includes('youtu.be')) {
+      return 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=300&fit=crop';
+    }
+    if (url.includes('instagram.com')) {
+      return 'https://images.unsplash.com/photo-1611605698335-8b1569810432?w=400&h=300&fit=crop';
+    }
+    if (url.includes('twitter.com') || url.includes('x.com')) {
+      return 'https://images.unsplash.com/photo-1611605698335-8b1569810432?w=400&h=300&fit=crop';
+    }
+    // Default gradient for other links
+    return null;
+  };
+
   return (
     <div className="space-y-6">
       {/* Mention Effect Preview with Card Overlay */}
@@ -189,13 +219,57 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   </div>
 
                   {/* Square A2 - Top Second */}
-                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-xl flex items-center justify-center">
-                    <span className="text-white font-semibold text-lg">A2</span>
+                  <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
+                    {(() => {
+                      const link = getLinkByPosition("A2");
+                      if (link) {
+                        const thumbnail = link.thumbnail || getDefaultThumbnail(link.url);
+                        return (
+                          <>
+                            {thumbnail ? (
+                              <img src={thumbnail} alt={link.title} className="absolute inset-0 w-full h-full object-cover" />
+                            ) : (
+                              <div className="absolute inset-0 bg-gradient-to-br from-emerald-400 to-teal-500" />
+                            )}
+                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                              <span className="text-white font-semibold text-xs text-center px-1">{link.title}</span>
+                            </div>
+                          </>
+                        );
+                      }
+                      return (
+                        <div className="bg-gradient-to-br from-emerald-400/20 to-teal-500/20 h-full flex items-center justify-center border-2 border-dashed border-muted-foreground/30">
+                          <span className="text-muted-foreground text-xs">A2</span>
+                        </div>
+                      );
+                    })()}
                   </div>
 
                   {/* Square A3 - Top Third */}
-                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-orange-400 to-red-500 rounded-xl flex items-center justify-center">
-                    <span className="text-white font-semibold text-lg">A3</span>
+                  <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
+                    {(() => {
+                      const link = getLinkByPosition("A3");
+                      if (link && brandMode) {
+                        const thumbnail = link.thumbnail || getDefaultThumbnail(link.url);
+                        return (
+                          <>
+                            {thumbnail ? (
+                              <img src={thumbnail} alt={link.title} className="absolute inset-0 w-full h-full object-cover" />
+                            ) : (
+                              <div className="absolute inset-0 bg-gradient-to-br from-orange-400 to-red-500" />
+                            )}
+                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                              <span className="text-white font-semibold text-xs text-center px-1">{link.title}</span>
+                            </div>
+                          </>
+                        );
+                      }
+                      return (
+                        <div className="bg-gradient-to-br from-orange-400/20 to-red-500/20 h-full flex items-center justify-center border-2 border-dashed border-muted-foreground/30">
+                          <span className="text-muted-foreground text-xs">A3</span>
+                        </div>
+                      );
+                    })()}
                   </div>
 
                   {/* Profile Section A4 - Transparent with profile info */}
@@ -212,8 +286,30 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   </div>
 
                   {/* Square B3 - Bottom Right (spans 2 columns) */}
-                  <div className="col-span-2 row-span-1 bg-gradient-to-r from-rose-400 to-pink-600 rounded-xl flex items-center justify-center">
-                    <span className="text-white font-semibold text-lg">B3</span>
+                  <div className="col-span-2 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
+                    {(() => {
+                      const link = getLinkByPosition("B3");
+                      if (link) {
+                        const thumbnail = link.thumbnail || getDefaultThumbnail(link.url);
+                        return (
+                          <>
+                            {thumbnail ? (
+                              <img src={thumbnail} alt={link.title} className="absolute inset-0 w-full h-full object-cover" />
+                            ) : (
+                              <div className="absolute inset-0 bg-gradient-to-r from-rose-400 to-pink-600" />
+                            )}
+                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                              <span className="text-white font-semibold text-sm text-center px-2">{link.title}</span>
+                            </div>
+                          </>
+                        );
+                      }
+                      return (
+                        <div className="bg-gradient-to-r from-rose-400/20 to-pink-600/20 h-full flex items-center justify-center border-2 border-dashed border-muted-foreground/30">
+                          <span className="text-muted-foreground text-lg">B3</span>
+                        </div>
+                      );
+                    })()}
                   </div>
                 </div>
               </CardContent>

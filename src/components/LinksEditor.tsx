@@ -25,50 +25,64 @@ interface Link {
   icon: string;
   thumbnail?: string;
   type: "featured" | "social";
+  position: "A2" | "A3" | "B3";
 }
 
 interface LinksEditorProps {
   brandMode: boolean;
+  links: Link[];
+  onLinksChange: (links: Link[]) => void;
 }
 
-export function LinksEditor({ brandMode }: LinksEditorProps) {
-  const [links, setLinks] = useState<Link[]>([
-    {
-      id: "1",
-      title: "Latest Portfolio",
-      url: "https://janedoe.com/portfolio",
-      icon: "portfolio",
-      type: "featured"
-    },
-    {
-      id: "2",
-      title: "Watch My Process",
-      url: "https://youtube.com/@janedoe",
-      icon: "youtube",
-      type: "featured"
-    }
-  ]);
+export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProps) {
 
+
+  const maxLinks = brandMode ? 3 : 2;
+  const canAddLink = links.length < maxLinks;
+  
+  const getNextAvailablePosition = (): "A2" | "A3" | "B3" => {
+    const usedPositions = new Set(links.map(link => link.position));
+    const availablePositions = brandMode ? ["A2", "A3", "B3"] : ["A2", "B3"];
+    
+    for (const pos of availablePositions) {
+      if (!usedPositions.has(pos as any)) {
+        return pos as "A2" | "A3" | "B3";
+      }
+    }
+    return "A2"; // fallback
+  };
 
   const addLink = () => {
+    if (!canAddLink) return;
+    
     const newLink: Link = {
       id: Date.now().toString(),
       title: "New Link",
       url: "",
       icon: "link",
-      type: "featured"
+      type: "featured",
+      position: getNextAvailablePosition()
     };
-    setLinks([...links, newLink]);
+    onLinksChange([...links, newLink]);
   };
 
   const updateLink = (id: string, field: string, value: string) => {
-    setLinks(links.map(link => 
+    const updatedLinks = links.map(link => 
       link.id === id ? { ...link, [field]: value } : link
-    ));
+    );
+    onLinksChange(updatedLinks);
   };
 
   const removeLink = (id: string) => {
-    setLinks(links.filter(link => link.id !== id));
+    const updatedLinks = links.filter(link => link.id !== id);
+    onLinksChange(updatedLinks);
+  };
+
+  const changePosition = (id: string, newPosition: "A2" | "A3" | "B3") => {
+    const updatedLinks = links.map(link => 
+      link.id === id ? { ...link, position: newPosition } : link
+    );
+    onLinksChange(updatedLinks);
   };
 
 
@@ -100,6 +114,24 @@ export function LinksEditor({ brandMode }: LinksEditorProps) {
             const IconComponent = getIconComponent(link.icon);
             return (
               <div key={link.id} className="space-y-3 p-4 border border-border rounded-lg bg-surface">
+                <div className="flex items-center justify-between mb-2">
+                  <Badge variant="outline" className="text-xs">
+                    Position: {link.position}
+                  </Badge>
+                  <div className="flex gap-1">
+                    {(brandMode ? ["A2", "A3", "B3"] : ["A2", "B3"]).map((pos) => (
+                      <Button
+                        key={pos}
+                        variant={link.position === pos ? "default" : "outline"}
+                        size="sm"
+                        onClick={() => changePosition(link.id, pos as "A2" | "A3" | "B3")}
+                        className="h-6 px-2 text-xs"
+                      >
+                        {pos}
+                      </Button>
+                    ))}
+                  </div>
+                </div>
                 <div className="flex items-center space-x-3">
                   <GripVertical className="h-4 w-4 text-muted-foreground cursor-move" />
                   <div className="h-8 w-8 rounded-lg bg-gradient-primary flex items-center justify-center">
@@ -142,10 +174,16 @@ export function LinksEditor({ brandMode }: LinksEditorProps) {
             onClick={addLink}
             variant="outline" 
             className="w-full border-dashed border-2 h-12"
+            disabled={!canAddLink}
           >
             <Plus className="h-4 w-4 mr-2" />
-            Add Featured Link
+            Add Featured Link {!brandMode && `(${links.length}/2)`}
           </Button>
+          {!canAddLink && (
+            <p className="text-xs text-muted-foreground text-center">
+              {brandMode ? "Maximum 3 links reached" : "Basic plan allows 2 links max. Upgrade for more positions."}
+            </p>
+          )}
         </CardContent>
       </Card>
 

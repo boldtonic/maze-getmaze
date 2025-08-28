@@ -19,6 +19,16 @@ import { LinksEditor } from "./LinksEditor";
 import { StyleCustomizer } from "./StyleCustomizer";
 import { Analytics } from "./Analytics";
 
+interface Link {
+  id: string;
+  title: string;
+  url: string;
+  icon: string;
+  thumbnail?: string;
+  type: "featured" | "social";
+  position: "A2" | "A3" | "B3";
+}
+
 export function MazeDashboard() {
   const [activeTab, setActiveTab] = useState("profile");
   const [brandMode, setBrandMode] = useState(false);
@@ -26,8 +36,26 @@ export function MazeDashboard() {
   const [profile, setProfile] = useState({
     displayName: "Jane Doe",
     bio: "Sharing my journey in design and creativity. Coffee enthusiast ☕",
-    title: "Content Creator & Designer",
+    title: "Maze founder",
   });
+  const [links, setLinks] = useState<Link[]>([
+    {
+      id: "1",
+      title: "Latest Portfolio",
+      url: "https://janedoe.com/portfolio",
+      icon: "portfolio",
+      type: "featured",
+      position: "A2"
+    },
+    {
+      id: "2",
+      title: "Watch My Process",
+      url: "https://youtube.com/@janedoe",
+      icon: "youtube",
+      type: "featured",
+      position: "B3"
+    }
+  ]);
   const fileInputRef = useRef<HTMLInputElement>(null);
   
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -116,6 +144,7 @@ export function MazeDashboard() {
                   coverImage={coverImage}
                   onImageUpload={triggerFileUpload}
                   profile={profile}
+                  links={links}
                 />
               </CardContent>
             </Card>
@@ -179,7 +208,11 @@ export function MazeDashboard() {
                       />
                     </TabsContent>
                     <TabsContent value="links">
-                      <LinksEditor brandMode={brandMode} />
+                      <LinksEditor 
+                        brandMode={brandMode} 
+                        links={links}
+                        onLinksChange={setLinks}
+                      />
                     </TabsContent>
                     <TabsContent value="style">
                       <StyleCustomizer />
