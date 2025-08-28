@@ -9,25 +9,25 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* Material Design 3 Light Theme */
-    --background: 253 100% 99%;
-    --foreground: 259 15% 14%;
+    --background: 214 50% 99%;
+    --foreground: 214 25% 14%;
 
     --card: 0 0% 100%;
-    --card-foreground: 259 15% 14%;
+    --card-foreground: 214 25% 14%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 259 15% 14%;
+    --popover-foreground: 214 25% 14%;
 
-    /* Material 3 Primary - Purple */
-    --primary: 259 87% 56%;
+    /* Material 3 Primary - Modern Blue */
+    --primary: 214 84% 56%;
     --primary-foreground: 0 0% 100%;
     
     /* Material 3 Secondary - Teal */
     --secondary: 174 100% 95%;
     --secondary-foreground: 174 100% 25%;
 
-    --muted: 253 47% 97%;
-    --muted-foreground: 259 9% 57%;
+    --muted: 214 32% 97%;
+    --muted-foreground: 214 16% 57%;
 
     --accent: 174 100% 40%;
     --accent-foreground: 0 0% 100%;
@@ -35,38 +35,38 @@ All colors MUST be HSL.
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 259 14% 93%;
-    --input: 259 14% 93%;
-    --ring: 259 87% 56%;
+    --border: 214 20% 93%;
+    --input: 214 20% 93%;
+    --ring: 214 84% 56%;
 
     --radius: 1rem;
     
     /* Material 3 Surface variants */
-    --surface: 253 100% 99%;
-    --surface-variant: 259 14% 96%;
-    --surface-container: 259 14% 98%;
-    --surface-container-high: 259 14% 95%;
-    --surface-container-highest: 259 14% 92%;
-    --on-surface: 259 15% 14%;
-    --on-surface-variant: 259 9% 43%;
+    --surface: 214 50% 99%;
+    --surface-variant: 214 20% 96%;
+    --surface-container: 214 20% 98%;
+    --surface-container-high: 214 20% 95%;
+    --surface-container-highest: 214 20% 92%;
+    --on-surface: 214 25% 14%;
+    --on-surface-variant: 214 16% 43%;
     
     /* Material 3 State Layers */
-    --state-hover: 259 87% 56% / 0.08;
-    --state-focus: 259 87% 56% / 0.12;
-    --state-pressed: 259 87% 56% / 0.16;
-    --state-selected: 259 87% 56% / 0.12;
-    --state-disabled: 259 9% 57% / 0.12;
+    --state-hover: 214 84% 56% / 0.08;
+    --state-focus: 214 84% 56% / 0.12;
+    --state-pressed: 214 84% 56% / 0.16;
+    --state-selected: 214 84% 56% / 0.12;
+    --state-disabled: 214 16% 57% / 0.12;
     
     /* Material 3 Button variants */
     --filled-button: var(--primary);
     --filled-button-foreground: var(--primary-foreground);
-    --filled-tonal-button: 259 87% 94%;
-    --filled-tonal-button-foreground: 259 87% 30%;
+    --filled-tonal-button: 214 84% 94%;
+    --filled-tonal-button-foreground: 214 84% 25%;
     --elevated-button: var(--surface-container-low);
     --elevated-button-foreground: var(--primary);
     
     /* Custom gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(259 100% 70%));
+    --gradient-primary: linear-gradient(135deg, hsl(214 84% 56%), hsl(214 90% 70%));
     --gradient-surface: linear-gradient(180deg, hsl(var(--surface)), hsl(var(--surface-variant)));
     
     /* Material 3 Elevations */
@@ -96,61 +96,61 @@ All colors MUST be HSL.
 
   .dark {
     /* Material Design 3 Dark Theme */
-    --background: 259 15% 6%;
-    --foreground: 253 47% 97%;
+    --background: 214 25% 6%;
+    --foreground: 214 32% 97%;
 
-    --card: 259 15% 8%;
-    --card-foreground: 253 47% 97%;
+    --card: 214 25% 8%;
+    --card-foreground: 214 32% 97%;
 
-    --popover: 259 15% 8%;
-    --popover-foreground: 253 47% 97%;
+    --popover: 214 25% 8%;
+    --popover-foreground: 214 32% 97%;
 
-    --primary: 259 100% 85%;
-    --primary-foreground: 259 15% 14%;
+    --primary: 214 100% 82%;
+    --primary-foreground: 214 25% 14%;
 
     --secondary: 174 100% 15%;
     --secondary-foreground: 174 100% 85%;
 
-    --muted: 259 15% 12%;
-    --muted-foreground: 259 9% 70%;
+    --muted: 214 25% 12%;
+    --muted-foreground: 214 16% 70%;
 
     --accent: 174 100% 60%;
-    --accent-foreground: 259 15% 14%;
+    --accent-foreground: 214 25% 14%;
 
     --destructive: 0 72% 65%;
-    --destructive-foreground: 259 15% 14%;
+    --destructive-foreground: 214 25% 14%;
 
-    --border: 259 15% 18%;
-    --input: 259 15% 18%;
-    --ring: 259 100% 85%;
+    --border: 214 25% 18%;
+    --input: 214 25% 18%;
+    --ring: 214 100% 82%;
     
     /* Dark surface variants */
-    --surface: 259 15% 6%;
-    --surface-variant: 259 15% 12%;
-    --on-surface-variant: 259 9% 70%;
+    --surface: 214 25% 6%;
+    --surface-variant: 214 25% 12%;
+    --on-surface-variant: 214 16% 70%;
     
     /* Dark gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(259 100% 70%));
+    --gradient-primary: linear-gradient(135deg, hsl(214 100% 82%), hsl(214 90% 70%));
     --gradient-surface: linear-gradient(180deg, hsl(var(--surface)), hsl(var(--surface-variant)));
     
     /* Material 3 Dark Surface variants */
-    --surface-container: 259 15% 10%;
-    --surface-container-high: 259 15% 12%;
-    --surface-container-highest: 259 15% 16%;
-    --on-surface: 253 47% 97%;
+    --surface-container: 214 25% 10%;
+    --surface-container-high: 214 25% 12%;
+    --surface-container-highest: 214 25% 16%;
+    --on-surface: 214 32% 97%;
     
     /* Dark State Layers */
-    --state-hover: 259 100% 85% / 0.08;
-    --state-focus: 259 100% 85% / 0.12;
-    --state-pressed: 259 100% 85% / 0.16;
-    --state-selected: 259 100% 85% / 0.12;
-    --state-disabled: 259 9% 70% / 0.12;
+    --state-hover: 214 100% 82% / 0.08;
+    --state-focus: 214 100% 82% / 0.12;
+    --state-pressed: 214 100% 82% / 0.16;
+    --state-selected: 214 100% 82% / 0.12;
+    --state-disabled: 214 16% 70% / 0.12;
     
     /* Dark Button variants */
     --filled-button: var(--primary);
     --filled-button-foreground: var(--primary-foreground);
-    --filled-tonal-button: 259 100% 25%;
-    --filled-tonal-button-foreground: 259 100% 85%;
+    --filled-tonal-button: 214 100% 25%;
+    --filled-tonal-button-foreground: 214 100% 82%;
     --elevated-button: var(--surface-container-low);
     --elevated-button-foreground: var(--primary);
     
