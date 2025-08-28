@@ -151,15 +151,9 @@ Accessibility in micro-interactions has gained significant attention, with new g
               <CardContent className="p-3 h-full">
                 {/* Bento Grid Layout - Horizontal */}
                 <div className="grid grid-cols-4 grid-rows-2 gap-2 h-full">
-                  {/* Profile Picture A1+B1 - Square format */}
-                  <div className="col-span-2 row-span-2 bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-800 rounded-xl flex items-center justify-center border-2 border-dashed border-slate-400 dark:border-slate-600">
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-purple-400 via-blue-400 to-cyan-500 rounded-full mx-auto mb-2 flex items-center justify-center">
-                        <span className="text-white font-semibold text-xs">Photo</span>
-                      </div>
-                      <p className="text-slate-500 dark:text-slate-400 text-xs">Profile Picture</p>
-                      <p className="text-slate-400 dark:text-slate-500 text-xs">Square format recommended</p>
-                    </div>
+                  {/* Combined A1+B1 - Horizontal Rectangle */}
+                  <div className="col-span-2 row-span-1 bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-500 rounded-xl flex items-center justify-center">
+                    <span className="text-white font-semibold text-lg">A1+B1</span>
                   </div>
 
                   {/* Square A2 - Top Second */}
