@@ -192,6 +192,15 @@ Accessibility in micro-interactions has gained significant attention, with new g
               <CardContent className="p-3 h-full">
                 {/* Bento Grid Layout - Horizontal */}
                 <div className="grid grid-cols-4 grid-rows-2 gap-2 h-full">
+                  {/* Drag Drop Zones for visual feedback */}
+                  <div className="absolute inset-0 pointer-events-none grid grid-cols-4 grid-rows-2 gap-2 p-3">
+                    {/* A2 Drop Zone */}
+                    <div className="col-span-1 row-span-1 col-start-3 row-start-1 rounded-xl border-2 border-dashed border-transparent"></div>
+                    {/* A3 Drop Zone */}
+                    <div className="col-span-1 row-span-1 col-start-4 row-start-1 rounded-xl border-2 border-dashed border-transparent"></div>
+                    {/* B3 Drop Zone */}
+                    <div className="col-span-2 row-span-1 col-start-3 row-start-2 rounded-xl border-2 border-dashed border-transparent"></div>
+                  </div>
                   {/* Combined A1+B1 - Cover Image with Upload */}
                   <div 
                     className="col-span-2 row-span-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-xl relative overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
@@ -219,7 +228,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   </div>
 
                   {/* Square A2 - Top Second */}
-                  <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
+                  <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer transition-all duration-300 hover:scale-105">
                     {(() => {
                       const link = getLinkByPosition("A2");
                       if (link) {
@@ -227,18 +236,18 @@ Accessibility in micro-interactions has gained significant attention, with new g
                         return (
                           <>
                             {thumbnail ? (
-                              <img src={thumbnail} alt={link.title} className="absolute inset-0 w-full h-full object-cover" />
+                              <img src={thumbnail} alt={link.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
                             ) : (
                               <div className="absolute inset-0 bg-gradient-to-br from-emerald-400 to-teal-500" />
                             )}
-                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                              <span className="text-white font-semibold text-xs text-center px-1">{link.title}</span>
+                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center transition-colors duration-200 group-hover:bg-black/60">
+                              <span className="text-white font-semibold text-xs text-center px-1 transform transition-transform duration-200 group-hover:scale-105">{link.title}</span>
                             </div>
                           </>
                         );
                       }
                       return (
-                        <div className="bg-gradient-to-br from-emerald-400/20 to-teal-500/20 h-full flex items-center justify-center border-2 border-dashed border-muted-foreground/30">
+                        <div className="bg-gradient-to-br from-emerald-400/20 to-teal-500/20 h-full flex items-center justify-center border-2 border-dashed border-muted-foreground/30 transition-all duration-200 hover:border-primary/50">
                           <span className="text-muted-foreground text-xs">A2</span>
                         </div>
                       );
@@ -246,7 +255,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   </div>
 
                   {/* Square A3 - Top Third */}
-                  <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
+                  <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer transition-all duration-300 hover:scale-105">
                     {(() => {
                       const link = getLinkByPosition("A3");
                       if (link && brandMode) {
@@ -254,18 +263,18 @@ Accessibility in micro-interactions has gained significant attention, with new g
                         return (
                           <>
                             {thumbnail ? (
-                              <img src={thumbnail} alt={link.title} className="absolute inset-0 w-full h-full object-cover" />
+                              <img src={thumbnail} alt={link.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
                             ) : (
                               <div className="absolute inset-0 bg-gradient-to-br from-orange-400 to-red-500" />
                             )}
-                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                              <span className="text-white font-semibold text-xs text-center px-1">{link.title}</span>
+                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center transition-colors duration-200 group-hover:bg-black/60">
+                              <span className="text-white font-semibold text-xs text-center px-1 transform transition-transform duration-200 group-hover:scale-105">{link.title}</span>
                             </div>
                           </>
                         );
                       }
                       return (
-                        <div className="bg-gradient-to-br from-orange-400/20 to-red-500/20 h-full flex items-center justify-center border-2 border-dashed border-muted-foreground/30">
+                        <div className="bg-gradient-to-br from-orange-400/20 to-red-500/20 h-full flex items-center justify-center border-2 border-dashed border-muted-foreground/30 transition-all duration-200 hover:border-primary/50">
                           <span className="text-muted-foreground text-xs">A3</span>
                         </div>
                       );
@@ -286,7 +295,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   </div>
 
                   {/* Square B3 - Bottom Right (spans 2 columns) */}
-                  <div className="col-span-2 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
+                  <div className="col-span-2 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer transition-all duration-300 hover:scale-105">
                     {(() => {
                       const link = getLinkByPosition("B3");
                       if (link) {
@@ -294,18 +303,18 @@ Accessibility in micro-interactions has gained significant attention, with new g
                         return (
                           <>
                             {thumbnail ? (
-                              <img src={thumbnail} alt={link.title} className="absolute inset-0 w-full h-full object-cover" />
+                              <img src={thumbnail} alt={link.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
                             ) : (
                               <div className="absolute inset-0 bg-gradient-to-r from-rose-400 to-pink-600" />
                             )}
-                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                              <span className="text-white font-semibold text-sm text-center px-2">{link.title}</span>
+                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center transition-colors duration-200 group-hover:bg-black/60">
+                              <span className="text-white font-semibold text-sm text-center px-2 transform transition-transform duration-200 group-hover:scale-105">{link.title}</span>
                             </div>
                           </>
                         );
                       }
                       return (
-                        <div className="bg-gradient-to-r from-rose-400/20 to-pink-600/20 h-full flex items-center justify-center border-2 border-dashed border-muted-foreground/30">
+                        <div className="bg-gradient-to-r from-rose-400/20 to-pink-600/20 h-full flex items-center justify-center border-2 border-dashed border-muted-foreground/30 transition-all duration-200 hover:border-primary/50">
                           <span className="text-muted-foreground text-lg">B3</span>
                         </div>
                       );
