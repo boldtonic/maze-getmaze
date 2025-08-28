@@ -150,51 +150,26 @@ Accessibility in micro-interactions has gained significant attention, with new g
               <CardContent className="p-3 h-full">
                 {/* Bento Grid Layout - Horizontal */}
                 <div className="grid grid-cols-4 grid-rows-2 gap-2 h-full">
-                  {/* Profile Section - Top Left */}
-                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl p-2 flex flex-col items-center justify-center">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-primary mb-1 flex items-center justify-center">
-                      <span className="text-white text-xs font-bold">JD</span>
-                    </div>
-                    <h3 className="text-xs font-semibold text-foreground text-center leading-tight">Jane Doe</h3>
-                  </div>
+                  {/* Square 1 - Top Left */}
+                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-purple-400 to-pink-500 rounded-xl"></div>
 
-                  {/* Status Section - Bottom Left */}
-                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-green-400/10 to-green-500/5 rounded-xl p-2 flex items-center justify-center">
-                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
-                      <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                  </div>
+                  {/* Square 2 - Bottom Left */}
+                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-xl"></div>
 
-                  {/* Image 1 - Top */}
-                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-blue-400 to-purple-500 rounded-xl flex items-center justify-center">
-                    <Play className="w-5 h-5 text-white" />
-                  </div>
+                  {/* Square 3 - Top Second */}
+                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-xl"></div>
 
-                  {/* Image 2 - Top */}
-                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-orange-400 to-yellow-500 rounded-xl flex items-center justify-center">
-                    <ShoppingBag className="w-5 h-5 text-white" />
-                  </div>
+                  {/* Square 4 - Top Third */}
+                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-orange-400 to-red-500 rounded-xl"></div>
 
-                  {/* Latest Work - Spans 2 columns */}
-                  <div className="col-span-2 row-span-1 bg-gradient-to-r from-green-400 to-teal-500 rounded-xl flex items-center justify-center relative overflow-hidden">
-                    <div className="absolute inset-0 bg-black/20"></div>
-                    <div className="relative z-10 text-center">
-                      <Instagram className="w-6 h-6 text-white mx-auto mb-1" />
-                      <span className="text-xs text-white font-medium">Latest Work</span>
-                    </div>
-                  </div>
+                  {/* Square 5 - Top Right (spans 2 columns) */}
+                  <div className="col-span-2 row-span-1 bg-gradient-to-r from-indigo-400 to-purple-600 rounded-xl"></div>
 
-                  {/* Product Designer - Bottom Right */}
-                  <div className="col-span-2 row-span-1 bg-accent/10 rounded-xl p-2 flex items-center justify-center">
-                    <p className="text-xs text-muted-foreground leading-tight">Product Designer</p>
-                  </div>
+                  {/* Square 6 - Bottom Right (spans 2 columns) */}
+                  <div className="col-span-2 row-span-1 bg-gradient-to-r from-rose-400 to-pink-600 rounded-xl"></div>
 
-                  {/* Image 3 - Bottom */}
-                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-pink-400 to-red-500 rounded-xl flex items-center justify-center">
-                    <MessageCircle className="w-5 h-5 text-white" />
-                  </div>
+                  {/* Square 7 - Bottom Second */}
+                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl"></div>
                 </div>
               </CardContent>
             </Card>
