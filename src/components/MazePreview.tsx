@@ -177,22 +177,19 @@ Accessibility in micro-interactions has gained significant attention, with new g
                     <ShoppingBag className="w-5 h-5 text-white" />
                   </div>
 
-                  {/* Combined Latest Work & Product Designer - Right Column */}
-                  <div className="col-span-1 row-span-2 bg-gradient-to-r from-green-400 to-teal-500 rounded-xl flex flex-col items-center justify-center relative overflow-hidden p-2">
+                  {/* Latest Work - Spans 2 columns */}
+                  <div className="col-span-2 row-span-1 bg-gradient-to-r from-green-400 to-teal-500 rounded-xl flex items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 bg-black/20"></div>
-                    <div className="relative z-10 text-center space-y-2">
-                      <div>
-                        <Instagram className="w-6 h-6 text-white mx-auto mb-1" />
-                        <span className="text-xs text-white font-medium">Latest Work</span>
-                      </div>
-                      <div className="bg-white/20 rounded-lg p-2">
-                        <p className="text-xs text-white leading-tight">Product Designer</p>
-                      </div>
+                    <div className="relative z-10 text-center">
+                      <Instagram className="w-6 h-6 text-white mx-auto mb-1" />
+                      <span className="text-xs text-white font-medium">Latest Work</span>
                     </div>
                   </div>
 
-                  {/* Empty Space - Bottom Second Column */}
-                  <div className="col-span-1 row-span-1"></div>
+                  {/* Product Designer - Bottom Right */}
+                  <div className="col-span-2 row-span-1 bg-accent/10 rounded-xl p-2 flex items-center justify-center">
+                    <p className="text-xs text-muted-foreground leading-tight">Product Designer</p>
+                  </div>
 
                   {/* Image 3 - Bottom */}
                   <div className="col-span-1 row-span-1 bg-gradient-to-br from-pink-400 to-red-500 rounded-xl flex items-center justify-center">
