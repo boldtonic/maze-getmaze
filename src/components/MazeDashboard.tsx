@@ -95,52 +95,50 @@ export function MazeDashboard() {
                   Customize your semantic identity window that appears when you're mentioned online
                 </CardDescription>
               </CardHeader>
-              <CardContent className="relative">
+              <CardContent>
                 <Tabs value={activeTab} onValueChange={setActiveTab}>
-                  <div className="sticky top-0 bg-surface-container/60 backdrop-blur-md z-10 -mx-6 px-6 pb-8 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-16 after:bg-gradient-to-b after:from-surface-container/60 after:via-surface-container/30 after:to-transparent after:pointer-events-none">
-                    <TabsList className="grid w-full grid-cols-4 bg-surface-container-high/70 backdrop-blur-md rounded-2xl p-1 shadow-sm border border-white/5">
-                      <TabsTrigger 
-                        value="profile" 
-                        className="flex items-center space-x-2 data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
-                      >
-                        <User className="h-4 w-4" />
-                        <span className="hidden sm:inline">Profile</span>
-                      </TabsTrigger>
-                      <TabsTrigger 
-                        value="links" 
-                        className="flex items-center space-x-2 data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
-                      >
-                        <Link className="h-4 w-4" />
-                        <span className="hidden sm:inline">Links</span>
-                      </TabsTrigger>
-                      <TabsTrigger 
-                        value="style" 
-                        className="flex items-center space-x-2 data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
-                      >
-                        <Palette className="h-4 w-4" />
-                        <span className="hidden sm:inline">Style</span>
-                      </TabsTrigger>
-                      <TabsTrigger 
-                        value="analytics" 
-                        className="flex items-center space-x-2 data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
-                      >
-                        <BarChart3 className="h-4 w-4" />
-                        <span className="hidden sm:inline">Analytics</span>
-                      </TabsTrigger>
-                    </TabsList>
-                  </div>
+                  <TabsList className="grid w-full grid-cols-4 bg-surface-container-high rounded-2xl p-1">
+                    <TabsTrigger 
+                      value="profile" 
+                      className="flex items-center space-x-2 data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
+                    >
+                      <User className="h-4 w-4" />
+                      <span className="hidden sm:inline">Profile</span>
+                    </TabsTrigger>
+                    <TabsTrigger 
+                      value="links" 
+                      className="flex items-center space-x-2 data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
+                    >
+                      <Link className="h-4 w-4" />
+                      <span className="hidden sm:inline">Links</span>
+                    </TabsTrigger>
+                    <TabsTrigger 
+                      value="style" 
+                      className="flex items-center space-x-2 data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
+                    >
+                      <Palette className="h-4 w-4" />
+                      <span className="hidden sm:inline">Style</span>
+                    </TabsTrigger>
+                    <TabsTrigger 
+                      value="analytics" 
+                      className="flex items-center space-x-2 data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
+                    >
+                      <BarChart3 className="h-4 w-4" />
+                      <span className="hidden sm:inline">Analytics</span>
+                    </TabsTrigger>
+                  </TabsList>
 
-                  <div className="overflow-y-auto max-h-[calc(100vh-20rem)]">
-                    <TabsContent value="profile" className="mt-0">
+                  <div className="mt-6">
+                    <TabsContent value="profile">
                       <ProfileEditor brandMode={brandMode} />
                     </TabsContent>
-                    <TabsContent value="links" className="mt-0">
+                    <TabsContent value="links">
                       <LinksEditor brandMode={brandMode} />
                     </TabsContent>
-                    <TabsContent value="style" className="mt-0">
+                    <TabsContent value="style">
                       <StyleCustomizer />
                     </TabsContent>
-                    <TabsContent value="analytics" className="mt-0">
+                    <TabsContent value="analytics">
                       <Analytics />
                     </TabsContent>
                   </div>
