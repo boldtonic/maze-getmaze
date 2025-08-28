@@ -201,7 +201,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                     }
                     return <div className="bg-gradient-to-br from-emerald-400/20 to-teal-500/20 h-full flex items-center justify-center transition-all duration-200 cursor-pointer" onClick={canAddLink ? onAddLink : undefined}>
                           {canAddLink ? <div className="text-center text-muted-foreground hover:text-primary transition-colors">
-                              <ExternalLink className="w-5 h-5 mx-auto mb-1" strokeWidth={2} />
+                              <Link className="w-5 h-5 mx-auto mb-1" strokeWidth={2} />
                               <span className="text-label-large font-medium text-base">Add Link</span>
                             </div> : <span className="text-muted-foreground text-xs">Link 1</span>}
                         </div>;
@@ -257,7 +257,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                     }
                     return <div className="bg-gradient-to-r from-rose-400/20 to-pink-600/20 h-full flex items-center justify-center transition-all duration-200 cursor-pointer" onClick={canAddLink ? onAddLink : undefined}>
                           {canAddLink ? <div className="text-center text-muted-foreground hover:text-primary transition-colors">
-                              <ExternalLink className="w-5 h-5 mx-auto mb-1" strokeWidth={2} />
+                              <Link className="w-5 h-5 mx-auto mb-1" strokeWidth={2} />
                               <span className="text-label-large font-medium text-base">Add Link</span>
                             </div> : <span className="text-muted-foreground text-lg">Link {brandMode ? '3' : '2'}</span>}
                         </div>;
