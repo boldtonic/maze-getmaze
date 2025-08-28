@@ -219,7 +219,6 @@ Accessibility in micro-interactions has gained significant attention, with new g
                     ) : (
                       // Show upload placeholder
                       <>
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 via-purple-400/20 to-pink-400/20" />
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="text-center text-white/80">
                             <ImagePlus className="w-6 h-6 mx-auto mb-1" />
