@@ -21,9 +21,11 @@ import {
   Heart,
   MessageCircle,
   RefreshCw,
-  CheckCircle
+  CheckCircle,
+  Upload,
+  ImagePlus
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 interface MazePreviewProps {
   brandMode: boolean;
@@ -108,7 +110,24 @@ Accessibility in micro-interactions has gained significant attention, with new g
   ];
 
   const [currentArticleIndex, setCurrentArticleIndex] = useState(0);
+  const [coverImage, setCoverImage] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const currentArticle = articles[currentArticleIndex];
+
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setCoverImage(e.target?.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const triggerFileUpload = () => {
+    fileInputRef.current?.click();
+  };
 
   const refreshArticle = () => {
     setCurrentArticleIndex((prev) => (prev + 1) % articles.length);
@@ -116,6 +135,15 @@ Accessibility in micro-interactions has gained significant attention, with new g
 
   return (
     <div className="space-y-6">
+      {/* Hidden file input */}
+      <input
+        type="file"
+        ref={fileInputRef}
+        onChange={handleImageUpload}
+        accept="image/*"
+        className="hidden"
+      />
+      
       {/* Mention Effect Preview with Card Overlay */}
       <div className="relative bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-lg p-5 overflow-hidden min-h-[550px] flex items-center justify-center">
         {/* Simulated website content with blur */}
@@ -151,10 +179,30 @@ Accessibility in micro-interactions has gained significant attention, with new g
               <CardContent className="p-3 h-full">
                 {/* Bento Grid Layout - Horizontal */}
                 <div className="grid grid-cols-4 grid-rows-2 gap-2 h-full">
-                  {/* Combined A1+B1 - Cover Image */}
-                  <div className="col-span-2 row-span-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-xl relative overflow-hidden">
-                    {/* Cover image background */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 via-purple-400/20 to-pink-400/20" />
+                  {/* Combined A1+B1 - Cover Image with Upload */}
+                  <div 
+                    className="col-span-2 row-span-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-xl relative overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
+                    onClick={triggerFileUpload}
+                  >
+                    {coverImage ? (
+                      // Show uploaded image
+                      <img 
+                        src={coverImage} 
+                        alt="Cover" 
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                    ) : (
+                      // Show upload placeholder
+                      <>
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 via-purple-400/20 to-pink-400/20" />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="text-center text-white/80">
+                            <ImagePlus className="w-6 h-6 mx-auto mb-1" />
+                            <span className="text-xs font-medium">Add Cover</span>
+                          </div>
+                        </div>
+                      </>
+                    )}
                   </div>
 
                   {/* Square A2 - Top Second */}
