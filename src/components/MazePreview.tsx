@@ -250,7 +250,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                       }
                       return (
                         <div 
-                          className="bg-gradient-to-br from-emerald-400/20 to-teal-500/20 h-full flex items-center justify-center border-2 border-dashed border-muted-foreground/30 transition-all duration-200 hover:border-primary/50 cursor-pointer"
+                          className="bg-gradient-to-br from-emerald-400/20 to-teal-500/20 h-full flex items-center justify-center transition-all duration-200 cursor-pointer"
                           onClick={canAddLink ? onAddLink : undefined}
                         >
                           {canAddLink ? (
@@ -329,7 +329,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                       }
                       return (
                         <div 
-                          className="bg-gradient-to-r from-rose-400/20 to-pink-600/20 h-full flex items-center justify-center border-2 border-dashed border-muted-foreground/30 transition-all duration-200 hover:border-primary/50 cursor-pointer"
+                          className="bg-gradient-to-r from-rose-400/20 to-pink-600/20 h-full flex items-center justify-center transition-all duration-200 cursor-pointer"
                           onClick={canAddLink ? onAddLink : undefined}
                         >
                           {canAddLink ? (
