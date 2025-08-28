@@ -31,9 +31,14 @@ interface MazePreviewProps {
   brandMode: boolean;
   coverImage: string | null;
   onImageUpload: () => void;
+  profile: {
+    displayName: string;
+    title: string;
+    bio: string;
+  };
 }
 
-export function MazePreview({ brandMode, coverImage, onImageUpload }: MazePreviewProps) {
+export function MazePreview({ brandMode, coverImage, onImageUpload, profile }: MazePreviewProps) {
   const articles = [
     {
       fullText: `The future of web design is rapidly evolving with new technologies and innovative approaches. As Jane Doe noted in her recent conference talk, minimalism continues to dominate the industry landscape. Her insights on user experience have influenced countless designers worldwide.
@@ -194,11 +199,11 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   {/* Profile Section A4 - Transparent with profile info */}
                   <div className="col-span-2 row-span-1 rounded-xl flex flex-col justify-center p-3 text-left">
                     <div className="flex items-center gap-1 mb-1">
-                      <span className="text-foreground font-semibold text-sm">Jane Doe</span>
-                      <CheckCircle className="w-4 h-4 text-blue-500" />
+                      <span className="text-foreground font-semibold text-sm">{profile.displayName}</span>
+                      {brandMode && <CheckCircle className="w-4 h-4 text-blue-500" />}
                     </div>
-                    <p className="text-muted-foreground text-xs mb-1 font-semibold">Content Creator & Designer</p>
-                    <p className="text-muted-foreground text-xs leading-tight">Sharing my journey in design and creativity. Coffee enthusiast ☕</p>
+                    <p className="text-muted-foreground text-xs mb-1 font-semibold">{profile.title}</p>
+                    <p className="text-muted-foreground text-xs leading-tight">{profile.bio}</p>
                   </div>
 
                   {/* Square B3 - Bottom Right (spans 2 columns) */}

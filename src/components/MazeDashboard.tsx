@@ -23,6 +23,11 @@ export function MazeDashboard() {
   const [activeTab, setActiveTab] = useState("profile");
   const [brandMode, setBrandMode] = useState(false);
   const [coverImage, setCoverImage] = useState<string | null>(null);
+  const [profile, setProfile] = useState({
+    displayName: "Jane Doe",
+    bio: "Sharing my journey in design and creativity. Coffee enthusiast ☕",
+    title: "Content Creator & Designer",
+  });
   const fileInputRef = useRef<HTMLInputElement>(null);
   
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,6 +43,10 @@ export function MazeDashboard() {
 
   const triggerFileUpload = () => {
     fileInputRef.current?.click();
+  };
+
+  const handleProfileChange = (updatedProfile: typeof profile) => {
+    setProfile(updatedProfile);
   };
   
 
@@ -106,6 +115,7 @@ export function MazeDashboard() {
                   brandMode={brandMode} 
                   coverImage={coverImage}
                   onImageUpload={triggerFileUpload}
+                  profile={profile}
                 />
               </CardContent>
             </Card>
@@ -164,6 +174,8 @@ export function MazeDashboard() {
                         brandMode={brandMode} 
                         coverImage={coverImage}
                         onImageUpload={triggerFileUpload}
+                        profile={profile}
+                        onProfileChange={handleProfileChange}
                       />
                     </TabsContent>
                     <TabsContent value="links">

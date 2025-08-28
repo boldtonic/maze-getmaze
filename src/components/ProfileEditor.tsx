@@ -12,21 +12,24 @@ interface ProfileEditorProps {
   brandMode: boolean;
   coverImage: string | null;
   onImageUpload: () => void;
+  profile: {
+    displayName: string;
+    title: string;
+    bio: string;
+  };
+  onProfileChange: (profile: { displayName: string; title: string; bio: string }) => void;
 }
 
-export function ProfileEditor({ brandMode, coverImage, onImageUpload }: ProfileEditorProps) {
-  const [profile, setProfile] = useState({
-    displayName: "Jane Doe",
-    bio: brandMode 
-      ? "Helping brands tell their story through design. 10+ years experience in creative direction."
-      : "Sharing my journey in design and creativity. Coffee enthusiast ☕",
-    title: brandMode ? "Creative Director & Brand Strategist" : "Content Creator & Designer",
-    verified: brandMode,
-    profileImage: "",
-  });
+export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, onProfileChange }: ProfileEditorProps) {
+  const [verified, setVerified] = useState(brandMode);
 
-  const handleInputChange = (field: string, value: string | boolean) => {
-    setProfile(prev => ({ ...prev, [field]: value }));
+  const handleInputChange = (field: keyof typeof profile, value: string) => {
+    const updatedProfile = { ...profile, [field]: value };
+    onProfileChange(updatedProfile);
+  };
+
+  const handleVerifiedChange = (checked: boolean) => {
+    setVerified(checked);
   };
 
   return (
@@ -137,8 +140,8 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload }: ProfileE
                 </div>
                 <Switch
                   id="verified"
-                  checked={profile.verified}
-                  onCheckedChange={(checked) => handleInputChange('verified', checked)}
+                  checked={verified}
+                  onCheckedChange={handleVerifiedChange}
                 />
               </div>
             </div>
