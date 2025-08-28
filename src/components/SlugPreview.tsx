@@ -141,7 +141,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
         </div>
 
         {/* Card floating over the blurred background */}
-        <div className="absolute top-60 left-1/2 transform -translate-x-1/2">
+        <div className="absolute top-40 left-1/2 transform -translate-x-1/2">
           <div className="w-[420px] h-[236px]">
             <Card 
               className="overflow-hidden bg-background border border-border/50 rounded-2xl h-full w-full"
