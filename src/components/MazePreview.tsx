@@ -171,7 +171,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                     <div className="col-span-2 row-span-1 col-start-3 row-start-2 rounded-xl border-2 border-dashed border-transparent"></div>
                   </div>
                   {/* Combined A1+B1 - Cover Image with Upload */}
-                  <div className="col-span-2 row-span-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-xl relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-elevation-3 hover:opacity-90" onClick={onImageUpload}>
+                  <div className="col-span-2 row-span-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-xl relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-sm" onClick={onImageUpload}>
                     {coverImage ?
                   // Show uploaded image
                   <img src={coverImage} alt="Cover" className="absolute inset-0 w-full h-full object-cover" /> :
@@ -187,7 +187,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   </div>
 
                   {/* Square A2 - Top Second */}
-                  <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-elevation-3">
+                  <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-sm">
                     {(() => {
                     const link = getLinkByIndex(0);
                     if (link) {
@@ -200,7 +200,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                           </>;
                     }
                     return <div className="bg-gradient-to-br from-emerald-400/20 to-teal-500/20 h-full flex items-center justify-center transition-all duration-200 cursor-pointer" onClick={canAddLink ? onAddLink : undefined}>
-                          {canAddLink ? <div className="text-center text-muted-foreground hover:text-primary transition-colors">
+                          {canAddLink ? <div className="text-center text-muted-foreground">
                               <Link className="w-5 h-5 mx-auto mb-1" strokeWidth={2} />
                               <span className="text-label-large font-medium text-base">Add Link</span>
                             </div> : <span className="text-muted-foreground text-xs">Link 1</span>}
@@ -209,7 +209,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   </div>
 
                   {/* Square A3 - Made with Maze or Second Link */}
-                  <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-elevation-3">
+                  <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-sm">
                     {(() => {
                     const link = getLinkByIndex(1);
                     if (link && brandMode) {
@@ -243,7 +243,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   </div>
 
                   {/* Square B3 - Bottom Right (spans 2 columns) */}
-                  <div className="col-span-2 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-elevation-3">
+                  <div className="col-span-2 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-sm">
                     {(() => {
                     const link = brandMode ? getLinkByIndex(2) : getLinkByIndex(1);
                     if (link) {
@@ -256,7 +256,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                           </>;
                     }
                     return <div className="bg-gradient-to-r from-rose-400/20 to-pink-600/20 h-full flex items-center justify-center transition-all duration-200 cursor-pointer" onClick={canAddLink ? onAddLink : undefined}>
-                          {canAddLink ? <div className="text-center text-muted-foreground hover:text-primary transition-colors">
+                          {canAddLink ? <div className="text-center text-muted-foreground">
                               <Link className="w-5 h-5 mx-auto mb-1" strokeWidth={2} />
                               <span className="text-label-large font-medium text-base">Add Link</span>
                             </div> : <span className="text-muted-foreground text-lg">Link {brandMode ? '3' : '2'}</span>}
