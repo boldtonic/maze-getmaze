@@ -116,13 +116,13 @@ Accessibility in micro-interactions has gained significant attention, with new g
   return (
     <div className="space-y-6">
       {/* Mention Effect Preview with Card Overlay */}
-      <div className="relative bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-lg p-6 overflow-hidden min-h-[650px]">
+      <div className="relative bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-lg p-5 overflow-hidden min-h-[650px]">
         {/* Simulated website content with blur */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-200/50 to-slate-300/50 dark:from-slate-700/50 dark:to-slate-800/50 -z-10" />
           
 
         {/* Full article text with highlighted mention */}
-        <div className="absolute top-20 left-6 right-6">
+        <div className="absolute top-20 left-5 right-5">
           <div className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed space-y-3">
             <p>
               {currentArticle.highlightText}{" "}
