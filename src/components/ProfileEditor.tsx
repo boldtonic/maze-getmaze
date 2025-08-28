@@ -35,7 +35,7 @@ export function ProfileEditor({ brandMode }: ProfileEditorProps) {
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <User className="h-5 w-5" />
-            <span>Profile Picture</span>
+            <span>Personal Cover</span>
           </CardTitle>
           <CardDescription>
             Upload a high-quality image that represents you or your brand
