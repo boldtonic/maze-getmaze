@@ -24,7 +24,9 @@ import {
   CheckCircle,
   Upload,
   ImagePlus,
-  BadgeCheck
+  BadgeCheck,
+  Plus,
+  Link
 } from "lucide-react";
 import mazeIsotype from "@/assets/maze-isotype.png";
 import { useState, useRef } from "react";
@@ -42,6 +44,8 @@ interface MazePreviewProps {
   brandMode: boolean;
   coverImage: string | null;
   onImageUpload: () => void;
+  onAddLink: () => void;
+  canAddLink: boolean;
   profile: {
     displayName: string;
     title: string;
@@ -50,7 +54,7 @@ interface MazePreviewProps {
   links: Link[];
 }
 
-export function MazePreview({ brandMode, coverImage, onImageUpload, profile, links }: MazePreviewProps) {
+export function MazePreview({ brandMode, coverImage, onImageUpload, onAddLink, canAddLink, profile, links }: MazePreviewProps) {
   const articles = [
     {
       fullText: `The future of web design is rapidly evolving with new technologies and innovative approaches. As Jane Doe noted in her recent conference talk, minimalism continues to dominate the industry landscape. Her insights on user experience have influenced countless designers worldwide.
@@ -246,8 +250,18 @@ Accessibility in micro-interactions has gained significant attention, with new g
                         );
                       }
                       return (
-                        <div className="bg-gradient-to-br from-emerald-400/20 to-teal-500/20 h-full flex items-center justify-center border-2 border-dashed border-muted-foreground/30 transition-all duration-200 hover:border-primary/50">
-                          <span className="text-muted-foreground text-xs">Empty</span>
+                        <div 
+                          className="bg-gradient-to-br from-emerald-400/20 to-teal-500/20 h-full flex items-center justify-center border-2 border-dashed border-muted-foreground/30 transition-all duration-200 hover:border-primary/50 cursor-pointer"
+                          onClick={canAddLink ? onAddLink : undefined}
+                        >
+                          {canAddLink ? (
+                            <div className="text-center text-muted-foreground hover:text-primary transition-colors">
+                              <Plus className="w-4 h-4 mx-auto mb-1" />
+                              <span className="text-xs font-medium">Add Link</span>
+                            </div>
+                          ) : (
+                            <span className="text-muted-foreground text-xs">Link 1</span>
+                          )}
                         </div>
                       );
                     })()}
@@ -316,8 +330,18 @@ Accessibility in micro-interactions has gained significant attention, with new g
                         );
                       }
                       return (
-                        <div className="bg-gradient-to-r from-rose-400/20 to-pink-600/20 h-full flex items-center justify-center border-2 border-dashed border-muted-foreground/30 transition-all duration-200 hover:border-primary/50">
-                          <span className="text-muted-foreground text-lg">Empty</span>
+                        <div 
+                          className="bg-gradient-to-r from-rose-400/20 to-pink-600/20 h-full flex items-center justify-center border-2 border-dashed border-muted-foreground/30 transition-all duration-200 hover:border-primary/50 cursor-pointer"
+                          onClick={canAddLink ? onAddLink : undefined}
+                        >
+                          {canAddLink ? (
+                            <div className="text-center text-muted-foreground hover:text-primary transition-colors">
+                              <Plus className="w-5 h-5 mx-auto mb-1" />
+                              <span className="text-sm font-medium">Add Link</span>
+                            </div>
+                          ) : (
+                            <span className="text-muted-foreground text-lg">Link {brandMode ? '3' : '2'}</span>
+                          )}
                         </div>
                       );
                     })()}

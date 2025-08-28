@@ -40,6 +40,22 @@ export function MazeDashboard() {
   const [links, setLinks] = useState<Link[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
   
+  const maxLinks = brandMode ? 3 : 2;
+  const canAddLink = links.length < maxLinks;
+
+  const addLink = () => {
+    if (!canAddLink) return;
+    
+    const newLink: Link = {
+      id: Date.now().toString(),
+      title: "New Link",
+      url: "",
+      icon: "link",
+      type: "featured"
+    };
+    setLinks([...links, newLink]);
+  };
+  
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -125,6 +141,8 @@ export function MazeDashboard() {
                   brandMode={brandMode} 
                   coverImage={coverImage}
                   onImageUpload={triggerFileUpload}
+                  onAddLink={addLink}
+                  canAddLink={canAddLink}
                   profile={profile}
                   links={links}
                 />
