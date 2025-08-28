@@ -35,7 +35,7 @@ export function MazeDashboard() {
                 <span className="text-primary-foreground font-medium text-lg">M</span>
               </div>
               <div>
-                <h1 className="text-2xl font-normal text-on-surface">Maze Manager</h1>
+                <h1 className="text-2xl font-normal text-on-surface">Maze Dashboard</h1>
                 <p className="text-sm text-on-surface-variant">Your semantic identity window</p>
               </div>
             </div>
