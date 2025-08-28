@@ -90,22 +90,23 @@ export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProp
     
     let updatedLinks;
     if (targetLink) {
-      // Swap positions
-      updatedLinks = links.map(link => {
-        if (link.id === id) {
-          return { ...link, position: newPosition };
+      // Swap positions - store original position before changing
+      const originalPosition = link.position;
+      updatedLinks = links.map(linkItem => {
+        if (linkItem.id === id) {
+          return { ...linkItem, position: newPosition };
         }
-        if (link.id === targetLink.id) {
-          return { ...link, position: link.position };
+        if (linkItem.id === targetLink.id) {
+          return { ...linkItem, position: originalPosition };
         }
-        return link;
+        return linkItem;
       });
     } else {
       // Move to empty position
-      updatedLinks = links.map(link => 
-        link.id === id 
-          ? { ...link, position: newPosition }
-          : link
+      updatedLinks = links.map(linkItem => 
+        linkItem.id === id 
+          ? { ...linkItem, position: newPosition }
+          : linkItem
       );
     }
     
