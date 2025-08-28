@@ -203,7 +203,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   </div>
                   {/* Combined A1+B1 - Cover Image with Upload */}
                   <div 
-                    className="col-span-2 row-span-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-xl relative overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
+                    className="col-span-2 row-span-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-xl relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-elevation-3 hover:opacity-90"
                     onClick={onImageUpload}
                   >
                     {coverImage ? (
