@@ -172,7 +172,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                       <span className="text-foreground font-semibold text-sm">Jane Doe</span>
                       <CheckCircle className="w-4 h-4 text-blue-500" />
                     </div>
-                    <p className="text-muted-foreground text-xs mb-1">Content Creator & Designer</p>
+                    <p className="text-muted-foreground text-xs mb-1 font-semibold">Content Creator & Designer</p>
                     <p className="text-muted-foreground text-xs leading-tight">Sharing my journey in design and creativity. Coffee enthusiast ☕</p>
                   </div>
 
