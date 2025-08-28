@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { User, Link, Palette, BarChart3, Settings, Crown, Plus, Eye } from "lucide-react";
-import { SlugPreview } from "./SlugPreview";
+import { MazePreview } from "./MazePreview";
 import { ProfileEditor } from "./ProfileEditor";
 import { LinksEditor } from "./LinksEditor";
 import { StyleCustomizer } from "./StyleCustomizer";
@@ -147,7 +147,7 @@ export function SlugDashboard() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <SlugPreview brandMode={brandMode} />
+                <MazePreview brandMode={brandMode} />
               </CardContent>
             </Card>
           </div>
