@@ -61,7 +61,27 @@ export function MazeDashboard() {
 
       <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Left Panel - Editor */}
+          {/* Left Panel - Preview */}
+          <div className="space-y-6">
+            <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl sticky top-24">
+              <CardHeader className="pb-4">
+                <CardTitle className="flex items-center space-x-3 text-xl font-normal text-on-surface">
+                  <div className="p-2 bg-secondary/10 rounded-full">
+                    <Eye className="h-5 w-5 text-secondary-foreground" />
+                  </div>
+                  <span>Live Preview</span>
+                </CardTitle>
+                <CardDescription className="text-on-surface-variant">
+                  Live preview of both card and mention effects
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <MazePreview brandMode={brandMode} />
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Right Panel - Editor */}
           <div className="space-y-6">
             <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl">
               <CardHeader className="pb-4">
@@ -162,26 +182,6 @@ export function MazeDashboard() {
                 </CardContent>
               </Card>
             )}
-          </div>
-
-          {/* Right Panel - Preview */}
-          <div className="space-y-6">
-            <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl sticky top-24">
-              <CardHeader className="pb-4">
-                <CardTitle className="flex items-center space-x-3 text-xl font-normal text-on-surface">
-                  <div className="p-2 bg-secondary/10 rounded-full">
-                    <Eye className="h-5 w-5 text-secondary-foreground" />
-                  </div>
-                  <span>Live Preview</span>
-                </CardTitle>
-                <CardDescription className="text-on-surface-variant">
-                  Live preview of both card and mention effects
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <MazePreview brandMode={brandMode} />
-              </CardContent>
-            </Card>
           </div>
         </div>
       </div>
