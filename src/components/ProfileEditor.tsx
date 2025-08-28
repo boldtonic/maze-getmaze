@@ -94,20 +94,6 @@ export function ProfileEditor({ brandMode }: ProfileEditorProps) {
             />
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="bio">Bio</Label>
-            <Textarea
-              id="bio"
-              value={profile.bio}
-              onChange={(e) => handleInputChange('bio', e.target.value)}
-              placeholder="Tell your story in a compelling way..."
-              rows={4}
-              className="resize-none"
-            />
-            <p className="text-xs text-muted-foreground">
-              {profile.bio.length}/300 characters
-            </p>
-          </div>
 
           {brandMode && (
             <div className="pt-4 border-t border-border">
