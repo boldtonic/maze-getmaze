@@ -3,17 +3,18 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
-import { Upload, User, Briefcase, Crown } from "lucide-react";
+import { Upload, User, Briefcase, Crown, ImagePlus } from "lucide-react";
 
 interface ProfileEditorProps {
   brandMode: boolean;
+  coverImage: string | null;
+  onImageUpload: () => void;
 }
 
-export function ProfileEditor({ brandMode }: ProfileEditorProps) {
+export function ProfileEditor({ brandMode, coverImage, onImageUpload }: ProfileEditorProps) {
   const [profile, setProfile] = useState({
     displayName: "Jane Doe",
     bio: brandMode 
@@ -43,19 +44,29 @@ export function ProfileEditor({ brandMode }: ProfileEditorProps) {
         </CardHeader>
         <CardContent>
           <div className="flex items-center space-x-6">
-            <Avatar className="h-20 w-20 ring-4 ring-primary/20">
-              <AvatarImage src={profile.profileImage || "/placeholder.svg"} alt="Profile" />
-              <AvatarFallback className="bg-gradient-primary text-white text-lg font-semibold">
-                {profile.displayName.split(' ').map(n => n[0]).join('')}
-              </AvatarFallback>
-            </Avatar>
+            <div className="w-20 h-20 rounded-xl overflow-hidden ring-4 ring-primary/20 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+              {coverImage ? (
+                <img 
+                  src={coverImage} 
+                  alt="Cover" 
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full bg-gradient-to-br from-blue-400/20 via-purple-400/20 to-pink-400/20 flex items-center justify-center">
+                  <ImagePlus className="w-6 h-6 text-white/60" />
+                </div>
+              )}
+            </div>
             <div className="space-y-2">
-              <Button className="flex items-center space-x-2">
+              <Button 
+                className="flex items-center space-x-2"
+                onClick={onImageUpload}
+              >
                 <Upload className="h-4 w-4" />
                 <span>Upload Image</span>
               </Button>
               <p className="text-xs text-muted-foreground">
-                Recommended: 400x400px, JPG or PNG
+                Recommended: 194x102px (same as A1+B1), JPG or PNG
               </p>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -22,10 +22,36 @@ import { Analytics } from "./Analytics";
 export function MazeDashboard() {
   const [activeTab, setActiveTab] = useState("profile");
   const [brandMode, setBrandMode] = useState(false);
+  const [coverImage, setCoverImage] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setCoverImage(e.target?.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const triggerFileUpload = () => {
+    fileInputRef.current?.click();
+  };
   
 
   return (
     <div className="min-h-screen bg-surface">
+      {/* Hidden file input */}
+      <input
+        type="file"
+        ref={fileInputRef}
+        onChange={handleImageUpload}
+        accept="image/*"
+        className="hidden"
+      />
+      
       {/* Material 3 Top App Bar */}
       <header className="border-b border-border bg-surface-container/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-4">
@@ -76,7 +102,11 @@ export function MazeDashboard() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <MazePreview brandMode={brandMode} />
+                <MazePreview 
+                  brandMode={brandMode} 
+                  coverImage={coverImage}
+                  onImageUpload={triggerFileUpload}
+                />
               </CardContent>
             </Card>
           </div>
@@ -130,7 +160,11 @@ export function MazeDashboard() {
 
                   <div className="mt-6">
                     <TabsContent value="profile">
-                      <ProfileEditor brandMode={brandMode} />
+                      <ProfileEditor 
+                        brandMode={brandMode} 
+                        coverImage={coverImage}
+                        onImageUpload={triggerFileUpload}
+                      />
                     </TabsContent>
                     <TabsContent value="links">
                       <LinksEditor brandMode={brandMode} />

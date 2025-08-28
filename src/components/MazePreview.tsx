@@ -29,9 +29,11 @@ import { useState, useRef } from "react";
 
 interface MazePreviewProps {
   brandMode: boolean;
+  coverImage: string | null;
+  onImageUpload: () => void;
 }
 
-export function MazePreview({ brandMode }: MazePreviewProps) {
+export function MazePreview({ brandMode, coverImage, onImageUpload }: MazePreviewProps) {
   const articles = [
     {
       fullText: `The future of web design is rapidly evolving with new technologies and innovative approaches. As Jane Doe noted in her recent conference talk, minimalism continues to dominate the industry landscape. Her insights on user experience have influenced countless designers worldwide.
@@ -110,24 +112,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
   ];
 
   const [currentArticleIndex, setCurrentArticleIndex] = useState(0);
-  const [coverImage, setCoverImage] = useState<string | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
   const currentArticle = articles[currentArticleIndex];
-
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setCoverImage(e.target?.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const triggerFileUpload = () => {
-    fileInputRef.current?.click();
-  };
 
   const refreshArticle = () => {
     setCurrentArticleIndex((prev) => (prev + 1) % articles.length);
@@ -135,15 +120,6 @@ Accessibility in micro-interactions has gained significant attention, with new g
 
   return (
     <div className="space-y-6">
-      {/* Hidden file input */}
-      <input
-        type="file"
-        ref={fileInputRef}
-        onChange={handleImageUpload}
-        accept="image/*"
-        className="hidden"
-      />
-      
       {/* Mention Effect Preview with Card Overlay */}
       <div className="relative bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-lg p-5 overflow-hidden min-h-[550px] flex items-center justify-center">
         {/* Simulated website content with blur */}
@@ -182,7 +158,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   {/* Combined A1+B1 - Cover Image with Upload */}
                   <div 
                     className="col-span-2 row-span-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-xl relative overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
-                    onClick={triggerFileUpload}
+                    onClick={onImageUpload}
                   >
                     {coverImage ? (
                       // Show uploaded image
