@@ -196,12 +196,6 @@ Accessibility in micro-interactions has gained significant attention, with new g
             </Card>
           </div>
 
-          {/* Live Preview Badge */}
-          <div className="absolute -top-3 -right-3">
-            <Badge className="bg-accent text-accent-foreground shadow-elevation-3 rounded-full px-3 py-1 border-0">
-              Live Preview
-            </Badge>
-          </div>
 
           {/* Refresh Button - Bottom Center */}
           <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
