@@ -222,7 +222,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="text-center text-white/80">
                             <ImagePlus className="w-6 h-6 mx-auto mb-1" />
-                            <span className="text-label-medium font-medium">Add Cover</span>
+                            <span className="text-label-large font-medium">Add Cover</span>
                           </div>
                         </div>
                       </>
@@ -256,7 +256,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                           {canAddLink ? (
                             <div className="text-center text-muted-foreground hover:text-primary transition-colors">
                               <ExternalLink className="w-4 h-4 mx-auto mb-1" />
-                              <span className="text-label-medium font-medium">Add Link</span>
+                              <span className="text-label-large font-medium">Add Link</span>
                             </div>
                           ) : (
                             <span className="text-muted-foreground text-xs">Link 1</span>
