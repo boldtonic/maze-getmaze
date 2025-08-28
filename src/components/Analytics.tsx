@@ -133,30 +133,17 @@ export function Analytics() {
       </div>
 
       {/* Time Period Selector */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center space-x-2">
-            <Calendar className="h-5 w-5" />
-            <span>Analytics Period</span>
-          </CardTitle>
-          <CardDescription>
-            Choose the time period for your analytics data
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="flex space-x-2">
-            {["7 days", "30 days", "90 days", "1 year"].map((period) => (
-              <Badge 
-                key={period}
-                variant={period === "30 days" ? "default" : "outline"}
-                className="cursor-pointer hover:bg-primary/10 transition-colors"
-              >
-                {period}
-              </Badge>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+      <div className="flex space-x-2">
+        {["7 days", "30 days", "90 days", "1 year"].map((period) => (
+          <Badge 
+            key={period}
+            variant={period === "30 days" ? "default" : "outline"}
+            className="cursor-pointer hover:bg-primary/10 transition-colors"
+          >
+            {period}
+          </Badge>
+        ))}
+      </div>
 
       {/* Recent Mentions */}
       <Card>
