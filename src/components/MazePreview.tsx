@@ -150,26 +150,40 @@ Accessibility in micro-interactions has gained significant attention, with new g
               <CardContent className="p-3 h-full">
                 {/* Bento Grid Layout - Horizontal */}
                 <div className="grid grid-cols-4 grid-rows-2 gap-2 h-full">
-                  {/* Square 1 - Top Left */}
-                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-purple-400 to-pink-500 rounded-xl"></div>
+                  {/* Square A1 - Top Left */}
+                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-purple-400 to-pink-500 rounded-xl flex items-center justify-center">
+                    <span className="text-white font-semibold text-lg">A1</span>
+                  </div>
 
-                  {/* Square 2 - Bottom Left */}
-                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-xl"></div>
+                  {/* Square B1 - Bottom Left */}
+                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-xl flex items-center justify-center">
+                    <span className="text-white font-semibold text-lg">B1</span>
+                  </div>
 
-                  {/* Square 3 - Top Second */}
-                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-xl"></div>
+                  {/* Square A2 - Top Second */}
+                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-xl flex items-center justify-center">
+                    <span className="text-white font-semibold text-lg">A2</span>
+                  </div>
 
-                  {/* Square 4 - Top Third */}
-                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-orange-400 to-red-500 rounded-xl"></div>
+                  {/* Square A3 - Top Third */}
+                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-orange-400 to-red-500 rounded-xl flex items-center justify-center">
+                    <span className="text-white font-semibold text-lg">A3</span>
+                  </div>
 
-                  {/* Square 5 - Top Right (spans 2 columns) */}
-                  <div className="col-span-2 row-span-1 bg-gradient-to-r from-indigo-400 to-purple-600 rounded-xl"></div>
+                  {/* Square A4 - Top Right (spans 2 columns) */}
+                  <div className="col-span-2 row-span-1 bg-gradient-to-r from-indigo-400 to-purple-600 rounded-xl flex items-center justify-center">
+                    <span className="text-white font-semibold text-lg">A4</span>
+                  </div>
 
-                  {/* Square 6 - Bottom Right (spans 2 columns) */}
-                  <div className="col-span-2 row-span-1 bg-gradient-to-r from-rose-400 to-pink-600 rounded-xl"></div>
+                  {/* Square B3 - Bottom Right (spans 2 columns) */}
+                  <div className="col-span-2 row-span-1 bg-gradient-to-r from-rose-400 to-pink-600 rounded-xl flex items-center justify-center">
+                    <span className="text-white font-semibold text-lg">B3</span>
+                  </div>
 
-                  {/* Square 7 - Bottom Second */}
-                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl"></div>
+                  {/* Square B2 - Bottom Second */}
+                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl flex items-center justify-center">
+                    <span className="text-white font-semibold text-lg">B2</span>
+                  </div>
                 </div>
               </CardContent>
             </Card>
