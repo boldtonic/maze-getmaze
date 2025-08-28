@@ -106,12 +106,12 @@ export function MazeDashboard() {
                 variant={brandMode ? "default" : "elevated"}
                 size="default"
                 onClick={() => setBrandMode(!brandMode)}
-                className="flex items-center space-x-2"
+                className="flex items-center space-x-2 text-label-large"
               >
                 <Crown className="h-4 w-4" />
                 <span>{brandMode ? "Brand Mode" : "Creator Mode"}</span>
               </Button>
-              <Button variant="outline" size="default">
+              <Button variant="outline" size="default" className="text-label-large">
                 <Eye className="h-4 w-4 mr-2" />
                 Preview Live
               </Button>
@@ -241,21 +241,21 @@ export function MazeDashboard() {
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-2 gap-4">
-                    <Button variant="elevated" className="h-20 flex-col rounded-2xl">
+                    <Button variant="elevated" className="h-20 flex-col rounded-2xl hover:shadow-elevation-3 text-label-large">
                       <Plus className="h-6 w-6 mb-2" />
-                      <span className="text-label-large">Product Carousel</span>
+                      <span>Product Carousel</span>
                     </Button>
-                    <Button variant="elevated" className="h-20 flex-col rounded-2xl">
+                    <Button variant="elevated" className="h-20 flex-col rounded-2xl hover:shadow-elevation-3 text-label-large">
                       <Plus className="h-6 w-6 mb-2" />
-                      <span className="text-label-large">Newsletter Embed</span>
+                      <span>Newsletter Embed</span>
                     </Button>
-                    <Button variant="elevated" className="h-20 flex-col rounded-2xl">
+                    <Button variant="elevated" className="h-20 flex-col rounded-2xl hover:shadow-elevation-3 text-label-large">
                       <Plus className="h-6 w-6 mb-2" />
-                      <span className="text-label-large">CTA Buttons</span>
+                      <span>CTA Buttons</span>
                     </Button>
-                    <Button variant="elevated" className="h-20 flex-col rounded-2xl">
+                    <Button variant="elevated" className="h-20 flex-col rounded-2xl hover:shadow-elevation-3 text-label-large">
                       <Plus className="h-6 w-6 mb-2" />
-                      <span className="text-label-large">Shop Integration</span>
+                      <span>Shop Integration</span>
                     </Button>
                   </div>
                 </CardContent>

@@ -133,7 +133,7 @@ export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProp
           <Button 
             onClick={addLink}
             variant="outline" 
-            className="w-full border-dashed border-2 h-12 text-label-large"
+            className="w-full border-dashed border-2 h-12 text-label-large hover:bg-surface-variant"
             disabled={!canAddLink}
           >
             <Plus className="h-4 w-4 mr-2" />
@@ -162,13 +162,13 @@ export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProp
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <Button variant="outline" className="h-16 flex-col border-dashed">
+              <Button variant="outline" className="h-16 flex-col border-dashed hover:bg-surface-variant text-label-large">
                 <ShoppingBag className="h-5 w-5 mb-1" />
-                <span className="text-label-large">Shop Link</span>
+                <span>Shop Link</span>
               </Button>
-              <Button variant="outline" className="h-16 flex-col border-dashed">
+              <Button variant="outline" className="h-16 flex-col border-dashed hover:bg-surface-variant text-label-large">
                 <Plus className="h-5 w-5 mb-1" />
-                <span className="text-label-large">CTA Button</span>
+                <span>CTA Button</span>
               </Button>
             </div>
           </CardContent>

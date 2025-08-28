@@ -151,7 +151,7 @@ export function StyleCustomizer() {
         </div>
       </Tabs>
 
-      <Button className="w-full bg-gradient-primary hover:opacity-90 transition-opacity">
+      <Button className="w-full bg-gradient-primary hover:opacity-90 transition-opacity text-label-large">
         Save Style Changes
       </Button>
     </div>

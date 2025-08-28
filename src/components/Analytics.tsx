@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { 
   BarChart3, 
   Eye, 
@@ -179,9 +180,9 @@ export function Analytics() {
                     >
                       {mention.engagement} Engagement
                     </Badge>
-                    <button className="text-primary hover:text-primary/80 transition-colors">
+                    <Button variant="ghost" size="icon" className="text-primary hover:text-primary/80 transition-colors">
                       <ExternalLink className="h-4 w-4" />
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -200,12 +201,12 @@ export function Analytics() {
         </CardHeader>
         <CardContent>
           <div className="flex space-x-3">
-            <button className="px-4 py-2 border border-border rounded-lg hover:bg-surface-variant transition-colors">
+            <Button variant="outline" size="default" className="text-label-medium">
               Export CSV
-            </button>
-            <button className="px-4 py-2 border border-border rounded-lg hover:bg-surface-variant transition-colors">
+            </Button>
+            <Button variant="outline" size="default" className="text-label-medium">
               Export PDF Report
-            </button>
+            </Button>
           </div>
         </CardContent>
       </Card>
