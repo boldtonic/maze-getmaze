@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { 
   Plus, 
-  GripVertical, 
+  ArrowLeftRight,
   ExternalLink, 
   Twitter, 
   Instagram, 
@@ -35,10 +35,6 @@ interface LinksEditorProps {
 }
 
 export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProps) {
-  const [draggedItem, setDraggedItem] = useState<string | null>(null);
-  const [dragOverPosition, setDragOverPosition] = useState<"A2" | "A3" | "B3" | null>(null);
-  const dragNodeRef = useRef<HTMLDivElement>(null);
-
   const maxLinks = brandMode ? 3 : 2;
   const canAddLink = links.length < maxLinks;
   
@@ -80,107 +76,40 @@ export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProp
     onLinksChange(updatedLinks);
   };
 
-  const changePosition = (id: string, newPosition: "A2" | "A3" | "B3") => {
-    const draggedLink = links.find(link => link.id === id);
+  const switchPosition = (id: string) => {
+    const link = links.find(link => link.id === id);
+    if (!link) return;
+
+    const availablePositions = brandMode ? ["A2", "A3", "B3"] : ["A2", "B3"];
+    const currentIndex = availablePositions.indexOf(link.position);
+    const nextIndex = (currentIndex + 1) % availablePositions.length;
+    const newPosition = availablePositions[nextIndex] as "A2" | "A3" | "B3";
+
+    // Check if the new position is occupied
     const targetLink = links.find(link => link.position === newPosition);
     
-    if (draggedLink && draggedLink.position !== newPosition) {
-      let updatedLinks;
-      
-      if (targetLink) {
-        // Swap positions
-        updatedLinks = links.map(link => {
-          if (link.id === id) {
-            return { ...link, position: newPosition };
-          }
-          if (link.id === targetLink.id) {
-            return { ...link, position: draggedLink.position };
-          }
-          return link;
-        });
-      } else {
-        // Move to empty position
-        updatedLinks = links.map(link => 
-          link.id === id 
-            ? { ...link, position: newPosition }
-            : link
-        );
-      }
-      
-      console.log('Button change - updating links:', updatedLinks);
-      onLinksChange(updatedLinks);
-    }
-  };
-
-  const handleDragStart = (e: React.DragEvent, linkId: string) => {
-    setDraggedItem(linkId);
-    e.dataTransfer.effectAllowed = 'move';
-    e.dataTransfer.setData('text/html', linkId);
-    
-    // Add drag ghost effect
-    if (dragNodeRef.current) {
-      const dragImage = dragNodeRef.current.cloneNode(true) as HTMLElement;
-      dragImage.style.transform = 'rotate(5deg)';
-      dragImage.style.opacity = '0.8';
-      document.body.appendChild(dragImage);
-      e.dataTransfer.setDragImage(dragImage, 20, 20);
-      setTimeout(() => document.body.removeChild(dragImage), 0);
-    }
-  };
-
-  const handleDragEnd = () => {
-    setDraggedItem(null);
-    setDragOverPosition(null);
-  };
-
-  const handleDragOver = (e: React.DragEvent, position: "A2" | "A3" | "B3") => {
-    e.preventDefault();
-    e.dataTransfer.dropEffect = 'move';
-    setDragOverPosition(position);
-  };
-
-  const handleDragLeave = () => {
-    setDragOverPosition(null);
-  };
-
-  const handleDrop = (e: React.DragEvent, targetPosition: "A2" | "A3" | "B3") => {
-    e.preventDefault();
-    const draggedId = e.dataTransfer.getData('text/html');
-    
-    if (draggedId && draggedItem) {
-      const draggedLink = links.find(link => link.id === draggedId);
-      const targetLink = links.find(link => link.position === targetPosition);
-      
-      if (draggedLink && draggedLink.position !== targetPosition) {
-        let updatedLinks;
-        
-        if (targetLink) {
-          // Swap positions
-          updatedLinks = links.map(link => {
-            if (link.id === draggedId) {
-              return { ...link, position: targetPosition };
-            }
-            if (link.id === targetLink.id) {
-              return { ...link, position: draggedLink.position };
-            }
-            return link;
-          });
-        } else {
-          // Move to empty position
-          updatedLinks = links.map(link => 
-            link.id === draggedId 
-              ? { ...link, position: targetPosition }
-              : link
-          );
+    let updatedLinks;
+    if (targetLink) {
+      // Swap positions
+      updatedLinks = links.map(link => {
+        if (link.id === id) {
+          return { ...link, position: newPosition };
         }
-        
-        console.log('Updating links:', updatedLinks);
-        onLinksChange(updatedLinks);
-      }
+        if (link.id === targetLink.id) {
+          return { ...link, position: link.position };
+        }
+        return link;
+      });
+    } else {
+      // Move to empty position
+      updatedLinks = links.map(link => 
+        link.id === id 
+          ? { ...link, position: newPosition }
+          : link
+      );
     }
     
-    setDraggedItem(null);
-    setDragOverPosition(null);
+    onLinksChange(updatedLinks);
   };
 
 
@@ -210,54 +139,27 @@ export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProp
         <CardContent className="space-y-4">
           {links.map((link, index) => {
             const IconComponent = getIconComponent(link.icon);
-            const isDragging = draggedItem === link.id;
-            const isValidDropTarget = (brandMode ? ["A2", "A3", "B3"] : ["A2", "B3"]).includes(link.position);
             
             return (
               <div 
                 key={link.id} 
-                ref={dragNodeRef}
-                className={`space-y-3 p-4 border border-border rounded-lg bg-surface transition-all duration-200 ${
-                  isDragging ? 'opacity-50 scale-95 rotate-2' : 'opacity-100 scale-100'
-                } ${isValidDropTarget && dragOverPosition === link.position ? 'ring-2 ring-primary/50 bg-primary/5' : ''}`}
-                draggable
-                onDragStart={(e) => handleDragStart(e, link.id)}
-                onDragEnd={handleDragEnd}
-                onDragOver={(e) => handleDragOver(e, link.position)}
-                onDragLeave={handleDragLeave}
-                onDrop={(e) => handleDrop(e, link.position)}
+                className="space-y-3 p-4 border border-border rounded-lg bg-surface"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <Badge 
-                    variant="outline" 
-                    className={`text-xs transition-colors duration-200 ${
-                      dragOverPosition === link.position ? 'border-primary text-primary' : ''
-                    }`}
-                  >
+                  <Badge variant="outline" className="text-xs">
                     Position: {link.position}
                   </Badge>
-                  <div className="flex gap-1">
-                    {(brandMode ? ["A2", "A3", "B3"] : ["A2", "B3"]).map((pos) => (
-                      <Button
-                        key={pos}
-                        variant={link.position === pos ? "default" : "outline"}
-                        size="sm"
-                        onClick={() => changePosition(link.id, pos as "A2" | "A3" | "B3")}
-                        className={`h-6 px-2 text-xs transition-all duration-200 ${
-                          dragOverPosition === pos ? 'ring-2 ring-primary/30' : ''
-                        }`}
-                      >
-                        {pos}
-                      </Button>
-                    ))}
-                  </div>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => switchPosition(link.id)}
+                    className="h-6 px-2 text-xs flex items-center gap-1"
+                  >
+                    <ArrowLeftRight className="h-3 w-3" />
+                    Switch
+                  </Button>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <GripVertical 
-                    className={`h-4 w-4 text-muted-foreground cursor-move transition-all duration-200 hover:text-primary hover:scale-110 ${
-                      isDragging ? 'text-primary scale-110' : ''
-                    }`} 
-                  />
                   <div className="h-8 w-8 rounded-lg bg-gradient-primary flex items-center justify-center">
                     <IconComponent className="h-4 w-4 text-white" />
                   </div>
