@@ -21,12 +21,12 @@ export function Analytics() {
       description: "Times you've been mentioned"
     },
     {
-      label: "SLUG Hovers",
+      label: "Maze Hovers",
       value: "1,293",
       change: "+8.2%",
       trend: "up",
       icon: Eye,
-      description: "People who hovered to see your SLUG"
+      description: "People who hovered to see your Maze"
     },
     {
       label: "Link Clicks",

@@ -1,7 +1,7 @@
-import { SlugDashboard } from "@/components/SlugDashboard";
+import { MazeDashboard } from "@/components/MazeDashboard";
 
 const Index = () => {
-  return <SlugDashboard />;
+  return <MazeDashboard />;
 };
 
 export default Index;

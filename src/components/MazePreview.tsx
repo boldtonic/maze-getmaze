@@ -24,11 +24,11 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
-interface SlugPreviewProps {
+interface MazePreviewProps {
   brandMode: boolean;
 }
 
-export function SlugPreview({ brandMode }: SlugPreviewProps) {
+export function MazePreview({ brandMode }: MazePreviewProps) {
   const articles = [
     {
       fullText: `The future of web design is rapidly evolving with new technologies and innovative approaches. As Jane Doe noted in her recent conference talk, minimalism continues to dominate the industry landscape. Her insights on user experience have influenced countless designers worldwide.

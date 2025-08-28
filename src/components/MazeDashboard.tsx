@@ -13,13 +13,13 @@ import {
   Plus,
   Eye
 } from "lucide-react";
-import { SlugPreview } from "./SlugPreview";
+import { MazePreview } from "./MazePreview";
 import { ProfileEditor } from "./ProfileEditor";
 import { LinksEditor } from "./LinksEditor";
 import { StyleCustomizer } from "./StyleCustomizer";
 import { Analytics } from "./Analytics";
 
-export function SlugDashboard() {
+export function MazeDashboard() {
   const [activeTab, setActiveTab] = useState("profile");
   const [brandMode, setBrandMode] = useState(false);
   
@@ -32,10 +32,10 @@ export function SlugDashboard() {
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-4">
               <div className="h-10 w-10 rounded-2xl bg-primary flex items-center justify-center shadow-elevation-1">
-                <span className="text-primary-foreground font-medium text-lg">S</span>
+                <span className="text-primary-foreground font-medium text-lg">M</span>
               </div>
               <div>
-                <h1 className="text-2xl font-normal text-on-surface">SLUG Manager</h1>
+                <h1 className="text-2xl font-normal text-on-surface">Maze Manager</h1>
                 <p className="text-sm text-on-surface-variant">Your semantic identity window</p>
               </div>
             </div>
@@ -69,7 +69,7 @@ export function SlugDashboard() {
                   <div className="p-2 bg-primary/10 rounded-full">
                     <User className="h-5 w-5 text-primary" />
                   </div>
-                  <span>Edit Your SLUG</span>
+                  <span>Edit Your Maze</span>
                 </CardTitle>
                 <CardDescription className="text-on-surface-variant">
                   Customize your semantic identity window that appears when you're mentioned online
@@ -179,7 +179,7 @@ export function SlugDashboard() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <SlugPreview brandMode={brandMode} />
+                <MazePreview brandMode={brandMode} />
               </CardContent>
             </Card>
           </div>

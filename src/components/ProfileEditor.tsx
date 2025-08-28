@@ -121,7 +121,7 @@ export function ProfileEditor({ brandMode }: ProfileEditorProps) {
                     </Badge>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    Show a verification badge on your SLUG
+                    Show a verification badge on your Maze
                   </p>
                 </div>
                 <Switch
