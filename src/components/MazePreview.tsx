@@ -254,31 +254,11 @@ Accessibility in micro-interactions has gained significant attention, with new g
                     })()}
                   </div>
 
-                  {/* Square A3 - Top Third */}
-                  <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer transition-all duration-300 hover:scale-105">
-                    {(() => {
-                      const link = getLinkByPosition("A3");
-                      if (link && brandMode) {
-                        const thumbnail = link.thumbnail || getDefaultThumbnail(link.url);
-                        return (
-                          <>
-                            {thumbnail ? (
-                              <img src={thumbnail} alt={link.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
-                            ) : (
-                              <div className="absolute inset-0 bg-gradient-to-br from-orange-400 to-red-500" />
-                            )}
-                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center transition-colors duration-200 group-hover:bg-black/60">
-                              <span className="text-white font-semibold text-xs text-center px-1 transform transition-transform duration-200 group-hover:scale-105">{link.title}</span>
-                            </div>
-                          </>
-                        );
-                      }
-                      return (
-                        <div className="bg-gradient-to-br from-orange-400/20 to-red-500/20 h-full flex items-center justify-center border-2 border-dashed border-muted-foreground/30 transition-all duration-200 hover:border-primary/50">
-                          <span className="text-muted-foreground text-xs">A3</span>
-                        </div>
-                      );
-                    })()}
+                  {/* Square A3 - Made with Maze */}
+                  <div className="col-span-1 row-span-1 rounded-xl bg-surface-variant flex flex-col items-center justify-center p-2 text-center">
+                    <div className="text-on-surface-variant text-xs font-medium mb-0.5">Made with</div>
+                    <div className="text-on-surface-variant text-xs font-bold">Maze</div>
+                    <div className="text-on-surface-variant text-[10px] opacity-70 mt-0.5">getmaze.ai</div>
                   </div>
 
                   {/* Profile Section A4 - Transparent with profile info */}
