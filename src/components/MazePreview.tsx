@@ -228,7 +228,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   </div>
 
                   {/* Square A2 - Top Second */}
-                  <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer transition-all duration-300 hover:scale-105">
+                  <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-elevation-3">
                     {(() => {
                       const link = getLinkByPosition("A2");
                       if (link) {
@@ -236,12 +236,12 @@ Accessibility in micro-interactions has gained significant attention, with new g
                         return (
                           <>
                             {thumbnail ? (
-                              <img src={thumbnail} alt={link.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
+                              <img src={thumbnail} alt={link.title} className="absolute inset-0 w-full h-full object-cover transition-all duration-300" />
                             ) : (
                               <div className="absolute inset-0 bg-gradient-to-br from-emerald-400 to-teal-500" />
                             )}
-                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center transition-colors duration-200 group-hover:bg-black/60">
-                              <span className="text-white font-semibold text-xs text-center px-1 transform transition-transform duration-200 group-hover:scale-105">{link.title}</span>
+                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center transition-colors duration-200 group-hover:bg-black/50">
+                              <span className="text-white font-semibold text-xs text-center px-1 transition-all duration-200">{link.title}</span>
                             </div>
                           </>
                         );
@@ -275,7 +275,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   </div>
 
                   {/* Square B3 - Bottom Right (spans 2 columns) */}
-                  <div className="col-span-2 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer transition-all duration-300 hover:scale-105">
+                  <div className="col-span-2 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-elevation-3">
                     {(() => {
                       const link = getLinkByPosition("B3");
                       if (link) {
@@ -283,12 +283,12 @@ Accessibility in micro-interactions has gained significant attention, with new g
                         return (
                           <>
                             {thumbnail ? (
-                              <img src={thumbnail} alt={link.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
+                              <img src={thumbnail} alt={link.title} className="absolute inset-0 w-full h-full object-cover transition-all duration-300" />
                             ) : (
                               <div className="absolute inset-0 bg-gradient-to-r from-rose-400 to-pink-600" />
                             )}
-                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center transition-colors duration-200 group-hover:bg-black/60">
-                              <span className="text-white font-semibold text-sm text-center px-2 transform transition-transform duration-200 group-hover:scale-105">{link.title}</span>
+                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center transition-colors duration-200 group-hover:bg-black/50">
+                              <span className="text-white font-semibold text-sm text-center px-2 transition-all duration-200">{link.title}</span>
                             </div>
                           </>
                         );
