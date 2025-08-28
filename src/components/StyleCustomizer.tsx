@@ -6,8 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
   Palette, 
   Type, 
-  Layout,
-  MousePointer
+  Layout
 } from "lucide-react";
 
 export function StyleCustomizer() {
@@ -16,8 +15,7 @@ export function StyleCustomizer() {
     accentColor: "#6366f1",
     fontFamily: "Inter",
     borderRadius: 12,
-    theme: "light",
-    hoverStyle: "fade"
+    theme: "light"
   });
 
   const colorPresets = [
@@ -43,7 +41,7 @@ export function StyleCustomizer() {
   return (
     <div className="space-y-6">
       <Tabs defaultValue="colors" className="w-full">
-        <TabsList className="grid w-full grid-cols-4">
+        <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="colors" className="flex items-center space-x-2">
             <Palette className="h-4 w-4" />
             <span className="hidden sm:inline">Colors</span>
@@ -55,10 +53,6 @@ export function StyleCustomizer() {
           <TabsTrigger value="layout" className="flex items-center space-x-2">
             <Layout className="h-4 w-4" />
             <span className="hidden sm:inline">Layout</span>
-          </TabsTrigger>
-          <TabsTrigger value="hover" className="flex items-center space-x-2">
-            <MousePointer className="h-4 w-4" />
-            <span className="hidden sm:inline">Hover</span>
           </TabsTrigger>
         </TabsList>
 
@@ -154,47 +148,6 @@ export function StyleCustomizer() {
             </div>
           </TabsContent>
 
-          <TabsContent value="hover" className="space-y-6">
-            <div className="space-y-3">
-              <Label>Hover Animation Style</Label>
-              <div className="grid grid-cols-2 gap-3">
-                {[
-                  { name: "Fade In", value: "fade" },
-                  { name: "Scale Up", value: "scale" },
-                  { name: "Slide Up", value: "slide" },
-                  { name: "Pop", value: "pop" }
-                ].map((hoverStyle) => (
-                  <button
-                    key={hoverStyle.value}
-                    onClick={() => updateStyle('hoverStyle', hoverStyle.value)}
-                    className={`p-4 text-left border-2 rounded-lg transition-colors ${
-                      style.hoverStyle === hoverStyle.value 
-                        ? 'border-primary bg-primary/5' 
-                        : 'border-border hover:border-primary/50'
-                    }`}
-                  >
-                    <div className="font-semibold">{hoverStyle.name}</div>
-                    <div className="text-sm text-muted-foreground">Animation preview</div>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="space-y-3">
-              <Label>Highlight Color for Mentions</Label>
-              <div className="flex items-center space-x-3">
-                <input
-                  type="color"
-                  value={style.accentColor}
-                  onChange={(e) => updateStyle('accentColor', e.target.value)}
-                  className="h-10 w-20 rounded border border-border cursor-pointer"
-                />
-                <span className="text-sm text-muted-foreground">
-                  This color will highlight your name when mentioned
-                </span>
-              </div>
-            </div>
-          </TabsContent>
         </div>
       </Tabs>
 
