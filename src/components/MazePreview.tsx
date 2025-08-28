@@ -305,7 +305,6 @@ Accessibility in micro-interactions has gained significant attention, with new g
                     </div>
                     <div className="flex items-center gap-1 mb-1">
                       <p className="text-muted-foreground text-xs font-semibold">{profile.title}</p>
-                      <img src={mazeIsotype} alt="Maze" className="h-3 w-3" />
                     </div>
                     <p className="text-muted-foreground text-xs leading-tight">{profile.bio}</p>
                   </div>
