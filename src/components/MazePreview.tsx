@@ -148,24 +148,32 @@ Accessibility in micro-interactions has gained significant attention, with new g
               style={{ boxShadow: '0 0 80px 20px rgba(0, 0, 0, 0.2)' }}
             >
               <CardContent className="p-3 h-full">
-                {/* Bento Grid Layout - Horizontal */}
-                <div className="grid grid-cols-4 grid-rows-2 gap-2 h-full">
-                  {/* Profile Section - Left */}
-                  <div className="col-span-1 row-span-2 bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl p-3 flex flex-col items-center justify-center">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-primary mb-2 flex items-center justify-center">
-                      <span className="text-white text-sm font-bold">JD</span>
+                {/* Bento Grid Layout - 3 Columns */}
+                <div className="grid grid-cols-3 grid-rows-2 gap-2 h-full">
+                  {/* Combined Left Section */}
+                  <div className="col-span-1 row-span-2 bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl p-2 flex flex-col gap-2">
+                    {/* Profile Info */}
+                    <div className="flex flex-col items-center justify-center flex-1">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-primary mb-1 flex items-center justify-center">
+                        <span className="text-white text-xs font-bold">JD</span>
+                      </div>
+                      <h3 className="text-xs font-semibold text-foreground text-center leading-tight">Jane Doe</h3>
+                      <div className="w-3 h-3 bg-green-500 rounded-full mt-1 flex items-center justify-center">
+                        <svg className="w-1.5 h-1.5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      </div>
                     </div>
-                    <h3 className="text-xs font-semibold text-foreground text-center leading-tight">Jane Doe</h3>
-                    <div className="w-3 h-3 bg-green-500 rounded-full mt-1 flex items-center justify-center">
-                      <svg className="w-1.5 h-1.5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
+                    
+                    {/* Play Icon Section */}
+                    <div className="bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg p-2 flex items-center justify-center">
+                      <Play className="w-4 h-4 text-white" />
                     </div>
-                  </div>
-
-                  {/* Image 1 - Top */}
-                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-blue-400 to-purple-500 rounded-xl flex items-center justify-center">
-                    <Play className="w-5 h-5 text-white" />
+                    
+                    {/* Bio Text */}
+                    <div className="bg-accent/10 rounded-lg p-2 flex items-center justify-center">
+                      <p className="text-xs text-muted-foreground leading-tight text-center">Product Designer</p>
+                    </div>
                   </div>
 
                   {/* Image 2 - Top */}
@@ -180,11 +188,6 @@ Accessibility in micro-interactions has gained significant attention, with new g
                       <Instagram className="w-6 h-6 text-white mx-auto mb-1" />
                       <span className="text-xs text-white font-medium">Latest Work</span>
                     </div>
-                  </div>
-
-                  {/* Bio Text - Bottom Left */}
-                  <div className="col-span-1 row-span-1 bg-accent/10 rounded-xl p-2 flex items-center">
-                    <p className="text-xs text-muted-foreground leading-tight">Product Designer</p>
                   </div>
 
                   {/* Image 3 - Bottom */}
