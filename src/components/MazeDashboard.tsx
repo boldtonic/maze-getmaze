@@ -96,8 +96,8 @@ export function MazeDashboard() {
                 <span className="text-primary-foreground font-medium text-lg">M</span>
               </div>
               <div>
-                <h1 className="text-2xl font-normal text-on-surface">Maze Dashboard</h1>
-                <p className="text-sm text-on-surface-variant">Your semantic identity window</p>
+                <h1 className="text-display-small font-medium text-on-surface">Maze Dashboard</h1>
+                <p className="text-body-medium text-on-surface-variant">Your semantic identity window</p>
               </div>
             </div>
             
@@ -126,13 +126,13 @@ export function MazeDashboard() {
           <div className="space-y-6">
             <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl">
               <CardHeader className="pb-4">
-                <CardTitle className="flex items-center space-x-3 text-xl font-normal text-on-surface">
+                <CardTitle className="flex items-center space-x-3 text-headline-large text-on-surface">
                   <div className="p-2 bg-secondary/10 rounded-full">
                     <Eye className="h-5 w-5 text-secondary-foreground" />
                   </div>
                   <span>Live Preview</span>
                 </CardTitle>
-                <CardDescription className="text-on-surface-variant">
+                <CardDescription className="text-body-medium text-on-surface-variant">
                   Live preview of both card and mention effects
                 </CardDescription>
               </CardHeader>
@@ -154,13 +154,13 @@ export function MazeDashboard() {
           <div className="space-y-6 overflow-y-auto max-h-[calc(100vh-8rem)]">
             <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl">
               <CardHeader className="pb-4">
-                <CardTitle className="flex items-center space-x-3 text-xl font-normal text-on-surface">
+                <CardTitle className="flex items-center space-x-3 text-headline-large text-on-surface">
                   <div className="p-2 bg-primary/10 rounded-full">
                     <User className="h-5 w-5 text-primary" />
                   </div>
                   <span>Edit Your Maze</span>
                 </CardTitle>
-                <CardDescription className="text-on-surface-variant">
+                <CardDescription className="text-body-medium text-on-surface-variant">
                   Customize your semantic identity window that appears when you're mentioned online
                 </CardDescription>
               </CardHeader>
@@ -228,34 +228,34 @@ export function MazeDashboard() {
             {brandMode && (
               <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl ring-2 ring-accent/20">
                 <CardHeader className="pb-4">
-                  <CardTitle className="flex items-center space-x-3 text-xl font-normal text-on-surface">
-                    <div className="p-2 bg-accent/10 rounded-full">
-                      <Crown className="h-5 w-5 text-accent" />
-                    </div>
-                    <span>Brand Features</span>
-                    <Badge variant="secondary" className="bg-accent/10 text-accent border-0 rounded-full">Pro</Badge>
-                  </CardTitle>
-                  <CardDescription className="text-on-surface-variant">
-                    Advanced features for brands and businesses
-                  </CardDescription>
+                <CardTitle className="flex items-center space-x-3 text-headline-large text-on-surface">
+                  <div className="p-2 bg-accent/10 rounded-full">
+                    <Crown className="h-5 w-5 text-accent" />
+                  </div>
+                  <span>Brand Features</span>
+                  <Badge variant="secondary" className="bg-accent/10 text-accent border-0 rounded-full text-label-medium">Pro</Badge>
+                </CardTitle>
+                <CardDescription className="text-body-medium text-on-surface-variant">
+                  Advanced features for brands and businesses
+                </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-2 gap-4">
                     <Button variant="elevated" className="h-20 flex-col rounded-2xl">
                       <Plus className="h-6 w-6 mb-2" />
-                      <span className="text-sm">Product Carousel</span>
+                      <span className="text-label-large">Product Carousel</span>
                     </Button>
                     <Button variant="elevated" className="h-20 flex-col rounded-2xl">
                       <Plus className="h-6 w-6 mb-2" />
-                      <span className="text-sm">Newsletter Embed</span>
+                      <span className="text-label-large">Newsletter Embed</span>
                     </Button>
                     <Button variant="elevated" className="h-20 flex-col rounded-2xl">
                       <Plus className="h-6 w-6 mb-2" />
-                      <span className="text-sm">CTA Buttons</span>
+                      <span className="text-label-large">CTA Buttons</span>
                     </Button>
                     <Button variant="elevated" className="h-20 flex-col rounded-2xl">
                       <Plus className="h-6 w-6 mb-2" />
-                      <span className="text-sm">Shop Integration</span>
+                      <span className="text-label-large">Shop Integration</span>
                     </Button>
                   </div>
                 </CardContent>

@@ -76,11 +76,11 @@ export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProp
       {/* Featured Links */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center space-x-2">
+          <CardTitle className="flex items-center space-x-2 text-headline-medium">
             <ExternalLink className="h-5 w-5" />
             <span>Featured Links</span>
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="text-body-medium">
             Add your most important links that will appear prominently
           </CardDescription>
         </CardHeader>
@@ -133,14 +133,14 @@ export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProp
           <Button 
             onClick={addLink}
             variant="outline" 
-            className="w-full border-dashed border-2 h-12"
+            className="w-full border-dashed border-2 h-12 text-label-large"
             disabled={!canAddLink}
           >
             <Plus className="h-4 w-4 mr-2" />
             Add Featured Link {!brandMode && `(${links.length}/2)`}
           </Button>
           {!canAddLink && (
-            <p className="text-xs text-muted-foreground text-center">
+            <p className="text-body-small text-muted-foreground text-center">
               {brandMode ? "Maximum 3 links reached" : "Basic plan allows 2 links max. Upgrade for more positions."}
             </p>
           )}
@@ -151,12 +151,12 @@ export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProp
       {brandMode && (
         <Card className="border-accent">
           <CardHeader>
-            <CardTitle className="flex items-center space-x-2 text-accent">
+            <CardTitle className="flex items-center space-x-2 text-accent text-headline-medium">
               <Crown className="h-5 w-5" />
               <span>Brand Links</span>
-              <Badge variant="secondary">Pro</Badge>
+              <Badge variant="secondary" className="text-label-medium">Pro</Badge>
             </CardTitle>
-            <CardDescription>
+            <CardDescription className="text-body-medium">
               Special link types available for brands
             </CardDescription>
           </CardHeader>
@@ -164,11 +164,11 @@ export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProp
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Button variant="outline" className="h-16 flex-col border-dashed">
                 <ShoppingBag className="h-5 w-5 mb-1" />
-                <span className="text-sm">Shop Link</span>
+                <span className="text-label-large">Shop Link</span>
               </Button>
               <Button variant="outline" className="h-16 flex-col border-dashed">
                 <Plus className="h-5 w-5 mb-1" />
-                <span className="text-sm">CTA Button</span>
+                <span className="text-label-large">CTA Button</span>
               </Button>
             </div>
           </CardContent>
@@ -177,7 +177,7 @@ export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProp
 
 
       {/* Save Button */}
-      <Button className="w-full bg-gradient-primary hover:opacity-90 transition-opacity">
+      <Button className="w-full bg-gradient-primary hover:opacity-90 transition-opacity text-label-large">
         Save Link Changes
       </Button>
     </div>

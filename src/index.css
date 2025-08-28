@@ -178,6 +178,67 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+  
+  /* Typography Scale - Semantic text sizes */
+  .text-display-large {
+    @apply text-4xl font-normal tracking-tight;
+  }
+  
+  .text-display-medium {
+    @apply text-3xl font-normal tracking-tight;
+  }
+  
+  .text-display-small {
+    @apply text-2xl font-normal tracking-tight;
+  }
+  
+  .text-headline-large {
+    @apply text-xl font-medium;
+  }
+  
+  .text-headline-medium {
+    @apply text-lg font-medium;
+  }
+  
+  .text-headline-small {
+    @apply text-base font-medium;
+  }
+  
+  .text-title-large {
+    @apply text-lg font-medium;
+  }
+  
+  .text-title-medium {
+    @apply text-base font-medium;
+  }
+  
+  .text-title-small {
+    @apply text-sm font-medium;
+  }
+  
+  .text-body-large {
+    @apply text-base font-normal;
+  }
+  
+  .text-body-medium {
+    @apply text-sm font-normal;
+  }
+  
+  .text-body-small {
+    @apply text-xs font-normal;
+  }
+  
+  .text-label-large {
+    @apply text-sm font-medium;
+  }
+  
+  .text-label-medium {
+    @apply text-xs font-medium;
+  }
+  
+  .text-label-small {
+    @apply text-xs font-medium;
   }
 }

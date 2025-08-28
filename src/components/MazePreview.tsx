@@ -222,7 +222,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="text-center text-white/80">
                             <ImagePlus className="w-6 h-6 mx-auto mb-1" />
-                            <span className="text-xs font-medium">Add Cover</span>
+                            <span className="text-label-medium font-medium">Add Cover</span>
                           </div>
                         </div>
                       </>
@@ -243,7 +243,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                               <div className="absolute inset-0 bg-gradient-to-br from-emerald-400 to-teal-500" />
                             )}
                             <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                              <span className="text-white font-semibold text-xs text-center px-1">{link.title}</span>
+                              <span className="text-white font-semibold text-label-medium text-center px-1">{link.title}</span>
                             </div>
                           </>
                         );
@@ -256,7 +256,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                           {canAddLink ? (
                             <div className="text-center text-muted-foreground hover:text-primary transition-colors">
                               <ExternalLink className="w-4 h-4 mx-auto mb-1" />
-                              <span className="text-xs font-medium">Add Link</span>
+                              <span className="text-label-medium font-medium">Add Link</span>
                             </div>
                           ) : (
                             <span className="text-muted-foreground text-xs">Link 1</span>
@@ -280,7 +280,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                               <div className="absolute inset-0 bg-gradient-to-br from-orange-400 to-red-500" />
                             )}
                             <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                              <span className="text-white font-semibold text-xs text-center px-1">{link.title}</span>
+                              <span className="text-white font-semibold text-label-medium text-center px-1">{link.title}</span>
                             </div>
                           </>
                         );
@@ -288,9 +288,9 @@ Accessibility in micro-interactions has gained significant attention, with new g
                       // Always show "Made with Maze" when no second link or not in brand mode
                       return (
                         <div className="bg-surface-variant h-full flex flex-col items-center justify-center p-2 text-center">
-                          <div className="text-on-surface-variant text-xs font-medium mb-0.5">Made with</div>
-                          <div className="text-on-surface-variant text-xs font-bold">Maze</div>
-                          <div className="text-on-surface-variant text-[10px] opacity-70 mt-0.5">getmaze.ai</div>
+                          <div className="text-on-surface-variant text-label-medium font-medium mb-0.5">Made with</div>
+                          <div className="text-on-surface-variant text-label-medium font-bold">Maze</div>
+                          <div className="text-on-surface-variant text-body-small opacity-70 mt-0.5">getmaze.ai</div>
                         </div>
                       );
                     })()}
@@ -299,13 +299,13 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   {/* Profile Section A4 - Transparent with profile info */}
                   <div className="col-span-2 row-span-1 rounded-xl flex flex-col justify-center p-3 text-left">
                     <div className="flex items-center gap-1 mb-1">
-                      <span className="text-foreground font-semibold text-sm">{profile.displayName}</span>
+                      <span className="text-title-medium text-foreground font-semibold">{profile.displayName}</span>
                       <BadgeCheck className="w-4 h-4 text-blue-500" />
                     </div>
                     <div className="flex items-center gap-1 mb-1">
-                      <p className="text-muted-foreground text-xs font-semibold">{profile.title}</p>
+                      <p className="text-body-small text-muted-foreground font-semibold">{profile.title}</p>
                     </div>
-                    <p className="text-muted-foreground text-xs leading-tight">{profile.bio}</p>
+                    <p className="text-body-small text-muted-foreground leading-tight">{profile.bio}</p>
                   </div>
 
                   {/* Square B3 - Bottom Right (spans 2 columns) */}
@@ -322,7 +322,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                               <div className="absolute inset-0 bg-gradient-to-r from-rose-400 to-pink-600" />
                             )}
                             <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                              <span className="text-white font-semibold text-sm text-center px-2">{link.title}</span>
+                              <span className="text-white font-semibold text-title-small text-center px-2">{link.title}</span>
                             </div>
                           </>
                         );
@@ -335,7 +335,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                           {canAddLink ? (
                             <div className="text-center text-muted-foreground hover:text-primary transition-colors">
                               <ExternalLink className="w-5 h-5 mx-auto mb-1" />
-                              <span className="text-sm font-medium">Add Link</span>
+                              <span className="text-label-large font-medium">Add Link</span>
                             </div>
                           ) : (
                             <span className="text-muted-foreground text-lg">Link {brandMode ? '3' : '2'}</span>
@@ -356,7 +356,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
               size="sm"
               variant="outline"
               onClick={refreshArticle}
-              className="bg-background/80 backdrop-blur-sm border-border/50 hover:bg-background/90"
+              className="bg-background/80 backdrop-blur-sm border-border/50 hover:bg-background/90 text-label-large"
             >
               <RefreshCw className="w-4 h-4 mr-2" />
               New Article

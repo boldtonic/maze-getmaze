@@ -37,11 +37,11 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, o
       {/* Profile Picture */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center space-x-2">
+          <CardTitle className="flex items-center space-x-2 text-headline-medium">
             <User className="h-5 w-5" />
             <span>Personal Cover</span>
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="text-body-medium">
             Upload a high-quality image that represents you or your brand
           </CardDescription>
         </CardHeader>
@@ -62,13 +62,13 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, o
             </div>
             <div className="space-y-2">
               <Button 
-                className="flex items-center space-x-2"
+                className="flex items-center space-x-2 text-label-large"
                 onClick={onImageUpload}
               >
                 <Upload className="h-4 w-4" />
                 <span>Upload Image</span>
               </Button>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-body-small text-muted-foreground">
                 Recommended: 200px×100px (2:1 aspect ratio), JPG or PNG
               </p>
             </div>
@@ -79,11 +79,11 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, o
       {/* Basic Information */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center space-x-2">
+          <CardTitle className="flex items-center space-x-2 text-headline-medium">
             <Briefcase className="h-5 w-5" />
             <span>Basic Information</span>
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="text-body-medium">
             Tell people who you are and what you do
           </CardDescription>
         </CardHeader>
@@ -123,7 +123,7 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, o
               className="resize-none"
               maxLength={90}
             />
-            <p className={`text-xs ${profile.bio.length > 80 ? 'text-destructive' : 'text-muted-foreground'}`}>
+            <p className={`text-body-small ${profile.bio.length > 80 ? 'text-destructive' : 'text-muted-foreground'}`}>
               {profile.bio.length}/90 characters
             </p>
           </div>
@@ -134,12 +134,12 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, o
                 <div className="space-y-1">
                   <div className="flex items-center space-x-2">
                     <Label htmlFor="verified">Verified Badge</Label>
-                    <Badge variant="secondary" className="text-xs">
+                    <Badge variant="secondary" className="text-label-small">
                       <Crown className="h-3 w-3 mr-1" />
                       Brand Feature
                     </Badge>
                   </div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-body-medium text-muted-foreground">
                     Show a verification badge on your Maze
                   </p>
                 </div>
@@ -155,7 +155,7 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, o
       </Card>
 
       {/* Save Button */}
-      <Button className="w-full bg-gradient-primary hover:opacity-90 transition-opacity">
+      <Button className="w-full bg-gradient-primary hover:opacity-90 transition-opacity text-label-large">
         Save Profile Changes
       </Button>
     </div>
