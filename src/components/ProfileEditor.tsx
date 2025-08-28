@@ -66,7 +66,7 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload }: ProfileE
                 <span>Upload Image</span>
               </Button>
               <p className="text-xs text-muted-foreground">
-                Recommended: 194x102px (same as A1+B1), JPG or PNG
+                Recommended: 200px×100px (2:1 aspect ratio), JPG or PNG
               </p>
             </div>
           </div>
