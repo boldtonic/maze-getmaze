@@ -20,7 +20,8 @@ import {
   ShoppingBag,
   Heart,
   MessageCircle,
-  RefreshCw
+  RefreshCw,
+  CheckCircle
 } from "lucide-react";
 import { useState } from "react";
 
@@ -165,9 +166,15 @@ Accessibility in micro-interactions has gained significant attention, with new g
                     <span className="text-white font-semibold text-lg">A3</span>
                   </div>
 
-                  {/* Square A4 - Top Right (spans 2 columns) */}
-                  <div className="col-span-2 row-span-1 bg-gradient-to-r from-indigo-400 to-purple-600 rounded-xl flex items-center justify-center">
-                    <span className="text-white font-semibold text-lg">A4</span>
+                  {/* Profile Section A4 - Transparent with profile info */}
+                  <div className="col-span-2 row-span-1 rounded-xl flex flex-col justify-center p-3 text-left">
+                    <div className="flex items-center gap-1 mb-1">
+                      <span className="text-foreground font-semibold text-sm">Jane Doe</span>
+                      <CheckCircle className="w-4 h-4 text-blue-500" />
+                    </div>
+                    <p className="text-muted-foreground text-xs mb-1">UX Design Lead</p>
+                    <p className="text-muted-foreground text-xs mb-1">Crafting digital experiences</p>
+                    <p className="text-muted-foreground text-xs leading-tight">Passionate about user-centered design and creating intuitive interfaces that solve real problems.</p>
                   </div>
 
                   {/* Square B3 - Bottom Right (spans 2 columns) */}
