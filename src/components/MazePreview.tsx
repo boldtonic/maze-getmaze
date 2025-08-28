@@ -287,7 +287,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                       }
                       // Always show "Made with Maze" when no second link or not in brand mode
                       return (
-                        <div className="bg-surface-variant flex flex-col items-center justify-center p-2 text-center">
+                        <div className="bg-surface-variant h-full flex flex-col items-center justify-center p-2 text-center">
                           <div className="text-on-surface-variant text-xs font-medium mb-0.5">Made with</div>
                           <div className="text-on-surface-variant text-xs font-bold">Maze</div>
                           <div className="text-on-surface-variant text-[10px] opacity-70 mt-0.5">getmaze.ai</div>
