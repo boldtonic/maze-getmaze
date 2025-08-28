@@ -23,8 +23,10 @@ import {
   RefreshCw,
   CheckCircle,
   Upload,
-  ImagePlus
+  ImagePlus,
+  BadgeCheck
 } from "lucide-react";
+import mazeIsotype from "@/assets/maze-isotype.png";
 import { useState, useRef } from "react";
 
 interface MazePreviewProps {
@@ -200,9 +202,12 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   <div className="col-span-2 row-span-1 rounded-xl flex flex-col justify-center p-3 text-left">
                     <div className="flex items-center gap-1 mb-1">
                       <span className="text-foreground font-semibold text-sm">{profile.displayName}</span>
-                      {brandMode && <CheckCircle className="w-4 h-4 text-blue-500" />}
+                      <BadgeCheck className="w-4 h-4 text-blue-500" />
                     </div>
-                    <p className="text-muted-foreground text-xs mb-1 font-semibold">{profile.title}</p>
+                    <div className="flex items-center gap-1 mb-1">
+                      <p className="text-muted-foreground text-xs font-semibold">{profile.title}</p>
+                      <img src={mazeIsotype} alt="Maze" className="h-3 w-3" />
+                    </div>
                     <p className="text-muted-foreground text-xs leading-tight">{profile.bio}</p>
                   </div>
 
