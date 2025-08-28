@@ -150,14 +150,18 @@ Accessibility in micro-interactions has gained significant attention, with new g
               <CardContent className="p-3 h-full">
                 {/* Bento Grid Layout - Horizontal */}
                 <div className="grid grid-cols-4 grid-rows-2 gap-2 h-full">
-                  {/* Profile Section - Left */}
-                  <div className="col-span-1 row-span-2 bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl p-3 flex flex-col items-center justify-center">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-primary mb-2 flex items-center justify-center">
-                      <span className="text-white text-sm font-bold">JD</span>
+                  {/* Profile Section - Top Left */}
+                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl p-2 flex flex-col items-center justify-center">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-primary mb-1 flex items-center justify-center">
+                      <span className="text-white text-xs font-bold">JD</span>
                     </div>
                     <h3 className="text-xs font-semibold text-foreground text-center leading-tight">Jane Doe</h3>
-                    <div className="w-3 h-3 bg-green-500 rounded-full mt-1 flex items-center justify-center">
-                      <svg className="w-1.5 h-1.5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  </div>
+
+                  {/* Status Section - Bottom Left */}
+                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-green-400/10 to-green-500/5 rounded-xl p-2 flex items-center justify-center">
+                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                      <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
                     </div>
