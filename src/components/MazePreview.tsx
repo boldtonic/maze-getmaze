@@ -172,9 +172,8 @@ Accessibility in micro-interactions has gained significant attention, with new g
                       <span className="text-foreground font-semibold text-sm">Jane Doe</span>
                       <CheckCircle className="w-4 h-4 text-blue-500" />
                     </div>
-                    <p className="text-muted-foreground text-xs mb-1">UX Design Lead</p>
-                    <p className="text-muted-foreground text-xs mb-1">Crafting digital experiences</p>
-                    <p className="text-muted-foreground text-xs leading-tight">Passionate about user-centered design and creating intuitive interfaces that solve real problems.</p>
+                    <p className="text-muted-foreground text-xs mb-1">Content Creator & Designer</p>
+                    <p className="text-muted-foreground text-xs leading-tight">Sharing my journey in design and creativity. Coffee enthusiast ☕</p>
                   </div>
 
                   {/* Square B3 - Bottom Right (spans 2 columns) */}
