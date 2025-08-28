@@ -198,7 +198,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
 
 
           {/* Refresh Button - Bottom Center */}
-          <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
+          <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2">
             <Button
               size="sm"
               variant="outline"
