@@ -63,7 +63,7 @@ export function MazeDashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Panel - Preview */}
           <div className="space-y-6">
-            <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl sticky top-24">
+            <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl">
               <CardHeader className="pb-4">
                 <CardTitle className="flex items-center space-x-3 text-xl font-normal text-on-surface">
                   <div className="p-2 bg-secondary/10 rounded-full">
