@@ -113,13 +113,18 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, o
             <Textarea
               id="bio"
               value={profile.bio}
-              onChange={(e) => handleInputChange('bio', e.target.value)}
+              onChange={(e) => {
+                if (e.target.value.length <= 90) {
+                  handleInputChange('bio', e.target.value);
+                }
+              }}
               placeholder="Tell your story in a compelling way..."
               rows={4}
               className="resize-none"
+              maxLength={90}
             />
-            <p className="text-xs text-muted-foreground">
-              {profile.bio.length}/300 characters
+            <p className={`text-xs ${profile.bio.length > 80 ? 'text-destructive' : 'text-muted-foreground'}`}>
+              {profile.bio.length}/90 characters
             </p>
           </div>
 
