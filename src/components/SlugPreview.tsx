@@ -35,9 +35,7 @@ export function SlugPreview({ brandMode }: SlugPreviewProps) {
 
 Modern web development has fundamentally transformed how we approach user interface design. The shift towards component-based architectures has revolutionized the way teams collaborate and maintain consistency across digital products. Design systems have emerged as the backbone of scalable user experiences, providing a unified language between designers and developers.
 
-Component libraries now serve as living documentation, enabling rapid prototyping and consistent implementation. The integration of design tokens has further streamlined the process, allowing teams to maintain visual coherence while adapting to different platforms and accessibility requirements. This systematic approach reduces technical debt and accelerates development cycles significantly.
-
-Cross-functional collaboration has become more efficient through shared design principles and reusable components.`,
+Component libraries now serve as living documentation, enabling rapid prototyping and consistent implementation. The integration of design tokens has further streamlined the process, allowing teams to maintain visual coherence while adapting to different platforms and accessibility requirements. This systematic approach reduces technical debt and accelerates development cycles. Cross-functional collaboration has become more efficient through shared design principles and reusable components.`,
       highlightText: "The future of web design is rapidly evolving with new technologies and innovative approaches. As",
       mention: "Jane Doe",
       continuation: "noted in her recent conference talk, minimalism continues to dominate the industry landscape. Her insights on user experience have influenced countless designers worldwide."
@@ -124,7 +122,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
           
 
         {/* Full article text with highlighted mention */}
-        <div className="absolute top-20 left-6 right-6 max-h-[460px] overflow-y-auto">
+        <div className="absolute top-20 left-6 right-6">
           <div className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed space-y-3">
             <p>
               {currentArticle.highlightText}{" "}
