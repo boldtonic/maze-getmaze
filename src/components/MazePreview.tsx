@@ -243,8 +243,8 @@ Accessibility in micro-interactions has gained significant attention, with new g
                             ) : (
                               <div className="absolute inset-0 bg-gradient-to-br from-emerald-400 to-teal-500" />
                             )}
-                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center transition-colors duration-200 group-hover:bg-black/50">
-                              <span className="text-white font-semibold text-xs text-center px-1 transition-all duration-200">{link.title}</span>
+                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                              <span className="text-white font-semibold text-xs text-center px-1">{link.title}</span>
                             </div>
                           </>
                         );
@@ -280,8 +280,8 @@ Accessibility in micro-interactions has gained significant attention, with new g
                             ) : (
                               <div className="absolute inset-0 bg-gradient-to-br from-orange-400 to-red-500" />
                             )}
-                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center transition-colors duration-200 group-hover:bg-black/50">
-                              <span className="text-white font-semibold text-xs text-center px-1 transition-all duration-200">{link.title}</span>
+                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                              <span className="text-white font-semibold text-xs text-center px-1">{link.title}</span>
                             </div>
                           </>
                         );
@@ -322,8 +322,8 @@ Accessibility in micro-interactions has gained significant attention, with new g
                             ) : (
                               <div className="absolute inset-0 bg-gradient-to-r from-rose-400 to-pink-600" />
                             )}
-                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center transition-colors duration-200 group-hover:bg-black/50">
-                              <span className="text-white font-semibold text-sm text-center px-2 transition-all duration-200">{link.title}</span>
+                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                              <span className="text-white font-semibold text-sm text-center px-2">{link.title}</span>
                             </div>
                           </>
                         );
