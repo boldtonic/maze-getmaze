@@ -81,10 +81,35 @@ export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProp
   };
 
   const changePosition = (id: string, newPosition: "A2" | "A3" | "B3") => {
-    const updatedLinks = links.map(link => 
-      link.id === id ? { ...link, position: newPosition } : link
-    );
-    onLinksChange(updatedLinks);
+    const draggedLink = links.find(link => link.id === id);
+    const targetLink = links.find(link => link.position === newPosition);
+    
+    if (draggedLink && draggedLink.position !== newPosition) {
+      let updatedLinks;
+      
+      if (targetLink) {
+        // Swap positions
+        updatedLinks = links.map(link => {
+          if (link.id === id) {
+            return { ...link, position: newPosition };
+          }
+          if (link.id === targetLink.id) {
+            return { ...link, position: draggedLink.position };
+          }
+          return link;
+        });
+      } else {
+        // Move to empty position
+        updatedLinks = links.map(link => 
+          link.id === id 
+            ? { ...link, position: newPosition }
+            : link
+        );
+      }
+      
+      console.log('Button change - updating links:', updatedLinks);
+      onLinksChange(updatedLinks);
+    }
   };
 
   const handleDragStart = (e: React.DragEvent, linkId: string) => {
@@ -127,15 +152,29 @@ export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProp
       const targetLink = links.find(link => link.position === targetPosition);
       
       if (draggedLink && draggedLink.position !== targetPosition) {
-        const updatedLinks = links.map(link => {
-          if (link.id === draggedId) {
-            return { ...link, position: targetPosition };
-          }
-          if (targetLink && link.id === targetLink.id) {
-            return { ...link, position: draggedLink.position };
-          }
-          return link;
-        });
+        let updatedLinks;
+        
+        if (targetLink) {
+          // Swap positions
+          updatedLinks = links.map(link => {
+            if (link.id === draggedId) {
+              return { ...link, position: targetPosition };
+            }
+            if (link.id === targetLink.id) {
+              return { ...link, position: draggedLink.position };
+            }
+            return link;
+          });
+        } else {
+          // Move to empty position
+          updatedLinks = links.map(link => 
+            link.id === draggedId 
+              ? { ...link, position: targetPosition }
+              : link
+          );
+        }
+        
+        console.log('Updating links:', updatedLinks);
         onLinksChange(updatedLinks);
       }
     }
