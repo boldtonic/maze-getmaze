@@ -179,7 +179,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   <>
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="text-center text-white/80">
-                            <ImagePlus className="w-6 h-6 mx-auto mb-1" />
+                            <ImagePlus className="w-5 h-5 mx-auto mb-1" />
                             <span className="text-label-large font-medium text-base">Add Cover</span>
                           </div>
                         </div>
@@ -201,7 +201,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                     }
                     return <div className="bg-gradient-to-br from-emerald-400/20 to-teal-500/20 h-full flex items-center justify-center transition-all duration-200 cursor-pointer" onClick={canAddLink ? onAddLink : undefined}>
                           {canAddLink ? <div className="text-center text-muted-foreground hover:text-primary transition-colors">
-                              <ExternalLink className="w-4 h-4 mx-auto mb-1" />
+                              <ExternalLink className="w-5 h-5 mx-auto mb-1" />
                               <span className="text-label-large font-medium text-base">Add Link</span>
                             </div> : <span className="text-muted-foreground text-xs">Link 1</span>}
                         </div>;
