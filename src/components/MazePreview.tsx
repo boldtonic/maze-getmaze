@@ -36,7 +36,6 @@ interface Link {
   icon: string;
   thumbnail?: string;
   type: "featured" | "social";
-  position: "A2" | "A3" | "B3";
 }
 
 interface MazePreviewProps {
@@ -136,8 +135,8 @@ Accessibility in micro-interactions has gained significant attention, with new g
     setCurrentArticleIndex((prev) => (prev + 1) % articles.length);
   };
 
-  const getLinkByPosition = (position: "A2" | "A3" | "B3") => {
-    return links.find(link => link.position === position);
+  const getLinkByIndex = (index: number) => {
+    return links[index] || null;
   };
 
   const getDefaultThumbnail = (url: string) => {
@@ -230,7 +229,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   {/* Square A2 - Top Second */}
                   <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-elevation-3">
                     {(() => {
-                      const link = getLinkByPosition("A2");
+                      const link = getLinkByIndex(0);
                       if (link) {
                         const thumbnail = link.thumbnail || getDefaultThumbnail(link.url);
                         return (
@@ -248,17 +247,40 @@ Accessibility in micro-interactions has gained significant attention, with new g
                       }
                       return (
                         <div className="bg-gradient-to-br from-emerald-400/20 to-teal-500/20 h-full flex items-center justify-center border-2 border-dashed border-muted-foreground/30 transition-all duration-200 hover:border-primary/50">
-                          <span className="text-muted-foreground text-xs">A2</span>
+                          <span className="text-muted-foreground text-xs">Empty</span>
                         </div>
                       );
                     })()}
                   </div>
 
-                  {/* Square A3 - Made with Maze */}
-                  <div className="col-span-1 row-span-1 rounded-xl bg-surface-variant flex flex-col items-center justify-center p-2 text-center">
-                    <div className="text-on-surface-variant text-xs font-medium mb-0.5">Made with</div>
-                    <div className="text-on-surface-variant text-xs font-bold">Maze</div>
-                    <div className="text-on-surface-variant text-[10px] opacity-70 mt-0.5">getmaze.ai</div>
+                  {/* Square A3 - Made with Maze or Second Link */}
+                  <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-elevation-3">
+                    {(() => {
+                      const link = getLinkByIndex(1);
+                      if (link && brandMode) {
+                        const thumbnail = link.thumbnail || getDefaultThumbnail(link.url);
+                        return (
+                          <>
+                            {thumbnail ? (
+                              <img src={thumbnail} alt={link.title} className="absolute inset-0 w-full h-full object-cover transition-all duration-300" />
+                            ) : (
+                              <div className="absolute inset-0 bg-gradient-to-br from-orange-400 to-red-500" />
+                            )}
+                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center transition-colors duration-200 group-hover:bg-black/50">
+                              <span className="text-white font-semibold text-xs text-center px-1 transition-all duration-200">{link.title}</span>
+                            </div>
+                          </>
+                        );
+                      }
+                      // Always show "Made with Maze" when no second link or not in brand mode
+                      return (
+                        <div className="bg-surface-variant flex flex-col items-center justify-center p-2 text-center">
+                          <div className="text-on-surface-variant text-xs font-medium mb-0.5">Made with</div>
+                          <div className="text-on-surface-variant text-xs font-bold">Maze</div>
+                          <div className="text-on-surface-variant text-[10px] opacity-70 mt-0.5">getmaze.ai</div>
+                        </div>
+                      );
+                    })()}
                   </div>
 
                   {/* Profile Section A4 - Transparent with profile info */}
@@ -277,7 +299,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   {/* Square B3 - Bottom Right (spans 2 columns) */}
                   <div className="col-span-2 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-elevation-3">
                     {(() => {
-                      const link = getLinkByPosition("B3");
+                      const link = brandMode ? getLinkByIndex(2) : getLinkByIndex(1);
                       if (link) {
                         const thumbnail = link.thumbnail || getDefaultThumbnail(link.url);
                         return (
@@ -295,7 +317,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                       }
                       return (
                         <div className="bg-gradient-to-r from-rose-400/20 to-pink-600/20 h-full flex items-center justify-center border-2 border-dashed border-muted-foreground/30 transition-all duration-200 hover:border-primary/50">
-                          <span className="text-muted-foreground text-lg">B3</span>
+                          <span className="text-muted-foreground text-lg">Empty</span>
                         </div>
                       );
                     })()}

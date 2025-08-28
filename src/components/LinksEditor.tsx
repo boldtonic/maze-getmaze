@@ -6,7 +6,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { 
   Plus, 
-  ArrowLeftRight,
   ExternalLink, 
   Twitter, 
   Instagram, 
@@ -25,7 +24,6 @@ interface Link {
   icon: string;
   thumbnail?: string;
   type: "featured" | "social";
-  position: "A2" | "A3" | "B3";
 }
 
 interface LinksEditorProps {
@@ -37,18 +35,6 @@ interface LinksEditorProps {
 export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProps) {
   const maxLinks = brandMode ? 3 : 2;
   const canAddLink = links.length < maxLinks;
-  
-  const getNextAvailablePosition = (): "A2" | "A3" | "B3" => {
-    const usedPositions = new Set(links.map(link => link.position));
-    const availablePositions = brandMode ? ["A2", "A3", "B3"] : ["A2", "B3"];
-    
-    for (const pos of availablePositions) {
-      if (!usedPositions.has(pos as any)) {
-        return pos as "A2" | "A3" | "B3";
-      }
-    }
-    return "A2"; // fallback
-  };
 
   const addLink = () => {
     if (!canAddLink) return;
@@ -58,8 +44,7 @@ export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProp
       title: "New Link",
       url: "",
       icon: "link",
-      type: "featured",
-      position: getNextAvailablePosition()
+      type: "featured"
     };
     onLinksChange([...links, newLink]);
   };
@@ -75,44 +60,6 @@ export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProp
     const updatedLinks = links.filter(link => link.id !== id);
     onLinksChange(updatedLinks);
   };
-
-  const switchPosition = (id: string) => {
-    const link = links.find(link => link.id === id);
-    if (!link) return;
-
-    const availablePositions = brandMode ? ["A2", "A3", "B3"] : ["A2", "B3"];
-    const currentIndex = availablePositions.indexOf(link.position);
-    const nextIndex = (currentIndex + 1) % availablePositions.length;
-    const newPosition = availablePositions[nextIndex] as "A2" | "A3" | "B3";
-
-    // Check if the new position is occupied
-    const targetLink = links.find(link => link.position === newPosition);
-    
-    let updatedLinks;
-    if (targetLink) {
-      // Swap positions - store original position before changing
-      const originalPosition = link.position;
-      updatedLinks = links.map(linkItem => {
-        if (linkItem.id === id) {
-          return { ...linkItem, position: newPosition };
-        }
-        if (linkItem.id === targetLink.id) {
-          return { ...linkItem, position: originalPosition };
-        }
-        return linkItem;
-      });
-    } else {
-      // Move to empty position
-      updatedLinks = links.map(linkItem => 
-        linkItem.id === id 
-          ? { ...linkItem, position: newPosition }
-          : linkItem
-      );
-    }
-    
-    onLinksChange(updatedLinks);
-  };
-
 
   const getIconComponent = (iconName: string) => {
     const iconMap: { [key: string]: any } = {
@@ -146,20 +93,6 @@ export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProp
                 key={link.id} 
                 className="space-y-3 p-4 border border-border rounded-lg bg-surface"
               >
-                <div className="flex items-center justify-between mb-2">
-                  <Badge variant="outline" className="text-xs">
-                    Position: {link.position}
-                  </Badge>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => switchPosition(link.id)}
-                    className="h-6 px-2 text-xs flex items-center gap-1"
-                  >
-                    <ArrowLeftRight className="h-3 w-3" />
-                    Switch
-                  </Button>
-                </div>
                 <div className="flex items-center space-x-3">
                   <div className="h-8 w-8 rounded-lg bg-gradient-primary flex items-center justify-center">
                     <IconComponent className="h-4 w-4 text-white" />

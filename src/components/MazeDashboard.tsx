@@ -26,7 +26,6 @@ interface Link {
   icon: string;
   thumbnail?: string;
   type: "featured" | "social";
-  position: "A2" | "A3" | "B3";
 }
 
 export function MazeDashboard() {
@@ -38,24 +37,7 @@ export function MazeDashboard() {
     bio: "Sharing my journey in design and creativity. Coffee enthusiast ☕",
     title: "Maze founder",
   });
-  const [links, setLinks] = useState<Link[]>([
-    {
-      id: "1",
-      title: "Latest Portfolio",
-      url: "https://janedoe.com/portfolio",
-      icon: "portfolio",
-      type: "featured",
-      position: "A2"
-    },
-    {
-      id: "2",
-      title: "Watch My Process",
-      url: "https://youtube.com/@janedoe",
-      icon: "youtube",
-      type: "featured",
-      position: "B3"
-    }
-  ]);
+  const [links, setLinks] = useState<Link[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
   
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
