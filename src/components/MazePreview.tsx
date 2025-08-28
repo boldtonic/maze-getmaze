@@ -255,7 +255,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                         >
                           {canAddLink ? (
                             <div className="text-center text-muted-foreground hover:text-primary transition-colors">
-                              <Plus className="w-4 h-4 mx-auto mb-1" />
+                              <ExternalLink className="w-4 h-4 mx-auto mb-1" />
                               <span className="text-xs font-medium">Add Link</span>
                             </div>
                           ) : (
@@ -334,7 +334,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                         >
                           {canAddLink ? (
                             <div className="text-center text-muted-foreground hover:text-primary transition-colors">
-                              <Plus className="w-5 h-5 mx-auto mb-1" />
+                              <ExternalLink className="w-5 h-5 mx-auto mb-1" />
                               <span className="text-sm font-medium">Add Link</span>
                             </div>
                           ) : (
