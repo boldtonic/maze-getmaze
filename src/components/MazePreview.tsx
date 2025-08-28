@@ -179,11 +179,6 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   <div className="col-span-2 row-span-1 bg-gradient-to-r from-rose-400 to-pink-600 rounded-xl flex items-center justify-center">
                     <span className="text-white font-semibold text-lg">B3</span>
                   </div>
-
-                  {/* Square B2 - Bottom Second */}
-                  <div className="col-span-1 row-span-1 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl flex items-center justify-center">
-                    <span className="text-white font-semibold text-lg">B2</span>
-                  </div>
                 </div>
               </CardContent>
             </Card>
