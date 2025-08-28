@@ -133,7 +133,7 @@ export function Analytics() {
       </div>
 
       {/* Time Period Selector */}
-      <div className="flex space-x-2">
+      <div className="flex space-x-2 justify-center">
         {["7 days", "30 days", "90 days", "1 year"].map((period) => (
           <Badge 
             key={period}
