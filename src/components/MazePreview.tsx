@@ -26,6 +26,13 @@ interface MazePreviewProps {
     bio: string;
   };
   links: Link[];
+  style?: {
+    backgroundColor: string;
+    accentColor: string;
+    fontFamily: string;
+    borderRadius: number;
+    theme: string;
+  };
 }
 export function MazePreview({
   brandMode,
@@ -34,7 +41,8 @@ export function MazePreview({
   onAddLink,
   canAddLink,
   profile,
-  links
+  links,
+  style
 }: MazePreviewProps) {
   const articles = [{
     fullText: `The future of web design is rapidly evolving with new technologies and innovative approaches. As Jane Doe noted in her recent conference talk, minimalism continues to dominate the industry landscape. Her insights on user experience have influenced countless designers worldwide.
@@ -153,10 +161,12 @@ Accessibility in micro-interactions has gained significant attention, with new g
         </div>
 
         {/* Card floating over the blurred background */}
-        <div className="absolute top-32 left-1/2 transform -translate-x-1/2">
+        <div className="absolute top-32 left-1/2 transform -translate-x-1/2" style={{ fontFamily: style?.fontFamily || 'Inter' }}>
           <div className="w-[420px] h-[236px]">
-            <Card className="overflow-hidden bg-background border border-border/50 rounded-2xl h-full w-full" style={{
-            boxShadow: '0 0 80px 20px rgba(0, 0, 0, 0.2)'
+            <Card className="overflow-hidden border border-border/50 h-full w-full" style={{
+            boxShadow: '0 0 80px 20px rgba(0, 0, 0, 0.2)',
+            backgroundColor: style?.backgroundColor || 'hsl(var(--background))',
+            borderRadius: `${style?.borderRadius || 16}px`
           }}>
               <CardContent className="p-3 h-full">
                 {/* Bento Grid Layout - Horizontal */}
@@ -171,7 +181,12 @@ Accessibility in micro-interactions has gained significant attention, with new g
                     <div className="col-span-2 row-span-1 col-start-3 row-start-2 rounded-xl border-2 border-dashed border-transparent"></div>
                   </div>
                   {/* Combined A1+B1 - Cover Image with Upload */}
-                  <div className="col-span-2 row-span-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-xl relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-elevation-3 hover:opacity-90" onClick={onImageUpload}>
+                  <div className="col-span-2 row-span-1 relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-sm" 
+                    style={{ 
+                      background: style?.accentColor ? `linear-gradient(135deg, ${style.accentColor}, ${style.accentColor}80)` : 'linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899)',
+                      borderRadius: `${(style?.borderRadius || 16) * 0.75}px`
+                    }}
+                    onClick={onImageUpload}>
                     {coverImage ?
                   // Show uploaded image
                   <img src={coverImage} alt="Cover" className="absolute inset-0 w-full h-full object-cover" /> :
@@ -187,7 +202,8 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   </div>
 
                   {/* Square A2 - Top Second */}
-                  <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-elevation-3">
+                  <div className="col-span-1 row-span-1 overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-sm"
+                    style={{ borderRadius: `${(style?.borderRadius || 16) * 0.75}px` }}>
                     {(() => {
                     const link = getLinkByIndex(0);
                     if (link) {
@@ -209,7 +225,8 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   </div>
 
                   {/* Square A3 - Made with Maze or Second Link */}
-                  <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-elevation-3">
+                  <div className="col-span-1 row-span-1 overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-sm"
+                    style={{ borderRadius: `${(style?.borderRadius || 16) * 0.75}px` }}>
                     {(() => {
                     const link = getLinkByIndex(1);
                     if (link && brandMode) {
