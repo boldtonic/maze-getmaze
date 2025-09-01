@@ -38,6 +38,13 @@ export function MazeDashboard() {
     title: "Maze founder",
   });
   const [links, setLinks] = useState<Link[]>([]);
+  const [style, setStyle] = useState({
+    backgroundColor: "#ffffff",
+    accentColor: "#6366f1", 
+    fontFamily: "Inter",
+    borderRadius: 12,
+    theme: "light"
+  });
   const fileInputRef = useRef<HTMLInputElement>(null);
   
   const maxLinks = brandMode ? 3 : 2;
@@ -145,6 +152,7 @@ export function MazeDashboard() {
                   canAddLink={canAddLink}
                   profile={profile}
                   links={links}
+                  style={style}
                 />
               </CardContent>
             </Card>
@@ -215,7 +223,7 @@ export function MazeDashboard() {
                       />
                     </TabsContent>
                     <TabsContent value="style">
-                      <StyleCustomizer />
+                      <StyleCustomizer style={style} onStyleChange={setStyle} />
                     </TabsContent>
                     <TabsContent value="analytics">
                       <Analytics />

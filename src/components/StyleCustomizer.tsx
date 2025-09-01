@@ -9,14 +9,18 @@ import {
   Layout
 } from "lucide-react";
 
-export function StyleCustomizer() {
-  const [style, setStyle] = useState({
-    backgroundColor: "#ffffff",
-    accentColor: "#6366f1",
-    fontFamily: "Inter",
-    borderRadius: 12,
-    theme: "light"
-  });
+interface StyleCustomizerProps {
+  style: {
+    backgroundColor: string;
+    accentColor: string;
+    fontFamily: string;
+    borderRadius: number;
+    theme: string;
+  };
+  onStyleChange: (style: any) => void;
+}
+
+export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) {
 
   const colorPresets = [
     { name: "Purple", primary: "#6366f1", secondary: "#f3f4f6" },
@@ -35,7 +39,7 @@ export function StyleCustomizer() {
   ];
 
   const updateStyle = (field: string, value: any) => {
-    setStyle(prev => ({ ...prev, [field]: value }));
+    onStyleChange({ ...style, [field]: value });
   };
 
   return (
