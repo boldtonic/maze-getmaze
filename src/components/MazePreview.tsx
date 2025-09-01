@@ -256,7 +256,14 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   {/* Profile Section A4 - Transparent with profile info */}
                   <div className="col-span-2 row-span-1 rounded-xl flex flex-col justify-center p-3 text-left">
                     <div className="flex items-center gap-1 mb-1">
-                      <span className="text-title-medium text-foreground font-semibold">{profile.displayName}</span>
+                      <span 
+                        className="text-title-medium font-semibold"
+                        style={{ 
+                          color: style?.backgroundColor === '#1f2937' ? '#ffffff' : '#1f2937'
+                        }}
+                      >
+                        {profile.displayName}
+                      </span>
                       <BadgeCheck className="w-4 h-4 text-blue-500" strokeWidth={2} />
                     </div>
                     <div className="flex items-center gap-1 mb-1">

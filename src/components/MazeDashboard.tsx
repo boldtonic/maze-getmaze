@@ -8,9 +8,6 @@ import {
   Link, 
   Palette, 
   BarChart3, 
-  Settings, 
-  Crown,
-  Plus,
   Eye
 } from "lucide-react";
 import { MazePreview } from "./MazePreview";
@@ -30,7 +27,7 @@ interface Link {
 
 export function MazeDashboard() {
   const [activeTab, setActiveTab] = useState("profile");
-  const [brandMode, setBrandMode] = useState(false);
+  const brandMode = false;
   const [coverImage, setCoverImage] = useState<string | null>(null);
   const [profile, setProfile] = useState({
     displayName: "Jane Doe",
@@ -109,15 +106,6 @@ export function MazeDashboard() {
             </div>
             
             <div className="flex items-center space-x-3">
-              <Button
-                variant={brandMode ? "default" : "elevated"}
-                size="default"
-                onClick={() => setBrandMode(!brandMode)}
-                className="flex items-center space-x-2 text-label-large"
-              >
-                <Crown className="h-4 w-4" />
-                <span>{brandMode ? "Brand Mode" : "Creator Mode"}</span>
-              </Button>
               <Button variant="outline" size="default" className="text-label-large">
                 <Eye className="h-4 w-4 mr-2" />
                 Preview Live
@@ -194,7 +182,7 @@ export function MazeDashboard() {
                       className="flex items-center space-x-2 data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
                     >
                       <Palette className="h-4 w-4" />
-                      <span className="hidden sm:inline">Style</span>
+                      <span className="hidden sm:inline">Design</span>
                     </TabsTrigger>
                     <TabsTrigger 
                       value="analytics" 
@@ -233,42 +221,6 @@ export function MazeDashboard() {
               </CardContent>
             </Card>
 
-            {brandMode && (
-              <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl ring-2 ring-accent/20">
-                <CardHeader className="pb-4">
-                <CardTitle className="flex items-center space-x-3 text-headline-large text-on-surface">
-                  <div className="p-2 bg-accent/10 rounded-full">
-                    <Crown className="h-5 w-5 text-accent" />
-                  </div>
-                  <span>Brand Features</span>
-                  <Badge variant="secondary" className="bg-accent/10 text-accent border-0 rounded-full text-label-medium">Pro</Badge>
-                </CardTitle>
-                <CardDescription className="text-body-medium text-on-surface-variant">
-                  Advanced features for brands and businesses
-                </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-2 gap-4">
-                    <Button variant="elevated" className="h-20 flex-col rounded-2xl hover:shadow-elevation-3 text-label-large">
-                      <Plus className="h-6 w-6 mb-2" />
-                      <span>Product Carousel</span>
-                    </Button>
-                    <Button variant="elevated" className="h-20 flex-col rounded-2xl hover:shadow-elevation-3 text-label-large">
-                      <Plus className="h-6 w-6 mb-2" />
-                      <span>Newsletter Embed</span>
-                    </Button>
-                    <Button variant="elevated" className="h-20 flex-col rounded-2xl hover:shadow-elevation-3 text-label-large">
-                      <Plus className="h-6 w-6 mb-2" />
-                      <span>CTA Buttons</span>
-                    </Button>
-                    <Button variant="elevated" className="h-20 flex-col rounded-2xl hover:shadow-elevation-3 text-label-large">
-                      <Plus className="h-6 w-6 mb-2" />
-                      <span>Shop Integration</span>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
           </div>
         </div>
       </div>

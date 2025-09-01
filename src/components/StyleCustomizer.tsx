@@ -102,14 +102,38 @@ export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) 
                 <input
                   type="color"
                   value={style.accentColor}
-                  onChange={(e) => updateStyle('accentColor', e.target.value)}
+                  onChange={(e) => {
+                    const newColor = e.target.value;
+                    onStyleChange({ 
+                      ...style, 
+                      accentColor: newColor,
+                      backgroundColor: newColor === '#6366f1' ? '#f1f0ff' :
+                                       newColor === '#3b82f6' ? '#eff6ff' :
+                                       newColor === '#10b981' ? '#ecfdf5' :
+                                       newColor === '#ec4899' ? '#fdf2f8' :
+                                       newColor === '#f59e0b' ? '#fff7ed' :
+                                       '#ffffff'
+                    });
+                  }}
                   className="h-10 w-20 rounded border border-border cursor-pointer"
                 />
                 <div className="flex-1">
                   <input
                     type="text"
                     value={style.accentColor}
-                    onChange={(e) => updateStyle('accentColor', e.target.value)}
+                    onChange={(e) => {
+                      const newColor = e.target.value;
+                      onStyleChange({ 
+                        ...style, 
+                        accentColor: newColor,
+                        backgroundColor: newColor === '#6366f1' ? '#f1f0ff' :
+                                         newColor === '#3b82f6' ? '#eff6ff' :
+                                         newColor === '#10b981' ? '#ecfdf5' :
+                                         newColor === '#ec4899' ? '#fdf2f8' :
+                                         newColor === '#f59e0b' ? '#fff7ed' :
+                                         '#ffffff'
+                      });
+                    }}
                     className="w-full px-3 py-2 border border-border rounded-md"
                     placeholder="#6366f1"
                   />
@@ -165,8 +189,12 @@ export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) 
         </div>
       </Tabs>
 
-      <Button className="w-full bg-gradient-primary hover:opacity-90 transition-opacity text-label-large">
-        Save Style Changes
+      <Button 
+        variant="default"
+        size="default"
+        className="w-full flex items-center justify-center space-x-2 text-label-large"
+      >
+        <span>Save Design Changes</span>
       </Button>
     </div>
   );
