@@ -26,9 +26,9 @@ export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) 
     { name: "Purple", primary: "#6366f1", background: "#ffffff" },
     { name: "Blue", primary: "#3b82f6", background: "#f8fafc" },
     { name: "Green", primary: "#10b981", background: "#f9fafb" },
-    { name: "Pink", primary: "#ec4899", background: "#fefefe" },
+    { name: "Pink", primary: "#ec4899", background: "#fffbf8" },
     { name: "Orange", primary: "#f59e0b", background: "#fffbf5" },
-    { name: "Teal", primary: "#14b8a6", background: "#f7fffe" },
+    { name: "Dark", primary: "#6366f1", background: "#1f2937" },
   ];
 
   const fontOptions = [
@@ -75,15 +75,33 @@ export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) 
                     className="group relative h-16 rounded-lg border-2 border-border hover:border-primary transition-colors overflow-hidden"
                   >
                     <div 
-                      className="h-full w-full"
+                      className="h-full w-full relative"
                       style={{ 
-                        backgroundColor: preset.background,
-                        border: `2px solid ${preset.primary}`,
-                        borderRadius: '6px'
+                        backgroundColor: preset.background
                       }}
-                    />
+                    >
+                      {/* Small accent color preview */}
+                      <div 
+                        className="absolute top-2 right-2 w-4 h-4 rounded-full"
+                        style={{ backgroundColor: preset.primary }}
+                      />
+                      {/* Card preview */}
+                      <div 
+                        className="absolute bottom-2 left-2 w-8 h-6 rounded border"
+                        style={{ 
+                          backgroundColor: preset.background,
+                          borderColor: preset.primary,
+                          borderWidth: '1px'
+                        }}
+                      />
+                    </div>
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
-                    <span className="absolute bottom-1 left-2 text-xs font-medium drop-shadow" style={{ color: preset.primary }}>
+                    <span 
+                      className="absolute bottom-1 left-2 text-xs font-medium drop-shadow"
+                      style={{ 
+                        color: preset.background === "#1f2937" ? "#ffffff" : preset.primary 
+                      }}
+                    >
                       {preset.name}
                     </span>
                   </button>
