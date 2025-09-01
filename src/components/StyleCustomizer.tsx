@@ -70,8 +70,11 @@ export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) 
                   <button
                     key={preset.name}
                     onClick={() => {
-                      updateStyle('accentColor', preset.primary);
-                      updateStyle('backgroundColor', preset.background);
+                      onStyleChange({ 
+                        ...style, 
+                        accentColor: preset.primary,
+                        backgroundColor: preset.background 
+                      });
                     }}
                     className="group relative h-16 rounded-lg border-2 border-border hover:border-primary transition-colors overflow-hidden"
                   >
