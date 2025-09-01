@@ -23,12 +23,12 @@ interface StyleCustomizerProps {
 export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) {
 
   const colorPresets = [
-    { name: "Purple", primary: "#6366f1", secondary: "#f3f4f6" },
-    { name: "Blue", primary: "#3b82f6", secondary: "#dbeafe" },
-    { name: "Green", primary: "#10b981", secondary: "#d1fae5" },
-    { name: "Pink", primary: "#ec4899", secondary: "#fce7f3" },
-    { name: "Orange", primary: "#f59e0b", secondary: "#fef3c7" },
-    { name: "Teal", primary: "#14b8a6", secondary: "#ccfbf1" },
+    { name: "Purple", primary: "#6366f1", background: "#ffffff" },
+    { name: "Blue", primary: "#3b82f6", background: "#f8fafc" },
+    { name: "Green", primary: "#10b981", background: "#f9fafb" },
+    { name: "Pink", primary: "#ec4899", background: "#fefefe" },
+    { name: "Orange", primary: "#f59e0b", background: "#fffbf5" },
+    { name: "Teal", primary: "#14b8a6", background: "#f7fffe" },
   ];
 
   const fontOptions = [
@@ -68,17 +68,22 @@ export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) 
                 {colorPresets.map((preset) => (
                   <button
                     key={preset.name}
-                    onClick={() => updateStyle('accentColor', preset.primary)}
+                    onClick={() => {
+                      updateStyle('accentColor', preset.primary);
+                      updateStyle('backgroundColor', preset.background);
+                    }}
                     className="group relative h-16 rounded-lg border-2 border-border hover:border-primary transition-colors overflow-hidden"
                   >
                     <div 
                       className="h-full w-full"
                       style={{ 
-                        background: `linear-gradient(135deg, ${preset.primary}, ${preset.secondary})` 
+                        backgroundColor: preset.background,
+                        border: `2px solid ${preset.primary}`,
+                        borderRadius: '6px'
                       }}
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
-                    <span className="absolute bottom-1 left-2 text-xs font-medium text-white drop-shadow">
+                    <span className="absolute bottom-1 left-2 text-xs font-medium drop-shadow" style={{ color: preset.primary }}>
                       {preset.name}
                     </span>
                   </button>

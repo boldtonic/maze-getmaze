@@ -181,9 +181,8 @@ Accessibility in micro-interactions has gained significant attention, with new g
                     <div className="col-span-2 row-span-1 col-start-3 row-start-2 rounded-xl border-2 border-dashed border-transparent"></div>
                   </div>
                   {/* Combined A1+B1 - Cover Image with Upload */}
-                  <div className="col-span-2 row-span-1 relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-sm" 
+                  <div className="col-span-2 row-span-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-sm" 
                     style={{ 
-                      background: style?.accentColor ? `linear-gradient(135deg, ${style.accentColor}, ${style.accentColor}80)` : 'linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899)',
                       borderRadius: `${(style?.borderRadius || 16) * 0.75}px`
                     }}
                     onClick={onImageUpload}>
