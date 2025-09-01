@@ -77,33 +77,16 @@ export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) 
                       });
                     }}
                     className="group relative h-16 rounded-lg border-2 border-border hover:border-primary transition-colors overflow-hidden"
+                    style={{ backgroundColor: preset.background }}
                   >
                     <div 
-                      className="h-full w-full relative"
-                      style={{ 
-                        backgroundColor: preset.background
-                      }}
-                    >
-                      {/* Small accent color preview */}
-                      <div 
-                        className="absolute top-2 right-2 w-4 h-4 rounded-full"
-                        style={{ backgroundColor: preset.primary }}
-                      />
-                      {/* Card preview */}
-                      <div 
-                        className="absolute bottom-2 left-2 w-8 h-6 rounded border"
-                        style={{ 
-                          backgroundColor: preset.background,
-                          borderColor: preset.primary,
-                          borderWidth: '1px'
-                        }}
-                      />
-                    </div>
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
+                      className="absolute top-2 right-2 w-4 h-4 rounded-full border border-white/50"
+                      style={{ backgroundColor: preset.primary }}
+                    />
                     <span 
-                      className="absolute bottom-1 left-2 text-xs font-medium drop-shadow"
+                      className="absolute bottom-2 left-2 text-xs font-medium"
                       style={{ 
-                        color: preset.background === "#1f2937" ? "#ffffff" : preset.primary 
+                        color: preset.background === "#1f2937" ? "#ffffff" : "#1f2937"
                       }}
                     >
                       {preset.name}

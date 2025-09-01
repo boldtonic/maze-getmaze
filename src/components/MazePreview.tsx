@@ -163,16 +163,19 @@ Accessibility in micro-interactions has gained significant attention, with new g
         {/* Card floating over the blurred background */}
         <div className="absolute top-32 left-1/2 transform -translate-x-1/2" style={{ fontFamily: style?.fontFamily || 'Inter' }}>
           <div className="w-[420px] h-[236px]">
-            <Card className="overflow-hidden border border-border/50 h-full w-full" style={{
-            boxShadow: '0 0 80px 20px rgba(0, 0, 0, 0.2)',
-            backgroundColor: style?.backgroundColor || 'white',
-            borderRadius: `${style?.borderRadius || 16}px`
-          }}>
-              <CardContent className="p-3 h-full" style={{
-                backgroundColor: style?.backgroundColor || 'white'
-              }}>
-                {/* Debug log */}
-                {(() => { console.log('MazePreview style:', style); return null; })()}
+            <Card 
+              className="overflow-hidden border border-border/50 h-full w-full" 
+              style={{
+                boxShadow: '0 0 80px 20px rgba(0, 0, 0, 0.2)',
+                borderRadius: `${style?.borderRadius || 16}px`
+              }}
+            >
+              <div 
+                className="p-3 h-full"
+                style={{
+                  backgroundColor: style?.backgroundColor || 'white'
+                }}
+              >
                 {/* Bento Grid Layout - Horizontal */}
                 <div className="grid grid-cols-4 grid-rows-2 gap-2 h-full">
                   {/* Drag Drop Zones for visual feedback */}
@@ -284,7 +287,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   })()}
                   </div>
                 </div>
-              </CardContent>
+              </div>
             </Card>
           </div>
 
