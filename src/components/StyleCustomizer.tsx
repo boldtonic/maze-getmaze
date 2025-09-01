@@ -23,11 +23,11 @@ interface StyleCustomizerProps {
 export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) {
 
   const colorPresets = [
-    { name: "Purple", primary: "#6366f1", background: "#ffffff" },
-    { name: "Blue", primary: "#3b82f6", background: "#f8fafc" },
-    { name: "Green", primary: "#10b981", background: "#f9fafb" },
-    { name: "Pink", primary: "#ec4899", background: "#fffbf8" },
-    { name: "Orange", primary: "#f59e0b", background: "#fffbf5" },
+    { name: "Purple", primary: "#6366f1", background: "#f1f0ff" },
+    { name: "Blue", primary: "#3b82f6", background: "#eff6ff" },
+    { name: "Green", primary: "#10b981", background: "#ecfdf5" },
+    { name: "Pink", primary: "#ec4899", background: "#fdf2f8" },
+    { name: "Orange", primary: "#f59e0b", background: "#fff7ed" },
     { name: "Dark", primary: "#6366f1", background: "#1f2937" },
   ];
 
