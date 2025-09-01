@@ -171,6 +171,8 @@ Accessibility in micro-interactions has gained significant attention, with new g
               <CardContent className="p-3 h-full" style={{
                 backgroundColor: style?.backgroundColor || 'white'
               }}>
+                {/* Debug log */}
+                {(() => { console.log('MazePreview style:', style); return null; })()}
                 {/* Bento Grid Layout - Horizontal */}
                 <div className="grid grid-cols-4 grid-rows-2 gap-2 h-full">
                   {/* Drag Drop Zones for visual feedback */}

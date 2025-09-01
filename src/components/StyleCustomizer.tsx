@@ -39,6 +39,7 @@ export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) 
   ];
 
   const updateStyle = (field: string, value: any) => {
+    console.log('Updating style:', field, value); // Debug log
     onStyleChange({ ...style, [field]: value });
   };
 
