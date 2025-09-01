@@ -168,7 +168,9 @@ Accessibility in micro-interactions has gained significant attention, with new g
             backgroundColor: style?.backgroundColor || 'hsl(var(--background))',
             borderRadius: `${style?.borderRadius || 16}px`
           }}>
-              <CardContent className="p-3 h-full">
+              <CardContent className="p-3 h-full" style={{
+                backgroundColor: style?.backgroundColor || 'hsl(var(--background))'
+              }}>
                 {/* Bento Grid Layout - Horizontal */}
                 <div className="grid grid-cols-4 grid-rows-2 gap-2 h-full">
                   {/* Drag Drop Zones for visual feedback */}
