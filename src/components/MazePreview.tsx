@@ -301,7 +301,13 @@ Accessibility in micro-interactions has gained significant attention, with new g
 
           {/* Refresh Button - Bottom Center */}
           <div className="absolute -bottom-32 left-1/2 transform -translate-x-1/2">
-            <Button size="sm" variant="outline" onClick={refreshArticle} className="bg-background/80 backdrop-blur-sm border-border/50 hover:bg-background/90 text-label-large">
+            <Button 
+              size="sm" 
+              variant="outline" 
+              onClick={refreshArticle} 
+              className="!bg-white/80 backdrop-blur-sm !border-gray-200 hover:!bg-white/90 !text-gray-700 font-medium"
+              style={{ fontFamily: 'Inter', color: '#374151' }}
+            >
               <RefreshCw className="w-4 h-4 mr-2" strokeWidth={2} />
               New Article
             </Button>
