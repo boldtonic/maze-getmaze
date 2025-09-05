@@ -189,8 +189,8 @@ export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) 
         </div>
       </Tabs>
 
-      <Button 
-        variant="default"
+      <Button
+        variant="save"
         size="default"
         className="w-full flex items-center justify-center space-x-2 text-label-large"
       >

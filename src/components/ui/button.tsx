@@ -25,6 +25,8 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline bg-transparent hover:scale-[1.02] active:scale-[0.98]",
         // New premium variant
         premium: "bg-gradient-to-r from-accent via-primary to-accent/80 text-white shadow-elevation-2 hover:shadow-elevation-3 hover:scale-[1.02] active:scale-[0.98] relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/20 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300",
+        // Save/Export buttons variant - consistent light grey styling
+        save: "bg-neutral-100 text-neutral-900 shadow-sm hover:bg-neutral-200 hover:shadow-md hover:scale-[1.02] active:scale-[0.98] border border-neutral-200/50 transition-all duration-200",
       },
       size: {
         default: "h-10 px-6 py-2",
