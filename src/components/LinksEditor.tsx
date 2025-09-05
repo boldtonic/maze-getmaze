@@ -177,7 +177,7 @@ export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProp
 
 
       {/* Save Button */}
-      <Button className="w-full bg-gradient-primary hover:opacity-90 transition-opacity text-label-large">
+      <Button variant="premium" className="w-full text-label-large">
         Save Link Changes
       </Button>
     </div>
