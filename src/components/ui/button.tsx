@@ -5,22 +5,26 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 transform-gpu",
   {
     variants: {
       variant: {
-        // Material 3 Filled Button
-        default: "bg-filled-button text-filled-button-foreground hover:shadow-elevation-1 active:shadow-elevation-0",
-        // Material 3 Filled Tonal Button  
-        secondary: "bg-filled-tonal-button text-filled-tonal-button-foreground hover:shadow-elevation-1 active:shadow-elevation-0",
-        // Material 3 Elevated Button
-        elevated: "bg-elevated-button text-elevated-button-foreground shadow-elevation-1 hover:shadow-elevation-2 active:shadow-elevation-1",
-        // Material 3 Outlined Button
-        outline: "border border-border bg-transparent text-primary hover:bg-primary/8 active:bg-primary/12",
-        // Material 3 Text Button
-        ghost: "bg-transparent text-primary hover:bg-primary/8 active:bg-primary/12",
-        destructive: "bg-destructive text-destructive-foreground hover:shadow-elevation-1 active:shadow-elevation-0",
-        link: "text-primary underline-offset-4 hover:underline bg-transparent",
+        // Material 3 Filled Button - Enhanced with gradient and better hover
+        default: "bg-gradient-to-r from-primary to-primary/90 text-primary-foreground shadow-elevation-1 hover:shadow-elevation-2 hover:scale-[1.02] active:scale-[0.98] active:shadow-elevation-0",
+        // Material 3 Filled Tonal Button - Enhanced with subtle gradient
+        secondary: "bg-gradient-to-r from-filled-tonal-button to-filled-tonal-button/95 text-filled-tonal-button-foreground shadow-elevation-1 hover:shadow-elevation-2 hover:scale-[1.02] active:scale-[0.98]",
+        // Material 3 Elevated Button - Enhanced with better elevation
+        elevated: "bg-gradient-to-b from-surface to-surface-variant text-elevated-button-foreground shadow-elevation-2 hover:shadow-elevation-3 hover:scale-[1.02] active:scale-[0.98] border border-border/20",
+        // Material 3 Outlined Button - Enhanced with better hover states
+        outline: "border-2 border-primary/20 bg-gradient-to-b from-surface/50 to-surface-variant/30 text-primary hover:border-primary/40 hover:bg-primary/8 hover:scale-[1.02] active:scale-[0.98] active:bg-primary/12 backdrop-blur-sm",
+        // Material 3 Text Button - Enhanced with better hover
+        ghost: "bg-transparent text-primary hover:bg-primary/10 hover:scale-[1.02] active:scale-[0.98] active:bg-primary/15",
+        // Destructive - Enhanced
+        destructive: "bg-gradient-to-r from-destructive to-destructive/90 text-destructive-foreground shadow-elevation-1 hover:shadow-elevation-2 hover:scale-[1.02] active:scale-[0.98]",
+        // Link - Enhanced
+        link: "text-primary underline-offset-4 hover:underline bg-transparent hover:scale-[1.02] active:scale-[0.98]",
+        // New premium variant
+        premium: "bg-gradient-to-r from-accent via-primary to-accent/80 text-white shadow-elevation-2 hover:shadow-elevation-3 hover:scale-[1.02] active:scale-[0.98] relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/20 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300",
       },
       size: {
         default: "h-10 px-6 py-2",

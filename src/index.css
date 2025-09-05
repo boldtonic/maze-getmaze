@@ -68,6 +68,9 @@ All colors MUST be HSL.
     /* Custom gradients */
     --gradient-primary: linear-gradient(135deg, hsl(214 84% 56%), hsl(214 90% 70%));
     --gradient-surface: linear-gradient(180deg, hsl(var(--surface)), hsl(var(--surface-variant)));
+    --gradient-button: linear-gradient(135deg, hsl(214 84% 60%), hsl(214 90% 72%));
+    --gradient-button-hover: linear-gradient(135deg, hsl(214 84% 64%), hsl(214 90% 76%));
+    --gradient-premium: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--primary)), hsl(var(--accent) / 0.8));
     
     /* Material 3 Elevations */
     --elevation-0: none;

@@ -62,6 +62,7 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, o
             </div>
             <div className="space-y-2">
               <Button 
+                variant="elevated"
                 className="flex items-center space-x-2 text-label-large"
                 onClick={onImageUpload}
               >
@@ -155,7 +156,7 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, o
       </Card>
 
       {/* Save Button */}
-      <Button className="w-full bg-gradient-primary hover:opacity-90 transition-opacity text-label-large">
+      <Button variant="premium" className="w-full text-label-large">
         Save Profile Changes
       </Button>
     </div>
