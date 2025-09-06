@@ -25,8 +25,8 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline bg-transparent hover:scale-[1.02] active:scale-[0.98]",
         // New premium variant
         premium: "bg-gradient-to-r from-accent via-primary to-accent/80 text-white shadow-elevation-2 hover:shadow-elevation-3 hover:scale-[1.02] active:scale-[0.98] relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/20 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300",
-        // Save/Export buttons variant - transparent with dark text, orange border, orange fill on hover
-        save: "bg-transparent text-[#1a1a1a] border-2 border-[#ff6e3a] hover:bg-[#ff6e3a] hover:text-[#1a1a1a] hover:border-[#ff6e3a] hover:shadow-sm transition-all duration-200",
+        // Save/Export buttons variant - transparent with dark text, visible border, blue fill on hover
+        save: "bg-transparent text-[#1a1a1a] border-2 border-gray-300 hover:bg-blue-500 hover:text-white hover:border-blue-500 hover:shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all duration-200",
       },
       size: {
         default: "h-10 px-6 py-2",
