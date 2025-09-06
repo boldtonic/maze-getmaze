@@ -104,15 +104,19 @@ export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) 
                   value={style.accentColor}
                   onChange={(e) => {
                     const newColor = e.target.value;
+                    // Generate complementary background color
+                    const hex = newColor.replace('#', '');
+                    const r = parseInt(hex.substr(0, 2), 16);
+                    const g = parseInt(hex.substr(2, 2), 16);
+                    const b = parseInt(hex.substr(4, 2), 16);
+                    
+                    // Create a light tint of the accent color for background
+                    const bgColor = `rgb(${Math.min(255, r + 40)}, ${Math.min(255, g + 40)}, ${Math.min(255, b + 40)})`;
+                    
                     onStyleChange({ 
                       ...style, 
                       accentColor: newColor,
-                      backgroundColor: newColor === '#6366f1' ? '#f1f0ff' :
-                                       newColor === '#3b82f6' ? '#eff6ff' :
-                                       newColor === '#10b981' ? '#ecfdf5' :
-                                       newColor === '#ec4899' ? '#fdf2f8' :
-                                       newColor === '#f59e0b' ? '#fff7ed' :
-                                       '#ffffff'
+                      backgroundColor: bgColor
                     });
                   }}
                   className="h-10 w-20 rounded border border-border cursor-pointer"
@@ -123,21 +127,32 @@ export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) 
                     value={style.accentColor}
                     onChange={(e) => {
                       const newColor = e.target.value;
-                      onStyleChange({ 
-                        ...style, 
-                        accentColor: newColor,
-                        backgroundColor: newColor === '#6366f1' ? '#f1f0ff' :
-                                         newColor === '#3b82f6' ? '#eff6ff' :
-                                         newColor === '#10b981' ? '#ecfdf5' :
-                                         newColor === '#ec4899' ? '#fdf2f8' :
-                                         newColor === '#f59e0b' ? '#fff7ed' :
-                                         '#ffffff'
-                      });
+                      if (newColor.match(/^#[0-9A-F]{6}$/i)) {
+                        // Generate complementary background color
+                        const hex = newColor.replace('#', '');
+                        const r = parseInt(hex.substr(0, 2), 16);
+                        const g = parseInt(hex.substr(2, 2), 16);
+                        const b = parseInt(hex.substr(4, 2), 16);
+                        
+                        // Create a light tint of the accent color for background
+                        const bgColor = `rgb(${Math.min(255, r + 40)}, ${Math.min(255, g + 40)}, ${Math.min(255, b + 40)})`;
+                        
+                        onStyleChange({ 
+                          ...style, 
+                          accentColor: newColor,
+                          backgroundColor: bgColor
+                        });
+                      } else {
+                        onStyleChange({ ...style, accentColor: newColor });
+                      }
                     }}
                     className="w-full px-3 py-2 border border-border rounded-md"
                     placeholder="#6366f1"
                   />
                 </div>
+              </div>
+              <div className="text-xs text-muted-foreground">
+                Custom colors override preset selections
               </div>
             </div>
           </TabsContent>
