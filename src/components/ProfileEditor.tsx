@@ -156,7 +156,7 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, o
       </Card>
 
       {/* Save Button */}
-      <Button variant="save" className="w-full text-label-large">
+      <Button variant="outline" size="default" className="w-full text-label-large">
         Save Profile Changes
       </Button>
     </div>
