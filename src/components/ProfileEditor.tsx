@@ -62,7 +62,8 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, o
             </div>
             <div className="space-y-2">
               <Button 
-                variant="elevated"
+                variant="outline"
+                size="default"
                 className="flex items-center space-x-2 text-label-large"
                 onClick={onImageUpload}
               >
