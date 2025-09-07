@@ -136,6 +136,39 @@ Accessibility in micro-interactions has gained significant attention, with new g
     // Default gradient for other links
     return null;
   };
+  // Helper function to determine if a color is dark
+  const isColorDark = (color: string) => {
+    if (!color) return false;
+    
+    // Handle RGB format
+    if (color.startsWith('rgb')) {
+      const rgbMatch = color.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+      if (rgbMatch) {
+        const r = parseInt(rgbMatch[1]);
+        const g = parseInt(rgbMatch[2]);
+        const b = parseInt(rgbMatch[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        return brightness < 128;
+      }
+    }
+    
+    // Handle hex format
+    if (color.startsWith('#')) {
+      const hex = color.replace('#', '');
+      const r = parseInt(hex.substr(0, 2), 16);
+      const g = parseInt(hex.substr(2, 2), 16);
+      const b = parseInt(hex.substr(4, 2), 16);
+      const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+      return brightness < 128;
+    }
+    
+    return false;
+  };
+
+  const isDark = isColorDark(style?.backgroundColor || 'white');
+  const textColor = isDark ? 'white' : '#1f2937';
+  const mutedTextColor = isDark ? 'rgba(255, 255, 255, 0.7)' : 'rgba(31, 41, 55, 0.7)';
+
   return <div className="space-y-6">
       {/* Mention Effect Preview with Card Overlay */}
       <div className="relative bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-lg p-5 overflow-hidden min-h-[550px] flex items-center justify-center">
@@ -148,10 +181,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
           <div className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed space-y-3">
             <p>
               {currentArticle.highlightText}{" "}
-              <span className="px-1 rounded font-medium" style={{
-              backgroundColor: "hsl(var(--accent))",
-              color: "white"
-            }}>
+              <span className="px-1 rounded font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
                 {currentArticle.mention}
               </span>
               {" "}{currentArticle.continuation}
@@ -173,7 +203,8 @@ Accessibility in micro-interactions has gained significant attention, with new g
               <div 
                 className="p-3 h-full"
                 style={{
-                  backgroundColor: style?.backgroundColor || 'white'
+                  backgroundColor: style?.backgroundColor || 'white',
+                  color: textColor
                 }}
               >
                 {/* Bento Grid Layout - Horizontal */}
@@ -222,10 +253,10 @@ Accessibility in micro-interactions has gained significant attention, with new g
                           </>;
                     }
                     return <div className="bg-gradient-to-br from-emerald-400/20 to-teal-500/20 h-full flex items-center justify-center transition-all duration-200 cursor-pointer" onClick={canAddLink ? onAddLink : undefined}>
-                          {canAddLink ? <div className="text-center text-muted-foreground hover:text-primary transition-colors">
+                          {canAddLink ? <div className="text-center transition-colors" style={{ color: mutedTextColor }}>
                               <Link className="w-5 h-5 mx-auto mb-1" strokeWidth={2} />
                               <span className="text-label-large font-medium text-base">Add Link</span>
-                            </div> : <span className="text-muted-foreground text-xs">Link 1</span>}
+                            </div> : <span className="text-xs" style={{ color: mutedTextColor }}>Link 1</span>}
                         </div>;
                   })()}
                   </div>
@@ -245,10 +276,10 @@ Accessibility in micro-interactions has gained significant attention, with new g
                           </>;
                     }
                     // Always show "Made with Maze" when no second link or not in brand mode
-                    return <div className="bg-surface-variant h-full flex flex-col items-center justify-center p-2 text-center">
-                          <div className="text-on-surface-variant text-label-medium font-medium mb-0.5">Made with</div>
-                          <div className="text-on-surface-variant text-label-medium font-bold">Maze</div>
-                          <div className="text-on-surface-variant text-body-small opacity-70 mt-0.5">getmaze.ai</div>
+                    return <div className="h-full flex flex-col items-center justify-center p-2 text-center" style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}>
+                          <div className="font-medium mb-0.5" style={{ color: textColor }}>Made with</div>
+                          <div className="font-bold" style={{ color: textColor }}>Maze</div>
+                          <div className="opacity-70 mt-0.5 text-sm" style={{ color: textColor }}>getmaze.ai</div>
                         </div>;
                   })()}
                   </div>
@@ -259,7 +290,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                       <span 
                         className="text-title-medium font-semibold"
                         style={{ 
-                          color: style?.backgroundColor === '#1f2937' ? '#ffffff' : '#1f2937'
+                          color: textColor
                         }}
                       >
                         {profile.displayName}
@@ -267,9 +298,9 @@ Accessibility in micro-interactions has gained significant attention, with new g
                       <BadgeCheck className="w-4 h-4 text-blue-500" strokeWidth={2} />
                     </div>
                     <div className="flex items-center gap-1 mb-1">
-                      <p className="text-body-small text-muted-foreground font-semibold">{profile.title}</p>
+                      <p className="text-body-small font-semibold" style={{ color: mutedTextColor }}>{profile.title}</p>
                     </div>
-                    <p className="text-body-small text-muted-foreground leading-tight">{profile.bio}</p>
+                    <p className="text-body-small leading-tight" style={{ color: mutedTextColor }}>{profile.bio}</p>
                   </div>
 
                   {/* Square B3 - Bottom Right (spans 2 columns) */}
@@ -286,10 +317,10 @@ Accessibility in micro-interactions has gained significant attention, with new g
                           </>;
                     }
                     return <div className="bg-gradient-to-r from-rose-400/20 to-pink-600/20 h-full flex items-center justify-center transition-all duration-200 cursor-pointer" onClick={canAddLink ? onAddLink : undefined}>
-                          {canAddLink ? <div className="text-center text-muted-foreground hover:text-primary transition-colors">
+                          {canAddLink ? <div className="text-center transition-colors" style={{ color: mutedTextColor }}>
                               <Link className="w-5 h-5 mx-auto mb-1" strokeWidth={2} />
                               <span className="text-label-large font-medium text-base">Add Link</span>
-                            </div> : <span className="text-muted-foreground text-lg">Link {brandMode ? '3' : '2'}</span>}
+                            </div> : <span className="text-lg" style={{ color: mutedTextColor }}>Link {brandMode ? '3' : '2'}</span>}
                         </div>;
                   })()}
                   </div>
