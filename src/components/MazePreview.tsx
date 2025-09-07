@@ -276,10 +276,10 @@ Accessibility in micro-interactions has gained significant attention, with new g
                           </>;
                     }
                     // Always show "Made with Maze" when no second link or not in brand mode
-                    return <div className="bg-surface-variant h-full flex flex-col items-center justify-center p-2 text-center">
-                          <div className="text-on-surface-variant text-label-medium font-medium mb-0.5">Made with</div>
-                          <div className="text-on-surface-variant text-label-medium font-bold">Maze</div>
-                          <div className="text-on-surface-variant text-body-small opacity-70 mt-0.5">getmaze.ai</div>
+                    return <div className="bg-gray-100 h-full flex flex-col items-center justify-center p-2 text-center">
+                          <div className="text-gray-700 text-label-medium font-medium mb-0.5">Made with</div>
+                          <div className="text-gray-700 text-label-medium font-bold">Maze</div>
+                          <div className="text-gray-600 text-body-small opacity-70 mt-0.5">getmaze.ai</div>
                         </div>;
                   })()}
                   </div>
