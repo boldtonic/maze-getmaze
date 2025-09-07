@@ -149,7 +149,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
             <p>
               {currentArticle.highlightText}{" "}
               <span className="px-1 rounded font-medium" style={{
-              backgroundColor: style?.accentColor || "hsl(var(--accent))",
+              backgroundColor: "hsl(var(--accent))",
               color: "white"
             }}>
                 {currentArticle.mention}
@@ -222,7 +222,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                           </>;
                     }
                     return <div className="bg-gradient-to-br from-emerald-400/20 to-teal-500/20 h-full flex items-center justify-center transition-all duration-200 cursor-pointer" onClick={canAddLink ? onAddLink : undefined}>
-                          {canAddLink ? <div className="text-center text-muted-foreground transition-colors" style={{ color: style?.accentColor || 'hsl(var(--muted-foreground))' }}>
+                          {canAddLink ? <div className="text-center text-muted-foreground hover:text-primary transition-colors">
                               <Link className="w-5 h-5 mx-auto mb-1" strokeWidth={2} />
                               <span className="text-label-large font-medium text-base">Add Link</span>
                             </div> : <span className="text-muted-foreground text-xs">Link 1</span>}
@@ -259,7 +259,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                       <span 
                         className="text-title-medium font-semibold"
                         style={{ 
-                          color: style?.accentColor || (style?.backgroundColor === '#1f2937' ? '#ffffff' : '#1f2937')
+                          color: style?.backgroundColor === '#1f2937' ? '#ffffff' : '#1f2937'
                         }}
                       >
                         {profile.displayName}
@@ -267,9 +267,9 @@ Accessibility in micro-interactions has gained significant attention, with new g
                       <BadgeCheck className="w-4 h-4 text-blue-500" strokeWidth={2} />
                     </div>
                     <div className="flex items-center gap-1 mb-1">
-                      <p className="text-body-small font-semibold" style={{ color: style?.accentColor || 'hsl(var(--muted-foreground))' }}>{profile.title}</p>
+                      <p className="text-body-small text-muted-foreground font-semibold">{profile.title}</p>
                     </div>
-                    <p className="text-body-small leading-tight" style={{ color: style?.accentColor || 'hsl(var(--muted-foreground))' }}>{profile.bio}</p>
+                    <p className="text-body-small text-muted-foreground leading-tight">{profile.bio}</p>
                   </div>
 
                   {/* Square B3 - Bottom Right (spans 2 columns) */}
@@ -286,7 +286,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                           </>;
                     }
                     return <div className="bg-gradient-to-r from-rose-400/20 to-pink-600/20 h-full flex items-center justify-center transition-all duration-200 cursor-pointer" onClick={canAddLink ? onAddLink : undefined}>
-                          {canAddLink ? <div className="text-center text-muted-foreground transition-colors" style={{ color: style?.accentColor || 'hsl(var(--muted-foreground))' }}>
+                          {canAddLink ? <div className="text-center text-muted-foreground hover:text-primary transition-colors">
                               <Link className="w-5 h-5 mx-auto mb-1" strokeWidth={2} />
                               <span className="text-label-large font-medium text-base">Add Link</span>
                             </div> : <span className="text-muted-foreground text-lg">Link {brandMode ? '3' : '2'}</span>}
