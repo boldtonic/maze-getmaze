@@ -253,10 +253,10 @@ Accessibility in micro-interactions has gained significant attention, with new g
                           </>;
                     }
                     return <div className="bg-gradient-to-br from-emerald-400/20 to-teal-500/20 h-full flex items-center justify-center transition-all duration-200 cursor-pointer" onClick={canAddLink ? onAddLink : undefined}>
-                          {canAddLink ? <div className="text-center transition-colors" style={{ color: mutedTextColor }}>
+                          {canAddLink ? <div className="text-center text-muted-foreground hover:text-primary transition-colors">
                               <Link className="w-5 h-5 mx-auto mb-1" strokeWidth={2} />
                               <span className="text-label-large font-medium text-base">Add Link</span>
-                            </div> : <span className="text-xs" style={{ color: mutedTextColor }}>Link 1</span>}
+                            </div> : <span className="text-muted-foreground text-xs">Link 1</span>}
                         </div>;
                   })()}
                   </div>
@@ -276,10 +276,10 @@ Accessibility in micro-interactions has gained significant attention, with new g
                           </>;
                     }
                     // Always show "Made with Maze" when no second link or not in brand mode
-                    return <div className="h-full flex flex-col items-center justify-center p-2 text-center" style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}>
-                          <div className="font-medium mb-0.5" style={{ color: textColor }}>Made with</div>
-                          <div className="font-bold" style={{ color: textColor }}>Maze</div>
-                          <div className="opacity-70 mt-0.5 text-sm" style={{ color: textColor }}>getmaze.ai</div>
+                    return <div className="bg-surface-variant h-full flex flex-col items-center justify-center p-2 text-center">
+                          <div className="text-on-surface-variant text-label-medium font-medium mb-0.5">Made with</div>
+                          <div className="text-on-surface-variant text-label-medium font-bold">Maze</div>
+                          <div className="text-on-surface-variant text-body-small opacity-70 mt-0.5">getmaze.ai</div>
                         </div>;
                   })()}
                   </div>
@@ -317,10 +317,10 @@ Accessibility in micro-interactions has gained significant attention, with new g
                           </>;
                     }
                     return <div className="bg-gradient-to-r from-rose-400/20 to-pink-600/20 h-full flex items-center justify-center transition-all duration-200 cursor-pointer" onClick={canAddLink ? onAddLink : undefined}>
-                          {canAddLink ? <div className="text-center transition-colors" style={{ color: mutedTextColor }}>
+                          {canAddLink ? <div className="text-center text-muted-foreground hover:text-primary transition-colors">
                               <Link className="w-5 h-5 mx-auto mb-1" strokeWidth={2} />
                               <span className="text-label-large font-medium text-base">Add Link</span>
-                            </div> : <span className="text-lg" style={{ color: mutedTextColor }}>Link {brandMode ? '3' : '2'}</span>}
+                            </div> : <span className="text-muted-foreground text-lg">Link {brandMode ? '3' : '2'}</span>}
                         </div>;
                   })()}
                   </div>
