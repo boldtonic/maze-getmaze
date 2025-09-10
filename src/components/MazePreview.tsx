@@ -32,6 +32,7 @@ interface MazePreviewProps {
     fontFamily: string;
     borderRadius: number;
     theme: string;
+    orientation: 'horizontal' | 'vertical';
   };
 }
 export function MazePreview({
@@ -192,7 +193,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
 
         {/* Card floating over the blurred background */}
         <div className="absolute top-32 left-1/2 transform -translate-x-1/2" style={{ fontFamily: style?.fontFamily || 'Inter' }}>
-          <div className="w-[420px] h-[236px]">
+          <div className={style?.orientation === 'vertical' ? "w-[236px] h-[420px]" : "w-[420px] h-[236px]"}>
             <Card 
               className="overflow-hidden border border-border/50 h-full w-full" 
               style={{
@@ -207,19 +208,28 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   color: textColor
                 }}
               >
-                {/* Bento Grid Layout - Horizontal */}
-                <div className="grid grid-cols-4 grid-rows-2 gap-2 h-full">
+                {/* Bento Grid Layout */}
+                <div className={`grid gap-2 h-full ${style?.orientation === 'vertical' ? 'grid-cols-2 grid-rows-4' : 'grid-cols-4 grid-rows-2'}`}>
                   {/* Drag Drop Zones for visual feedback */}
-                  <div className="absolute inset-0 pointer-events-none grid grid-cols-4 grid-rows-2 gap-2 p-3">
-                    {/* A2 Drop Zone */}
-                    <div className="col-span-1 row-span-1 col-start-3 row-start-1 rounded-xl border-2 border-dashed border-transparent"></div>
-                    {/* A3 Drop Zone */}
-                    <div className="col-span-1 row-span-1 col-start-4 row-start-1 rounded-xl border-2 border-dashed border-transparent"></div>
-                    {/* B3 Drop Zone */}
-                    <div className="col-span-2 row-span-1 col-start-3 row-start-2 rounded-xl border-2 border-dashed border-transparent"></div>
+                  <div className={`absolute inset-0 pointer-events-none gap-2 p-3 ${style?.orientation === 'vertical' ? 'grid grid-cols-2 grid-rows-4' : 'grid grid-cols-4 grid-rows-2'}`}>
+                    {style?.orientation === 'vertical' ? (
+                      <>
+                        {/* Vertical layout drop zones */}
+                        <div className="col-span-1 row-span-1 col-start-2 row-start-2 rounded-xl border-2 border-dashed border-transparent"></div>
+                        <div className="col-span-1 row-span-1 col-start-1 row-start-3 rounded-xl border-2 border-dashed border-transparent"></div>
+                        <div className="col-span-2 row-span-1 col-start-1 row-start-4 rounded-xl border-2 border-dashed border-transparent"></div>
+                      </>
+                    ) : (
+                      <>
+                        {/* Horizontal layout drop zones */}
+                        <div className="col-span-1 row-span-1 col-start-3 row-start-1 rounded-xl border-2 border-dashed border-transparent"></div>
+                        <div className="col-span-1 row-span-1 col-start-4 row-start-1 rounded-xl border-2 border-dashed border-transparent"></div>
+                        <div className="col-span-2 row-span-1 col-start-3 row-start-2 rounded-xl border-2 border-dashed border-transparent"></div>
+                      </>
+                    )}
                   </div>
                   {/* Combined A1+B1 - Cover Image with Upload */}
-                  <div className="col-span-2 row-span-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-sm" 
+                  <div className={`bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-sm ${style?.orientation === 'vertical' ? 'col-span-2 row-span-2' : 'col-span-2 row-span-1'}`}
                     style={{ 
                       borderRadius: `${(style?.borderRadius || 16) * 0.75}px`
                     }}
@@ -239,7 +249,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   </div>
 
                   {/* Square A2 - Top Second */}
-                  <div className="col-span-1 row-span-1 overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-sm"
+                  <div className={`overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-sm ${style?.orientation === 'vertical' ? 'col-span-1 row-span-1 col-start-2 row-start-2' : 'col-span-1 row-span-1'}`}
                     style={{ borderRadius: `${(style?.borderRadius || 16) * 0.75}px` }}>
                     {(() => {
                     const link = getLinkByIndex(0);
@@ -262,7 +272,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   </div>
 
                   {/* Square A3 - Made with Maze or Second Link */}
-                  <div className="col-span-1 row-span-1 overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-sm"
+                  <div className={`overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-sm ${style?.orientation === 'vertical' ? 'col-span-1 row-span-1 col-start-1 row-start-3' : 'col-span-1 row-span-1'}`}
                     style={{ borderRadius: `${(style?.borderRadius || 16) * 0.75}px` }}>
                     {(() => {
                     const link = getLinkByIndex(1);
@@ -285,7 +295,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   </div>
 
                   {/* Profile Section A4 - Transparent with profile info */}
-                  <div className="col-span-2 row-span-1 rounded-xl flex flex-col justify-center p-3 text-left">
+                  <div className={`rounded-xl flex flex-col justify-center p-3 text-left ${style?.orientation === 'vertical' ? 'col-span-1 row-span-1 col-start-2 row-start-3' : 'col-span-2 row-span-1'}`}>
                     <div className="flex items-center gap-1 mb-1">
                       <span 
                         className="text-title-medium font-semibold"
@@ -304,7 +314,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   </div>
 
                   {/* Square B3 - Bottom Right (spans 2 columns) */}
-                  <div className="col-span-2 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-elevation-3">
+                  <div className={`rounded-xl overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-elevation-3 ${style?.orientation === 'vertical' ? 'col-span-2 row-span-1 col-start-1 row-start-4' : 'col-span-2 row-span-1'}`}>
                     {(() => {
                     const link = brandMode ? getLinkByIndex(2) : getLinkByIndex(1);
                     if (link) {

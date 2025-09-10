@@ -6,7 +6,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
   Palette, 
   Type, 
-  Layout
+  Layout,
+  RotateCcw
 } from "lucide-react";
 
 interface StyleCustomizerProps {
@@ -16,6 +17,7 @@ interface StyleCustomizerProps {
     fontFamily: string;
     borderRadius: number;
     theme: string;
+    orientation: 'horizontal' | 'vertical';
   };
   onStyleChange: (style: any) => void;
 }
@@ -181,6 +183,40 @@ export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) 
           </TabsContent>
 
           <TabsContent value="layout" className="space-y-6">
+            <div className="space-y-3">
+              <Label>Orientation</Label>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => updateStyle('orientation', 'horizontal')}
+                  className={`flex-1 p-4 text-left border-2 rounded-lg transition-colors ${
+                    style.orientation === 'horizontal' 
+                      ? 'border-primary bg-primary/5' 
+                      : 'border-border hover:border-primary/50'
+                  }`}
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-4 h-2 bg-current opacity-60 rounded-sm"></div>
+                    <span className="font-semibold">Horizontal</span>
+                  </div>
+                  <div className="text-sm text-muted-foreground">Wide layout</div>
+                </button>
+                <button
+                  onClick={() => updateStyle('orientation', 'vertical')}
+                  className={`flex-1 p-4 text-left border-2 rounded-lg transition-colors ${
+                    style.orientation === 'vertical' 
+                      ? 'border-primary bg-primary/5' 
+                      : 'border-border hover:border-primary/50'
+                  }`}
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-2 h-4 bg-current opacity-60 rounded-sm"></div>
+                    <span className="font-semibold">Vertical</span>
+                  </div>
+                  <div className="text-sm text-muted-foreground">Tall layout</div>
+                </button>
+              </div>
+            </div>
+            
             <div className="space-y-3">
               <div className="flex justify-between items-center">
                 <Label>Border Radius</Label>
