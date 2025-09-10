@@ -40,7 +40,8 @@ export function MazeDashboard() {
     accentColor: "#6366f1", 
     fontFamily: "Inter",
     borderRadius: 12,
-    theme: "light"
+    theme: "light",
+    orientation: "horizontal" as "horizontal" | "vertical"
   });
   const fileInputRef = useRef<HTMLInputElement>(null);
   
