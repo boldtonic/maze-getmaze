@@ -191,6 +191,16 @@ Accessibility in micro-interactions has gained significant attention, with new g
           </div>
         </div>
 
+        {/* Article Refresh Button - Lower Right Corner */}
+        <div className="absolute bottom-5 right-5">
+          <button 
+            onClick={refreshArticle} 
+            className="w-10 h-10 bg-white/90 backdrop-blur-sm border border-gray-200 hover:bg-white shadow-lg hover:shadow-xl rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
+          >
+            <RefreshCw className="w-5 h-5 text-gray-700" strokeWidth={2} />
+          </button>
+        </div>
+
         {/* Card floating over the blurred background */}
         <div className="absolute top-32 left-1/2 transform -translate-x-1/2" style={{ fontFamily: style?.fontFamily || 'Inter' }}>
           <div className={style?.orientation === 'vertical' ? "w-[236px] h-[420px]" : "w-[420px] h-[236px]"}>
@@ -338,17 +348,6 @@ Accessibility in micro-interactions has gained significant attention, with new g
                 </div>
               </div>
             </Card>
-          </div>
-
-
-          {/* Rotate Icon - Lower Right Corner of Card */}
-          <div className="absolute bottom-5 right-5">
-            <button 
-              onClick={refreshArticle} 
-              className="w-8 h-8 bg-white/80 backdrop-blur-sm border border-gray-200 hover:bg-white/90 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
-            >
-              <RefreshCw className="w-4 h-4 text-gray-700" strokeWidth={2} />
-            </button>
           </div>
         </div>
       </div>
