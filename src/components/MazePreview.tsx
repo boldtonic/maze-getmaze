@@ -248,8 +248,27 @@ Accessibility in micro-interactions has gained significant attention, with new g
                       </>}
                   </div>
 
+                  {/* Profile Section A4 - Transparent with profile info */}
+                  <div className={`rounded-xl flex flex-col justify-center p-3 text-left ${style?.orientation === 'vertical' ? 'col-span-2 row-span-1 col-start-1 row-start-2' : 'col-span-2 row-span-1'}`}>
+                    <div className="flex items-center gap-1 mb-1">
+                      <span 
+                        className="text-title-medium font-semibold"
+                        style={{ 
+                          color: textColor
+                        }}
+                      >
+                        {profile.displayName}
+                      </span>
+                      <BadgeCheck className="w-4 h-4 text-blue-500" strokeWidth={2} />
+                    </div>
+                    <div className="flex items-center gap-1 mb-1">
+                      <p className="text-body-small font-semibold" style={{ color: mutedTextColor }}>{profile.title}</p>
+                    </div>
+                    <p className="text-body-small leading-tight" style={{ color: mutedTextColor }}>{profile.bio}</p>
+                  </div>
+
                   {/* Square A2 - Top Second */}
-                  <div className={`overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-sm ${style?.orientation === 'vertical' ? 'col-span-1 row-span-1 col-start-1 row-start-2' : 'col-span-1 row-span-1'}`}
+                  <div className={`overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-sm ${style?.orientation === 'vertical' ? 'col-span-1 row-span-1 col-start-1 row-start-3' : 'col-span-1 row-span-1'}`}
                     style={{ borderRadius: `${(style?.borderRadius || 16) * 0.75}px` }}>
                     {(() => {
                     const link = getLinkByIndex(0);
@@ -272,7 +291,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   </div>
 
                   {/* Square A3 - Made with Maze or Second Link */}
-                  <div className={`overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-sm ${style?.orientation === 'vertical' ? 'col-span-1 row-span-1 col-start-2 row-start-2' : 'col-span-1 row-span-1'}`}
+                  <div className={`overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-sm ${style?.orientation === 'vertical' ? 'col-span-1 row-span-1 col-start-2 row-start-3' : 'col-span-1 row-span-1'}`}
                     style={{ borderRadius: `${(style?.borderRadius || 16) * 0.75}px` }}>
                     {(() => {
                     const link = getLinkByIndex(1);
@@ -294,24 +313,6 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   })()}
                   </div>
 
-                  {/* Profile Section A4 - Transparent with profile info */}
-                  <div className={`rounded-xl flex flex-col justify-center p-3 text-left ${style?.orientation === 'vertical' ? 'col-span-2 row-span-1 col-start-1 row-start-3' : 'col-span-2 row-span-1'}`}>
-                    <div className="flex items-center gap-1 mb-1">
-                      <span 
-                        className="text-title-medium font-semibold"
-                        style={{ 
-                          color: textColor
-                        }}
-                      >
-                        {profile.displayName}
-                      </span>
-                      <BadgeCheck className="w-4 h-4 text-blue-500" strokeWidth={2} />
-                    </div>
-                    <div className="flex items-center gap-1 mb-1">
-                      <p className="text-body-small font-semibold" style={{ color: mutedTextColor }}>{profile.title}</p>
-                    </div>
-                    <p className="text-body-small leading-tight" style={{ color: mutedTextColor }}>{profile.bio}</p>
-                  </div>
 
                   {/* Square B3 - Bottom Right (spans 2 columns) */}
                   <div className={`rounded-xl overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-elevation-3 ${style?.orientation === 'vertical' ? 'col-span-2 row-span-1 col-start-1 row-start-4' : 'col-span-2 row-span-1'}`}>
