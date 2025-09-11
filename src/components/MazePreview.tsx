@@ -229,7 +229,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                     )}
                   </div>
                   {/* Combined A1+B1 - Cover Image with Upload */}
-                  <div className={`bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-sm ${style?.orientation === 'vertical' ? 'col-span-2 row-span-2' : 'col-span-2 row-span-1'}`}
+                  <div className={`bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-sm ${style?.orientation === 'vertical' ? 'col-span-2 row-span-1' : 'col-span-2 row-span-1'}`}
                     style={{ 
                       borderRadius: `${(style?.borderRadius || 16) * 0.75}px`
                     }}
@@ -249,7 +249,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   </div>
 
                   {/* Square A2 - Top Second */}
-                  <div className={`overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-sm ${style?.orientation === 'vertical' ? 'col-span-1 row-span-1 col-start-2 row-start-2' : 'col-span-1 row-span-1'}`}
+                  <div className={`overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-sm ${style?.orientation === 'vertical' ? 'col-span-1 row-span-1 col-start-1 row-start-2' : 'col-span-1 row-span-1'}`}
                     style={{ borderRadius: `${(style?.borderRadius || 16) * 0.75}px` }}>
                     {(() => {
                     const link = getLinkByIndex(0);
@@ -272,7 +272,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   </div>
 
                   {/* Square A3 - Made with Maze or Second Link */}
-                  <div className={`overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-sm ${style?.orientation === 'vertical' ? 'col-span-1 row-span-1 col-start-1 row-start-3' : 'col-span-1 row-span-1'}`}
+                  <div className={`overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-sm ${style?.orientation === 'vertical' ? 'col-span-1 row-span-1 col-start-2 row-start-2' : 'col-span-1 row-span-1'}`}
                     style={{ borderRadius: `${(style?.borderRadius || 16) * 0.75}px` }}>
                     {(() => {
                     const link = getLinkByIndex(1);
@@ -295,7 +295,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   </div>
 
                   {/* Profile Section A4 - Transparent with profile info */}
-                  <div className={`rounded-xl flex flex-col justify-center p-3 text-left ${style?.orientation === 'vertical' ? 'col-span-1 row-span-1 col-start-2 row-start-3' : 'col-span-2 row-span-1'}`}>
+                  <div className={`rounded-xl flex flex-col justify-center p-3 text-left ${style?.orientation === 'vertical' ? 'col-span-2 row-span-1 col-start-1 row-start-3' : 'col-span-2 row-span-1'}`}>
                     <div className="flex items-center gap-1 mb-1">
                       <span 
                         className="text-title-medium font-semibold"
