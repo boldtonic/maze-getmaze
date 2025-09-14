@@ -78,21 +78,21 @@ export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) 
                         backgroundColor: preset.background 
                       });
                     }}
-                    className="group relative h-16 rounded-lg border-2 border-border hover:border-primary transition-colors overflow-hidden"
+                    className="h-16 rounded-lg border-2 border-border hover:border-primary transition-colors overflow-hidden p-3 flex items-center justify-between"
                     style={{ backgroundColor: preset.background }}
                   >
-                    <div 
-                      className="absolute top-2 right-2 w-4 h-4 rounded-full border border-white/50"
-                      style={{ backgroundColor: preset.primary }}
-                    />
                     <span 
-                      className="absolute bottom-2 left-2 text-xs font-medium"
+                      className="text-xs font-medium"
                       style={{ 
                         color: preset.background === "#1f2937" ? "#ffffff" : "#1f2937"
                       }}
                     >
                       {preset.name}
                     </span>
+                    <div 
+                      className="w-4 h-4 rounded-full border border-white/50"
+                      style={{ backgroundColor: preset.primary }}
+                    />
                   </button>
                 ))}
               </div>
