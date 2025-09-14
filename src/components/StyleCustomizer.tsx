@@ -78,7 +78,7 @@ export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) 
                         backgroundColor: preset.background 
                       });
                     }}
-                    className="h-16 rounded-lg border-2 border-border hover:border-primary transition-colors overflow-hidden p-3 flex items-center justify-between"
+                    className="h-12 rounded-lg border-2 border-border hover:border-primary transition-colors overflow-hidden p-3 flex items-center justify-between"
                     style={{ backgroundColor: preset.background }}
                   >
                     <span 
