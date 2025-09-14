@@ -101,7 +101,7 @@ export function MazeDashboard() {
                 <span className="text-primary-foreground font-medium text-lg">M</span>
               </div>
               <div>
-                <h1 className="text-display-small font-medium text-on-surface italic" style={{ color: '#004aad' }}>maze</h1>
+                <img src="/src/assets/maze-logo.svg" alt="maze" className="h-8" />
                 <p className="text-body-medium text-on-surface-variant">Your semantic identity window</p>
               </div>
             </div>
