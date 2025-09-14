@@ -102,7 +102,7 @@ export function MazeDashboard() {
               </div>
               <div>
                 <img src="/src/assets/maze-logo.svg" alt="maze" className="h-8" />
-                <p className="text-body-medium text-on-surface-variant">Your semantic identity window</p>
+                
               </div>
             </div>
             
