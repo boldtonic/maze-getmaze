@@ -259,7 +259,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   </div>
 
                   {/* Profile Section A4 - Transparent with profile info */}
-                  <div className={`rounded-xl flex flex-col justify-center p-3 text-left ${style?.orientation === 'vertical' ? 'col-span-2 row-span-1 col-start-1 row-start-2' : 'col-span-2 row-span-1'}`}>
+                  <div className={`rounded-xl flex flex-col justify-center p-3 text-left ${style?.orientation === 'vertical' ? 'col-span-2 row-span-1 col-start-1 row-start-2' : 'col-span-2 row-span-1 row-start-2'}`}>
                     <div className="flex items-center gap-1 mb-1">
                       <span 
                         className="text-title-medium font-semibold"
