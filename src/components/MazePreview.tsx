@@ -239,10 +239,9 @@ Accessibility in micro-interactions has gained significant attention, with new g
                     )}
                   </div>
                   {/* Combined A1+B1 - Cover Image with Upload */}
-                  <div className={`relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-sm ${style?.orientation === 'vertical' ? 'col-span-2 row-span-1' : 'col-span-2 row-span-1'}`}
+                  <div className={`bg-gradient-to-br from-blue-400/20 to-indigo-500/20 relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-sm ${style?.orientation === 'vertical' ? 'col-span-2 row-span-1' : 'col-span-2 row-span-1'}`}
                     style={{ 
-                      borderRadius: `${(style?.borderRadius || 16) * 0.75}px`,
-                      backgroundColor: '#87b2f3'
+                      borderRadius: `${(style?.borderRadius || 16) * 0.75}px`
                     }}
                     onClick={onImageUpload}>
                     {coverImage ?
