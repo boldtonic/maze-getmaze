@@ -205,7 +205,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
         <div className="absolute top-32 left-1/2 transform -translate-x-1/2" style={{ fontFamily: style?.fontFamily || 'Inter' }}>
           <div className={style?.orientation === 'vertical' ? "w-[236px] h-[420px]" : "w-[420px] h-[236px]"}>
             <Card 
-              className="overflow-hidden border border-border/50 h-full w-full" 
+              className="overflow-hidden border-0 h-full w-full" 
               style={{
                 boxShadow: '0 0 80px 20px rgba(0, 0, 0, 0.2)',
                 borderRadius: `${style?.borderRadius || 16}px`
