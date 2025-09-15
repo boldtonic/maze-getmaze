@@ -325,7 +325,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
 
 
                   {/* Square B3 - Bottom Right (spans 2 columns) */}
-                  <div className={`rounded-xl overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-elevation-3 ${style?.orientation === 'vertical' ? 'col-span-2 row-span-1 col-start-1 row-start-4' : 'col-span-2 row-span-1'}`}>
+                  <div className={`rounded-xl overflow-hidden relative group cursor-pointer transition-all duration-300 hover:shadow-sm ${style?.orientation === 'vertical' ? 'col-span-2 row-span-1 col-start-1 row-start-4' : 'col-span-2 row-span-1'}`}>
                     {(() => {
                     const link = brandMode ? getLinkByIndex(2) : getLinkByIndex(1);
                     if (link) {
