@@ -251,7 +251,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                   // Show upload placeholder
                   <>
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="text-center text-white/80">
+                          <div className="text-center text-muted-foreground">
                             <ImagePlus className="w-5 h-5 mx-auto mb-1" strokeWidth={2} />
                             <span className="text-label-large font-medium text-base">Add Cover</span>
                           </div>
