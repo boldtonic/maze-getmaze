@@ -47,7 +47,7 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, o
         </CardHeader>
         <CardContent>
           <div className="flex items-center space-x-6">
-            <div className="w-20 h-20 rounded-xl overflow-hidden ring-4 ring-primary/20 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+            <div className="w-20 h-20 rounded-xl overflow-hidden ring-4 ring-primary/20 bg-blue-300">
               {coverImage ? (
                 <img 
                   src={coverImage} 
@@ -55,7 +55,7 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, o
                   className="w-full h-full object-cover"
                 />
               ) : (
-                <div className="w-full h-full bg-gradient-to-br from-blue-400/20 via-purple-400/20 to-pink-400/20 flex items-center justify-center">
+                <div className="w-full h-full bg-blue-300/40 flex items-center justify-center">
                   <ImagePlus className="w-6 h-6 text-white/60" />
                 </div>
               )}
