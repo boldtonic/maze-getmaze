@@ -183,7 +183,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
             <p>
               {currentArticle.highlightText}{" "}
               <span className="px-1 rounded font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
-                {currentArticle.mention}
+                {profile.displayName}
               </span>
               {" "}{currentArticle.continuation}
             </p>
