@@ -182,7 +182,13 @@ Accessibility in micro-interactions has gained significant attention, with new g
           <div className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed space-y-3">
             <p>
               {currentArticle.highlightText}{" "}
-              <span className="px-1 rounded font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+              <span 
+                className="px-1 rounded font-medium"
+                style={{
+                  backgroundColor: style?.accentColor ? `${style.accentColor}20` : '#dbeafe',
+                  color: style?.accentColor || '#1e40af'
+                }}
+              >
                 {profile.displayName}
               </span>
               {" "}{currentArticle.continuation}
