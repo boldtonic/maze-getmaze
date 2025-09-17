@@ -216,8 +216,8 @@ Accessibility in micro-interactions has gained significant attention, with new g
               <span 
                 className="px-1 rounded font-medium"
                 style={{
-                  backgroundColor: style?.accentColor ? `${style.accentColor}20` : '#dbeafe',
-                  color: getHighlightTextColor(style?.accentColor || '#1e40af')
+                  backgroundColor: style?.backgroundColor || 'white',
+                  color: mutedTextColor
                 }}
               >
                 {profile.displayName}
