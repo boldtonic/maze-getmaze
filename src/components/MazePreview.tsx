@@ -217,7 +217,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                 className="px-1 rounded font-medium"
                 style={{
                   backgroundColor: style?.backgroundColor || 'white',
-                  color: mutedTextColor
+                  color: textColor
                 }}
               >
                 {profile.displayName}
