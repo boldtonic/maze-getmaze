@@ -166,6 +166,37 @@ Accessibility in micro-interactions has gained significant attention, with new g
     return false;
   };
 
+  // Helper function to determine text color for highlight backgrounds
+  const getHighlightTextColor = (color: string) => {
+    if (!color) return '#1f2937';
+    
+    // Handle RGB format
+    if (color.startsWith('rgb')) {
+      const rgbMatch = color.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+      if (rgbMatch) {
+        const r = parseInt(rgbMatch[1]);
+        const g = parseInt(rgbMatch[2]);
+        const b = parseInt(rgbMatch[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        // Use white text only for very dark colors (threshold lowered for highlight backgrounds)
+        return brightness < 60 ? 'white' : '#1f2937';
+      }
+    }
+    
+    // Handle hex format
+    if (color.startsWith('#')) {
+      const hex = color.replace('#', '');
+      const r = parseInt(hex.substr(0, 2), 16);
+      const g = parseInt(hex.substr(2, 2), 16);
+      const b = parseInt(hex.substr(4, 2), 16);
+      const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+      // Use white text only for very dark colors (threshold lowered for highlight backgrounds)
+      return brightness < 60 ? 'white' : '#1f2937';
+    }
+    
+    return '#1f2937';
+  };
+
   const isDark = isColorDark(style?.backgroundColor || 'white');
   const textColor = isDark ? 'white' : '#1f2937';
   const mutedTextColor = isDark ? 'rgba(255, 255, 255, 0.7)' : 'rgba(31, 41, 55, 0.7)';
@@ -186,7 +217,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                 className="px-1 rounded font-medium"
                 style={{
                   backgroundColor: style?.accentColor ? `${style.accentColor}20` : '#dbeafe',
-                  color: isColorDark(style?.accentColor || '#1e40af') ? 'white' : '#1f2937'
+                  color: getHighlightTextColor(style?.accentColor || '#1e40af')
                 }}
               >
                 {profile.displayName}
