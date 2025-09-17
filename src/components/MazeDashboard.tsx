@@ -155,7 +155,7 @@ export function MazeDashboard() {
                   <div className="p-2 bg-primary/10 rounded-full">
                     <User className="h-5 w-5 text-primary" />
                   </div>
-                  <span>Edit Your Maze</span>
+                  <span>Maze Editor</span>
                 </CardTitle>
                 <CardDescription className="text-body-medium text-on-surface-variant">
                   Customize your semantic identity window that appears when you're mentioned online
