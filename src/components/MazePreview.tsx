@@ -186,7 +186,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
                 className="px-1 rounded font-medium"
                 style={{
                   backgroundColor: style?.accentColor ? `${style.accentColor}20` : '#dbeafe',
-                  color: style?.accentColor || '#1e40af'
+                  color: isColorDark(style?.accentColor || '#1e40af') ? 'white' : '#1f2937'
                 }}
               >
                 {profile.displayName}
