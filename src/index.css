@@ -72,14 +72,14 @@ All colors MUST be HSL.
     --gradient-button-hover: linear-gradient(135deg, hsl(214 84% 64%), hsl(214 90% 76%));
     --gradient-premium: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--primary)), hsl(var(--accent) / 0.8));
     
-    /* Brand Primary Gradient - Orange for light mode */
-    --primary-gradient-start: 15 100% 50%; /* #ff5e00 */
-    --primary-gradient-end: 20 100% 58%; /* #ff8533 */
+    /* Brand Primary Gradient - Blue for light mode */
+    --primary-gradient-start: 215 100% 34%; /* #004aad */
+    --primary-gradient-end: 212 86% 50%; /* #2563eb - darker blue */
     --gradient-brand-primary: linear-gradient(135deg, hsl(var(--primary-gradient-start)), hsl(var(--primary-gradient-end)));
     
     /* Shadows for brand buttons */
-    --shadow-brand: 0 4px 15px hsl(var(--primary-gradient-start) / 0.3);
-    --shadow-brand-hover: 0 6px 20px hsl(var(--primary-gradient-start) / 0.4);
+    --shadow-brand: 0 4px 15px hsl(var(--primary-gradient-start) / 0.4);
+    --shadow-brand-hover: 0 6px 20px hsl(var(--primary-gradient-start) / 0.5);
     
     /* Material 3 Elevations */
     --elevation-0: none;
@@ -145,14 +145,14 @@ All colors MUST be HSL.
     --gradient-primary: linear-gradient(135deg, hsl(214 100% 82%), hsl(214 90% 70%));
     --gradient-surface: linear-gradient(180deg, hsl(var(--surface)), hsl(var(--surface-variant)));
     
-    /* Brand Primary Gradient - Blue for dark mode */
+    /* Brand Primary Gradient - Darker blue for dark mode */
     --primary-gradient-start: 215 100% 34%; /* #004aad */
-    --primary-gradient-end: 212 86% 64%; /* #4d8cf3 */
+    --primary-gradient-end: 212 86% 58%; /* #3b82f6 - slightly lighter for contrast */
     --gradient-brand-primary: linear-gradient(135deg, hsl(var(--primary-gradient-start)), hsl(var(--primary-gradient-end)));
     
     /* Enhanced shadows for dark mode brand buttons */
-    --shadow-brand: 0 0 0 1px hsl(0 0% 100% / 0.10), 0 10px 24px hsl(var(--primary-gradient-start) / 0.55), 0 2px 6px hsl(0 0% 0% / 0.50);
-    --shadow-brand-hover: 0 0 0 1px hsl(0 0% 100% / 0.12), 0 14px 32px hsl(var(--primary-gradient-start) / 0.65), 0 4px 10px hsl(0 0% 0% / 0.55);
+    --shadow-brand: 0 0 0 1px hsl(0 0% 100% / 0.08), 0 8px 20px hsl(var(--primary-gradient-start) / 0.6), 0 2px 6px hsl(0 0% 0% / 0.4);
+    --shadow-brand-hover: 0 0 0 1px hsl(0 0% 100% / 0.10), 0 12px 28px hsl(var(--primary-gradient-start) / 0.7), 0 4px 10px hsl(0 0% 0% / 0.5);
     
     /* Material 3 Dark Surface variants */
     --surface-container: 214 25% 10%;
