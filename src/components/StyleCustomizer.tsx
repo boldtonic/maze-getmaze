@@ -241,7 +241,7 @@ export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) 
       </Tabs>
 
       <Button
-        variant="outline"
+        variant="primary"
         size="default"
         className="w-full flex items-center justify-center space-x-2 text-label-large"
       >

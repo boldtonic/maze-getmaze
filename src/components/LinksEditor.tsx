@@ -177,7 +177,7 @@ export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProp
 
 
       {/* Save Button */}
-      <Button variant="outline" size="default" className="w-full text-label-large">
+      <Button variant="primary" size="default" className="w-full text-label-large">
         Save Link Changes
       </Button>
     </div>
