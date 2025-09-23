@@ -132,8 +132,8 @@ export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProp
 
           <Button 
             onClick={addLink}
-            variant="outline" 
-            className="w-full border-dashed border-2 h-12 text-label-large hover:bg-surface-variant"
+            variant="primary" 
+            className="w-full h-12 text-label-large"
             disabled={!canAddLink}
           >
             <Plus className="h-4 w-4 mr-2" />
