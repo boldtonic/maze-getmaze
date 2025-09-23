@@ -201,10 +201,10 @@ export function Analytics() {
         </CardHeader>
         <CardContent>
           <div className="flex space-x-3">
-            <Button variant="primary" size="default" className="text-label-medium">
+            <Button variant="primary" size="sm" className="text-label-medium">
               Export CSV
             </Button>
-            <Button variant="primary" size="default" className="text-label-medium">
+            <Button variant="primary" size="sm" className="text-label-medium">
               Export PDF Report
             </Button>
           </div>

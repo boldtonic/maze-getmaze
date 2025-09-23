@@ -107,7 +107,7 @@ export function MazeDashboard() {
             </div>
             
             <div className="flex items-center space-x-3">
-              <Button variant="primary" size="default" className="text-label-large">
+              <Button variant="primary" size="sm" className="text-label-large">
                 <Eye className="h-4 w-4 mr-2" />
                 Preview
               </Button>

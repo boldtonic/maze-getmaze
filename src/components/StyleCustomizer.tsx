@@ -242,7 +242,7 @@ export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) 
 
       <Button
         variant="primary"
-        size="default"
+        size="sm"
         className="w-full flex items-center justify-center space-x-2 text-label-large"
       >
         <span>Save Design Changes</span>

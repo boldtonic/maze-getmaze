@@ -63,7 +63,7 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, o
             <div className="space-y-2">
               <Button 
                 variant="primary"
-                size="default"
+                size="sm"
                 className="flex items-center space-x-2 text-label-large"
                 onClick={onImageUpload}
               >
@@ -157,7 +157,7 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, o
       </Card>
 
       {/* Save Button */}
-      <Button variant="primary" size="default" className="w-full text-label-large">
+      <Button variant="primary" size="sm" className="w-full text-label-large">
         Save Profile Changes
       </Button>
     </div>

@@ -133,7 +133,8 @@ export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProp
           <Button 
             onClick={addLink}
             variant="primary" 
-            className="w-full h-12 text-label-large"
+            size="sm"
+            className="w-full h-10 text-label-large"
             disabled={!canAddLink}
           >
             <Plus className="h-4 w-4 mr-2" />
@@ -177,7 +178,7 @@ export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProp
 
 
       {/* Save Button */}
-      <Button variant="primary" size="default" className="w-full text-label-large">
+      <Button variant="primary" size="sm" className="w-full text-label-large">
         Save Link Changes
       </Button>
     </div>
