@@ -55,8 +55,8 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, o
                   className="w-full h-full object-cover"
                 />
               ) : (
-                <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: 'rgba(135, 178, 243, 0.4)' }}>
-                  <ImagePlus className="w-6 h-6 text-white/60" />
+                <div className="w-full h-full flex items-center justify-center bg-muted">
+                  <ImagePlus className="w-6 h-6 text-muted-foreground" />
                 </div>
               )}
             </div>
