@@ -28,7 +28,7 @@ const buttonVariants = cva(
         // Save/Export buttons variant - transparent with dark text, visible border, blue fill on hover
         save: "bg-transparent text-[#1a1a1a] border-2 border-gray-300 hover:bg-blue-500 hover:text-white hover:border-blue-500 hover:shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all duration-200",
         // Brand primary variant - solid #004aad with white text for proper contrast  
-        primary: "!bg-[#004aad] !text-white font-semibold text-sm px-4 py-2 rounded-full transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0" + 
+        primary: "!bg-[#004aad] !text-white font-semibold text-sm px-4 py-2 rounded-full transition-all duration-200 hover:opacity-90" + 
                  " hover:[box-shadow:var(--shadow-brand-hover)] [&>*]:!text-white hover:[&>*]:!text-white border-0",
       },
       size: {
