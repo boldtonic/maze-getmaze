@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -8,7 +8,9 @@ import {
   Link, 
   Palette, 
   BarChart3, 
-  Eye
+  Eye,
+  Moon,
+  Sun
 } from "lucide-react";
 import { MazePreview } from "./MazePreview";
 import { ProfileEditor } from "./ProfileEditor";
@@ -27,7 +29,21 @@ interface Link {
 
 export function MazeDashboard() {
   const [activeTab, setActiveTab] = useState("profile");
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const brandMode = false;
+  
+  // Dark mode toggle effect
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
   const [coverImage, setCoverImage] = useState<string | null>(null);
   const [profile, setProfile] = useState({
     displayName: "Jane Doe",
@@ -92,31 +108,45 @@ export function MazeDashboard() {
         className="hidden"
       />
       
-      {/* Material 3 Top App Bar */}
-      <header className="border-b border-border bg-surface-container/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-4">
-              <div className="h-10 w-10 rounded-2xl bg-primary flex items-center justify-center shadow-elevation-1">
-                <span className="text-primary-foreground font-medium text-lg">M</span>
+      {/* Material 3 Top App Bar - Floating */}
+      <div className="p-4">
+        <header className="border border-border bg-surface-container/95 backdrop-blur-sm rounded-2xl shadow-elevation-2 mx-auto max-w-7xl">
+          <div className="px-6 py-4">
+            <div className="flex justify-between items-center">
+              <div className="flex items-center space-x-4">
+                <div className="h-10 w-10 rounded-2xl bg-primary flex items-center justify-center shadow-elevation-1">
+                  <span className="text-primary-foreground font-medium text-lg">M</span>
+                </div>
+                <div>
+                  <img src="/src/assets/maze-logo.svg" alt="maze" className="h-8" />
+                  
+                </div>
               </div>
-              <div>
-                <img src="/src/assets/maze-logo.svg" alt="maze" className="h-8" />
-                
+              
+              <div className="flex items-center space-x-3">
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={toggleDarkMode}
+                  className="h-9 w-9 p-0 hover:bg-surface-container-high"
+                >
+                  {isDarkMode ? (
+                    <Sun className="h-4 w-4" />
+                  ) : (
+                    <Moon className="h-4 w-4" />
+                  )}
+                </Button>
+                <Button variant="primary" size="sm" className="text-label-large">
+                  <Eye className="h-4 w-4 mr-2" />
+                  Preview
+                </Button>
               </div>
-            </div>
-            
-            <div className="flex items-center space-x-3">
-              <Button variant="primary" size="sm" className="text-label-large">
-                <Eye className="h-4 w-4 mr-2" />
-                Preview
-              </Button>
             </div>
           </div>
-        </div>
-      </header>
+        </header>
+      </div>
 
-      <div className="max-w-7xl mx-auto px-6 h-[calc(100vh-6rem)] flex">
+      <div className="max-w-7xl mx-auto px-6 h-[calc(100vh-10rem)] flex">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full overflow-hidden">
           {/* Left Panel - Preview */}
           <div className="space-y-6">
