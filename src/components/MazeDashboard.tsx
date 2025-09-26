@@ -108,37 +108,38 @@ export function MazeDashboard() {
         className="hidden"
       />
       
-      {/* Material 3 Top App Bar - Floating */}
+      {/* Material 3 Top App Bar - Floating Card Style */}
       <div className="p-4">
-        <header className="border border-border bg-surface-container/95 backdrop-blur-sm rounded-2xl shadow-elevation-2 mx-auto max-w-7xl">
+        <header className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl mx-auto max-w-7xl">
           <div className="px-6 py-4">
             <div className="flex justify-between items-center">
               <div className="flex items-center space-x-4">
-                <div className="h-10 w-10 rounded-2xl bg-primary flex items-center justify-center shadow-elevation-1">
-                  <span className="text-primary-foreground font-medium text-lg">M</span>
+                <div className="p-2 bg-primary/10 rounded-full">
+                  <div className="h-6 w-6 rounded-xl bg-primary flex items-center justify-center shadow-elevation-1">
+                    <span className="text-primary-foreground font-medium text-sm">M</span>
+                  </div>
                 </div>
                 <div>
                   <img src="/src/assets/maze-logo.svg" alt="maze" className="h-8" />
-                  
                 </div>
               </div>
               
               <div className="flex items-center space-x-3">
+                <Button variant="primary" size="sm" className="text-label-large">
+                  <Eye className="h-4 w-4 mr-2" />
+                  Preview
+                </Button>
                 <Button 
                   variant="ghost" 
                   size="sm" 
                   onClick={toggleDarkMode}
-                  className="h-9 w-9 p-0 hover:bg-surface-container-high"
+                  className="h-9 w-9 p-0 hover:bg-surface-container-high rounded-full"
                 >
                   {isDarkMode ? (
                     <Sun className="h-4 w-4" />
                   ) : (
                     <Moon className="h-4 w-4" />
                   )}
-                </Button>
-                <Button variant="primary" size="sm" className="text-label-large">
-                  <Eye className="h-4 w-4 mr-2" />
-                  Preview
                 </Button>
               </div>
             </div>

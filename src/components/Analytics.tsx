@@ -123,9 +123,9 @@ export function Analytics() {
                       {stat.description}
                     </p>
                   </div>
-                  <div className="h-12 w-12 rounded-lg bg-gradient-primary flex items-center justify-center">
-                    <IconComponent className="h-6 w-6 text-white" />
-                  </div>
+                   <div className="h-12 w-12 rounded-lg bg-gradient-primary flex items-center justify-center">
+                     <IconComponent className="h-6 w-6 text-white" strokeWidth={2} />
+                   </div>
                 </div>
               </CardContent>
             </Card>
@@ -149,10 +149,10 @@ export function Analytics() {
       {/* Recent Mentions */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center space-x-2">
-            <BarChart3 className="h-5 w-5" />
-            <span>Recent Mentions</span>
-          </CardTitle>
+         <CardTitle className="flex items-center space-x-2 text-on-surface">
+           <BarChart3 className="h-5 w-5 text-primary" strokeWidth={2} />
+           <span>Recent Mentions</span>
+         </CardTitle>
           <CardDescription>
             Latest mentions of you across the web
           </CardDescription>
@@ -180,9 +180,9 @@ export function Analytics() {
                     >
                       {mention.engagement} Engagement
                     </Badge>
-                    <Button variant="ghost" size="icon" className="text-primary hover:text-primary/80 transition-colors">
-                      <ExternalLink className="h-4 w-4" />
-                    </Button>
+                   <Button variant="ghost" size="icon" className="text-primary hover:text-primary/80 transition-colors">
+                     <ExternalLink className="h-4 w-4" strokeWidth={2} />
+                   </Button>
                   </div>
                 </div>
               </div>

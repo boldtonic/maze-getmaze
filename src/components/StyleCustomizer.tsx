@@ -81,12 +81,12 @@ export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) 
                     className="h-12 rounded-lg border-2 border-border hover:border-primary transition-colors overflow-hidden p-3 flex items-center justify-between"
                     style={{ backgroundColor: preset.background }}
                   >
-                    <span 
-                      className="text-xs font-medium"
-                      style={{ 
-                        color: preset.background === "#1f2937" ? "#ffffff" : "#1f2937"
-                      }}
-                    >
+                     <span 
+                       className="text-xs font-medium text-on-surface"
+                       style={{ 
+                         color: preset.background === "#1f2937" ? "#ffffff" : undefined
+                       }}
+                     >
                       {preset.name}
                     </span>
                     <div 
@@ -153,9 +153,9 @@ export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) 
                   />
                 </div>
               </div>
-              <div className="text-xs text-muted-foreground">
-                Custom colors override preset selections
-              </div>
+               <div className="text-xs text-on-surface-variant">
+                 Custom colors override preset selections
+               </div>
             </div>
           </TabsContent>
 
