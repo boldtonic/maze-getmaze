@@ -82,7 +82,7 @@ export function MazeDashboard() {
   
 
   return (
-    <div className="min-h-screen bg-surface transition-all duration-500 ease-out">
+    <div className="min-h-screen bg-surface">
       {/* Hidden file input */}
       <input
         type="file"
@@ -93,7 +93,7 @@ export function MazeDashboard() {
       />
       
       {/* Material 3 Top App Bar */}
-      <header className="border-b border-border bg-surface-container/80 backdrop-blur-sm sticky top-0 z-50 transition-all duration-300 ease-out animate-fade-in">
+      <header className="border-b border-border bg-surface-container/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-4">
@@ -119,8 +119,8 @@ export function MazeDashboard() {
       <div className="max-w-7xl mx-auto px-6 h-[calc(100vh-6rem)] flex">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full overflow-hidden">
           {/* Left Panel - Preview */}
-          <div className="space-y-6 animate-fade-in" style={{animationDelay: '0.1s'}}>
-            <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl transition-all duration-300 ease-out hover:shadow-elevation-3 hover:scale-[1.01]">
+          <div className="space-y-6">
+            <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl">
               <CardHeader className="pb-4">
                 <CardTitle className="flex items-center space-x-3 text-headline-large text-on-surface">
                   <div className="p-2 bg-secondary/10 rounded-full">
@@ -148,8 +148,8 @@ export function MazeDashboard() {
           </div>
 
           {/* Right Panel - Editor */}
-          <div className="space-y-6 overflow-y-auto max-h-[calc(100vh-8rem)] animate-fade-in scroll-smooth" style={{animationDelay: '0.2s'}}>
-            <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl transition-all duration-300 ease-out hover:shadow-elevation-3 hover:scale-[1.01]">
+          <div className="space-y-6 overflow-y-auto max-h-[calc(100vh-8rem)]">
+            <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl">
               <CardHeader className="pb-4">
                 <CardTitle className="flex items-center space-x-3 text-headline-large text-on-surface">
                   <div className="p-2 bg-primary/10 rounded-full">
@@ -163,7 +163,7 @@ export function MazeDashboard() {
               </CardHeader>
               <CardContent>
                 <Tabs value={activeTab} onValueChange={setActiveTab}>
-                  <TabsList className="grid w-full grid-cols-4 bg-surface-container-high rounded-2xl p-1 transition-all duration-200 ease-out">
+                  <TabsList className="grid w-full grid-cols-4 bg-surface-container-high rounded-2xl p-1">
                     <TabsTrigger 
                       value="profile" 
                       className="flex items-center space-x-2 data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
