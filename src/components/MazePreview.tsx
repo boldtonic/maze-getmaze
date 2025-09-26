@@ -239,7 +239,7 @@ Accessibility in micro-interactions has gained significant attention, with new g
         </div>
 
         {/* Card floating over the blurred background */}
-        <div className="absolute top-32 left-1/2 transform -translate-x-1/2" style={{ fontFamily: style?.fontFamily || 'Inter' }}>
+        <div className={`absolute left-1/2 transform -translate-x-1/2 ${style?.orientation === 'vertical' ? 'top-24' : 'top-32'}`} style={{ fontFamily: style?.fontFamily || 'Inter' }}>
           <div className={style?.orientation === 'vertical' ? "w-[236px] h-[420px]" : "w-[420px] h-[236px]"}>
             <Card 
               className="overflow-hidden border-0 h-full w-full" 
