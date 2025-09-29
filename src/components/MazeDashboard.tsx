@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -28,6 +29,7 @@ interface Link {
 }
 
 export function MazeDashboard() {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("profile");
   const [isDarkMode, setIsDarkMode] = useState(false);
   const brandMode = false;
@@ -129,7 +131,12 @@ export function MazeDashboard() {
             </div>
             
             <div className="flex items-center space-x-3">
-              <Button variant="primary" size="sm" className="text-label-large">
+              <Button 
+                variant="primary" 
+                size="sm" 
+                className="text-label-large"
+                onClick={() => navigate("/preview")}
+              >
                 <Eye className="h-4 w-4 mr-2" />
                 Preview
               </Button>
