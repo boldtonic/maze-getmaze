@@ -18,7 +18,6 @@ import { ProfileEditor } from "./ProfileEditor";
 import { LinksEditor } from "./LinksEditor";
 import { StyleCustomizer } from "./StyleCustomizer";
 import { Analytics } from "./Analytics";
-import mazeLogo from "@/assets/maze-brandlogo.png";
 
 interface Link {
   id: string;
@@ -127,7 +126,7 @@ export function MazeDashboard() {
                 </div>
               </div>
               <div>
-                <img src={mazeLogo} alt="Maze" className="h-8" />
+                <img src="/src/assets/maze-logo.svg" alt="maze" className="h-8" />
               </div>
             </div>
             
