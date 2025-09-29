@@ -107,23 +107,14 @@ const ArticlePreview = () => {
     <div className="min-h-screen bg-white">
       {/* Top Navigation Bar */}
       <div className="sticky top-0 z-50 bg-white border-b shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => navigate("/")}
-            className="flex-shrink-0"
-          >
-            <X className="h-4 w-4 mr-2" />
-            Close Preview
-          </Button>
-          
-          <div className="flex-1 max-w-md">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-center gap-4 relative">
+          {/* Center - Publisher Selector */}
+          <div className="flex-1 max-w-md mx-auto">
             <Select value={selectedPublisher} onValueChange={setSelectedPublisher}>
-              <SelectTrigger className="w-full">
+              <SelectTrigger className="w-full bg-background">
                 <SelectValue placeholder="Select a publisher style" />
               </SelectTrigger>
-              <SelectContent className="max-h-[400px]">
+              <SelectContent className="max-h-[400px] z-[100] bg-background">
                 <SelectGroup>
                   <SelectLabel>Lifestyle</SelectLabel>
                   <SelectItem value="vogue">Vogue</SelectItem>
@@ -150,6 +141,16 @@ const ArticlePreview = () => {
               </SelectContent>
             </Select>
           </div>
+
+          {/* Right - Close Button */}
+          <Button
+            onClick={() => navigate("/")}
+            className="absolute right-4 bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white shadow-lg hover:shadow-xl transition-all duration-200"
+            size="default"
+          >
+            <X className="h-4 w-4 mr-2" />
+            Close Preview
+          </Button>
         </div>
       </div>
 
