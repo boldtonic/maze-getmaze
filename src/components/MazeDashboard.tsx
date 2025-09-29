@@ -110,7 +110,7 @@ export function MazeDashboard() {
       
       {/* Material 3 Top App Bar - Floating Card Style */}
       <div className="p-4">
-        <header className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl mx-auto max-w-7xl">
+        <header className="shadow-elevation-3 bg-surface-container border-0 rounded-3xl mx-auto max-w-7xl">
           <div className="px-6 py-4">
             <div className="flex justify-between items-center">
               <div className="flex items-center space-x-4">
