@@ -18,6 +18,7 @@ import { ProfileEditor } from "./ProfileEditor";
 import { LinksEditor } from "./LinksEditor";
 import { StyleCustomizer } from "./StyleCustomizer";
 import { Analytics } from "./Analytics";
+import mazeIsotype from "@/assets/maze-isotype.png";
 
 interface Link {
   id: string;
@@ -121,9 +122,7 @@ export function MazeDashboard() {
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-4">
               <div className="p-2 bg-primary/10 rounded-full">
-                <div className="h-6 w-6 rounded-xl bg-primary flex items-center justify-center shadow-elevation-1">
-                  <span className="text-primary-foreground font-medium text-sm">M</span>
-                </div>
+                <img src={mazeIsotype} alt="Maze isotype" className="h-6 w-6" />
               </div>
               <div>
                 <img src="/src/assets/maze-logo.svg" alt="maze" className="h-8" />
