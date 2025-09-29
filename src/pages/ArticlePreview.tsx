@@ -4,6 +4,11 @@ import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import { MazeCard } from "@/components/MazeCard";
 import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+import {
   Select,
   SelectContent,
   SelectGroup,
@@ -57,8 +62,6 @@ const ArticlePreview = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [selectedPublisher, setSelectedPublisher] = useState<string>("vogue");
-  const [hoveredName, setHoveredName] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const style = publishers[selectedPublisher];
 
   // Get profile data from navigation state
@@ -76,21 +79,11 @@ const ArticlePreview = () => {
     coverImage: null,
   };
 
-  const handleNameHover = (e: React.MouseEvent) => {
-    setHoveredName(true);
-    setMousePosition({ x: e.clientX, y: e.clientY });
-  };
-
-  const handleNameLeave = () => {
-    setHoveredName(false);
-  };
-
   const renderArticle = () => {
     const articleProps = {
       publisherName: style.name,
       userName: profileData.profile.displayName,
-      onNameHover: handleNameHover,
-      onNameLeave: handleNameLeave,
+      profileData,
       highlightColor: profileData.style.backgroundColor,
     };
 
@@ -162,24 +155,6 @@ const ArticlePreview = () => {
 
       {/* Article Content */}
       {renderArticle()}
-
-      {/* Maze Card Hover */}
-      {hoveredName && (
-        <div
-          className="fixed z-50 pointer-events-none"
-          style={{
-            left: `${mousePosition.x + 20}px`,
-            top: `${mousePosition.y - 100}px`,
-          }}
-        >
-          <MazeCard
-            profile={profileData.profile}
-            links={profileData.links}
-            style={profileData.style}
-            coverImage={profileData.coverImage}
-          />
-        </div>
-      )}
     </div>
   );
 };
@@ -187,21 +162,18 @@ const ArticlePreview = () => {
 interface ArticleProps {
   publisherName: string;
   userName: string;
-  onNameHover: (e: React.MouseEvent) => void;
-  onNameLeave: () => void;
+  profileData: any;
   highlightColor: string;
 }
 
-// Highlighted Name Component
+// Highlighted Name Component with Hover Card
 const HighlightedName = ({ 
   name, 
-  onHover, 
-  onLeave, 
+  profileData,
   backgroundColor = "#fef08a" 
 }: { 
   name: string; 
-  onHover: (e: React.MouseEvent) => void; 
-  onLeave: () => void;
+  profileData: any;
   backgroundColor?: string;
 }) => {
   const isColorDark = (color: string) => {
@@ -220,17 +192,32 @@ const HighlightedName = ({
   const textColor = isColorDark(backgroundColor) ? 'white' : '#1f2937';
 
   return (
-    <span
-      className="px-1 rounded cursor-pointer transition-all duration-200"
-      style={{
-        backgroundColor: backgroundColor,
-        color: textColor
-      }}
-      onMouseEnter={onHover}
-      onMouseLeave={onLeave}
-    >
-      {name}
-    </span>
+    <HoverCard openDelay={200} closeDelay={400}>
+      <HoverCardTrigger asChild>
+        <span
+          className="px-1 rounded cursor-pointer transition-all duration-200"
+          style={{
+            backgroundColor: backgroundColor,
+            color: textColor
+          }}
+        >
+          {name}
+        </span>
+      </HoverCardTrigger>
+      <HoverCardContent 
+        side="top" 
+        align="start"
+        className="w-auto p-0 border-0 bg-transparent shadow-none"
+        sideOffset={10}
+      >
+        <MazeCard
+          profile={profileData.profile}
+          links={profileData.links}
+          style={profileData.style}
+          coverImage={profileData.coverImage}
+        />
+      </HoverCardContent>
+    </HoverCard>
   );
 };
 
@@ -238,9 +225,8 @@ const HighlightedName = ({
 const LifestyleArticle = ({ 
   publisherName, 
   userName, 
-  onNameHover, 
-  onNameLeave, 
-  highlightColor 
+  profileData,
+  highlightColor
 }: ArticleProps) => {
   return (
     <article className="max-w-5xl mx-auto px-4 py-12">
@@ -267,7 +253,7 @@ const LifestyleArticle = ({
         {/* Content with interspersed images */}
         <div className="space-y-12">
           <p className="text-xl font-serif leading-relaxed">
-            In the ever-evolving landscape of contemporary fashion, elegance remains a timeless pursuit—one that transcends fleeting trends and speaks to something deeper within the human spirit. As <HighlightedName name={userName} onHover={onNameHover} onLeave={onNameLeave} backgroundColor={highlightColor} /> recently noted at the Milan Fashion Week, authenticity is becoming the new luxury.
+            In the ever-evolving landscape of contemporary fashion, elegance remains a timeless pursuit—one that transcends fleeting trends and speaks to something deeper within the human spirit. As <HighlightedName name={userName} profileData={profileData} backgroundColor={highlightColor} /> recently noted at the Milan Fashion Week, authenticity is becoming the new luxury.
           </p>
 
         <div className="aspect-[4/5] bg-gradient-to-br from-rose-100 to-amber-50 flex items-center justify-center">
@@ -309,7 +295,7 @@ const LifestyleArticle = ({
 };
 
 // Decoration Article (Architectural Digest, Elle Decor) - Very image-heavy, spacious
-const DecorationArticle = ({ publisherName, userName, onNameHover, onNameLeave, highlightColor }: ArticleProps) => (
+const DecorationArticle = ({ publisherName, userName, profileData, highlightColor }: ArticleProps) => (
   <article className="max-w-6xl mx-auto px-4 py-12">
     {/* Publisher Header */}
     <div className="text-center mb-16">
@@ -340,7 +326,7 @@ const DecorationArticle = ({ publisherName, userName, onNameHover, onNameLeave, 
 
       <div className="max-w-3xl mx-auto">
         <p className="text-2xl font-serif leading-relaxed mb-8">
-          Natural light floods through floor-to-ceiling windows, illuminating a carefully curated collection of mid-century furniture and contemporary art. Interior designer <HighlightedName name={userName} onHover={onNameHover} onLeave={onNameLeave} backgroundColor={highlightColor} /> consulted on the color palette, bringing warmth to the minimalist aesthetic.
+          Natural light floods through floor-to-ceiling windows, illuminating a carefully curated collection of mid-century furniture and contemporary art. Interior designer <HighlightedName name={userName} profileData={profileData} backgroundColor={highlightColor} /> consulted on the color palette, bringing warmth to the minimalist aesthetic.
         </p>
       </div>
 
@@ -385,7 +371,7 @@ const DecorationArticle = ({ publisherName, userName, onNameHover, onNameLeave, 
 );
 
 // Sports Article (ESPN, Marca) - Bold, dynamic, stats-focused
-const SportsArticle = ({ publisherName, userName, onNameHover, onNameLeave, highlightColor }: ArticleProps) => (
+const SportsArticle = ({ publisherName, userName, profileData }: ArticleProps) => (
   <article className="max-w-7xl mx-auto px-4 py-8">
     {/* Bold Publisher Header */}
     <div className="bg-red-600 text-white px-8 py-4 mb-8">
@@ -430,7 +416,7 @@ const SportsArticle = ({ publisherName, userName, onNameHover, onNameLeave, high
     <div className="grid grid-cols-3 gap-8">
       <div className="col-span-2 space-y-6">
         <p className="text-xl font-bold leading-relaxed">
-          In what will be remembered as one of the greatest upsets in sports history, the underdogs pulled off an impossible victory with a last-second play that left millions of fans in absolute shock. Among those celebrating was former player <HighlightedName name={userName} onHover={onNameHover} onLeave={onNameLeave} />, who called it "the most incredible moment in the sport's history."
+          In what will be remembered as one of the greatest upsets in sports history, the underdogs pulled off an impossible victory with a last-second play that left millions of fans in absolute shock. Among those celebrating was former player <HighlightedName name={userName} profileData={profileData} />, who called it "the most incredible moment in the sport's history."
         </p>
 
         <p className="text-lg leading-relaxed">
@@ -488,7 +474,7 @@ const SportsArticle = ({ publisherName, userName, onNameHover, onNameLeave, high
 );
 
 // News Article (NYTimes) - Classic newspaper layout
-const NewsArticle = ({ publisherName, userName, onNameHover, onNameLeave, highlightColor }: ArticleProps) => (
+const NewsArticle = ({ publisherName, userName, profileData, highlightColor }: ArticleProps) => (
   <article className="max-w-5xl mx-auto px-4 py-8 bg-white">
     {/* Classic Newspaper Header */}
     <div className="border-b-4 border-black pb-4 mb-8">
@@ -519,7 +505,7 @@ const NewsArticle = ({ publisherName, userName, onNameHover, onNameLeave, highli
     <div className="columns-2 gap-8 text-justify space-y-4">
       <p className="font-serif leading-relaxed">
         <span className="text-5xl font-serif float-left mr-2 leading-none">W</span>
-        ASHINGTON — World leaders gathered today for an unprecedented summit addressing the interconnected challenges of global inflation, trade disruptions, and the urgent need for sustainable economic development. Economic advisor <HighlightedName name={userName} onHover={onNameHover} onLeave={onNameLeave} backgroundColor={highlightColor} /> attended the conference as a key policy consultant, marking what many observers are calling a pivotal moment in international cooperation.
+        ASHINGTON — World leaders gathered today for an unprecedented summit addressing the interconnected challenges of global inflation, trade disruptions, and the urgent need for sustainable economic development. Economic advisor <HighlightedName name={userName} profileData={profileData} backgroundColor={highlightColor} /> attended the conference as a key policy consultant, marking what many observers are calling a pivotal moment in international cooperation.
       </p>
 
       <p className="font-serif leading-relaxed">
@@ -550,7 +536,7 @@ const NewsArticle = ({ publisherName, userName, onNameHover, onNameLeave, highli
 );
 
 // Tech Article (Wired) - Minimalist, clean, modern
-const TechArticle = ({ publisherName, userName, onNameHover, onNameLeave, highlightColor }: ArticleProps) => (
+const TechArticle = ({ publisherName, userName, profileData }: ArticleProps) => (
   <article className="max-w-4xl mx-auto px-4 py-16 bg-white">
     {/* Minimal Header */}
     <div className="mb-16">
@@ -579,7 +565,7 @@ const TechArticle = ({ publisherName, userName, onNameHover, onNameLeave, highli
     {/* Clean Content */}
     <div className="space-y-8 text-lg leading-relaxed">
       <p className="text-2xl font-light leading-relaxed">
-        In a nondescript laboratory, researchers have developed an algorithm that fundamentally alters our understanding of machine learning—and with it, the future of artificial intelligence itself. The breakthrough came from collaboration with AI researcher <HighlightedName name={userName} onHover={onNameHover} onLeave={onNameLeave} />, whose insights proved crucial to the project's success.
+        In a nondescript laboratory, researchers have developed an algorithm that fundamentally alters our understanding of machine learning—and with it, the future of artificial intelligence itself. The breakthrough came from collaboration with AI researcher <HighlightedName name={userName} profileData={profileData} />, whose insights proved crucial to the project's success.
       </p>
 
       <div className="my-12 h-px bg-gray-200"></div>
