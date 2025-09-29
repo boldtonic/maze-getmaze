@@ -38,7 +38,6 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, o
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center space-x-2 text-headline-medium">
-            <User className="h-5 w-5" />
             <span>Personal Cover</span>
           </CardTitle>
           <CardDescription className="text-body-medium">
