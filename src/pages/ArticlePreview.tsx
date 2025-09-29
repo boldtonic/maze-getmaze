@@ -107,7 +107,19 @@ const ArticlePreview = () => {
     <div className="min-h-screen bg-white">
       {/* Top Navigation Bar */}
       <div className="sticky top-0 z-50 bg-white border-b shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-center gap-4 relative">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+          {/* Left - Maze Logo */}
+          <div className="flex items-center space-x-4">
+            <div className="p-2 bg-primary/10 rounded-full">
+              <div className="h-6 w-6 rounded-xl bg-primary flex items-center justify-center shadow-elevation-1">
+                <span className="text-primary-foreground font-medium text-sm">M</span>
+              </div>
+            </div>
+            <div>
+              <img src="/src/assets/maze-logo.svg" alt="maze" className="h-8" />
+            </div>
+          </div>
+
           {/* Center - Publisher Selector */}
           <div className="flex-1 max-w-md mx-auto">
             <Select value={selectedPublisher} onValueChange={setSelectedPublisher}>
@@ -146,7 +158,7 @@ const ArticlePreview = () => {
           <Button
             variant="primary"
             size="sm"
-            className="absolute right-4 text-label-large"
+            className="text-label-large"
             onClick={() => navigate("/")}
           >
             <X className="h-4 w-4 mr-2" />
