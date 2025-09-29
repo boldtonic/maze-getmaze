@@ -147,8 +147,8 @@ export function MazeDashboard() {
         </header>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 h-[calc(100vh-10rem)] flex">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 pb-8 flex">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
           {/* Left Panel - Preview */}
           <div className="space-y-6">
             <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl">
@@ -179,7 +179,7 @@ export function MazeDashboard() {
           </div>
 
           {/* Right Panel - Editor */}
-          <div className="space-y-6 overflow-y-auto max-h-[calc(100vh-8rem)]">
+          <div className="space-y-6">
             <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl">
               <CardHeader className="pb-4">
                 <CardTitle className="flex items-center space-x-3 text-headline-large text-on-surface">
