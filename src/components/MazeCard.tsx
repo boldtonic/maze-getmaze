@@ -1,6 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { BadgeCheck } from "lucide-react";
+import { BadgeCheck, ImagePlus } from "lucide-react";
 
 interface Link {
   id: string;
@@ -57,11 +56,14 @@ export const MazeCard = ({ profile, links, style, coverImage }: MazeCardProps) =
     return null;
   };
 
+  const brandMode = false; // Always false for the hover card preview
+
   return (
     <div className={style?.orientation === 'vertical' ? "w-[236px] h-[420px]" : "w-[420px] h-[236px]"}>
       <Card 
-        className="overflow-hidden border-0 h-full w-full shadow-2xl" 
+        className="overflow-hidden border-0 h-full w-full" 
         style={{
+          boxShadow: '0 0 80px 20px rgba(0, 0, 0, 0.2)',
           borderRadius: `${style?.borderRadius || 16}px`
         }}
       >
@@ -73,133 +75,150 @@ export const MazeCard = ({ profile, links, style, coverImage }: MazeCardProps) =
             fontFamily: style?.fontFamily || 'Inter'
           }}
         >
-          {/* Bento Grid Layout */}
+          {/* Bento Grid Layout - Exact same as MazePreview */}
           <div className={`grid gap-2 h-full ${style?.orientation === 'vertical' ? 'grid-cols-2 grid-rows-4' : 'grid-cols-4 grid-rows-2'}`}>
             
-            {/* Profile Card - takes 2 columns in vertical, 2 rows in horizontal */}
+            {/* Cover Image Section */}
             <div 
-              className={`rounded-xl p-3 flex flex-col justify-between ${style?.orientation === 'vertical' ? 'col-span-2 row-span-2' : 'col-span-2 row-span-2'}`}
-              style={{
-                backgroundColor: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)',
+              className={`bg-gradient-to-br from-blue-400/20 to-indigo-500/20 relative overflow-hidden ${style?.orientation === 'vertical' ? 'col-span-2 row-span-1' : 'col-span-2 row-span-1'}`}
+              style={{ 
                 borderRadius: `${(style?.borderRadius || 16) * 0.75}px`
               }}
             >
-              {coverImage && (
-                <div className="mb-2 -mt-3 -mx-3 h-16 overflow-hidden rounded-t-xl">
-                  <img src={coverImage} alt="Cover" className="w-full h-full object-cover" />
-                </div>
-              )}
-              <div className="flex-1 flex flex-col">
-                <div className="flex items-start gap-2 mb-2">
-                  <Avatar className="h-10 w-10 border-2" style={{ borderColor: style?.accentColor }}>
-                    <AvatarFallback style={{ backgroundColor: style?.accentColor, color: 'white' }}>
-                      {profile.displayName.charAt(0)}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-1">
-                      <h3 className="font-semibold text-sm truncate" style={{ color: textColor }}>
-                        {profile.displayName}
-                      </h3>
-                      <BadgeCheck className="h-3 w-3 flex-shrink-0" style={{ color: style?.accentColor }} />
-                    </div>
-                    <p className="text-xs truncate" style={{ color: mutedTextColor }}>
-                      {profile.title}
-                    </p>
+              {coverImage ? (
+                <img src={coverImage} alt="Cover" className="absolute inset-0 w-full h-full object-cover" />
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center" style={{ color: mutedTextColor }}>
+                    <ImagePlus className="w-5 h-5 mx-auto mb-1" strokeWidth={2} />
+                    <span className="text-base font-medium">Add Cover</span>
                   </div>
                 </div>
-                <p className="text-xs line-clamp-2" style={{ color: mutedTextColor }}>
-                  {profile.bio}
-                </p>
-              </div>
-              <div className="mt-2 pt-2 border-t" style={{ borderColor: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)' }}>
-                <div className="flex items-center justify-center gap-1">
-                  <span className="text-[10px]" style={{ color: mutedTextColor }}>Powered by</span>
-                  <img src="/src/assets/maze-logo.svg" alt="Maze" className="h-2.5 opacity-60" />
-                </div>
-              </div>
+              )}
             </div>
 
-            {/* Link Cards */}
-            {style?.orientation === 'vertical' ? (
-              <>
-                {/* Vertical: 2 single cards in row 3, 2 single cards in row 4 */}
-                {[0, 1, 2, 3].map((index) => {
-                  const link = getLinkByIndex(index);
-                  const row = index < 2 ? 3 : 4;
-                  const col = (index % 2) + 1;
-                  
+            {/* Profile Section - Transparent */}
+            <div 
+              className={`rounded-xl flex flex-col justify-center p-3 text-left ${style?.orientation === 'vertical' ? 'col-span-2 row-span-1 col-start-1 row-start-2' : 'col-span-2 row-span-1 row-start-2'}`}
+            >
+              <div className="flex items-center gap-1 mb-1">
+                <span 
+                  className="text-base font-semibold"
+                  style={{ color: textColor }}
+                >
+                  {profile.displayName}
+                </span>
+                <BadgeCheck className="w-4 h-4 text-blue-500" strokeWidth={2} />
+              </div>
+              <div className="flex items-center gap-1 mb-1">
+                <p className="text-sm font-semibold" style={{ color: mutedTextColor }}>
+                  {profile.title}
+                </p>
+              </div>
+              <p className="text-sm leading-tight" style={{ color: mutedTextColor }}>
+                {profile.bio}
+              </p>
+            </div>
+
+            {/* Link 1 */}
+            <div 
+              className={`overflow-hidden relative ${style?.orientation === 'vertical' ? 'col-span-1 row-span-1 col-start-1 row-start-3' : 'col-span-1 row-span-1'}`}
+              style={{ borderRadius: `${(style?.borderRadius || 16) * 0.75}px` }}
+            >
+              {(() => {
+                const link = getLinkByIndex(0);
+                if (link) {
+                  const thumbnail = link.thumbnail || getDefaultThumbnail(link.url);
                   return (
-                    <div 
-                      key={index}
-                      className="rounded-xl p-2 flex flex-col items-center justify-center text-center overflow-hidden"
-                      style={{
-                        gridColumn: col,
-                        gridRow: row,
-                        backgroundColor: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)',
-                        borderRadius: `${(style?.borderRadius || 16) * 0.75}px`
-                      }}
-                    >
-                      {link ? (
-                        <>
-                          {(link.thumbnail || getDefaultThumbnail(link.url)) && (
-                            <div className="w-full h-12 mb-1 rounded overflow-hidden">
-                              <img 
-                                src={link.thumbnail || getDefaultThumbnail(link.url)!} 
-                                alt="" 
-                                className="w-full h-full object-cover"
-                              />
-                            </div>
-                          )}
-                          <span className="text-xs font-medium truncate w-full" style={{ color: textColor }}>
-                            {link.title}
-                          </span>
-                        </>
-                      ) : null}
-                    </div>
+                    <>
+                      {thumbnail ? (
+                        <img src={thumbnail} alt={link.title} className="absolute inset-0 w-full h-full object-cover" />
+                      ) : (
+                        <div className="absolute inset-0 bg-gradient-to-br from-emerald-400 to-teal-500" />
+                      )}
+                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                        <span className="text-white font-semibold text-sm text-center px-1">
+                          {link.title}
+                        </span>
+                      </div>
+                    </>
                   );
-                })}
-              </>
-            ) : (
-              <>
-                {/* Horizontal: 2 single cards in column 3, 2 single cards in column 4 */}
-                {[0, 1, 2, 3].map((index) => {
-                  const link = getLinkByIndex(index);
-                  const col = index < 2 ? 3 : 4;
-                  const row = (index % 2) + 1;
-                  
+                }
+                return (
+                  <div className="bg-gradient-to-br from-emerald-400/20 to-teal-500/20 h-full flex items-center justify-center">
+                    <span style={{ color: mutedTextColor }} className="text-xs">Link 1</span>
+                  </div>
+                );
+              })()}
+            </div>
+
+            {/* Link 2 or "Made with Maze" */}
+            <div 
+              className={`overflow-hidden relative ${style?.orientation === 'vertical' ? 'col-span-1 row-span-1 col-start-2 row-start-3' : 'col-span-1 row-span-1'}`}
+              style={{ borderRadius: `${(style?.borderRadius || 16) * 0.75}px` }}
+            >
+              {(() => {
+                const link = getLinkByIndex(1);
+                if (link && brandMode) {
+                  const thumbnail = link.thumbnail || getDefaultThumbnail(link.url);
                   return (
-                    <div 
-                      key={index}
-                      className="rounded-xl p-2 flex flex-col items-center justify-center text-center overflow-hidden"
-                      style={{
-                        gridColumn: col,
-                        gridRow: row,
-                        backgroundColor: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)',
-                        borderRadius: `${(style?.borderRadius || 16) * 0.75}px`
-                      }}
-                    >
-                      {link ? (
-                        <>
-                          {(link.thumbnail || getDefaultThumbnail(link.url)) && (
-                            <div className="w-full h-12 mb-1 rounded overflow-hidden">
-                              <img 
-                                src={link.thumbnail || getDefaultThumbnail(link.url)!} 
-                                alt="" 
-                                className="w-full h-full object-cover"
-                              />
-                            </div>
-                          )}
-                          <span className="text-xs font-medium truncate w-full" style={{ color: textColor }}>
-                            {link.title}
-                          </span>
-                        </>
-                      ) : null}
-                    </div>
+                    <>
+                      {thumbnail ? (
+                        <img src={thumbnail} alt={link.title} className="absolute inset-0 w-full h-full object-cover" />
+                      ) : (
+                        <div className="absolute inset-0 bg-gradient-to-br from-orange-400 to-red-500" />
+                      )}
+                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                        <span className="text-white font-semibold text-sm text-center px-1">
+                          {link.title}
+                        </span>
+                      </div>
+                    </>
                   );
-                })}
-              </>
-            )}
+                }
+                // Always show "Made with Maze" when no second link or not in brand mode
+                return (
+                  <div className="bg-gray-100 h-full flex flex-col items-center justify-center p-2 text-center">
+                    <div className="text-gray-700 text-sm font-medium mb-0.5">Made with</div>
+                    <div className="text-gray-700 text-sm font-bold">Maze</div>
+                    <div className="text-gray-600 text-xs opacity-70 mt-0.5">getmaze.ai</div>
+                  </div>
+                );
+              })()}
+            </div>
+
+            {/* Last Link - Spans 2 columns */}
+            <div 
+              className={`rounded-xl overflow-hidden relative ${style?.orientation === 'vertical' ? 'col-span-2 row-span-1 col-start-1 row-start-4' : 'col-span-2 row-span-1'}`}
+            >
+              {(() => {
+                const link = brandMode ? getLinkByIndex(2) : getLinkByIndex(1);
+                if (link) {
+                  const thumbnail = link.thumbnail || getDefaultThumbnail(link.url);
+                  return (
+                    <>
+                      {thumbnail ? (
+                        <img src={thumbnail} alt={link.title} className="absolute inset-0 w-full h-full object-cover" />
+                      ) : (
+                        <div className="absolute inset-0 bg-gradient-to-r from-rose-400 to-pink-600" />
+                      )}
+                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                        <span className="text-white font-semibold text-base text-center px-2">
+                          {link.title}
+                        </span>
+                      </div>
+                    </>
+                  );
+                }
+                return (
+                  <div className="bg-gradient-to-r from-rose-400/20 to-pink-600/20 h-full flex items-center justify-center">
+                    <span style={{ color: mutedTextColor }} className="text-lg">
+                      Link {brandMode ? '3' : '2'}
+                    </span>
+                  </div>
+                );
+              })()}
+            </div>
           </div>
         </div>
       </Card>
