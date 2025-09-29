@@ -135,7 +135,14 @@ export function MazeDashboard() {
                 variant="primary" 
                 size="sm" 
                 className="text-label-large"
-                onClick={() => navigate("/preview")}
+                onClick={() => navigate("/preview", { 
+                  state: { 
+                    profile, 
+                    links, 
+                    style, 
+                    coverImage 
+                  } 
+                })}
               >
                 <Eye className="h-4 w-4 mr-2" />
                 Preview

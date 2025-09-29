@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
+import { MazeCard } from "@/components/MazeCard";
 import {
   Select,
   SelectContent,
@@ -54,23 +55,57 @@ const publishers: Record<string, PublisherStyle> = {
 
 const ArticlePreview = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [selectedPublisher, setSelectedPublisher] = useState<string>("vogue");
+  const [hoveredName, setHoveredName] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const style = publishers[selectedPublisher];
 
+  // Get profile data from navigation state
+  const profileData = location.state || {
+    profile: { displayName: "Jane Doe", bio: "Sharing my journey", title: "Creator" },
+    links: [],
+    style: {
+      backgroundColor: "#ffffff",
+      accentColor: "#6366f1",
+      fontFamily: "Inter",
+      borderRadius: 12,
+      theme: "light",
+      orientation: "horizontal" as const,
+    },
+    coverImage: null,
+  };
+
+  const handleNameHover = (e: React.MouseEvent) => {
+    setHoveredName(true);
+    setMousePosition({ x: e.clientX, y: e.clientY });
+  };
+
+  const handleNameLeave = () => {
+    setHoveredName(false);
+  };
+
   const renderArticle = () => {
+    const articleProps = {
+      publisherName: style.name,
+      userName: profileData.profile.displayName,
+      onNameHover: handleNameHover,
+      onNameLeave: handleNameLeave,
+    };
+
     switch (style.theme) {
       case "lifestyle":
-        return <LifestyleArticle publisherName={style.name} />;
+        return <LifestyleArticle {...articleProps} />;
       case "decoration":
-        return <DecorationArticle publisherName={style.name} />;
+        return <DecorationArticle {...articleProps} />;
       case "sports":
-        return <SportsArticle publisherName={style.name} />;
+        return <SportsArticle {...articleProps} />;
       case "news":
-        return <NewsArticle publisherName={style.name} />;
+        return <NewsArticle {...articleProps} />;
       case "tech":
-        return <TechArticle publisherName={style.name} />;
+        return <TechArticle {...articleProps} />;
       default:
-        return <LifestyleArticle publisherName={style.name} />;
+        return <LifestyleArticle {...articleProps} />;
     }
   };
 
@@ -126,12 +161,48 @@ const ArticlePreview = () => {
 
       {/* Article Content */}
       {renderArticle()}
+
+      {/* Maze Card Hover */}
+      {hoveredName && (
+        <div
+          className="fixed z-50 pointer-events-none"
+          style={{
+            left: `${mousePosition.x + 20}px`,
+            top: `${mousePosition.y - 100}px`,
+          }}
+        >
+          <MazeCard
+            profile={profileData.profile}
+            links={profileData.links}
+            style={profileData.style}
+            coverImage={profileData.coverImage}
+          />
+        </div>
+      )}
     </div>
   );
 };
 
+interface ArticleProps {
+  publisherName: string;
+  userName: string;
+  onNameHover: (e: React.MouseEvent) => void;
+  onNameLeave: () => void;
+}
+
+// Highlighted Name Component
+const HighlightedName = ({ name, onHover, onLeave }: { name: string; onHover: (e: React.MouseEvent) => void; onLeave: () => void }) => (
+  <span
+    className="bg-yellow-200 px-1 cursor-pointer hover:bg-yellow-300 transition-colors font-medium"
+    onMouseEnter={onHover}
+    onMouseLeave={onLeave}
+  >
+    {name}
+  </span>
+);
+
 // Lifestyle Article (Vogue, GQ) - Image-heavy, elegant
-const LifestyleArticle = ({ publisherName }: { publisherName: string }) => (
+const LifestyleArticle = ({ publisherName, userName, onNameHover, onNameLeave }: ArticleProps) => (
   <article className="max-w-5xl mx-auto px-4 py-12">
     <div className="max-w-3xl mx-auto">
       {/* Publisher Header */}
@@ -147,7 +218,7 @@ const LifestyleArticle = ({ publisherName }: { publisherName: string }) => (
           The Art of Modern Elegance
         </h1>
         <div className="flex items-center justify-center gap-4 text-sm">
-          <span>By ISABELLA MARTINEZ</span>
+          <span>By <HighlightedName name={userName} onHover={onNameHover} onLeave={onNameLeave} /></span>
           <span>•</span>
           <time>March 2024</time>
         </div>
@@ -197,7 +268,7 @@ const LifestyleArticle = ({ publisherName }: { publisherName: string }) => (
 );
 
 // Decoration Article (Architectural Digest, Elle Decor) - Very image-heavy, spacious
-const DecorationArticle = ({ publisherName }: { publisherName: string }) => (
+const DecorationArticle = ({ publisherName, userName, onNameHover, onNameLeave }: ArticleProps) => (
   <article className="max-w-6xl mx-auto px-4 py-12">
     {/* Publisher Header */}
     <div className="text-center mb-16">
@@ -216,7 +287,7 @@ const DecorationArticle = ({ publisherName }: { publisherName: string }) => (
       <div className="flex items-center justify-center gap-3 text-sm">
         <span>Photography by JAMES CHEN</span>
         <span>•</span>
-        <span>Text by SOPHIA ANDERSON</span>
+        <span>Text by <HighlightedName name={userName} onHover={onNameHover} onLeave={onNameLeave} /></span>
       </div>
     </header>
 
@@ -273,7 +344,7 @@ const DecorationArticle = ({ publisherName }: { publisherName: string }) => (
 );
 
 // Sports Article (ESPN, Marca) - Bold, dynamic, stats-focused
-const SportsArticle = ({ publisherName }: { publisherName: string }) => (
+const SportsArticle = ({ publisherName, userName, onNameHover, onNameLeave }: ArticleProps) => (
   <article className="max-w-7xl mx-auto px-4 py-8">
     {/* Bold Publisher Header */}
     <div className="bg-red-600 text-white px-8 py-4 mb-8">
@@ -290,7 +361,7 @@ const SportsArticle = ({ publisherName }: { publisherName: string }) => (
         Underdog team defeats champions in dramatic final seconds
       </p>
       <div className="flex items-center gap-6 text-sm font-bold">
-        <span className="uppercase">Juan Rodriguez</span>
+        <span className="uppercase"><HighlightedName name={userName} onHover={onNameHover} onLeave={onNameLeave} /></span>
         <span>|</span>
         <time>15 Mar 2024, 23:47 CET</time>
         <span>|</span>
@@ -376,7 +447,7 @@ const SportsArticle = ({ publisherName }: { publisherName: string }) => (
 );
 
 // News Article (NYTimes) - Classic newspaper layout
-const NewsArticle = ({ publisherName }: { publisherName: string }) => (
+const NewsArticle = ({ publisherName, userName, onNameHover, onNameLeave }: ArticleProps) => (
   <article className="max-w-5xl mx-auto px-4 py-8 bg-white">
     {/* Classic Newspaper Header */}
     <div className="border-b-4 border-black pb-4 mb-8">
@@ -397,7 +468,7 @@ const NewsArticle = ({ publisherName }: { publisherName: string }) => (
         Summit focuses on inflation, trade policies, and sustainable development as nations seek collaborative solutions
       </p>
       <div className="text-sm text-gray-600">
-        <span className="font-bold">By ROBERT ANDERSON</span>
+        <span className="font-bold">By <HighlightedName name={userName.toUpperCase()} onHover={onNameHover} onLeave={onNameLeave} /></span>
         <span className="mx-2">|</span>
         <span>March 15, 2024</span>
       </div>
@@ -438,7 +509,7 @@ const NewsArticle = ({ publisherName }: { publisherName: string }) => (
 );
 
 // Tech Article (Wired) - Minimalist, clean, modern
-const TechArticle = ({ publisherName }: { publisherName: string }) => (
+const TechArticle = ({ publisherName, userName, onNameHover, onNameLeave }: ArticleProps) => (
   <article className="max-w-4xl mx-auto px-4 py-16 bg-white">
     {/* Minimal Header */}
     <div className="mb-16">
@@ -456,7 +527,7 @@ const TechArticle = ({ publisherName }: { publisherName: string }) => (
         How a breakthrough in machine learning is reshaping the boundaries of artificial intelligence
       </p>
       <div className="flex items-center gap-6 text-sm font-mono">
-        <span>ALEX RIVERA</span>
+        <span><HighlightedName name={userName.toUpperCase()} onHover={onNameHover} onLeave={onNameLeave} /></span>
         <span>/</span>
         <time>03.15.24</time>
         <span>/</span>
