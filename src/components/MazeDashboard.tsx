@@ -76,6 +76,11 @@ export function MazeDashboard() {
     };
     setLinks([...links, newLink]);
   };
+
+  const handleAddLinkFromPreview = () => {
+    addLink();
+    setActiveTab("links");
+  };
   
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -168,7 +173,7 @@ export function MazeDashboard() {
                   brandMode={brandMode} 
                   coverImage={coverImage}
                   onImageUpload={triggerFileUpload}
-                  onAddLink={addLink}
+                  onAddLink={handleAddLinkFromPreview}
                   canAddLink={canAddLink}
                   profile={profile}
                   links={links}
