@@ -8,6 +8,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
+import mazeLogo from "@/assets/maze-brandlogo.png";
 import {
   Select,
   SelectContent,
@@ -116,7 +117,7 @@ const ArticlePreview = () => {
               </div>
             </div>
             <div>
-              <img src="/src/assets/maze-logo.svg" alt="maze" className="h-8" />
+              <img src={mazeLogo} alt="Maze" className="h-8" />
             </div>
           </div>
 
