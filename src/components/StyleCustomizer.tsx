@@ -82,9 +82,9 @@ export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) 
                     style={{ backgroundColor: preset.background }}
                   >
                      <span 
-                       className="text-xs font-medium text-on-surface"
+                       className="text-xs font-medium"
                        style={{ 
-                         color: preset.background === "#1f2937" ? "#ffffff" : undefined
+                         color: preset.background === "#1f2937" ? "#ffffff" : "#1a1a1a"
                        }}
                      >
                       {preset.name}
