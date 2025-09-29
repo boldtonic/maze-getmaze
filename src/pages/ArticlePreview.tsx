@@ -144,9 +144,10 @@ const ArticlePreview = () => {
 
           {/* Right - Close Button */}
           <Button
+            variant="primary"
+            size="sm"
+            className="absolute right-4 text-label-large"
             onClick={() => navigate("/")}
-            className="absolute right-4 bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white shadow-lg hover:shadow-xl transition-all duration-200"
-            size="default"
           >
             <X className="h-4 w-4 mr-2" />
             Close Preview
