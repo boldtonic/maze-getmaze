@@ -150,7 +150,7 @@ export function MazeDashboard() {
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-6 pb-8 flex">
+      <div className="max-w-7xl mx-auto px-6 pt-8 pb-8 flex">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
           {/* Left Panel - Preview */}
           <div className="space-y-6">
