@@ -235,33 +235,40 @@ const HighlightedName = ({
 };
 
 // Lifestyle Article (Vogue, GQ) - Image-heavy, elegant
-const LifestyleArticle = ({ publisherName, userName, onNameHover, onNameLeave, highlightColor }: ArticleProps) => (
-  <article className="max-w-5xl mx-auto px-4 py-12">
-    <div className="max-w-3xl mx-auto">
-      {/* Publisher Header */}
-      <div className="text-center mb-12">
-        <h3 className="text-5xl font-serif tracking-wider mb-2">{publisherName}</h3>
-        <div className="h-px bg-black w-24 mx-auto"></div>
-      </div>
-
-      {/* Article Header */}
-      <header className="text-center mb-16">
-        <p className="text-xs tracking-widest uppercase text-gray-500 mb-4">Fashion & Style</p>
-        <h1 className="text-6xl font-serif leading-tight mb-8">
-          The Art of Modern Elegance
-        </h1>
-        <div className="flex items-center justify-center gap-4 text-sm">
-          <span>By ISABELLA MARTINEZ</span>
-          <span>•</span>
-          <time>March 2024</time>
+const LifestyleArticle = ({ 
+  publisherName, 
+  userName, 
+  onNameHover, 
+  onNameLeave, 
+  highlightColor 
+}: ArticleProps) => {
+  return (
+    <article className="max-w-5xl mx-auto px-4 py-12">
+      <div className="max-w-3xl mx-auto">
+        {/* Publisher Header */}
+        <div className="text-center mb-12">
+          <h3 className="text-5xl font-serif tracking-wider mb-2">{publisherName}</h3>
+          <div className="h-px bg-black w-24 mx-auto"></div>
         </div>
-      </header>
 
-      {/* Content with interspersed images */}
-      <div className="space-y-12">
-        <p className="text-xl font-serif leading-relaxed">
-          In the ever-evolving landscape of contemporary fashion, elegance remains a timeless pursuit—one that transcends fleeting trends and speaks to something deeper within the human spirit. As <HighlightedName name={userName} onHover={onNameHover} onLeave={onNameLeave} backgroundColor={highlightColor} /> recently noted at the Milan Fashion Week, authenticity is becoming the new luxury.
-        </p>
+        {/* Article Header */}
+        <header className="text-center mb-16">
+          <p className="text-xs tracking-widest uppercase text-gray-500 mb-4">Fashion & Style</p>
+          <h1 className="text-6xl font-serif leading-tight mb-8">
+            The Art of Modern Elegance
+          </h1>
+          <div className="flex items-center justify-center gap-4 text-sm">
+            <span>By ISABELLA MARTINEZ</span>
+            <span>•</span>
+            <time>March 2024</time>
+          </div>
+        </header>
+
+        {/* Content with interspersed images */}
+        <div className="space-y-12">
+          <p className="text-xl font-serif leading-relaxed">
+            In the ever-evolving landscape of contemporary fashion, elegance remains a timeless pursuit—one that transcends fleeting trends and speaks to something deeper within the human spirit. As <HighlightedName name={userName} onHover={onNameHover} onLeave={onNameLeave} backgroundColor={highlightColor} /> recently noted at the Milan Fashion Week, authenticity is becoming the new luxury.
+          </p>
 
         <div className="aspect-[4/5] bg-gradient-to-br from-rose-100 to-amber-50 flex items-center justify-center">
           <span className="text-gray-400 text-sm">Editorial Image</span>
@@ -292,13 +299,14 @@ const LifestyleArticle = ({ publisherName, userName, onNameHover, onNameLeave, h
           <span className="text-gray-400 text-sm">Runway Image</span>
         </div>
 
-        <p className="text-lg font-serif leading-relaxed">
-          As we move forward, the conversation around sustainable luxury becomes increasingly central. The most prestigious houses are proving that environmental consciousness and exceptional design are not mutually exclusive.
-        </p>
+          <p className="text-lg font-serif leading-relaxed">
+            As we move forward, the conversation around sustainable luxury becomes increasingly central. The most prestigious houses are proving that environmental consciousness and exceptional design are not mutually exclusive.
+          </p>
+        </div>
       </div>
-    </div>
-  </article>
-);
+    </article>
+  );
+};
 
 // Decoration Article (Architectural Digest, Elle Decor) - Very image-heavy, spacious
 const DecorationArticle = ({ publisherName, userName, onNameHover, onNameLeave, highlightColor }: ArticleProps) => (
