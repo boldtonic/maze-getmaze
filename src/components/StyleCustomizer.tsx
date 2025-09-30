@@ -3,11 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
 import { 
   Palette, 
   Type, 
   Layout,
-  RotateCcw
+  RotateCcw,
+  Crown,
+  Lock
 } from "lucide-react";
 
 interface StyleCustomizerProps {
@@ -20,9 +23,11 @@ interface StyleCustomizerProps {
     orientation: 'horizontal' | 'vertical';
   };
   onStyleChange: (style: any) => void;
+  onUpgradeClick: (feature: string) => void;
+  isPremium?: boolean;
 }
 
-export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) {
+export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremium = false }: StyleCustomizerProps) {
 
   const colorPresets = [
     { name: "Purple", primary: "#6366f1", background: "#f1f0ff" },
@@ -98,101 +103,156 @@ export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) 
               </div>
             </div>
 
-            <div className="space-y-3">
-              <Label>Custom Accent Color</Label>
-              <div className="flex items-center space-x-3">
-                <input
-                  type="color"
-                  value={style.accentColor}
-                  onChange={(e) => {
-                    const newColor = e.target.value;
-                    // Generate complementary background color
-                    const hex = newColor.replace('#', '');
-                    const r = parseInt(hex.substr(0, 2), 16);
-                    const g = parseInt(hex.substr(2, 2), 16);
-                    const b = parseInt(hex.substr(4, 2), 16);
-                    
-                    // Create a light tint of the accent color for background
-                    const bgColor = `rgb(${Math.min(255, r + 40)}, ${Math.min(255, g + 40)}, ${Math.min(255, b + 40)})`;
-                    
-                    onStyleChange({ 
-                      ...style, 
-                      accentColor: newColor,
-                      backgroundColor: bgColor
-                    });
-                  }}
-                  className="h-10 w-20 rounded border border-border cursor-pointer"
-                />
-                <div className="flex-1">
+            <div className="space-y-3 relative">
+              <div className="flex items-center justify-between">
+                <Label>Custom Accent Color</Label>
+                {!isPremium && (
+                  <Badge variant="secondary" className="flex items-center space-x-1">
+                    <Crown className="h-3 w-3" />
+                    <span>Premium</span>
+                  </Badge>
+                )}
+              </div>
+              <div 
+                className={`${!isPremium ? 'opacity-50 pointer-events-none' : ''}`}
+                onClick={() => !isPremium && onUpgradeClick('Custom Accent Colors')}
+              >
+                <div className="flex items-center space-x-3">
                   <input
-                    type="text"
+                    type="color"
                     value={style.accentColor}
                     onChange={(e) => {
                       const newColor = e.target.value;
-                      if (newColor.match(/^#[0-9A-F]{6}$/i)) {
-                        // Generate complementary background color
-                        const hex = newColor.replace('#', '');
-                        const r = parseInt(hex.substr(0, 2), 16);
-                        const g = parseInt(hex.substr(2, 2), 16);
-                        const b = parseInt(hex.substr(4, 2), 16);
-                        
-                        // Create a light tint of the accent color for background
-                        const bgColor = `rgb(${Math.min(255, r + 40)}, ${Math.min(255, g + 40)}, ${Math.min(255, b + 40)})`;
-                        
-                        onStyleChange({ 
-                          ...style, 
-                          accentColor: newColor,
-                          backgroundColor: bgColor
-                        });
-                      } else {
-                        onStyleChange({ ...style, accentColor: newColor });
-                      }
+                      // Generate complementary background color
+                      const hex = newColor.replace('#', '');
+                      const r = parseInt(hex.substr(0, 2), 16);
+                      const g = parseInt(hex.substr(2, 2), 16);
+                      const b = parseInt(hex.substr(4, 2), 16);
+                      
+                      // Create a light tint of the accent color for background
+                      const bgColor = `rgb(${Math.min(255, r + 40)}, ${Math.min(255, g + 40)}, ${Math.min(255, b + 40)})`;
+                      
+                      onStyleChange({ 
+                        ...style, 
+                        accentColor: newColor,
+                        backgroundColor: bgColor
+                      });
                     }}
-                    className="w-full px-3 py-2 border border-border rounded-md"
-                    placeholder="#6366f1"
+                    className="h-10 w-20 rounded border border-border cursor-pointer"
+                    disabled={!isPremium}
                   />
+                  <div className="flex-1">
+                    <input
+                      type="text"
+                      value={style.accentColor}
+                      onChange={(e) => {
+                        const newColor = e.target.value;
+                        if (newColor.match(/^#[0-9A-F]{6}$/i)) {
+                          // Generate complementary background color
+                          const hex = newColor.replace('#', '');
+                          const r = parseInt(hex.substr(0, 2), 16);
+                          const g = parseInt(hex.substr(2, 2), 16);
+                          const b = parseInt(hex.substr(4, 2), 16);
+                          
+                          // Create a light tint of the accent color for background
+                          const bgColor = `rgb(${Math.min(255, r + 40)}, ${Math.min(255, g + 40)}, ${Math.min(255, b + 40)})`;
+                          
+                          onStyleChange({ 
+                            ...style, 
+                            accentColor: newColor,
+                            backgroundColor: bgColor
+                          });
+                        } else {
+                          onStyleChange({ ...style, accentColor: newColor });
+                        }
+                      }}
+                      className="w-full px-3 py-2 border border-border rounded-md"
+                      placeholder="#6366f1"
+                      disabled={!isPremium}
+                    />
+                  </div>
+                </div>
+                <div className="text-xs text-on-surface-variant mt-2">
+                  Custom colors override preset selections
                 </div>
               </div>
-               <div className="text-xs text-on-surface-variant">
-                 Custom colors override preset selections
-               </div>
+              {!isPremium && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full"
+                  onClick={() => onUpgradeClick('Custom Accent Colors')}
+                >
+                  <Lock className="h-4 w-4 mr-2" />
+                  Upgrade to Unlock
+                </Button>
+              )}
             </div>
           </TabsContent>
 
           <TabsContent value="typography" className="space-y-4">
             <div className="space-y-3">
-              <Label>Font Family</Label>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="flex items-center justify-between">
+                <Label>Font Family</Label>
+                {!isPremium && (
+                  <Badge variant="secondary" className="flex items-center space-x-1">
+                    <Crown className="h-3 w-3" />
+                    <span>Premium</span>
+                  </Badge>
+                )}
+              </div>
+              <div className={`grid grid-cols-2 gap-3 ${!isPremium ? 'opacity-50' : ''}`}>
                 {fontOptions.map((font) => (
                   <button
                     key={font.value}
-                    onClick={() => updateStyle('fontFamily', font.value)}
+                    onClick={() => isPremium ? updateStyle('fontFamily', font.value) : onUpgradeClick('Advanced Typography')}
                     className={`p-4 text-left border-2 rounded-lg transition-colors ${
                       style.fontFamily === font.value 
                         ? 'border-primary bg-primary/5' 
                         : 'border-border hover:border-primary/50'
                     }`}
                     style={{ fontFamily: font.value }}
+                    disabled={!isPremium}
                   >
                     <div className="font-semibold">{font.name}</div>
                     <div className="text-sm text-muted-foreground">The quick brown fox</div>
                   </button>
                 ))}
               </div>
+              {!isPremium && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full"
+                  onClick={() => onUpgradeClick('Advanced Typography')}
+                >
+                  <Lock className="h-4 w-4 mr-2" />
+                  Upgrade to Unlock
+                </Button>
+              )}
             </div>
           </TabsContent>
 
           <TabsContent value="layout" className="space-y-6">
             <div className="space-y-3">
-              <Label>Orientation</Label>
-              <div className="flex gap-3">
+              <div className="flex items-center justify-between">
+                <Label>Orientation</Label>
+                {!isPremium && (
+                  <Badge variant="secondary" className="flex items-center space-x-1">
+                    <Crown className="h-3 w-3" />
+                    <span>Premium</span>
+                  </Badge>
+                )}
+              </div>
+              <div className={`flex gap-3 ${!isPremium ? 'opacity-50' : ''}`}>
                 <button
-                  onClick={() => updateStyle('orientation', 'horizontal')}
+                  onClick={() => isPremium ? updateStyle('orientation', 'horizontal') : onUpgradeClick('Custom Layouts')}
                   className={`flex-1 p-4 text-left border-2 rounded-lg transition-colors ${
                     style.orientation === 'horizontal' 
                       ? 'border-primary bg-primary/5' 
                       : 'border-border hover:border-primary/50'
                   }`}
+                  disabled={!isPremium}
                 >
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-4 h-2 bg-current opacity-60 rounded-sm"></div>
@@ -201,12 +261,13 @@ export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) 
                   <div className="text-sm text-muted-foreground">Wide layout</div>
                 </button>
                 <button
-                  onClick={() => updateStyle('orientation', 'vertical')}
+                  onClick={() => isPremium ? updateStyle('orientation', 'vertical') : onUpgradeClick('Custom Layouts')}
                   className={`flex-1 p-4 text-left border-2 rounded-lg transition-colors ${
                     style.orientation === 'vertical' 
                       ? 'border-primary bg-primary/5' 
                       : 'border-border hover:border-primary/50'
                   }`}
+                  disabled={!isPremium}
                 >
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-2 h-4 bg-current opacity-60 rounded-sm"></div>
@@ -215,6 +276,17 @@ export function StyleCustomizer({ style, onStyleChange }: StyleCustomizerProps) 
                   <div className="text-sm text-muted-foreground">Tall layout</div>
                 </button>
               </div>
+              {!isPremium && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full"
+                  onClick={() => onUpgradeClick('Custom Layouts')}
+                >
+                  <Lock className="h-4 w-4 mr-2" />
+                  Upgrade to Unlock
+                </Button>
+              )}
             </div>
             
             <div className="space-y-3">

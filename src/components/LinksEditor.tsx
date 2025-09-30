@@ -33,7 +33,7 @@ interface LinksEditorProps {
 }
 
 export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProps) {
-  const maxLinks = brandMode ? 3 : 2;
+  const maxLinks = 3; // Now supports 3 featured links
   const canAddLink = links.length < maxLinks;
 
   const addLink = () => {
@@ -138,11 +138,11 @@ export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProp
             disabled={!canAddLink}
           >
             <Plus className="h-4 w-4 mr-2" />
-            Add Featured Link {!brandMode && `(${links.length}/2)`}
+            Add Featured Link ({links.length}/3)
           </Button>
           {!canAddLink && (
             <p className="text-body-small text-muted-foreground text-center">
-              {brandMode ? "Maximum 3 links reached" : "Basic plan allows 2 links max. Upgrade for more positions."}
+              Maximum 3 featured links reached
             </p>
           )}
         </CardContent>

@@ -18,6 +18,7 @@ import { ProfileEditor } from "./ProfileEditor";
 import { LinksEditor } from "./LinksEditor";
 import { StyleCustomizer } from "./StyleCustomizer";
 import { Analytics } from "./Analytics";
+import { UpgradeDialog } from "./UpgradeDialog";
 import mazeIsotype from "@/assets/maze-isotype.png";
 
 interface Link {
@@ -33,6 +34,9 @@ export function MazeDashboard() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("profile");
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [upgradeDialogOpen, setUpgradeDialogOpen] = useState(false);
+  const [upgradeFeature, setUpgradeFeature] = useState<string>("");
+  const isPremium = false; // Set to false to show premium features as locked
   const brandMode = false;
   
   // Dark mode toggle effect
@@ -103,7 +107,26 @@ export function MazeDashboard() {
   const handleProfileChange = (updatedProfile: typeof profile) => {
     setProfile(updatedProfile);
   };
-  
+
+  const handleUpgradeClick = (feature: string) => {
+    setUpgradeFeature(feature);
+    setUpgradeDialogOpen(true);
+  };
+
+  const handlePreviewClick = () => {
+    if (!isPremium) {
+      handleUpgradeClick('Preview Mode');
+      return;
+    }
+    navigate("/preview", { 
+      state: { 
+        profile, 
+        links, 
+        style, 
+        coverImage 
+      } 
+    });
+  };
 
   return (
     <div className="min-h-screen bg-surface">
@@ -130,14 +153,7 @@ export function MazeDashboard() {
                 variant="primary" 
                 size="sm" 
                 className="text-label-large"
-                onClick={() => navigate("/preview", { 
-                  state: { 
-                    profile, 
-                    links, 
-                    style, 
-                    coverImage 
-                  } 
-                })}
+                onClick={handlePreviewClick}
               >
                 <Eye className="h-4 w-4 mr-2" />
                 Preview
@@ -255,10 +271,18 @@ export function MazeDashboard() {
                       />
                     </TabsContent>
                     <TabsContent value="style">
-                      <StyleCustomizer style={style} onStyleChange={setStyle} />
+                      <StyleCustomizer 
+                        style={style} 
+                        onStyleChange={setStyle}
+                        onUpgradeClick={handleUpgradeClick}
+                        isPremium={isPremium}
+                      />
                     </TabsContent>
                     <TabsContent value="analytics">
-                      <Analytics />
+                      <Analytics 
+                        onUpgradeClick={handleUpgradeClick}
+                        isPremium={isPremium}
+                      />
                     </TabsContent>
                   </div>
                 </Tabs>
@@ -268,6 +292,12 @@ export function MazeDashboard() {
           </div>
         </div>
       </div>
+
+      <UpgradeDialog 
+        open={upgradeDialogOpen}
+        onOpenChange={setUpgradeDialogOpen}
+        feature={upgradeFeature}
+      />
     </div>
   );
 }

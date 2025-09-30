@@ -8,10 +8,17 @@ import {
   Users, 
   TrendingUp,
   Calendar,
-  ExternalLink
+  ExternalLink,
+  Crown,
+  Lock
 } from "lucide-react";
 
-export function Analytics() {
+interface AnalyticsProps {
+  onUpgradeClick: (feature: string) => void;
+  isPremium?: boolean;
+}
+
+export function Analytics({ onUpgradeClick, isPremium = false }: AnalyticsProps) {
   const stats = [
     {
       label: "Total Mentions",
@@ -134,15 +141,27 @@ export function Analytics() {
       </div>
 
       {/* Time Period Selector */}
-      <div className="flex space-x-2 justify-center">
-        {["7 days", "30 days", "90 days", "1 year"].map((period) => (
-          <Badge 
-            key={period}
-            variant={period === "30 days" ? "default" : "outline"}
-            className="cursor-pointer hover:bg-primary/10 transition-colors"
-          >
-            {period}
-          </Badge>
+      <div className="flex flex-wrap gap-2 justify-center">
+        {[
+          { label: "7 days", premium: false },
+          { label: "30 days", premium: true },
+          { label: "90 days", premium: true },
+          { label: "1 year", premium: true },
+        ].map(({ label, premium }) => (
+          <div key={label} className="relative">
+            <Badge 
+              variant={label === "7 days" ? "default" : "outline"}
+              className={`cursor-pointer hover:bg-primary/10 transition-colors ${
+                premium && !isPremium ? 'opacity-50' : ''
+              }`}
+              onClick={() => premium && !isPremium ? onUpgradeClick('Extended Analytics') : undefined}
+            >
+              {label}
+              {premium && !isPremium && (
+                <Crown className="h-3 w-3 ml-1" />
+              )}
+            </Badge>
+          </div>
         ))}
       </div>
 
@@ -194,20 +213,55 @@ export function Analytics() {
       {/* Export Data */}
       <Card>
         <CardHeader>
-          <CardTitle>Export Analytics</CardTitle>
-          <CardDescription>
-            Download your analytics data for further analysis
-          </CardDescription>
+          <div className="flex items-center justify-between">
+            <div>
+              <CardTitle>Export Analytics</CardTitle>
+              <CardDescription>
+                Download your analytics data for further analysis
+              </CardDescription>
+            </div>
+            {!isPremium && (
+              <Badge variant="secondary" className="flex items-center space-x-1">
+                <Crown className="h-3 w-3" />
+                <span>Premium</span>
+              </Badge>
+            )}
+          </div>
         </CardHeader>
         <CardContent>
           <div className="flex space-x-3">
-            <Button variant="primary" size="sm" className="text-label-medium">
+            <Button 
+              variant="primary" 
+              size="sm" 
+              className="text-label-medium"
+              disabled={!isPremium}
+              onClick={() => !isPremium && onUpgradeClick('Export Analytics')}
+            >
+              {!isPremium && <Lock className="h-4 w-4 mr-2" />}
               Export CSV
             </Button>
-            <Button variant="primary" size="sm" className="text-label-medium">
+            <Button 
+              variant="primary" 
+              size="sm" 
+              className="text-label-medium"
+              disabled={!isPremium}
+              onClick={() => !isPremium && onUpgradeClick('Export Analytics')}
+            >
+              {!isPremium && <Lock className="h-4 w-4 mr-2" />}
               Export PDF Report
             </Button>
           </div>
+          {!isPremium && (
+            <Button
+              variant="outline"
+              size="sm"
+              className="w-full mt-3"
+              onClick={() => onUpgradeClick('Export Analytics')}
+            >
+              <Lock className="h-4 w-4 mr-2" />
+              Upgrade to Export Data
+            </Button>
+          )}
         </CardContent>
       </Card>
     </div>
