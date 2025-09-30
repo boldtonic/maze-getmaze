@@ -21,6 +21,7 @@ export function UpgradeDialog({ open, onOpenChange, feature }: UpgradeDialogProp
     "Custom Accent Colors",
     "Advanced Typography",
     "Custom Layouts",
+    "Border Radius Customization",
     "Extended Analytics (30/90/365 days)",
     "Export Analytics Data",
     "Preview Mode",
