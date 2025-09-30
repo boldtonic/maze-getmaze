@@ -16,21 +16,23 @@ interface UpgradeDialogProps {
 }
 
 export function UpgradeDialog({ open, onOpenChange, feature }: UpgradeDialogProps) {
+  const premiumFeatures = [
+    "3 Featured Links",
+    "Custom Accent Colors",
+    "Advanced Typography",
+    "Custom Layouts",
+    "Extended Analytics (30/90/365 days)",
+    "Export Analytics Data",
+    "Preview Mode",
+  ];
+
   const plans = [
     {
       name: "Monthly",
       price: "$9",
       period: "/month",
       badge: null,
-      features: [
-        "3 Featured Links",
-        "Custom Accent Colors",
-        "Advanced Typography",
-        "Custom Layouts",
-        "Extended Analytics",
-        "Export Analytics Data",
-        "Preview Mode",
-      ],
+      description: "Great for getting started",
     },
     {
       name: "Yearly",
@@ -38,26 +40,14 @@ export function UpgradeDialog({ open, onOpenChange, feature }: UpgradeDialogProp
       period: "/year",
       badge: "Save 17%",
       popular: true,
-      features: [
-        "Everything in Monthly",
-        "Priority Support",
-        "Custom Domain",
-        "Advanced Analytics",
-        "API Access",
-      ],
+      description: "Best value - 2 months free",
     },
     {
       name: "Lifetime",
       price: "$299",
       period: "one-time",
       badge: "Best Value",
-      features: [
-        "Everything in Yearly",
-        "Lifetime Updates",
-        "Premium Templates",
-        "White Label Options",
-        "Dedicated Support",
-      ],
+      description: "Pay once, own forever + future upgrades",
     },
   ];
 
@@ -97,14 +87,15 @@ export function UpgradeDialog({ open, onOpenChange, feature }: UpgradeDialogProp
               
               <div className="text-center mb-6">
                 <h3 className="text-lg font-semibold mb-2">{plan.name}</h3>
-                <div className="flex items-baseline justify-center">
+                <div className="flex items-baseline justify-center mb-2">
                   <span className="text-4xl font-bold">{plan.price}</span>
                   <span className="text-muted-foreground ml-1">{plan.period}</span>
                 </div>
+                <p className="text-xs text-muted-foreground">{plan.description}</p>
               </div>
 
               <ul className="space-y-3 mb-6">
-                {plan.features.map((feature, index) => (
+                {premiumFeatures.map((feature, index) => (
                   <li key={index} className="flex items-start space-x-2">
                     <Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
                     <span className="text-sm">{feature}</span>
