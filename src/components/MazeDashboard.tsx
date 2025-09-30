@@ -268,6 +268,8 @@ export function MazeDashboard() {
                         brandMode={brandMode} 
                         links={links}
                         onLinksChange={setLinks}
+                        onUpgradeClick={handleUpgradeClick}
+                        isPremium={isPremium}
                       />
                     </TabsContent>
                     <TabsContent value="style">

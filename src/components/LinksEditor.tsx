@@ -30,10 +30,12 @@ interface LinksEditorProps {
   brandMode: boolean;
   links: Link[];
   onLinksChange: (links: Link[]) => void;
+  onUpgradeClick?: (feature: string) => void;
+  isPremium?: boolean;
 }
 
-export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProps) {
-  const maxLinks = 3; // Now supports 3 featured links
+export function LinksEditor({ brandMode, links, onLinksChange, onUpgradeClick, isPremium = false }: LinksEditorProps) {
+  const maxLinks = isPremium ? 3 : 2; // 3rd link is premium
   const canAddLink = links.length < maxLinks;
 
   const addLink = () => {
@@ -131,16 +133,20 @@ export function LinksEditor({ brandMode, links, onLinksChange }: LinksEditorProp
           })}
 
           <Button 
-            onClick={addLink}
+            onClick={() => canAddLink ? addLink() : !isPremium && onUpgradeClick?.('3rd Featured Link')}
             variant="primary" 
             size="sm"
             className="w-full h-10 text-label-large"
-            disabled={!canAddLink}
           >
             <Plus className="h-4 w-4 mr-2" />
-            Add Featured Link ({links.length}/3)
+            {isPremium ? `Add Featured Link (${links.length}/3)` : `Add Featured Link (${links.length}/2)`}
           </Button>
-          {!canAddLink && (
+          {!canAddLink && !isPremium && (
+            <p className="text-body-small text-muted-foreground text-center">
+              Upgrade for a 3rd featured link (replaces "made with maze")
+            </p>
+          )}
+          {!canAddLink && isPremium && (
             <p className="text-body-small text-muted-foreground text-center">
               Maximum 3 featured links reached
             </p>
