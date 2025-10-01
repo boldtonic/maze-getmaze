@@ -211,8 +211,8 @@ export function MazeDashboard() {
             <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl">
               <CardHeader className="pb-4">
                 <CardTitle className="flex items-center space-x-3 text-headline-large text-on-surface">
-                  <div className="p-2 bg-primary/10 rounded-full">
-                    <User className="h-5 w-5 text-primary" />
+                  <div className="p-2 bg-[#eef2e3] rounded-full">
+                    <User className="h-5 w-5 text-[#004096]" />
                   </div>
                   <span>Maze Editor</span>
                 </CardTitle>
