@@ -114,10 +114,6 @@ export function MazeDashboard() {
   };
 
   const handlePreviewClick = () => {
-    if (!isPremium) {
-      handleUpgradeClick('Preview Mode');
-      return;
-    }
     navigate("/preview", { 
       state: { 
         profile, 
