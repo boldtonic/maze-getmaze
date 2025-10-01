@@ -180,7 +180,7 @@ export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremiu
                 <Button
                   variant="outline"
                   size="sm"
-                  className="w-full"
+                  className="w-full bg-[#eef2e3] text-[#004096] hover:bg-[#eef2e3]/80"
                   onClick={() => onUpgradeClick('Custom Accent Colors')}
                 >
                   <Lock className="h-4 w-4 mr-2" />
@@ -223,7 +223,7 @@ export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremiu
                 <Button
                   variant="outline"
                   size="sm"
-                  className="w-full"
+                  className="w-full bg-[#eef2e3] text-[#004096] hover:bg-[#eef2e3]/80"
                   onClick={() => onUpgradeClick('Advanced Typography')}
                 >
                   <Lock className="h-4 w-4 mr-2" />
@@ -280,7 +280,7 @@ export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremiu
                 <Button
                   variant="outline"
                   size="sm"
-                  className="w-full"
+                  className="w-full bg-[#eef2e3] text-[#004096] hover:bg-[#eef2e3]/80"
                   onClick={() => onUpgradeClick('Custom Layouts')}
                 >
                   <Lock className="h-4 w-4 mr-2" />

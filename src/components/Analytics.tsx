@@ -158,7 +158,7 @@ export function Analytics({ onUpgradeClick, isPremium = false }: AnalyticsProps)
             >
               {label}
               {premium && !isPremium && (
-                <Crown className="h-3 w-3 ml-1" />
+                <Crown className="h-3 w-3 ml-1 text-[#004096]" />
               )}
             </Badge>
           </div>
@@ -237,7 +237,7 @@ export function Analytics({ onUpgradeClick, isPremium = false }: AnalyticsProps)
               disabled={!isPremium}
               onClick={() => !isPremium && onUpgradeClick('Export Analytics')}
             >
-              {!isPremium && <Lock className="h-4 w-4 mr-2" />}
+              {!isPremium && <Lock className="h-4 w-4 mr-2 text-[#004096]" />}
               Export CSV
             </Button>
             <Button 
@@ -247,7 +247,7 @@ export function Analytics({ onUpgradeClick, isPremium = false }: AnalyticsProps)
               disabled={!isPremium}
               onClick={() => !isPremium && onUpgradeClick('Export Analytics')}
             >
-              {!isPremium && <Lock className="h-4 w-4 mr-2" />}
+              {!isPremium && <Lock className="h-4 w-4 mr-2 text-[#004096]" />}
               Export PDF Report
             </Button>
           </div>
@@ -255,7 +255,7 @@ export function Analytics({ onUpgradeClick, isPremium = false }: AnalyticsProps)
             <Button
               variant="outline"
               size="sm"
-              className="w-full mt-3"
+              className="w-full mt-3 bg-[#eef2e3] text-[#004096] hover:bg-[#eef2e3]/80"
               onClick={() => onUpgradeClick('Export Analytics')}
             >
               <Lock className="h-4 w-4 mr-2" />
