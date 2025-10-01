@@ -161,7 +161,7 @@ export function LinksEditor({ brandMode, links, onLinksChange, onUpgradeClick, i
             <CardTitle className="flex items-center space-x-2 text-accent text-headline-medium">
               <Crown className="h-5 w-5" />
               <span>Brand Links</span>
-              <Badge variant="secondary" className="text-label-medium">Pro</Badge>
+              <Badge variant="secondary" className="text-label-medium bg-[#eef2e3] text-[#004096]">Pro</Badge>
             </CardTitle>
             <CardDescription className="text-body-medium">
               Special link types available for brands

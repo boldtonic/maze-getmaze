@@ -57,7 +57,7 @@ export function UpgradeDialog({ open, onOpenChange, feature }: UpgradeDialogProp
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <div className="flex items-center justify-center space-x-2 mb-2">
-            <Crown className="h-6 w-6 text-primary" />
+            <Crown className="h-6 w-6 text-[#004096]" />
             <DialogTitle className="text-2xl">Upgrade to Premium</DialogTitle>
           </div>
           <DialogDescription className="text-center">
