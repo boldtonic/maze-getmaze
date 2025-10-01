@@ -107,7 +107,7 @@ export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremiu
               <div className="flex items-center justify-between">
                 <Label>Custom Accent Color</Label>
                 {!isPremium && (
-                  <Badge variant="secondary" className="flex items-center space-x-1 bg-[#eef2e3] text-[#004096]">
+                  <Badge variant="secondary" className="flex items-center space-x-1">
                     <Crown className="h-3 w-3" />
                     <span>Premium</span>
                   </Badge>
@@ -180,7 +180,7 @@ export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremiu
                 <Button
                   variant="outline"
                   size="sm"
-                  className="w-full bg-[#eef2e3] text-[#004096] hover:bg-[#eef2e3]/80"
+                  className="w-full"
                   onClick={() => onUpgradeClick('Custom Accent Colors')}
                 >
                   <Lock className="h-4 w-4 mr-2" />
@@ -195,7 +195,7 @@ export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremiu
               <div className="flex items-center justify-between">
                 <Label>Font Family</Label>
                 {!isPremium && (
-                  <Badge variant="secondary" className="flex items-center space-x-1 bg-[#eef2e3] text-[#004096]">
+                  <Badge variant="secondary" className="flex items-center space-x-1">
                     <Crown className="h-3 w-3" />
                     <span>Premium</span>
                   </Badge>
@@ -223,7 +223,7 @@ export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremiu
                 <Button
                   variant="outline"
                   size="sm"
-                  className="w-full bg-[#eef2e3] text-[#004096] hover:bg-[#eef2e3]/80"
+                  className="w-full"
                   onClick={() => onUpgradeClick('Advanced Typography')}
                 >
                   <Lock className="h-4 w-4 mr-2" />
@@ -238,7 +238,7 @@ export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremiu
               <div className="flex items-center justify-between">
                 <Label>Orientation</Label>
                 {!isPremium && (
-                  <Badge variant="secondary" className="flex items-center space-x-1 bg-[#eef2e3] text-[#004096]">
+                  <Badge variant="secondary" className="flex items-center space-x-1">
                     <Crown className="h-3 w-3" />
                     <span>Premium</span>
                   </Badge>
@@ -280,7 +280,7 @@ export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremiu
                 <Button
                   variant="outline"
                   size="sm"
-                  className="w-full bg-[#eef2e3] text-[#004096] hover:bg-[#eef2e3]/80"
+                  className="w-full"
                   onClick={() => onUpgradeClick('Custom Layouts')}
                 >
                   <Lock className="h-4 w-4 mr-2" />

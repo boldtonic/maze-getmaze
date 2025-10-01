@@ -134,7 +134,7 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, o
                 <div className="space-y-1">
                   <div className="flex items-center space-x-2">
                     <Label htmlFor="verified">Verified Badge</Label>
-                    <Badge variant="secondary" className="text-label-small bg-[#eef2e3] text-[#004096]">
+                    <Badge variant="secondary" className="text-label-small">
                       <Crown className="h-3 w-3 mr-1" />
                       Brand Feature
                     </Badge>
