@@ -167,7 +167,7 @@ export function LinksEditor({ brandMode, links, onLinksChange, onUpgradeClick, i
             className="w-full h-10 text-label-large"
           >
             <Plus className="h-4 w-4 mr-2" />
-            {isPremium ? `Add Featured Link (${links.length}/3)` : `Add Featured Link (${links.length}/2)`}
+            Add Featured Link ({links.length}/3)
           </Button>
           {!canAddLink && !isPremium && (
             <p className="text-body-small text-muted-foreground text-center">
