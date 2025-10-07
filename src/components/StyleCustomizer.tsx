@@ -28,6 +28,7 @@ interface StyleCustomizerProps {
 }
 
 export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremium = false }: StyleCustomizerProps) {
+  const [activeTab, setActiveTab] = useState("colors");
 
   const colorPresets = [
     { name: "Purple", primary: "#6366f1", background: "#f1f0ff" },
@@ -52,7 +53,7 @@ export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremiu
 
   return (
     <div className="space-y-6">
-      <Tabs defaultValue="colors" className="w-full">
+      <Tabs defaultValue="colors" className="w-full" onValueChange={setActiveTab}>
         <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="colors" className="flex items-center space-x-2">
             <Palette className="h-4 w-4" />
@@ -192,16 +193,8 @@ export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremiu
 
           <TabsContent value="typography" className="space-y-4">
             <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <Label>Font Family</Label>
-                {!isPremium && (
-                  <Badge variant="secondary" className="flex items-center space-x-1">
-                    <Crown className="h-3 w-3" />
-                    <span>Premium</span>
-                  </Badge>
-                )}
-              </div>
-              <div className={`grid grid-cols-2 gap-3 ${!isPremium ? 'opacity-50' : ''}`}>
+              <Label>Font Family</Label>
+              <div className="grid grid-cols-2 gap-3">
                 {fontOptions.map((font) => (
                   <button
                     key={font.value}
@@ -212,39 +205,19 @@ export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremiu
                         : 'border-border hover:border-primary/50'
                     }`}
                     style={{ fontFamily: font.value }}
-                    disabled={!isPremium}
                   >
                     <div className="font-semibold">{font.name}</div>
                     <div className="text-sm text-muted-foreground">The quick brown fox</div>
                   </button>
                 ))}
               </div>
-              {!isPremium && (
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="w-full"
-                  onClick={() => onUpgradeClick('Advanced Typography')}
-                >
-                  <Lock className="h-4 w-4 mr-2" />
-                  Upgrade to Unlock
-                </Button>
-              )}
             </div>
           </TabsContent>
 
           <TabsContent value="layout" className="space-y-6">
             <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <Label>Orientation</Label>
-                {!isPremium && (
-                  <Badge variant="secondary" className="flex items-center space-x-1">
-                    <Crown className="h-3 w-3" />
-                    <span>Premium</span>
-                  </Badge>
-                )}
-              </div>
-              <div className={`flex gap-3 ${!isPremium ? 'opacity-50' : ''}`}>
+              <Label>Orientation</Label>
+              <div className="flex gap-3">
                 <button
                   onClick={() => isPremium ? updateStyle('orientation', 'horizontal') : onUpgradeClick('Custom Layouts')}
                   className={`flex-1 p-4 text-left border-2 rounded-lg transition-colors ${
@@ -252,7 +225,6 @@ export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremiu
                       ? 'border-primary bg-primary/5' 
                       : 'border-border hover:border-primary/50'
                   }`}
-                  disabled={!isPremium}
                 >
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-4 h-2 bg-current opacity-60 rounded-sm"></div>
@@ -267,7 +239,6 @@ export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremiu
                       ? 'border-primary bg-primary/5' 
                       : 'border-border hover:border-primary/50'
                   }`}
-                  disabled={!isPremium}
                 >
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-2 h-4 bg-current opacity-60 rounded-sm"></div>
@@ -276,17 +247,6 @@ export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremiu
                   <div className="text-sm text-muted-foreground">Tall layout</div>
                 </button>
               </div>
-              {!isPremium && (
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="w-full"
-                  onClick={() => onUpgradeClick('Custom Layouts')}
-                >
-                  <Lock className="h-4 w-4 mr-2" />
-                  Upgrade to Unlock
-                </Button>
-              )}
             </div>
             
             <div className="space-y-3">
@@ -294,18 +254,26 @@ export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremiu
                 <Label>Border Radius</Label>
                 <span className="text-sm text-muted-foreground">{style.borderRadius}px</span>
               </div>
-              <Slider
-                value={[style.borderRadius]}
-                onValueChange={(value) => updateStyle('borderRadius', value[0])}
-                max={24}
-                min={0}
-                step={2}
-                className="w-full"
-              />
+              <div className={!isPremium ? 'opacity-50 pointer-events-none' : ''}>
+                <Slider
+                  value={[style.borderRadius]}
+                  onValueChange={(value) => isPremium ? updateStyle('borderRadius', value[0]) : null}
+                  max={24}
+                  min={0}
+                  step={2}
+                  className="w-full"
+                  disabled={!isPremium}
+                />
+              </div>
               <div className="flex justify-between text-xs text-muted-foreground">
                 <span>Sharp</span>
                 <span>Rounded</span>
               </div>
+              {!isPremium && (
+                <p className="text-xs text-muted-foreground text-center">
+                  Border radius customization is a premium feature
+                </p>
+              )}
             </div>
           </TabsContent>
 
@@ -316,8 +284,20 @@ export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremiu
         variant="primary"
         size="sm"
         className="w-full flex items-center justify-center space-x-2 text-label-large"
+        onClick={() => {
+          if (!isPremium && (activeTab === 'typography' || activeTab === 'layout')) {
+            onUpgradeClick(activeTab === 'typography' ? 'Advanced Typography' : 'Custom Layouts');
+          }
+        }}
       >
-        <span>Save Design Changes</span>
+        {!isPremium && (activeTab === 'typography' || activeTab === 'layout') ? (
+          <>
+            <Lock className="h-4 w-4" />
+            <span>Upgrade to Unlock</span>
+          </>
+        ) : (
+          <span>Save Design Changes</span>
+        )}
       </Button>
     </div>
   );

@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { toast } from "@/hooks/use-toast";
 import { 
   Plus, 
   ExternalLink, 
@@ -51,7 +52,34 @@ export function LinksEditor({ brandMode, links, onLinksChange, onUpgradeClick, i
     onLinksChange([...links, newLink]);
   };
 
+  const isAffiliateLink = (url: string): boolean => {
+    const affiliatePatterns = [
+      /amazon\.[a-z.]+\/.*[?&](tag|associate)/i,
+      /amzn\.to/i,
+      /clickbank/i,
+      /shareasale/i,
+      /cj\.com/i,
+      /commission-junction/i,
+      /affiliate/i,
+      /ref=/i,
+      /partner/i,
+      /track/i,
+    ];
+    return affiliatePatterns.some(pattern => pattern.test(url));
+  };
+
   const updateLink = (id: string, field: string, value: string) => {
+    // Check for affiliate links when updating URL
+    if (field === 'url' && value && isAffiliateLink(value) && !isPremium) {
+      toast({
+        title: "Premium Feature Required",
+        description: "Affiliate links are only available with Premium. Upgrade to unlock this feature.",
+        variant: "destructive",
+      });
+      onUpgradeClick?.('Affiliate Links');
+      return;
+    }
+    
     const updatedLinks = links.map(link => 
       link.id === id ? { ...link, [field]: value } : link
     );
