@@ -136,7 +136,7 @@ export function MediaDashboard() {
       <header className="bg-surface-container border-b border-border">
         <div className="px-6 py-4 max-w-7xl mx-auto">
           <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-3 cursor-pointer" onClick={() => navigate("/")}>
               <img src={mazeIsotype} alt="Maze isotype" className="h-10 w-10" />
               <img src="/src/assets/maze-logo.svg" alt="maze" className="h-8" />
             </div>
