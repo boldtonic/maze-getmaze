@@ -189,7 +189,7 @@ export function EditorialMazesEditor({
               id="idea"
               value={editorialMaze.idea}
               onChange={(e) => handleInputChange('idea', e.target.value)}
-              placeholder="Short description or editorial angle"
+              placeholder="Brief idea - keep it short (~6 words)"
             />
           </div>
 
