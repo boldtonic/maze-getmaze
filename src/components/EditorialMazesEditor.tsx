@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Upload, ImagePlus, Palette, Lock, Crown } from "lucide-react";
+import { Upload, ImagePlus, Palette, Lock, Crown, Eye } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Slider } from "@/components/ui/slider";
 
@@ -39,6 +39,7 @@ interface EditorialMazesEditorProps {
   };
   onStyleChange: (style: any) => void;
   onUpgradeClick: (feature: string) => void;
+  onPreviewClick: () => void;
   isPremium: boolean;
   maxMazes: number;
 }
@@ -51,6 +52,7 @@ export function EditorialMazesEditor({
   style,
   onStyleChange,
   onUpgradeClick,
+  onPreviewClick,
   isPremium,
   maxMazes
 }: EditorialMazesEditorProps) {
@@ -368,10 +370,21 @@ export function EditorialMazesEditor({
         </CardContent>
       </Card>
 
-      {/* Save Button */}
-      <Button variant="primary" size="sm" className="w-full text-label-large">
-        Save Editorial Maze
-      </Button>
+      {/* Preview and Save Buttons */}
+      <div className="grid grid-cols-2 gap-3">
+        <Button 
+          variant="outline" 
+          size="sm" 
+          className="text-label-large"
+          onClick={onPreviewClick}
+        >
+          <Eye className="h-4 w-4 mr-2" />
+          Preview
+        </Button>
+        <Button variant="primary" size="sm" className="text-label-large">
+          Save Editorial Maze
+        </Button>
+      </div>
     </div>
   );
 }

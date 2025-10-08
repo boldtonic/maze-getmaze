@@ -161,15 +161,6 @@ export function MediaDashboard() {
                 Team
               </Button>
               <Button 
-                variant="primary" 
-                size="sm" 
-                className="text-label-large"
-                onClick={handlePreviewClick}
-              >
-                <Eye className="h-4 w-4 mr-2" />
-                Preview
-              </Button>
-              <Button 
                 variant="ghost" 
                 size="sm" 
                 onClick={toggleDarkMode}
@@ -298,6 +289,7 @@ export function MediaDashboard() {
                     style={style}
                     onStyleChange={setStyle}
                     onUpgradeClick={handleUpgradeClick}
+                    onPreviewClick={handlePreviewClick}
                     isPremium={isPremium}
                     maxMazes={maxMazes}
                   />
