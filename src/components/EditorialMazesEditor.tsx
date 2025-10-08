@@ -94,6 +94,31 @@ export function EditorialMazesEditor({
         </CardContent>
       </Card>
 
+      {/* Theme - Design - Preview Tabs */}
+      <Tabs defaultValue="theme" className="w-full">
+        <TabsList className="grid w-full grid-cols-3 bg-surface-container-high rounded-2xl p-1">
+          <TabsTrigger 
+            value="theme" 
+            className="data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
+          >
+            Theme
+          </TabsTrigger>
+          <TabsTrigger 
+            value="design" 
+            className="data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
+          >
+            Design
+          </TabsTrigger>
+          <TabsTrigger 
+            value="preview" 
+            className="data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
+          >
+            Preview
+          </TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="theme" className="space-y-6 mt-6">
+
       {/* Cover Image */}
       <Card>
         <CardHeader>
@@ -190,8 +215,11 @@ export function EditorialMazesEditor({
         </CardContent>
       </Card>
 
-      {/* Style Customization */}
-      <Card>
+          </TabsContent>
+
+        <TabsContent value="design" className="space-y-6 mt-6">
+          {/* Style Customization */}
+          <Card>
         <CardHeader>
           <CardTitle className="flex items-center space-x-2 text-headline-medium">
             <Palette className="h-5 w-5 text-primary" />
@@ -369,22 +397,43 @@ export function EditorialMazesEditor({
           </Button>
         </CardContent>
       </Card>
+        </TabsContent>
 
-      {/* Preview and Save Buttons */}
-      <div className="grid grid-cols-2 gap-3">
-        <Button 
-          variant="outline" 
-          size="sm" 
-          className="text-label-large"
-          onClick={onPreviewClick}
-        >
-          <Eye className="h-4 w-4 mr-2" />
-          Preview
-        </Button>
-        <Button variant="primary" size="sm" className="text-label-large">
-          Save Editorial Maze
-        </Button>
-      </div>
+        <TabsContent value="preview" className="mt-6">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center space-x-2 text-headline-medium">
+                <Eye className="h-5 w-5 text-primary" />
+                <span>Live Preview</span>
+              </CardTitle>
+              <CardDescription className="text-body-medium">
+                Preview how your Editorial Maze will appear when triggered
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <div className="text-body-small text-on-surface-variant">
+                  Use the full preview to see your maze in action
+                </div>
+                <Button 
+                  variant="primary" 
+                  size="sm" 
+                  className="w-full text-label-large"
+                  onClick={onPreviewClick}
+                >
+                  <Eye className="h-4 w-4 mr-2" />
+                  Open Full Preview
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
+
+      {/* Save Button */}
+      <Button variant="primary" size="sm" className="w-full text-label-large">
+        Save Editorial Maze
+      </Button>
     </div>
   );
 }
