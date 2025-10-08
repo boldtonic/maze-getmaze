@@ -5,9 +5,16 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Upload, ImagePlus, Palette, Lock, Crown, Eye } from "lucide-react";
+import { Upload, ImagePlus, Palette, Lock, Crown, Eye, Plus } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Slider } from "@/components/ui/slider";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface Link {
   id: string;
@@ -57,6 +64,19 @@ export function EditorialMazesEditor({
   maxMazes
 }: EditorialMazesEditorProps) {
   const [designTab, setDesignTab] = useState("colors");
+  const [selectedMazeId, setSelectedMazeId] = useState("1");
+  const [createdMazes] = useState([
+    { id: "1", name: "AI Safety" },
+  ]);
+
+  const handleCreateMaze = () => {
+    if (createdMazes.length >= maxMazes) {
+      onUpgradeClick("More Editorial Mazes");
+    } else {
+      // Create new maze logic would go here
+      console.log("Creating new maze...");
+    }
+  };
   
   const handleInputChange = (field: keyof typeof editorialMaze, value: string) => {
     const updatedMaze = { ...editorialMaze, [field]: value };
@@ -72,13 +92,13 @@ export function EditorialMazesEditor({
 
   return (
     <div className="space-y-6">
-      {/* Maze Count */}
+      {/* Maze Count and Selector */}
       <Card>
-        <CardContent className="pt-6">
+        <CardContent className="pt-6 space-y-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-body-medium text-on-surface">Editorial Mazes</p>
-              <p className="text-body-small text-on-surface-variant">1 of {maxMazes} mazes created</p>
+              <p className="text-body-small text-on-surface-variant">{createdMazes.length} of {maxMazes} mazes created</p>
             </div>
             {!isPremium && (
               <Badge 
@@ -90,6 +110,38 @@ export function EditorialMazesEditor({
                 <span>Upgrade for 10 mazes</span>
               </Badge>
             )}
+          </div>
+
+          <div className="flex items-center gap-3">
+            <div className="flex-1">
+              <Label htmlFor="maze-selector" className="text-body-small text-on-surface-variant mb-2 block">
+                Select Maze
+              </Label>
+              <Select value={selectedMazeId} onValueChange={setSelectedMazeId}>
+                <SelectTrigger id="maze-selector" className="w-full bg-surface border-border">
+                  <SelectValue placeholder="Select a maze" />
+                </SelectTrigger>
+                <SelectContent className="bg-surface border-border z-50">
+                  {createdMazes.map((maze) => (
+                    <SelectItem key={maze.id} value={maze.id} className="hover:bg-surface-container-high cursor-pointer">
+                      {maze.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="flex-shrink-0 pt-6">
+              <Button
+                variant="primary"
+                size="sm"
+                onClick={handleCreateMaze}
+                className="text-label-large whitespace-nowrap"
+                disabled={!isPremium && createdMazes.length >= maxMazes}
+              >
+                <Plus className="h-4 w-4 mr-2" />
+                Create Maze
+              </Button>
+            </div>
           </div>
         </CardContent>
       </Card>
