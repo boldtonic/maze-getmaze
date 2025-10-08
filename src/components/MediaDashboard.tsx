@@ -141,7 +141,40 @@ export function MediaDashboard() {
               <img src="/src/assets/maze-logo.svg" alt="maze" className="h-8" />
             </div>
             
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-4">
+              {/* Main Navigation Tabs */}
+              <div className="flex items-center space-x-1 bg-surface-container-high rounded-xl p-1">
+                <Button
+                  variant={activeTab === "mazes" ? "default" : "ghost"}
+                  size="sm"
+                  onClick={() => setActiveTab("mazes")}
+                  className="text-label-large"
+                >
+                  <Newspaper className="h-4 w-4 mr-2" />
+                  Mazes
+                </Button>
+                <Button
+                  variant={activeTab === "analytics" ? "default" : "ghost"}
+                  size="sm"
+                  onClick={() => setActiveTab("analytics")}
+                  className="text-label-large"
+                >
+                  <BarChart3 className="h-4 w-4 mr-2" />
+                  Analytics
+                </Button>
+                <Button
+                  variant={activeTab === "monetization" ? "default" : "ghost"}
+                  size="sm"
+                  onClick={() => setActiveTab("monetization")}
+                  className="text-label-large"
+                >
+                  <DollarSign className="h-4 w-4 mr-2" />
+                  Monetization
+                </Button>
+              </div>
+
+              <div className="h-6 w-px bg-border"></div>
+
               <Button 
                 variant="ghost" 
                 size="sm" 
@@ -200,35 +233,6 @@ export function MediaDashboard() {
       </header>
 
       <div className="max-w-7xl mx-auto px-6 pt-8 pb-8">
-        {/* Centered Navigation */}
-        <div className="flex justify-center mb-8">
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full max-w-2xl">
-            <TabsList className="grid w-full grid-cols-3 bg-surface-container-high rounded-2xl p-1">
-              <TabsTrigger 
-                value="mazes" 
-                className="flex items-center justify-center space-x-2 data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
-              >
-                <Newspaper className="h-4 w-4" />
-                <span>Mazes</span>
-              </TabsTrigger>
-              <TabsTrigger 
-                value="analytics" 
-                className="flex items-center justify-center space-x-2 data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
-              >
-                <BarChart3 className="h-4 w-4" />
-                <span>Analytics</span>
-              </TabsTrigger>
-              <TabsTrigger 
-                value="monetization" 
-                className="flex items-center justify-center space-x-2 data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
-              >
-                <DollarSign className="h-4 w-4" />
-                <span>Monetization</span>
-              </TabsTrigger>
-            </TabsList>
-          </Tabs>
-        </div>
-
         {/* Content Area - Two Columns */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Mazes Section */}
