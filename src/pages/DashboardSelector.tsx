@@ -1,27 +1,58 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
-import { User, Newspaper, ArrowRight } from "lucide-react";
+import { User, Newspaper, Crown, Check } from "lucide-react";
 import mazeIsotype from "@/assets/maze-isotype.png";
 
 const DashboardSelector = () => {
   const navigate = useNavigate();
 
-  const dashboards = [
+  const plans = [
     {
+      type: "user",
       title: "User Dashboard",
-      description: "Manage your personal Maze profile, links, and appearance",
       icon: User,
-      path: "/user",
       gradient: "from-blue-500/10 to-indigo-500/10",
-      iconBg: "bg-gradient-to-br from-blue-500 to-indigo-500"
+      iconBg: "bg-gradient-to-br from-blue-500 to-indigo-500",
+      options: [
+        {
+          name: "Free",
+          description: "1 Maze • Fixed branding • Basic analytics",
+          features: ["1 User Maze", "2 Featured Links", "Fixed 'Made with Maze'", "Basic Analytics"],
+          path: "/user",
+          isPremium: false
+        },
+        {
+          name: "Premium",
+          description: "10 Mazes • Custom branding • Advanced features",
+          features: ["10 User Mazes", "3 Featured Links", "Remove 'Made with Maze'", "Custom Typography & Layout", "Export Analytics"],
+          path: "/user",
+          isPremium: true
+        }
+      ]
     },
     {
+      type: "media",
       title: "Media Dashboard",
-      description: "Create Editorial Mazes, track engagement, and manage monetization",
       icon: Newspaper,
-      path: "/media",
       gradient: "from-purple-500/10 to-pink-500/10",
-      iconBg: "bg-gradient-to-br from-purple-500 to-pink-500"
+      iconBg: "bg-gradient-to-br from-purple-500 to-pink-500",
+      options: [
+        {
+          name: "Free",
+          description: "1 Maze • Fixed branding • Basic analytics",
+          features: ["1 Editorial Maze", "Fixed 'Made with Maze'", "Basic Analytics", "No Monetization"],
+          path: "/media",
+          isPremium: false
+        },
+        {
+          name: "Premium",
+          description: "10 Mazes • Monetization • Advanced analytics",
+          features: ["10 Editorial Mazes", "Remove 'Made with Maze'", "Affiliate Links", "Advanced Analytics", "Export Data"],
+          path: "/media",
+          isPremium: true
+        }
+      ]
     }
   ];
 
@@ -39,47 +70,70 @@ const DashboardSelector = () => {
 
       {/* Main Content */}
       <div className="flex-1 flex items-center justify-center px-6 py-12">
-        <div className="max-w-5xl w-full space-y-8">
+        <div className="max-w-6xl w-full space-y-8">
           {/* Title Section */}
           <div className="text-center space-y-3 animate-fade-in">
             <h1 className="text-display-medium text-on-surface">
-              Select a dashboard to explore
+              Select Your Dashboard
             </h1>
             <p className="text-body-large text-on-surface-variant">
-              Switch between user and media modes to preview both MVPs
+              Choose between User or Media dashboard, and select your plan
             </p>
           </div>
 
-          {/* Dashboard Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-scale-in">
-            {dashboards.map((dashboard) => {
+          {/* Dashboard Sections */}
+          <div className="space-y-12">
+            {plans.map((dashboard) => {
               const IconComponent = dashboard.icon;
               return (
-                <Card
-                  key={dashboard.path}
-                  className={`cursor-pointer hover:shadow-elevation-3 transition-all duration-300 hover:scale-[1.02] bg-gradient-to-br ${dashboard.gradient} border-0 overflow-hidden group`}
-                  onClick={() => navigate(dashboard.path)}
-                >
-                  <CardHeader className="pb-4">
-                    <div className="flex items-center justify-between">
-                      <div className={`h-14 w-14 rounded-2xl ${dashboard.iconBg} flex items-center justify-center shadow-elevation-2 group-hover:scale-110 transition-transform duration-300`}>
-                        <IconComponent className="h-7 w-7 text-white" strokeWidth={2} />
-                      </div>
-                      <ArrowRight className="h-6 w-6 text-on-surface-variant opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
+                <div key={dashboard.type} className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <div className={`h-10 w-10 rounded-xl ${dashboard.iconBg} flex items-center justify-center`}>
+                      <IconComponent className="h-5 w-5 text-white" strokeWidth={2} />
                     </div>
-                    <CardTitle className="text-headline-medium text-on-surface pt-4">
-                      {dashboard.title}
-                    </CardTitle>
-                    <CardDescription className="text-body-medium text-on-surface-variant">
-                      {dashboard.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="pb-6">
-                    <div className="h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
-                      <div className="h-full w-0 group-hover:w-full bg-gradient-primary transition-all duration-500" />
-                    </div>
-                  </CardContent>
-                </Card>
+                    <h2 className="text-headline-large text-on-surface">{dashboard.title}</h2>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {dashboard.options.map((option) => (
+                      <Card
+                        key={option.name}
+                        className={`cursor-pointer hover:shadow-elevation-3 transition-all duration-300 hover:scale-[1.02] bg-gradient-to-br ${dashboard.gradient} border-2 ${option.isPremium ? 'border-primary' : 'border-transparent'} overflow-hidden group relative`}
+                        onClick={() => navigate(option.path, { state: { isPremium: option.isPremium } })}
+                      >
+                        {option.isPremium && (
+                          <div className="absolute top-4 right-4">
+                            <Badge className="bg-gradient-primary text-white border-0">
+                              <Crown className="h-3 w-3 mr-1" />
+                              Premium
+                            </Badge>
+                          </div>
+                        )}
+                        <CardHeader className="pb-4">
+                          <CardTitle className="text-headline-medium text-on-surface">
+                            {option.name}
+                          </CardTitle>
+                          <CardDescription className="text-body-medium text-on-surface-variant">
+                            {option.description}
+                          </CardDescription>
+                        </CardHeader>
+                        <CardContent className="space-y-4">
+                          <div className="space-y-2">
+                            {option.features.map((feature, index) => (
+                              <div key={index} className="flex items-start space-x-2">
+                                <Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                                <span className="text-body-small text-on-surface-variant">{feature}</span>
+                              </div>
+                            ))}
+                          </div>
+                          <div className="h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+                            <div className="h-full w-0 group-hover:w-full bg-gradient-primary transition-all duration-500" />
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </div>
               );
             })}
           </div>

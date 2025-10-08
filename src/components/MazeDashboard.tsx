@@ -30,13 +30,17 @@ interface Link {
   type: "featured" | "social";
 }
 
-export function MazeDashboard() {
+interface MazeDashboardProps {
+  initialPremium?: boolean;
+}
+
+export function MazeDashboard({ initialPremium = false }: MazeDashboardProps) {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("profile");
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [upgradeDialogOpen, setUpgradeDialogOpen] = useState(false);
   const [upgradeFeature, setUpgradeFeature] = useState<string>("");
-  const isPremium = false; // Set to false to show premium features as locked
+  const isPremium = initialPremium;
   const brandMode = false;
   
   // Dark mode toggle effect

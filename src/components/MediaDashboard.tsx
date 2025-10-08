@@ -40,7 +40,11 @@ interface Link {
   type: "featured" | "social";
 }
 
-export function MediaDashboard() {
+interface MediaDashboardProps {
+  initialPremium?: boolean;
+}
+
+export function MediaDashboard({ initialPremium = false }: MediaDashboardProps) {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("mazes");
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -48,7 +52,7 @@ export function MediaDashboard() {
   const [upgradeFeature, setUpgradeFeature] = useState<string>("");
   const [integrationModalOpen, setIntegrationModalOpen] = useState(false);
   const [teamModalOpen, setTeamModalOpen] = useState(false);
-  const isPremium = false; // Set to false to show premium features as locked
+  const isPremium = initialPremium;
   
   // Dark mode toggle effect
   useEffect(() => {

@@ -1,7 +1,11 @@
 import { MazeDashboard } from "@/components/MazeDashboard";
+import { useLocation } from "react-router-dom";
 
 const User = () => {
-  return <MazeDashboard />;
+  const location = useLocation();
+  const isPremium = location.state?.isPremium ?? false;
+
+  return <MazeDashboard initialPremium={isPremium} />;
 };
 
 export default User;
