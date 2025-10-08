@@ -208,114 +208,119 @@ export function MediaDashboard() {
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-6 pt-8 pb-8 flex">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
-          {/* Left Panel - Preview */}
-          <div className="space-y-6">
-            <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl">
-              <CardHeader className="pb-4">
-                <CardTitle className="flex items-center space-x-3 text-headline-large text-on-surface">
-                  <div className="p-2 bg-[#eef2e3] rounded-full">
-                    <Eye className="h-5 w-5 text-[#004096]" />
-                  </div>
-                  <span>Live Preview</span>
-                </CardTitle>
-                <CardDescription className="text-body-medium text-on-surface-variant">
-                  Preview how your Editorial Maze will appear when triggered
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <MazePreview 
-                  brandMode={false} 
-                  coverImage={coverImage}
-                  onImageUpload={triggerFileUpload}
-                  onAddLink={() => {}}
-                  canAddLink={false}
-                  profile={{
-                    displayName: editorialMaze.theme,
-                    title: editorialMaze.idea,
-                    bio: editorialMaze.context,
-                  }}
-                  links={links}
-                  style={style}
-                />
-              </CardContent>
-            </Card>
-          </div>
+      <div className="max-w-7xl mx-auto px-6 pt-8 pb-8">
+        {/* Centered Navigation */}
+        <div className="flex justify-center mb-8">
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full max-w-2xl">
+            <TabsList className="grid w-full grid-cols-3 bg-surface-container-high rounded-2xl p-1">
+              <TabsTrigger 
+                value="mazes" 
+                className="flex items-center justify-center space-x-2 data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
+              >
+                <Newspaper className="h-4 w-4" />
+                <span>Mazes</span>
+              </TabsTrigger>
+              <TabsTrigger 
+                value="analytics" 
+                className="flex items-center justify-center space-x-2 data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
+              >
+                <BarChart3 className="h-4 w-4" />
+                <span>Analytics</span>
+              </TabsTrigger>
+              <TabsTrigger 
+                value="monetization" 
+                className="flex items-center justify-center space-x-2 data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
+              >
+                <DollarSign className="h-4 w-4" />
+                <span>Monetization</span>
+              </TabsTrigger>
+            </TabsList>
+          </Tabs>
+        </div>
 
-          {/* Right Panel - Editor */}
-          <div className="space-y-6 overflow-y-auto max-h-[calc(100vh-12rem)] pb-4">
-            <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl">
-              <CardHeader className="pb-4">
-                <CardTitle className="flex items-center space-x-3 text-headline-large text-on-surface">
-                  <div className="p-2 bg-[#eef2e3] rounded-full">
-                    <Newspaper className="h-5 w-5 text-[#004096]" />
-                  </div>
-                  <span>Media Dashboard</span>
-                </CardTitle>
-                <CardDescription className="text-body-medium text-on-surface-variant">
-                  Manage Editorial Mazes, track engagement, and monetize your content
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Tabs value={activeTab} onValueChange={setActiveTab}>
-                  <TabsList className="grid w-full grid-cols-3 bg-surface-container-high rounded-2xl p-1">
-                    <TabsTrigger 
-                      value="mazes" 
-                      className="flex items-center space-x-2 data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
-                    >
-                      <Newspaper className="h-4 w-4" />
-                      <span className="hidden sm:inline">Mazes</span>
-                    </TabsTrigger>
-                    <TabsTrigger 
-                      value="analytics" 
-                      className="flex items-center space-x-2 data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
-                    >
-                      <BarChart3 className="h-4 w-4" />
-                      <span className="hidden sm:inline">Analytics</span>
-                    </TabsTrigger>
-                    <TabsTrigger 
-                      value="monetization" 
-                      className="flex items-center space-x-2 data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
-                    >
-                      <DollarSign className="h-4 w-4" />
-                      <span className="hidden sm:inline">Monetization</span>
-                    </TabsTrigger>
-                  </TabsList>
+        {/* Content Area - Two Columns */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Mazes Section */}
+          {activeTab === "mazes" && (
+            <>
+              {/* Left - Live Preview */}
+              <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl">
+                <CardHeader className="pb-4">
+                  <CardTitle className="flex items-center space-x-3 text-headline-large text-on-surface">
+                    <div className="p-2 bg-[#eef2e3] rounded-full">
+                      <Eye className="h-5 w-5 text-[#004096]" />
+                    </div>
+                    <span>Live Preview</span>
+                  </CardTitle>
+                  <CardDescription className="text-body-medium text-on-surface-variant">
+                    Preview how your Editorial Maze will appear when triggered
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <MazePreview 
+                    brandMode={false} 
+                    coverImage={coverImage}
+                    onImageUpload={triggerFileUpload}
+                    onAddLink={() => {}}
+                    canAddLink={false}
+                    profile={{
+                      displayName: editorialMaze.theme,
+                      title: editorialMaze.idea,
+                      bio: editorialMaze.context,
+                    }}
+                    links={links}
+                    style={style}
+                  />
+                </CardContent>
+              </Card>
 
-                  <div className="mt-6">
-                    <TabsContent value="mazes">
-                      <EditorialMazesEditor 
-                        coverImage={coverImage}
-                        onImageUpload={triggerFileUpload}
-                        editorialMaze={editorialMaze}
-                        onEditorialMazeChange={handleEditorialMazeChange}
-                        links={links}
-                        onLinksChange={setLinks}
-                        style={style}
-                        onStyleChange={setStyle}
-                        onUpgradeClick={handleUpgradeClick}
-                        isPremium={isPremium}
-                        maxMazes={maxMazes}
-                      />
-                    </TabsContent>
-                    <TabsContent value="analytics">
-                      <MediaAnalytics 
-                        onUpgradeClick={handleUpgradeClick}
-                        isPremium={isPremium}
-                      />
-                    </TabsContent>
-                    <TabsContent value="monetization">
-                      <Monetization 
-                        onUpgradeClick={handleUpgradeClick}
-                        isPremium={isPremium}
-                      />
-                    </TabsContent>
-                  </div>
-                </Tabs>
-              </CardContent>
-            </Card>
-          </div>
+              {/* Right - Mazes Editor */}
+              <Card className="shadow-elevation-2 bg-surface-container border-0 rounded-3xl">
+                <CardHeader className="pb-4">
+                  <CardTitle className="flex items-center space-x-3 text-headline-large text-on-surface">
+                    <div className="p-2 bg-[#eef2e3] rounded-full">
+                      <Newspaper className="h-5 w-5 text-[#004096]" />
+                    </div>
+                    <span>Editorial Mazes</span>
+                  </CardTitle>
+                  <CardDescription className="text-body-medium text-on-surface-variant">
+                    Create and manage your Editorial Mazes
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <EditorialMazesEditor 
+                    coverImage={coverImage}
+                    onImageUpload={triggerFileUpload}
+                    editorialMaze={editorialMaze}
+                    onEditorialMazeChange={handleEditorialMazeChange}
+                    links={links}
+                    onLinksChange={setLinks}
+                    style={style}
+                    onStyleChange={setStyle}
+                    onUpgradeClick={handleUpgradeClick}
+                    isPremium={isPremium}
+                    maxMazes={maxMazes}
+                  />
+                </CardContent>
+              </Card>
+            </>
+          )}
+
+          {/* Analytics Section */}
+          {activeTab === "analytics" && (
+            <MediaAnalytics 
+              onUpgradeClick={handleUpgradeClick}
+              isPremium={isPremium}
+            />
+          )}
+
+          {/* Monetization Section */}
+          {activeTab === "monetization" && (
+            <Monetization 
+              onUpgradeClick={handleUpgradeClick}
+              isPremium={isPremium}
+            />
+          )}
         </div>
       </div>
 
