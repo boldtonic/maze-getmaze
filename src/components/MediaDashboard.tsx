@@ -141,37 +141,34 @@ export function MediaDashboard() {
               <img src="/src/assets/maze-logo.svg" alt="maze" className="h-8" />
             </div>
             
-            <div className="flex items-center space-x-4">
-              {/* Main Navigation Tabs */}
-              <div className="flex items-center space-x-1 bg-surface-container-high rounded-xl p-1">
-                <Button
-                  variant={activeTab === "mazes" ? "default" : "ghost"}
-                  size="sm"
-                  onClick={() => setActiveTab("mazes")}
-                  className="text-label-large"
-                >
-                  <Newspaper className="h-4 w-4 mr-2" />
-                  Mazes
-                </Button>
-                <Button
-                  variant={activeTab === "analytics" ? "default" : "ghost"}
-                  size="sm"
-                  onClick={() => setActiveTab("analytics")}
-                  className="text-label-large"
-                >
-                  <BarChart3 className="h-4 w-4 mr-2" />
-                  Analytics
-                </Button>
-                <Button
-                  variant={activeTab === "monetization" ? "default" : "ghost"}
-                  size="sm"
-                  onClick={() => setActiveTab("monetization")}
-                  className="text-label-large"
-                >
-                  <DollarSign className="h-4 w-4 mr-2" />
-                  Monetization
-                </Button>
-              </div>
+            <div className="flex items-center space-x-3">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setActiveTab("mazes")}
+                className={`text-label-large ${activeTab === "mazes" ? "bg-surface-container-high" : ""}`}
+              >
+                <Newspaper className="h-4 w-4 mr-2" />
+                Mazes
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setActiveTab("analytics")}
+                className={`text-label-large ${activeTab === "analytics" ? "bg-surface-container-high" : ""}`}
+              >
+                <BarChart3 className="h-4 w-4 mr-2" />
+                Analytics
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setActiveTab("monetization")}
+                className={`text-label-large ${activeTab === "monetization" ? "bg-surface-container-high" : ""}`}
+              >
+                <DollarSign className="h-4 w-4 mr-2" />
+                Monetization
+              </Button>
 
               <div className="h-6 w-px bg-border"></div>
 
