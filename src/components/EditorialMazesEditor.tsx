@@ -199,17 +199,17 @@ export function EditorialMazesEditor({
               id="context"
               value={editorialMaze.context}
               onChange={(e) => {
-                if (e.target.value.length <= 120) {
+                if (e.target.value.length <= 100) {
                   handleInputChange('context', e.target.value);
                 }
               }}
               placeholder="Provide context for this theme..."
               rows={4}
               className="resize-none"
-              maxLength={120}
+              maxLength={100}
             />
-            <p className={`text-body-small ${editorialMaze.context.length > 100 ? 'text-destructive' : 'text-muted-foreground'}`}>
-              {editorialMaze.context.length}/120 characters
+            <p className={`text-body-small ${editorialMaze.context.length > 80 ? 'text-destructive' : 'text-muted-foreground'}`}>
+              {editorialMaze.context.length}/100 characters
             </p>
           </div>
         </CardContent>
