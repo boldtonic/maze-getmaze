@@ -130,10 +130,10 @@ export function EditorialMazesEditor({
                 Select Maze
               </Label>
               <Select value={selectedMazeId} onValueChange={handleMazeSelection}>
-                <SelectTrigger id="maze-selector" className="w-full bg-surface border-primary/20 hover:border-primary/40 transition-colors">
+                <SelectTrigger id="maze-selector" className="w-full bg-primary text-primary-foreground border-primary hover:bg-primary/90 transition-colors">
                   <SelectValue placeholder="Select a maze" />
                 </SelectTrigger>
-                <SelectContent className="bg-surface border-primary/20 z-50">
+                <SelectContent className="bg-surface border-border z-50">
                   {createdMazes.map((maze) => (
                     <SelectItem key={maze.id} value={maze.id} className="hover:bg-primary/10 cursor-pointer focus:bg-primary/10">
                       {maze.name}
