@@ -70,8 +70,8 @@ export function MediaDashboard({ initialPremium = false }: MediaDashboardProps) 
   const [coverImage, setCoverImage] = useState<string | null>(null);
   const [editorialMaze, setEditorialMaze] = useState({
     theme: "AI Safety",
-    idea: "Exploring ethical considerations in artificial intelligence development",
-    context: "A comprehensive overview of current AI safety research, regulatory frameworks, and industry best practices for responsible AI development.",
+    idea: "Exploring ethical AI development considerations",
+    context: "An overview of AI safety research, frameworks, and responsible development practices in the industry.",
   });
   const [links, setLinks] = useState<Link[]>([]);
   const [style, setStyle] = useState({
