@@ -130,19 +130,19 @@ export function EditorialMazesEditor({
                 Select Maze
               </Label>
               <Select value={selectedMazeId} onValueChange={handleMazeSelection}>
-                <SelectTrigger id="maze-selector" className="w-full bg-surface border-border">
+                <SelectTrigger id="maze-selector" className="w-full bg-surface border-primary/20 hover:border-primary/40 transition-colors">
                   <SelectValue placeholder="Select a maze" />
                 </SelectTrigger>
-                <SelectContent className="bg-surface border-border z-50">
+                <SelectContent className="bg-surface border-primary/20 z-50">
                   {createdMazes.map((maze) => (
-                    <SelectItem key={maze.id} value={maze.id} className="hover:bg-surface-container-high cursor-pointer">
+                    <SelectItem key={maze.id} value={maze.id} className="hover:bg-primary/10 cursor-pointer focus:bg-primary/10">
                       {maze.name}
                     </SelectItem>
                   ))}
                   {createdMazes.length < maxMazes && (
                     <SelectItem 
                       value="create-new" 
-                      className="hover:bg-surface-container-high cursor-pointer text-primary font-medium"
+                      className="hover:bg-primary/10 cursor-pointer text-primary font-medium focus:bg-primary/10"
                     >
                       <div className="flex items-center gap-2">
                         <Plus className="h-4 w-4" />
