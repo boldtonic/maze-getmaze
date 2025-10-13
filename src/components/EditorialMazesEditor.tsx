@@ -245,7 +245,7 @@ export function EditorialMazesEditor({
                   handleInputChange('idea', e.target.value);
                 }
               }}
-              placeholder="Brief angle (max 60 chars)"
+              placeholder="Your angle or perspective"
               maxLength={60}
             />
             <p className={`text-body-small ${editorialMaze.idea.length > 50 ? 'text-destructive' : 'text-muted-foreground'}`}>
@@ -263,7 +263,7 @@ export function EditorialMazesEditor({
                   handleInputChange('context', e.target.value);
                 }
               }}
-              placeholder="Brief context (max 120 chars)"
+              placeholder="Additional context"
               rows={3}
               className="resize-none"
               maxLength={120}
