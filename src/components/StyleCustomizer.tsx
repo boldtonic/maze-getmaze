@@ -72,7 +72,7 @@ export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremiu
         <div className="mt-6">
           <TabsContent value="colors" className="space-y-6">
             <div className="space-y-3">
-              <Label>Color Presets</Label>
+              <Label>Use Color Presets</Label>
               <div className="grid grid-cols-3 gap-3">
                 {colorPresets.map((preset) => (
                   <button
@@ -106,7 +106,7 @@ export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremiu
 
             <div className="space-y-3 relative">
               <div className="flex items-center justify-between">
-                <Label>Custom Accent Color</Label>
+                <Label>Use Custom Accent Color</Label>
                 {!isPremium && (
                   <Badge variant="secondary" className="flex items-center space-x-1">
                     <Crown className="h-3 w-3" />
@@ -193,7 +193,7 @@ export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremiu
 
           <TabsContent value="typography" className="space-y-4">
             <div className="space-y-3">
-              <Label>Font Family</Label>
+              <Label>Use Font Family</Label>
               <div className="grid grid-cols-2 gap-3">
                 {fontOptions.map((font) => (
                   <button
