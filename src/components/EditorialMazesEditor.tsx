@@ -241,15 +241,15 @@ export function EditorialMazesEditor({
               id="idea"
               value={editorialMaze.idea}
               onChange={(e) => {
-                if (e.target.value.length <= 60) {
+                if (e.target.value.length <= 50) {
                   handleInputChange('idea', e.target.value);
                 }
               }}
               placeholder="Your angle or perspective"
-              maxLength={60}
+              maxLength={50}
             />
-            <p className={`text-body-small ${editorialMaze.idea.length > 50 ? 'text-destructive' : 'text-muted-foreground'}`}>
-              {editorialMaze.idea.length}/60 characters
+            <p className={`text-body-small ${editorialMaze.idea.length > 40 ? 'text-destructive' : 'text-muted-foreground'}`}>
+              {editorialMaze.idea.length}/50 characters
             </p>
           </div>
 
@@ -259,17 +259,17 @@ export function EditorialMazesEditor({
               id="context"
               value={editorialMaze.context}
               onChange={(e) => {
-                if (e.target.value.length <= 120) {
+                if (e.target.value.length <= 100) {
                   handleInputChange('context', e.target.value);
                 }
               }}
               placeholder="Additional context"
               rows={3}
               className="resize-none"
-              maxLength={120}
+              maxLength={100}
             />
-            <p className={`text-body-small ${editorialMaze.context.length > 100 ? 'text-destructive' : 'text-muted-foreground'}`}>
-              {editorialMaze.context.length}/120 characters
+            <p className={`text-body-small ${editorialMaze.context.length > 80 ? 'text-destructive' : 'text-muted-foreground'}`}>
+              {editorialMaze.context.length}/100 characters
             </p>
           </div>
         </CardContent>
