@@ -5,9 +5,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Upload, ImagePlus, Palette, Lock, Crown, Eye, Plus } from "lucide-react";
+import { Upload, ImagePlus, Palette, Eye, Plus, Crown } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Slider } from "@/components/ui/slider";
 import {
   Select,
   SelectContent,
@@ -15,6 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { StyleCustomizer } from "./StyleCustomizer";
 
 interface Link {
   id: string;
@@ -63,7 +63,6 @@ export function EditorialMazesEditor({
   isPremium,
   maxMazes
 }: EditorialMazesEditorProps) {
-  const [designTab, setDesignTab] = useState("colors");
   const [selectedMazeId, setSelectedMazeId] = useState("1");
   const [createdMazes] = useState([
     { id: "1", name: "AI Safety" },
@@ -82,13 +81,6 @@ export function EditorialMazesEditor({
     const updatedMaze = { ...editorialMaze, [field]: value };
     onEditorialMazeChange(updatedMaze);
   };
-
-  const fonts = [
-    { name: "Inter", label: "Inter" },
-    { name: "Georgia", label: "Georgia" },
-    { name: "Space Mono", label: "Space Mono" },
-    { name: "Playfair Display", label: "Playfair Display" },
-  ];
 
   return (
     <div className="space-y-6">
@@ -280,183 +272,24 @@ export function EditorialMazesEditor({
         <TabsContent value="design" className="space-y-6 mt-6">
           {/* Style Customization */}
           <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center space-x-2 text-headline-medium">
-            <Palette className="h-5 w-5 text-primary" />
-            <span>Design</span>
-          </CardTitle>
-          <CardDescription className="text-body-medium">
-            Customize the visual appearance
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Tabs value={designTab} onValueChange={setDesignTab}>
-            <TabsList className="grid w-full grid-cols-3 mb-6">
-              <TabsTrigger value="colors">Colors</TabsTrigger>
-              <TabsTrigger value="typography">Typography</TabsTrigger>
-              <TabsTrigger value="layout">Layout</TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="colors" className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="bgColor">Background Color</Label>
-                <div className="flex items-center space-x-3">
-                  <Input
-                    id="bgColor"
-                    type="color"
-                    value={style.backgroundColor}
-                    onChange={(e) => onStyleChange({ ...style, backgroundColor: e.target.value })}
-                    className="w-20 h-10 p-1 cursor-pointer"
-                  />
-                  <Input
-                    type="text"
-                    value={style.backgroundColor}
-                    onChange={(e) => onStyleChange({ ...style, backgroundColor: e.target.value })}
-                    placeholder="#ffffff"
-                    className="flex-1"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="accentColor">Accent Color</Label>
-                <div className="flex items-center space-x-3">
-                  <Input
-                    id="accentColor"
-                    type="color"
-                    value={style.accentColor}
-                    onChange={(e) => onStyleChange({ ...style, accentColor: e.target.value })}
-                    className="w-20 h-10 p-1 cursor-pointer"
-                  />
-                  <Input
-                    type="text"
-                    value={style.accentColor}
-                    onChange={(e) => onStyleChange({ ...style, accentColor: e.target.value })}
-                    placeholder="#6366f1"
-                    className="flex-1"
-                  />
-                </div>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="typography" className="space-y-4">
-              <div className="space-y-2">
-                <Label>Font Family</Label>
-                <div className="grid grid-cols-2 gap-2">
-                  {fonts.map((font) => (
-                    <Button
-                      key={font.name}
-                      variant={style.fontFamily === font.name ? "default" : "outline"}
-                      className="justify-start"
-                      style={{ fontFamily: font.name }}
-                      onClick={() => {
-                        if (!isPremium) {
-                          onUpgradeClick("Custom Typography");
-                        } else {
-                          onStyleChange({ ...style, fontFamily: font.name });
-                        }
-                      }}
-                    >
-                      {!isPremium && style.fontFamily !== font.name && (
-                        <Lock className="h-3 w-3 mr-2" />
-                      )}
-                      {font.label}
-                    </Button>
-                  ))}
-                </div>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="layout" className="space-y-4">
-              <div className="space-y-2">
-                <Label>Card Orientation</Label>
-                <div className="grid grid-cols-2 gap-2">
-                  <Button
-                    variant={style.orientation === "horizontal" ? "default" : "outline"}
-                    onClick={() => {
-                      if (!isPremium) {
-                        onUpgradeClick("Layout Options");
-                      } else {
-                        onStyleChange({ ...style, orientation: "horizontal" });
-                      }
-                    }}
-                  >
-                    {!isPremium && style.orientation !== "horizontal" && (
-                      <Lock className="h-3 w-3 mr-2" />
-                    )}
-                    Horizontal
-                  </Button>
-                  <Button
-                    variant={style.orientation === "vertical" ? "default" : "outline"}
-                    onClick={() => {
-                      if (!isPremium) {
-                        onUpgradeClick("Layout Options");
-                      } else {
-                        onStyleChange({ ...style, orientation: "vertical" });
-                      }
-                    }}
-                  >
-                    {!isPremium && style.orientation !== "vertical" && (
-                      <Lock className="h-3 w-3 mr-2" />
-                    )}
-                    Vertical
-                  </Button>
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <Label htmlFor="borderRadius">Border Radius</Label>
-                  {!isPremium && (
-                    <Badge variant="secondary" className="flex items-center space-x-1">
-                      <Crown className="h-3 w-3" />
-                      <span>Premium</span>
-                    </Badge>
-                  )}
-                </div>
-                <div className={!isPremium ? "opacity-50 pointer-events-none" : ""}>
-                  <Slider
-                    id="borderRadius"
-                    min={0}
-                    max={24}
-                    step={4}
-                    value={[style.borderRadius]}
-                    onValueChange={(value) => onStyleChange({ ...style, borderRadius: value[0] })}
-                    className="w-full"
-                  />
-                  <p className="text-sm text-muted-foreground mt-2">{style.borderRadius}px</p>
-                </div>
-                {!isPremium && (
-                  <p className="text-body-small text-muted-foreground">
-                    Upgrade to customize border radius
-                  </p>
-                )}
-              </div>
-            </TabsContent>
-          </Tabs>
-
-          {/* Save Button */}
-          <Button 
-            variant="primary" 
-            size="sm" 
-            className="w-full text-label-large mt-6"
-            onClick={() => {
-              if (!isPremium && (designTab === "typography" || designTab === "layout")) {
-                onUpgradeClick(`${designTab === "typography" ? "Typography" : "Layout"} Customization`);
-              }
-            }}
-          >
-            {!isPremium && (designTab === "typography" || designTab === "layout") ? (
-              <>
-                <Lock className="h-4 w-4 mr-2" />
-                Upgrade to Unlock
-              </>
-            ) : (
-              "Save Design Changes"
-            )}
-          </Button>
-        </CardContent>
-      </Card>
+            <CardHeader>
+              <CardTitle className="flex items-center space-x-2 text-headline-medium">
+                <Palette className="h-5 w-5 text-primary" />
+                <span>Design</span>
+              </CardTitle>
+              <CardDescription className="text-body-medium">
+                Customize the visual appearance
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <StyleCustomizer 
+                style={style} 
+                onStyleChange={onStyleChange}
+                onUpgradeClick={onUpgradeClick}
+                isPremium={isPremium}
+              />
+            </CardContent>
+          </Card>
         </TabsContent>
 
         <TabsContent value="preview" className="mt-6">
