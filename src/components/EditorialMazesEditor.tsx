@@ -64,7 +64,7 @@ export function EditorialMazesEditor({
   maxMazes
 }: EditorialMazesEditorProps) {
   const [selectedMazeId, setSelectedMazeId] = useState("1");
-  const [createdMazes] = useState([
+  const [createdMazes, setCreatedMazes] = useState([
     { id: "1", name: "AI Safety" },
   ]);
 
@@ -72,8 +72,28 @@ export function EditorialMazesEditor({
     if (createdMazes.length >= maxMazes) {
       onUpgradeClick("More Editorial Mazes");
     } else {
-      // Create new maze logic would go here
-      console.log("Creating new maze...");
+      const newMazeId = (Date.now()).toString();
+      const newMaze = {
+        id: newMazeId,
+        name: `New Maze ${createdMazes.length + 1}`
+      };
+      setCreatedMazes([...createdMazes, newMaze]);
+      setSelectedMazeId(newMazeId);
+      // Reset the maze data for the new maze
+      onEditorialMazeChange({
+        theme: "",
+        idea: "",
+        context: ""
+      });
+    }
+  };
+
+  const handleMazeSelection = (value: string) => {
+    if (value === "create-new") {
+      handleCreateMaze();
+    } else {
+      setSelectedMazeId(value);
+      // In a real app, you'd load the maze data here
     }
   };
   
@@ -109,7 +129,7 @@ export function EditorialMazesEditor({
               <Label htmlFor="maze-selector" className="text-body-small text-on-surface-variant mb-2 block">
                 Select Maze
               </Label>
-              <Select value={selectedMazeId} onValueChange={setSelectedMazeId}>
+              <Select value={selectedMazeId} onValueChange={handleMazeSelection}>
                 <SelectTrigger id="maze-selector" className="w-full bg-surface border-border">
                   <SelectValue placeholder="Select a maze" />
                 </SelectTrigger>
@@ -119,6 +139,29 @@ export function EditorialMazesEditor({
                       {maze.name}
                     </SelectItem>
                   ))}
+                  {createdMazes.length < maxMazes && (
+                    <SelectItem 
+                      value="create-new" 
+                      className="hover:bg-surface-container-high cursor-pointer text-primary font-medium"
+                    >
+                      <div className="flex items-center gap-2">
+                        <Plus className="h-4 w-4" />
+                        <span>Create New Maze</span>
+                      </div>
+                    </SelectItem>
+                  )}
+                  {createdMazes.length >= maxMazes && !isPremium && (
+                    <SelectItem 
+                      value="upgrade-required" 
+                      disabled
+                      className="text-on-surface-variant opacity-60"
+                    >
+                      <div className="flex items-center gap-2">
+                        <Crown className="h-4 w-4" />
+                        <span>Upgrade for more mazes</span>
+                      </div>
+                    </SelectItem>
+                  )}
                 </SelectContent>
               </Select>
             </div>
@@ -127,8 +170,8 @@ export function EditorialMazesEditor({
                 variant="primary"
                 size="sm"
                 onClick={handleCreateMaze}
+                disabled={createdMazes.length >= maxMazes}
                 className="text-label-large whitespace-nowrap"
-                disabled={!isPremium && createdMazes.length >= maxMazes}
               >
                 <Plus className="h-4 w-4 mr-2" />
                 Create Maze
