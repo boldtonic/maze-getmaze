@@ -13,8 +13,7 @@ import {
   Moon,
   Sun,
   Puzzle,
-  CreditCard,
-  Settings
+  ChevronDown
 } from "lucide-react";
 import { MazePreview } from "./MazePreview";
 import { ProfileEditor } from "./ProfileEditor";
@@ -23,6 +22,14 @@ import { StyleCustomizer } from "./StyleCustomizer";
 import { Analytics } from "./Analytics";
 import { UpgradeDialog } from "./UpgradeDialog";
 import mazeIsotype from "@/assets/maze-isotype.png";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface Link {
   id: string;
@@ -169,25 +176,8 @@ export function MazeDashboard({ initialPremium = false }: MazeDashboardProps) {
                 <Puzzle className="h-4 w-4 mr-2" />
                 Extension
               </Button>
-              
+
               <div className="h-6 w-px bg-border"></div>
-              
-              <Button 
-                variant="ghost" 
-                size="sm" 
-                className="text-label-large"
-              >
-                <CreditCard className="h-4 w-4 mr-2" />
-                Plans
-              </Button>
-              <Button 
-                variant="ghost" 
-                size="sm" 
-                className="text-label-large"
-              >
-                <Settings className="h-4 w-4 mr-2" />
-                Account
-              </Button>
               <Button 
                 variant="ghost" 
                 size="sm" 
@@ -200,6 +190,25 @@ export function MazeDashboard({ initialPremium = false }: MazeDashboardProps) {
                   <Moon className="h-4 w-4" />
                 )}
               </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="sm" className="text-label-large">
+                    <div className="h-8 w-8 rounded-full bg-gradient-primary flex items-center justify-center text-white text-sm font-medium mr-2">
+                      U
+                    </div>
+                    <ChevronDown className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>Account</DropdownMenuItem>
+                  <DropdownMenuItem>Settings</DropdownMenuItem>
+                  <DropdownMenuItem>Support</DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>Log Out</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
         </div>
