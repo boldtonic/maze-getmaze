@@ -11,7 +11,8 @@ import {
   BarChart3, 
   Eye,
   Moon,
-  Sun
+  Sun,
+  Home
 } from "lucide-react";
 import { MazePreview } from "./MazePreview";
 import { ProfileEditor } from "./ProfileEditor";
@@ -144,6 +145,14 @@ export function MazeDashboard({ initialPremium = false }: MazeDashboardProps) {
         <div className="px-6 py-4 max-w-7xl mx-auto">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-3">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate("/")}
+                className="h-9 w-9 p-0 hover:bg-surface-container-high rounded-full"
+              >
+                <Home className="h-4 w-4" />
+              </Button>
               <img src={mazeIsotype} alt="Maze isotype" className="h-10 w-10" />
               <img src="/src/assets/maze-logo.svg" alt="maze" className="h-8" />
             </div>
