@@ -177,35 +177,54 @@ export function Analytics({ onUpgradeClick, isPremium = false }: AnalyticsProps)
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
-            {recentMentions.map((mention, index) => (
-              <div 
-                key={index}
-                className="flex items-start space-x-4 p-4 rounded-lg border border-border hover:bg-surface-variant/50 transition-colors"
-              >
-                <div className="flex-1 space-y-2">
-                  <div className="flex items-center space-x-2">
-                    <span className="font-medium text-sm">{mention.platform}</span>
-                    <span className="text-muted-foreground">•</span>
-                    <span className="text-sm text-muted-foreground">{mention.user}</span>
-                    <span className="text-muted-foreground">•</span>
-                    <span className="text-xs text-muted-foreground">{mention.time}</span>
-                  </div>
-                  <p className="text-sm">{mention.text}</p>
-                  <div className="flex items-center justify-between">
-                    <Badge 
-                      variant="outline" 
-                      className={getEngagementTextColor(mention.engagement)}
-                    >
-                      {mention.engagement} Engagement
-                    </Badge>
-                   <Button variant="ghost" size="icon" className="text-primary hover:text-primary/80 transition-colors">
-                     <ExternalLink className="h-4 w-4" strokeWidth={2} />
-                   </Button>
+          <div className="space-y-4 relative">
+            {recentMentions.map((mention, index) => {
+              const shouldBlur = !isPremium && index >= 2;
+              return (
+                <div 
+                  key={index}
+                  className={`flex items-start space-x-4 p-4 rounded-lg border border-border hover:bg-surface-variant/50 transition-colors ${
+                    shouldBlur ? 'blur-sm pointer-events-none' : ''
+                  }`}
+                >
+                  <div className="flex-1 space-y-2">
+                    <div className="flex items-center space-x-2">
+                      <span className="font-medium text-sm">{mention.platform}</span>
+                      <span className="text-muted-foreground">•</span>
+                      <span className="text-sm text-muted-foreground">{mention.user}</span>
+                      <span className="text-muted-foreground">•</span>
+                      <span className="text-xs text-muted-foreground">{mention.time}</span>
+                    </div>
+                    <p className="text-sm">{mention.text}</p>
+                    <div className="flex items-center justify-between">
+                      <Badge 
+                        variant="outline" 
+                        className={getEngagementTextColor(mention.engagement)}
+                      >
+                        {mention.engagement} Engagement
+                      </Badge>
+                      <Button variant="ghost" size="icon" className="text-primary hover:text-primary/80 transition-colors">
+                        <ExternalLink className="h-4 w-4" strokeWidth={2} />
+                      </Button>
+                    </div>
                   </div>
                 </div>
+              );
+            })}
+            
+            {!isPremium && (
+              <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-surface-container to-transparent flex items-end justify-center pb-6">
+                <Button
+                  variant="default"
+                  size="sm"
+                  onClick={() => onUpgradeClick('Recent Mentions')}
+                  className="shadow-lg"
+                >
+                  <Crown className="h-4 w-4 mr-2" />
+                  See more with Premium
+                </Button>
               </div>
-            ))}
+            )}
           </div>
         </CardContent>
       </Card>
