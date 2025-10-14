@@ -11,7 +11,10 @@ import {
   BarChart3, 
   Eye,
   Moon,
-  Sun
+  Sun,
+  Puzzle,
+  CreditCard,
+  Settings
 } from "lucide-react";
 import { MazePreview } from "./MazePreview";
 import { ProfileEditor } from "./ProfileEditor";
@@ -157,6 +160,33 @@ export function MazeDashboard({ initialPremium = false }: MazeDashboardProps) {
               >
                 <Eye className="h-4 w-4 mr-2" />
                 Preview
+              </Button>
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="text-label-large"
+              >
+                <Puzzle className="h-4 w-4 mr-2" />
+                Extension
+              </Button>
+              
+              <div className="h-6 w-px bg-border"></div>
+              
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="text-label-large"
+              >
+                <CreditCard className="h-4 w-4 mr-2" />
+                Plans
+              </Button>
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="text-label-large"
+              >
+                <Settings className="h-4 w-4 mr-2" />
+                Account
               </Button>
               <Button 
                 variant="ghost" 
