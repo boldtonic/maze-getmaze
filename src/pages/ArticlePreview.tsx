@@ -159,7 +159,7 @@ const ArticlePreview = () => {
             variant="primary"
             size="sm"
             className="text-label-large"
-            onClick={() => navigate("/")}
+            onClick={() => navigate(-1)}
           >
             <X className="h-4 w-4 mr-2" />
             Close Preview
