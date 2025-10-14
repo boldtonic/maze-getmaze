@@ -13,7 +13,10 @@ import {
   Moon,
   Sun,
   Puzzle,
-  ChevronDown
+  ChevronDown,
+  Settings,
+  HelpCircle,
+  LogOut
 } from "lucide-react";
 import { MazePreview } from "./MazePreview";
 import { ProfileEditor } from "./ProfileEditor";
@@ -202,11 +205,23 @@ export function MazeDashboard({ initialPremium = false }: MazeDashboardProps) {
                 <DropdownMenuContent align="end" className="w-56">
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>Account</DropdownMenuItem>
-                  <DropdownMenuItem>Settings</DropdownMenuItem>
-                  <DropdownMenuItem>Support</DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <User className="h-4 w-4" />
+                    Account
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Settings className="h-4 w-4" />
+                    Settings
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <HelpCircle className="h-4 w-4" />
+                    Support
+                  </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>Log Out</DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <LogOut className="h-4 w-4" />
+                    Log Out
+                  </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>

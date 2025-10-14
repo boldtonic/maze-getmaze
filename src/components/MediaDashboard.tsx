@@ -12,7 +12,11 @@ import {
   Sun,
   Code,
   Users,
-  ChevronDown
+  ChevronDown,
+  User,
+  Settings,
+  Briefcase,
+  LogOut
 } from "lucide-react";
 import { MazePreview } from "./MazePreview";
 import { EditorialMazesEditor } from "./EditorialMazesEditor";
@@ -219,13 +223,23 @@ export function MediaDashboard({ initialPremium = false }: MediaDashboardProps) 
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={() => navigate("/")}>
+                    <User className="h-4 w-4" />
                     Switch to User Dashboard
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>Settings</DropdownMenuItem>
-                  <DropdownMenuItem>Workspace Settings</DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Settings className="h-4 w-4" />
+                    Settings
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Briefcase className="h-4 w-4" />
+                    Workspace Settings
+                  </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>Sign Out</DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <LogOut className="h-4 w-4" />
+                    Sign Out
+                  </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
