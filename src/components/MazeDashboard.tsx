@@ -203,8 +203,6 @@ export function MazeDashboard({ initialPremium = false }: MazeDashboardProps) {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-56">
-                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
                   <DropdownMenuItem>
                     <User className="h-4 w-4" />
                     Account
