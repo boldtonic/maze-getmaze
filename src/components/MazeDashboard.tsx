@@ -24,6 +24,7 @@ import { LinksEditor } from "./LinksEditor";
 import { StyleCustomizer } from "./StyleCustomizer";
 import { Analytics } from "./Analytics";
 import { UpgradeDialog } from "./UpgradeDialog";
+import { AccountSettingsDrawer } from "./AccountSettingsDrawer";
 import mazeIsotype from "@/assets/maze-isotype.png";
 import {
   DropdownMenu,
@@ -53,6 +54,8 @@ export function MazeDashboard({ initialPremium = false }: MazeDashboardProps) {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [upgradeDialogOpen, setUpgradeDialogOpen] = useState(false);
   const [upgradeFeature, setUpgradeFeature] = useState<string>("");
+  const [settingsDrawerOpen, setSettingsDrawerOpen] = useState(false);
+  const [settingsDefaultTab, setSettingsDefaultTab] = useState<"account" | "settings">("settings");
   const isPremium = initialPremium;
   const brandMode = false;
   
@@ -203,11 +206,17 @@ export function MazeDashboard({ initialPremium = false }: MazeDashboardProps) {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-56">
-                  <DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => {
+                    setSettingsDefaultTab("account");
+                    setSettingsDrawerOpen(true);
+                  }}>
                     <User className="h-4 w-4" />
                     Account
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => {
+                    setSettingsDefaultTab("settings");
+                    setSettingsDrawerOpen(true);
+                  }}>
                     <Settings className="h-4 w-4" />
                     Settings
                   </DropdownMenuItem>
@@ -351,6 +360,14 @@ export function MazeDashboard({ initialPremium = false }: MazeDashboardProps) {
         open={upgradeDialogOpen}
         onOpenChange={setUpgradeDialogOpen}
         feature={upgradeFeature}
+      />
+
+      <AccountSettingsDrawer
+        open={settingsDrawerOpen}
+        onOpenChange={setSettingsDrawerOpen}
+        defaultTab={settingsDefaultTab}
+        isDarkMode={isDarkMode}
+        onToggleDarkMode={toggleDarkMode}
       />
     </div>
   );

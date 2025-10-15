@@ -25,6 +25,7 @@ import { Monetization } from "./Monetization";
 import { IntegrationModal } from "./IntegrationModal";
 import { TeamModal } from "./TeamModal";
 import { UpgradeDialog } from "./UpgradeDialog";
+import { AccountSettingsDrawer } from "./AccountSettingsDrawer";
 import mazeIsotype from "@/assets/maze-isotype.png";
 import {
   DropdownMenu,
@@ -56,6 +57,8 @@ export function MediaDashboard({ initialPremium = false }: MediaDashboardProps) 
   const [upgradeFeature, setUpgradeFeature] = useState<string>("");
   const [integrationModalOpen, setIntegrationModalOpen] = useState(false);
   const [teamModalOpen, setTeamModalOpen] = useState(false);
+  const [settingsDrawerOpen, setSettingsDrawerOpen] = useState(false);
+  const [settingsDefaultTab, setSettingsDefaultTab] = useState<"account" | "settings">("settings");
   const isPremium = initialPremium;
   
   // Dark mode toggle effect
@@ -227,7 +230,17 @@ export function MediaDashboard({ initialPremium = false }: MediaDashboardProps) 
                     Switch to User Dashboard
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => {
+                    setSettingsDefaultTab("account");
+                    setSettingsDrawerOpen(true);
+                  }}>
+                    <User className="h-4 w-4" />
+                    Account
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => {
+                    setSettingsDefaultTab("settings");
+                    setSettingsDrawerOpen(true);
+                  }}>
                     <Settings className="h-4 w-4" />
                     Settings
                   </DropdownMenuItem>
@@ -349,6 +362,14 @@ export function MediaDashboard({ initialPremium = false }: MediaDashboardProps) 
         open={upgradeDialogOpen}
         onOpenChange={setUpgradeDialogOpen}
         feature={upgradeFeature}
+      />
+
+      <AccountSettingsDrawer
+        open={settingsDrawerOpen}
+        onOpenChange={setSettingsDrawerOpen}
+        defaultTab={settingsDefaultTab}
+        isDarkMode={isDarkMode}
+        onToggleDarkMode={toggleDarkMode}
       />
     </div>
   );
