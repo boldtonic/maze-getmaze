@@ -172,7 +172,7 @@ export function MazeDashboard({ initialPremium = false }: MazeDashboardProps) {
                 Preview
               </Button>
               <Button 
-                variant="ghost" 
+                variant="primary" 
                 size="sm" 
                 className="text-label-large"
               >
