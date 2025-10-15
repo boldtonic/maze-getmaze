@@ -212,8 +212,8 @@ export function MediaDashboard({ initialPremium = false }: MediaDashboardProps) 
               </Button>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="sm" className="text-label-large">
-                    <div className="h-8 w-8 rounded-full bg-gradient-primary flex items-center justify-center text-white text-sm font-medium mr-2">
+                  <Button variant="ghost" size="sm" className="gap-2 h-10 px-2">
+                    <div className="h-8 w-8 rounded-full bg-gradient-primary flex items-center justify-center text-white text-sm font-medium">
                       M
                     </div>
                     <ChevronDown className="h-4 w-4" />
