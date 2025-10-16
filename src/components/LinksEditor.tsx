@@ -104,6 +104,7 @@ export function LinksEditor({ brandMode, links, onLinksChange, onUpgradeClick, i
   };
 
   const handleSave = async () => {
+    if (saveState !== 'idle') return;
     setSaveState('saving');
     // Simulate save operation
     await new Promise(resolve => setTimeout(resolve, 800));
@@ -227,7 +228,6 @@ export function LinksEditor({ brandMode, links, onLinksChange, onUpgradeClick, i
         size="sm" 
         className="w-full text-label-large"
         onClick={handleSave}
-        disabled={saveState !== 'idle'}
       >
         {saveState === 'idle' && 'Save Link Changes'}
         {saveState === 'saving' && 'Saving...'}

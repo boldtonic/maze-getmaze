@@ -35,6 +35,7 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, o
   };
 
   const handleSave = async () => {
+    if (saveState !== 'idle') return;
     setSaveState('saving');
     // Simulate save operation
     await new Promise(resolve => setTimeout(resolve, 800));
@@ -170,7 +171,6 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, o
         size="sm" 
         className="w-full text-label-large"
         onClick={handleSave}
-        disabled={saveState !== 'idle'}
       >
         {saveState === 'idle' && 'Save Profile Changes'}
         {saveState === 'saving' && 'Saving...'}

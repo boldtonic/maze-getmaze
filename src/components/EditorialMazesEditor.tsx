@@ -124,6 +124,7 @@ export function EditorialMazesEditor({
   };
 
   const handleSaveMaze = async () => {
+    if (saveState !== 'idle') return;
     if (!editorialMaze.theme) {
       toast.error("Please add a theme before saving");
       return;
@@ -429,7 +430,6 @@ export function EditorialMazesEditor({
         size="sm" 
         className="w-full text-label-large"
         onClick={handleSaveMaze}
-        disabled={saveState !== 'idle'}
       >
         {saveState === 'idle' && (selectedMazeId ? "Update Maze" : "Save New Maze")}
         {saveState === 'saving' && 'Saving...'}
