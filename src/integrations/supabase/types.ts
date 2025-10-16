@@ -14,7 +14,121 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      links: {
+        Row: {
+          clicks: number | null
+          created_at: string
+          id: string
+          maze_id: string
+          position: number | null
+          title: string
+          updated_at: string
+          url: string
+        }
+        Insert: {
+          clicks?: number | null
+          created_at?: string
+          id?: string
+          maze_id: string
+          position?: number | null
+          title: string
+          updated_at?: string
+          url: string
+        }
+        Update: {
+          clicks?: number | null
+          created_at?: string
+          id?: string
+          maze_id?: string
+          position?: number | null
+          title?: string
+          updated_at?: string
+          url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "links_maze_id_fkey"
+            columns: ["maze_id"]
+            isOneToOne: false
+            referencedRelation: "mazes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      mazes: {
+        Row: {
+          configuration: Json | null
+          created_at: string
+          description: string | null
+          id: string
+          is_published: boolean | null
+          profile_id: string
+          title: string
+          updated_at: string
+          views: number | null
+        }
+        Insert: {
+          configuration?: Json | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_published?: boolean | null
+          profile_id: string
+          title: string
+          updated_at?: string
+          views?: number | null
+        }
+        Update: {
+          configuration?: Json | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_published?: boolean | null
+          profile_id?: string
+          title?: string
+          updated_at?: string
+          views?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "mazes_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          created_at: string
+          display_name: string | null
+          id: string
+          updated_at: string
+          username: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          updated_at?: string
+          username: string
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          updated_at?: string
+          username?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
