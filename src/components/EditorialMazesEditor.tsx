@@ -427,16 +427,14 @@ export function EditorialMazesEditor({
       <Button 
         variant="primary" 
         size="sm" 
-        className={`w-full text-label-large transition-all duration-300 ${
-          saveState === 'saving' ? 'animate-pulse' : ''
-        }`}
+        className="w-full text-label-large"
         onClick={handleSaveMaze}
         disabled={saveState !== 'idle'}
       >
         {saveState === 'idle' && (selectedMazeId ? "Update Maze" : "Save New Maze")}
         {saveState === 'saving' && 'Saving...'}
         {saveState === 'saved' && (
-          <span className="flex items-center gap-2 animate-scale-in">
+          <span className="flex items-center gap-2">
             <Check className="h-4 w-4" />
             Saved!
           </span>
