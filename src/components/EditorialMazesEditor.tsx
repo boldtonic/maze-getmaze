@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { Check } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -78,7 +79,7 @@ export function EditorialMazesEditor({
   savedMazes
 }: EditorialMazesEditorProps) {
   const [selectedMazeId, setSelectedMazeId] = useState<string | null>(null);
-  const [saving, setSaving] = useState(false);
+  const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved'>('idle');
 
   // Update createdMazes from savedMazes
   const createdMazes = savedMazes.map(maze => ({
@@ -128,7 +129,7 @@ export function EditorialMazesEditor({
       return;
     }
 
-    setSaving(true);
+    setSaveState('saving');
     try {
       const mazeData = {
         id: selectedMazeId || undefined,
@@ -146,8 +147,10 @@ export function EditorialMazesEditor({
       };
 
       await onSave(mazeData);
-    } finally {
-      setSaving(false);
+      setSaveState('saved');
+      setTimeout(() => setSaveState('idle'), 2000);
+    } catch (error) {
+      setSaveState('idle');
     }
   };
   
@@ -424,11 +427,20 @@ export function EditorialMazesEditor({
       <Button 
         variant="primary" 
         size="sm" 
-        className="w-full text-label-large"
+        className={`w-full text-label-large transition-all duration-300 ${
+          saveState === 'saved' ? 'bg-green-600 hover:bg-green-600' : ''
+        } ${saveState === 'saving' ? 'animate-pulse' : ''}`}
         onClick={handleSaveMaze}
-        disabled={saving}
+        disabled={saveState !== 'idle'}
       >
-        {saving ? "Saving..." : selectedMazeId ? "Update Maze" : "Save New Maze"}
+        {saveState === 'idle' && (selectedMazeId ? "Update Maze" : "Save New Maze")}
+        {saveState === 'saving' && 'Saving...'}
+        {saveState === 'saved' && (
+          <span className="flex items-center gap-2 animate-scale-in">
+            <Check className="h-4 w-4" />
+            Saved!
+          </span>
+        )}
       </Button>
     </div>
   );

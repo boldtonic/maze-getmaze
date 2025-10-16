@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Check } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -22,6 +23,7 @@ interface ProfileEditorProps {
 
 export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, onProfileChange }: ProfileEditorProps) {
   const [verified, setVerified] = useState(brandMode);
+  const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved'>('idle');
 
   const handleInputChange = (field: keyof typeof profile, value: string) => {
     const updatedProfile = { ...profile, [field]: value };
@@ -30,6 +32,14 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, o
 
   const handleVerifiedChange = (checked: boolean) => {
     setVerified(checked);
+  };
+
+  const handleSave = async () => {
+    setSaveState('saving');
+    // Simulate save operation
+    await new Promise(resolve => setTimeout(resolve, 800));
+    setSaveState('saved');
+    setTimeout(() => setSaveState('idle'), 2000);
   };
 
   return (
@@ -155,8 +165,23 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, o
       </Card>
 
       {/* Save Button */}
-      <Button variant="primary" size="sm" className="w-full text-label-large">
-        Save Profile Changes
+      <Button 
+        variant="primary" 
+        size="sm" 
+        className={`w-full text-label-large transition-all duration-300 ${
+          saveState === 'saved' ? 'bg-green-600 hover:bg-green-600' : ''
+        } ${saveState === 'saving' ? 'animate-pulse' : ''}`}
+        onClick={handleSave}
+        disabled={saveState !== 'idle'}
+      >
+        {saveState === 'idle' && 'Save Profile Changes'}
+        {saveState === 'saving' && 'Saving...'}
+        {saveState === 'saved' && (
+          <span className="flex items-center gap-2 animate-scale-in">
+            <Check className="h-4 w-4" />
+            Saved!
+          </span>
+        )}
       </Button>
     </div>
   );
