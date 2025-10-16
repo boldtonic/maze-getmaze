@@ -10,7 +10,8 @@ import {
   Layout,
   RotateCcw,
   Crown,
-  Lock
+  Lock,
+  Check
 } from "lucide-react";
 
 interface StyleCustomizerProps {
@@ -29,6 +30,7 @@ interface StyleCustomizerProps {
 
 export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremium = false }: StyleCustomizerProps) {
   const [activeTab, setActiveTab] = useState("colors");
+  const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved'>('idle');
 
   const colorPresets = [
     { name: "Purple", primary: "#6366f1", background: "#f1f0ff" },
@@ -49,6 +51,15 @@ export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremiu
   const updateStyle = (field: string, value: any) => {
     console.log('Updating style:', field, value); // Debug log
     onStyleChange({ ...style, [field]: value });
+  };
+
+  const handleSave = async () => {
+    if (saveState !== 'idle') return;
+    setSaveState('saving');
+    // Simulate save operation
+    await new Promise(resolve => setTimeout(resolve, 800));
+    setSaveState('saved');
+    setTimeout(() => setSaveState('idle'), 2000);
   };
 
   return (
@@ -287,6 +298,8 @@ export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremiu
         onClick={() => {
           if (!isPremium && (activeTab === 'typography' || activeTab === 'layout')) {
             onUpgradeClick(activeTab === 'typography' ? 'Advanced Typography' : 'Custom Layouts');
+          } else {
+            handleSave();
           }
         }}
       >
@@ -296,7 +309,16 @@ export function StyleCustomizer({ style, onStyleChange, onUpgradeClick, isPremiu
             <span>Upgrade to Unlock</span>
           </>
         ) : (
-          <span>Save Design Changes</span>
+          <>
+            {saveState === 'idle' && <span>Save Design Changes</span>}
+            {saveState === 'saving' && <span>Saving...</span>}
+            {saveState === 'saved' && (
+              <span className="flex items-center gap-2">
+                <Check className="h-4 w-4" />
+                Saved!
+              </span>
+            )}
+          </>
         )}
       </Button>
     </div>

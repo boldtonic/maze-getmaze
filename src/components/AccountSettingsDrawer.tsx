@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { User, Settings, Bell, Palette, Shield, HelpCircle, CreditCard, BarChart3, LogOut } from "lucide-react";
+import { User, Settings, Bell, Palette, Shield, HelpCircle, CreditCard, BarChart3, LogOut, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
@@ -28,6 +28,7 @@ export function AccountSettingsDrawer({
   onToggleDarkMode 
 }: AccountSettingsDrawerProps) {
   const [activeTab, setActiveTab] = useState<TabId>(defaultTab === "account" ? "profile" : "general");
+  const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved'>('idle');
 
   // Update activeTab when defaultTab changes and drawer opens
   useEffect(() => {
@@ -35,6 +36,15 @@ export function AccountSettingsDrawer({
       setActiveTab(defaultTab === "account" ? "profile" : "general");
     }
   }, [open, defaultTab]);
+
+  const handleSave = async () => {
+    if (saveState !== 'idle') return;
+    setSaveState('saving');
+    // Simulate save operation
+    await new Promise(resolve => setTimeout(resolve, 800));
+    setSaveState('saved');
+    setTimeout(() => setSaveState('idle'), 2000);
+  };
 
   const navigationItems: { id: TabId; label: string; icon: React.ReactNode }[] = [
     { id: "general", label: "General", icon: <Settings className="h-4 w-4" /> },
@@ -119,7 +129,16 @@ export function AccountSettingsDrawer({
               </div>
             </div>
 
-            <Button className="w-full sm:w-auto">Save Changes</Button>
+            <Button className="w-full sm:w-auto" onClick={handleSave}>
+              {saveState === 'idle' && 'Save Changes'}
+              {saveState === 'saving' && 'Saving...'}
+              {saveState === 'saved' && (
+                <span className="flex items-center gap-2">
+                  <Check className="h-4 w-4" />
+                  Saved!
+                </span>
+              )}
+            </Button>
           </div>
         );
 
@@ -160,7 +179,16 @@ export function AccountSettingsDrawer({
               ))}
             </div>
 
-            <Button className="w-full sm:w-auto">Save Changes</Button>
+            <Button className="w-full sm:w-auto" onClick={handleSave}>
+              {saveState === 'idle' && 'Save Changes'}
+              {saveState === 'saving' && 'Saving...'}
+              {saveState === 'saved' && (
+                <span className="flex items-center gap-2">
+                  <Check className="h-4 w-4" />
+                  Saved!
+                </span>
+              )}
+            </Button>
           </div>
         );
 
@@ -234,7 +262,16 @@ export function AccountSettingsDrawer({
               </div>
             </div>
 
-            <Button className="w-full sm:w-auto">Save Changes</Button>
+            <Button className="w-full sm:w-auto" onClick={handleSave}>
+              {saveState === 'idle' && 'Save Changes'}
+              {saveState === 'saving' && 'Saving...'}
+              {saveState === 'saved' && (
+                <span className="flex items-center gap-2">
+                  <Check className="h-4 w-4" />
+                  Saved!
+                </span>
+              )}
+            </Button>
           </div>
         );
 
@@ -378,7 +415,16 @@ export function AccountSettingsDrawer({
               </div>
             </div>
 
-            <Button className="w-full sm:w-auto">Save Changes</Button>
+            <Button className="w-full sm:w-auto" onClick={handleSave}>
+              {saveState === 'idle' && 'Save Changes'}
+              {saveState === 'saving' && 'Saving...'}
+              {saveState === 'saved' && (
+                <span className="flex items-center gap-2">
+                  <Check className="h-4 w-4" />
+                  Saved!
+                </span>
+              )}
+            </Button>
           </div>
         );
 
