@@ -169,8 +169,8 @@ export function ProfileEditor({ brandMode, coverImage, onImageUpload, profile, o
         variant="primary" 
         size="sm" 
         className={`w-full text-label-large transition-all duration-300 ${
-          saveState === 'saved' ? 'bg-green-600 hover:bg-green-600' : ''
-        } ${saveState === 'saving' ? 'animate-pulse' : ''}`}
+          saveState === 'saving' ? 'animate-pulse' : ''
+        }`}
         onClick={handleSave}
         disabled={saveState !== 'idle'}
       >
