@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useMazeData } from "@/hooks/useMazeData";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -60,6 +61,10 @@ export function MediaDashboard({ initialPremium = false }: MediaDashboardProps) 
   const [settingsDrawerOpen, setSettingsDrawerOpen] = useState(false);
   const [settingsDefaultTab, setSettingsDefaultTab] = useState<"account" | "settings">("settings");
   const isPremium = initialPremium;
+  
+  // For demo, use a fixed profile ID - in production, get from auth
+  const demoProfileId = "demo-media-user-123";
+  const { mazes: savedMazes, saveMaze } = useMazeData(demoProfileId);
   
   // Dark mode toggle effect
   useEffect(() => {
@@ -324,6 +329,14 @@ export function MediaDashboard({ initialPremium = false }: MediaDashboardProps) 
                     onPreviewClick={handlePreviewClick}
                     isPremium={isPremium}
                     maxMazes={maxMazes}
+                    profileId={demoProfileId}
+                    profile={{
+                      displayName: editorialMaze.theme,
+                      title: editorialMaze.idea,
+                      bio: editorialMaze.context,
+                    }}
+                    onSave={saveMaze}
+                    savedMazes={savedMazes}
                   />
                 </CardContent>
               </Card>

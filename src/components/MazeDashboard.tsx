@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useMazeData } from "@/hooks/useMazeData";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -59,6 +60,10 @@ export function MazeDashboard({ initialPremium = false }: MazeDashboardProps) {
   const isPremium = initialPremium;
   const brandMode = false;
   
+  // For demo, use a fixed profile ID - in production, get from auth
+  const demoProfileId = "demo-user-123";
+  const { mazes: savedMazes, saveMaze } = useMazeData(demoProfileId);
+  
   // Dark mode toggle effect
   useEffect(() => {
     if (isDarkMode) {
@@ -85,6 +90,11 @@ export function MazeDashboard({ initialPremium = false }: MazeDashboardProps) {
     borderRadius: 12,
     theme: "light",
     orientation: "horizontal" as "horizontal" | "vertical"
+  });
+  const [editorialMaze, setEditorialMaze] = useState({
+    theme: "",
+    idea: "",
+    context: ""
   });
   const fileInputRef = useRef<HTMLInputElement>(null);
   

@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -49,6 +50,14 @@ interface EditorialMazesEditorProps {
   onPreviewClick: () => void;
   isPremium: boolean;
   maxMazes: number;
+  profileId: string;
+  profile: {
+    displayName: string;
+    bio: string;
+    title: string;
+  };
+  onSave: (mazeData: any) => Promise<void>;
+  savedMazes: any[];
 }
 
 export function EditorialMazesEditor({
@@ -56,29 +65,46 @@ export function EditorialMazesEditor({
   onImageUpload,
   editorialMaze,
   onEditorialMazeChange,
+  links,
   style,
   onStyleChange,
   onUpgradeClick,
   onPreviewClick,
   isPremium,
-  maxMazes
+  maxMazes,
+  profileId,
+  profile,
+  onSave,
+  savedMazes
 }: EditorialMazesEditorProps) {
-  const [selectedMazeId, setSelectedMazeId] = useState("1");
-  const [createdMazes, setCreatedMazes] = useState([
-    { id: "1", name: "AI Safety" },
-  ]);
+  const [selectedMazeId, setSelectedMazeId] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
+
+  // Update createdMazes from savedMazes
+  const createdMazes = savedMazes.map(maze => ({
+    id: maze.id,
+    name: maze.title || 'Untitled Maze'
+  }));
+
+  // Load selected maze data when selection changes
+  useEffect(() => {
+    if (selectedMazeId && savedMazes.length > 0) {
+      const maze = savedMazes.find(m => m.id === selectedMazeId);
+      if (maze?.configuration) {
+        onEditorialMazeChange({
+          theme: maze.configuration.theme || "",
+          idea: maze.configuration.idea || "",
+          context: maze.configuration.context || ""
+        });
+      }
+    }
+  }, [selectedMazeId]);
 
   const handleCreateMaze = () => {
     if (createdMazes.length >= maxMazes) {
       onUpgradeClick("More Editorial Mazes");
     } else {
-      const newMazeId = (Date.now()).toString();
-      const newMaze = {
-        id: newMazeId,
-        name: `New Maze ${createdMazes.length + 1}`
-      };
-      setCreatedMazes([...createdMazes, newMaze]);
-      setSelectedMazeId(newMazeId);
+      setSelectedMazeId(null);
       // Reset the maze data for the new maze
       onEditorialMazeChange({
         theme: "",
@@ -93,7 +119,35 @@ export function EditorialMazesEditor({
       handleCreateMaze();
     } else {
       setSelectedMazeId(value);
-      // In a real app, you'd load the maze data here
+    }
+  };
+
+  const handleSaveMaze = async () => {
+    if (!editorialMaze.theme) {
+      toast.error("Please add a theme before saving");
+      return;
+    }
+
+    setSaving(true);
+    try {
+      const mazeData = {
+        id: selectedMazeId || undefined,
+        title: editorialMaze.theme,
+        description: editorialMaze.idea,
+        configuration: {
+          theme: editorialMaze.theme,
+          idea: editorialMaze.idea,
+          context: editorialMaze.context,
+          coverImage,
+          style,
+          profile,
+          links
+        }
+      };
+
+      await onSave(mazeData);
+    } finally {
+      setSaving(false);
     }
   };
   
@@ -129,7 +183,7 @@ export function EditorialMazesEditor({
               <Label htmlFor="maze-selector" className="text-body-small text-on-surface-variant mb-2 block">
                 Select Maze
               </Label>
-              <Select value={selectedMazeId} onValueChange={handleMazeSelection}>
+              <Select value={selectedMazeId || "create-new"} onValueChange={handleMazeSelection}>
                 <SelectTrigger id="maze-selector" className="w-full bg-primary text-primary-foreground border-primary hover:bg-primary/90 transition-colors">
                   <SelectValue placeholder="Select a maze" className="text-primary-foreground data-[placeholder]:text-primary-foreground/80" />
                 </SelectTrigger>
@@ -367,8 +421,14 @@ export function EditorialMazesEditor({
       </Tabs>
 
       {/* Save Button */}
-      <Button variant="primary" size="sm" className="w-full text-label-large">
-        Save Editorial Maze
+      <Button 
+        variant="primary" 
+        size="sm" 
+        className="w-full text-label-large"
+        onClick={handleSaveMaze}
+        disabled={saving}
+      >
+        {saving ? "Saving..." : selectedMazeId ? "Update Maze" : "Save New Maze"}
       </Button>
     </div>
   );
