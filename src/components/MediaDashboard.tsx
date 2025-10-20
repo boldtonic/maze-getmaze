@@ -63,7 +63,7 @@ export function MediaDashboard({ initialPremium = false }: MediaDashboardProps) 
   const isPremium = initialPremium;
   
   // For demo, use a fixed profile ID - in production, get from auth
-  const demoProfileId = "demo-media-user-123";
+  const demoProfileId = "660e8400-e29b-41d4-a716-446655440001";
   const { mazes: savedMazes, saveMaze } = useMazeData(demoProfileId);
   
   // Dark mode toggle effect

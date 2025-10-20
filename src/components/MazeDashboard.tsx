@@ -61,7 +61,7 @@ export function MazeDashboard({ initialPremium = false }: MazeDashboardProps) {
   const brandMode = false;
   
   // For demo, use a fixed profile ID - in production, get from auth
-  const demoProfileId = "demo-user-123";
+  const demoProfileId = "550e8400-e29b-41d4-a716-446655440000";
   const { mazes: savedMazes, saveMaze } = useMazeData(demoProfileId);
   
   // Dark mode toggle effect
