@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { User, Settings, Bell, Palette, Shield, HelpCircle, CreditCard, BarChart3, LogOut, Check } from "lucide-react";
+import { User, Settings, Bell, Shield, HelpCircle, CreditCard, BarChart3, LogOut, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
@@ -18,7 +18,7 @@ interface AccountSettingsDrawerProps {
   onToggleDarkMode: () => void;
 }
 
-type TabId = "general" | "notifications" | "personalization" | "privacy" | "support" | "profile" | "billing" | "usage";
+type TabId = "general" | "notifications" | "privacy" | "support" | "profile" | "billing" | "usage";
 
 export function AccountSettingsDrawer({ 
   open, 
@@ -49,7 +49,6 @@ export function AccountSettingsDrawer({
   const navigationItems: { id: TabId; label: string; icon: React.ReactNode }[] = [
     { id: "general", label: "General", icon: <Settings className="h-4 w-4" /> },
     { id: "notifications", label: "Notifications", icon: <Bell className="h-4 w-4" /> },
-    { id: "personalization", label: "Personalization", icon: <Palette className="h-4 w-4" /> },
     { id: "privacy", label: "Privacy & Data", icon: <Shield className="h-4 w-4" /> },
     { id: "support", label: "Support", icon: <HelpCircle className="h-4 w-4" /> },
     { id: "profile", label: "Account", icon: <User className="h-4 w-4" /> },
@@ -177,89 +176,6 @@ export function AccountSettingsDrawer({
                   <Separator className="mt-4" />
                 </div>
               ))}
-            </div>
-
-            <Button className="w-full sm:w-auto" onClick={handleSave}>
-              {saveState === 'idle' && 'Save Changes'}
-              {saveState === 'saving' && 'Saving...'}
-              {saveState === 'saved' && (
-                <span className="flex items-center gap-2">
-                  <Check className="h-4 w-4" />
-                  Saved!
-                </span>
-              )}
-            </Button>
-          </div>
-        );
-
-      case "personalization":
-        return (
-          <div className="space-y-6">
-            <div>
-              <h2 className="text-2xl font-semibold text-on-surface mb-1">Personalization</h2>
-              <p className="text-sm text-on-surface-variant">Customize your experience</p>
-            </div>
-
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <Label className="text-base">Accent Color Palette</Label>
-                <div className="flex gap-2 flex-wrap">
-                  {["#004aad", "#6366f1", "#ec4899", "#f59e0b", "#10b981", "#8b5cf6"].map((color) => (
-                    <div 
-                      key={color}
-                      className="h-10 w-10 rounded-lg border-2 border-transparent hover:border-primary cursor-pointer transition-colors"
-                      style={{ backgroundColor: color }}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <Separator />
-
-              <div className="flex items-center justify-between">
-                <div className="space-y-0.5">
-                  <Label className="text-base">Font Preference</Label>
-                  <p className="text-sm text-on-surface-variant">Choose your preferred font</p>
-                </div>
-                <Select defaultValue="inter">
-                  <SelectTrigger className="w-32">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="inter">Inter</SelectItem>
-                    <SelectItem value="roboto">Roboto</SelectItem>
-                    <SelectItem value="system">System</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <Separator />
-
-              <div className="flex items-center justify-between">
-                <div className="space-y-0.5">
-                  <Label className="text-base">Animations</Label>
-                  <p className="text-sm text-on-surface-variant">Enable smooth transitions</p>
-                </div>
-                <Switch defaultChecked />
-              </div>
-
-              <Separator />
-
-              <div className="flex items-center justify-between">
-                <div className="space-y-0.5">
-                  <Label className="text-base">Dark Mode Behavior</Label>
-                  <p className="text-sm text-on-surface-variant">When to use dark mode</p>
-                </div>
-                <Select defaultValue="system">
-                  <SelectTrigger className="w-32">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="always">Always</SelectItem>
-                    <SelectItem value="system">System</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
             </div>
 
             <Button className="w-full sm:w-auto" onClick={handleSave}>
