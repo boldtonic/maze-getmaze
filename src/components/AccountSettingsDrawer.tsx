@@ -88,20 +88,6 @@ export function AccountSettingsDrawer({
 
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <Label className="text-base">Accent Color</Label>
-                  <p className="text-sm text-on-surface-variant">Customize the app's accent color</p>
-                </div>
-                <div className="flex gap-2">
-                  <div className="h-8 w-8 rounded-full bg-[#004aad] border-2 border-white shadow-sm cursor-pointer" />
-                  <div className="h-8 w-8 rounded-full bg-[#6366f1] border-2 border-transparent cursor-pointer" />
-                  <div className="h-8 w-8 rounded-full bg-[#ec4899] border-2 border-transparent cursor-pointer" />
-                </div>
-              </div>
-
-              <Separator />
-
-              <div className="flex items-center justify-between">
-                <div className="space-y-0.5">
                   <Label className="text-base">Language</Label>
                   <p className="text-sm text-on-surface-variant">Select your preferred language</p>
                 </div>
