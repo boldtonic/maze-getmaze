@@ -17,6 +17,7 @@ interface UpgradeDialogProps {
 
 export function UpgradeDialog({ open, onOpenChange, feature }: UpgradeDialogProps) {
   const premiumFeatures = [
+    "Affiliate Links Support",
     "3 Featured Links",
     "Custom Accent Colors",
     "Advanced Typography",

@@ -52,8 +52,8 @@ const DashboardSelector = () => {
         },
         {
           name: "Premium",
-          description: "10 Mazes • Monetization • Advanced analytics",
-          features: ["10 Editorial Mazes", "Remove 'Made with Maze'", "Affiliate Links", "Advanced Analytics", "Export Data"],
+          description: "1 Maze • Affiliate Links • Advanced analytics",
+          features: ["1 Editorial Maze", "Affiliate Links", "Remove 'Made with Maze'", "Advanced Analytics", "Export Data"],
           path: "/media",
           isPremium: true
         }

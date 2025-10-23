@@ -117,7 +117,7 @@ export function EditorialMazesEditor({
 
   const handleCreateMaze = () => {
     if (createdMazes.length >= maxMazes) {
-      onUpgradeClick("More Editorial Mazes");
+      toast.error("You can only create 1 maze. Delete your existing maze to create a new one.");
       return;
     }
     setSelectedMazeId("create-new");
@@ -202,10 +202,10 @@ export function EditorialMazesEditor({
               <Badge 
                 variant="secondary" 
                 className="flex items-center space-x-1 cursor-pointer"
-                onClick={() => onUpgradeClick("More Editorial Mazes")}
+                onClick={() => onUpgradeClick("Affiliate Links")}
               >
                 <Crown className="h-3 w-3" />
-                <span>Upgrade for 10 mazes</span>
+                <span>Upgrade for Affiliate Links</span>
               </Badge>
             )}
           </div>
@@ -236,15 +236,14 @@ export function EditorialMazesEditor({
                       </div>
                     </SelectItem>
                   )}
-                  {createdMazes.length >= maxMazes && !isPremium && (
+                  {createdMazes.length >= maxMazes && (
                     <SelectItem 
-                      value="upgrade-required" 
+                      value="create-disabled" 
                       disabled
                       className="text-on-surface-variant opacity-60"
                     >
                       <div className="flex items-center gap-2">
-                        <Crown className="h-4 w-4" />
-                        <span>Upgrade for more mazes</span>
+                        <span>Maximum mazes reached</span>
                       </div>
                     </SelectItem>
                   )}

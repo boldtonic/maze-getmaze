@@ -89,7 +89,7 @@ export function MediaDashboard({ initialPremium = false }: MediaDashboardProps) 
   });
   const fileInputRef = useRef<HTMLInputElement>(null);
   
-  const maxMazes = isPremium ? 10 : 1;
+  const maxMazes = 1; // Both free and premium users have 1 maze
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
