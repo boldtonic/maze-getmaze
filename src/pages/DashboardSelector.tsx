@@ -1,11 +1,15 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { User, Newspaper, Crown, Check } from "lucide-react";
+import { User, Newspaper, Crown, Check, LogOut } from "lucide-react";
 import mazeIsotype from "@/assets/maze-isotype.png";
+import { useAuth } from "@/contexts/AuthContext";
+import { ROUTES } from "@/constants";
 
 const DashboardSelector = () => {
   const navigate = useNavigate();
+  const { user, signOut } = useAuth();
 
   const plans = [
     {
@@ -60,11 +64,24 @@ const DashboardSelector = () => {
     <div className="min-h-screen bg-surface flex flex-col">
       {/* Header */}
       <header className="bg-surface-container border-b border-border">
-        <div className="px-6 py-4 max-w-7xl mx-auto">
+        <div className="px-6 py-4 max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <img src={mazeIsotype} alt="Maze isotype" className="h-10 w-10" />
             <img src="/src/assets/maze-logo.svg" alt="maze" className="h-8" />
           </div>
+          {user ? (
+            <div className="flex items-center gap-4">
+              <span className="text-sm text-on-surface-variant">{user.email}</span>
+              <Button variant="ghost" size="sm" onClick={signOut}>
+                <LogOut className="h-4 w-4 mr-2" />
+                Sign Out
+              </Button>
+            </div>
+          ) : (
+            <Button variant="ghost" size="sm" onClick={() => navigate(ROUTES.AUTH)}>
+              Sign In
+            </Button>
+          )}
         </div>
       </header>
 

@@ -1,9 +1,11 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMazeData } from "@/hooks/useMazeData";
+import { useAuth } from "@/contexts/AuthContext";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Link as LinkType } from "@/types";
 import { 
   Newspaper, 
   BarChart3, 
@@ -37,21 +39,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-interface Link {
-  id: string;
-  title: string;
-  url: string;
-  icon: string;
-  thumbnail?: string;
-  type: "featured" | "social";
-}
-
 interface MediaDashboardProps {
   initialPremium?: boolean;
 }
 
 export function MediaDashboard({ initialPremium = false }: MediaDashboardProps) {
   const navigate = useNavigate();
+  const { user, signOut } = useAuth();
   const [activeTab, setActiveTab] = useState("mazes");
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [upgradeDialogOpen, setUpgradeDialogOpen] = useState(false);
@@ -62,9 +56,7 @@ export function MediaDashboard({ initialPremium = false }: MediaDashboardProps) 
   const [settingsDefaultTab, setSettingsDefaultTab] = useState<"account" | "settings">("settings");
   const isPremium = initialPremium;
   
-  // For demo, use a fixed profile ID - in production, get from auth
-  const demoProfileId = "660e8400-e29b-41d4-a716-446655440001";
-  const { mazes: savedMazes, saveMaze } = useMazeData(demoProfileId);
+  const { mazes: savedMazes, saveMaze } = useMazeData(user?.id);
   
   // Dark mode toggle effect
   useEffect(() => {
@@ -85,7 +77,7 @@ export function MediaDashboard({ initialPremium = false }: MediaDashboardProps) 
     idea: "Exploring ethical AI development",
     context: "An overview of AI safety research, frameworks, and responsible development practices.",
   });
-  const [links, setLinks] = useState<Link[]>([]);
+  const [links, setLinks] = useState<LinkType[]>([]);
   const [style, setStyle] = useState({
     backgroundColor: "#ffffff",
     accentColor: "#6366f1", 
@@ -329,7 +321,7 @@ export function MediaDashboard({ initialPremium = false }: MediaDashboardProps) 
                     onPreviewClick={handlePreviewClick}
                     isPremium={isPremium}
                     maxMazes={maxMazes}
-                    profileId={demoProfileId}
+                    profileId={user?.id || ''}
                     profile={{
                       displayName: editorialMaze.theme,
                       title: editorialMaze.idea,

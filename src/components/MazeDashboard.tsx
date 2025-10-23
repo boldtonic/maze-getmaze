@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMazeData } from "@/hooks/useMazeData";
+import { useAuth } from "@/contexts/AuthContext";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -27,6 +28,7 @@ import { Analytics } from "./Analytics";
 import { UpgradeDialog } from "./UpgradeDialog";
 import { AccountSettingsDrawer } from "./AccountSettingsDrawer";
 import mazeIsotype from "@/assets/maze-isotype.png";
+import { Link as LinkType } from "@/types";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -36,21 +38,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-interface Link {
-  id: string;
-  title: string;
-  url: string;
-  icon: string;
-  thumbnail?: string;
-  type: "featured" | "social";
-}
-
 interface MazeDashboardProps {
   initialPremium?: boolean;
 }
 
 export function MazeDashboard({ initialPremium = false }: MazeDashboardProps) {
   const navigate = useNavigate();
+  const { user, signOut } = useAuth();
   const [activeTab, setActiveTab] = useState("profile");
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [upgradeDialogOpen, setUpgradeDialogOpen] = useState(false);
@@ -60,9 +54,7 @@ export function MazeDashboard({ initialPremium = false }: MazeDashboardProps) {
   const isPremium = initialPremium;
   const brandMode = false;
   
-  // For demo, use a fixed profile ID - in production, get from auth
-  const demoProfileId = "550e8400-e29b-41d4-a716-446655440000";
-  const { mazes: savedMazes, saveMaze } = useMazeData(demoProfileId);
+  const { mazes: savedMazes, saveMaze } = useMazeData(user?.id);
   
   // Dark mode toggle effect
   useEffect(() => {
@@ -82,7 +74,7 @@ export function MazeDashboard({ initialPremium = false }: MazeDashboardProps) {
     bio: "Sharing my journey in design and creativity. Coffee enthusiast ☕",
     title: "Maze founder",
   });
-  const [links, setLinks] = useState<Link[]>([]);
+  const [links, setLinks] = useState<LinkType[]>([]);
   const [style, setStyle] = useState({
     backgroundColor: "#ffffff",
     accentColor: "#6366f1", 
@@ -104,7 +96,7 @@ export function MazeDashboard({ initialPremium = false }: MazeDashboardProps) {
   const addLink = () => {
     if (!canAddLink) return;
     
-    const newLink: Link = {
+    const newLink: LinkType = {
       id: Date.now().toString(),
       title: "New Link",
       url: "",

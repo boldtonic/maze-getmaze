@@ -1,48 +1,20 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { MazeData } from "@/types";
+import { TOAST_MESSAGES } from "@/constants";
 
-interface Link {
-  id: string;
-  title: string;
-  url: string;
-  icon: string;
-  thumbnail?: string;
-  type: "featured" | "social";
-}
-
-interface MazeData {
-  id?: string;
-  title: string;
-  description: string;
-  configuration: {
-    theme: string;
-    idea: string;
-    context: string;
-    coverImage: string | null;
-    style: {
-      backgroundColor: string;
-      accentColor: string;
-      fontFamily: string;
-      borderRadius: number;
-      theme: string;
-      orientation: 'horizontal' | 'vertical';
-    };
-    profile: {
-      displayName: string;
-      bio: string;
-      title: string;
-    };
-    links: Link[];
-  };
-}
-
-export function useMazeData(profileId: string) {
+export function useMazeData(profileId: string | undefined) {
   const [mazes, setMazes] = useState<MazeData[]>([]);
   const [loading, setLoading] = useState(true);
 
   // Load mazes from database
   const loadMazes = async () => {
+    if (!profileId) {
+      setLoading(false);
+      return;
+    }
+
     try {
       setLoading(true);
       const { data, error } = await supabase
@@ -53,10 +25,10 @@ export function useMazeData(profileId: string) {
 
       if (error) throw error;
       
-      setMazes(data as any[] || []);
+      setMazes((data || []) as any);
     } catch (error) {
       console.error('Error loading mazes:', error);
-      toast.error('Failed to load mazes');
+      toast.error(TOAST_MESSAGES.LOAD_ERROR);
     } finally {
       setLoading(false);
     }
@@ -64,6 +36,11 @@ export function useMazeData(profileId: string) {
 
   // Save or update a maze
   const saveMaze = async (mazeData: MazeData) => {
+    if (!profileId) {
+      toast.error(TOAST_MESSAGES.AUTH_ERROR);
+      return null;
+    }
+
     try {
       const mazeRecord = {
         profile_id: profileId,
@@ -93,12 +70,12 @@ export function useMazeData(profileId: string) {
 
       if (result.error) throw result.error;
 
-      toast.success(mazeData.id ? 'Maze updated!' : 'Maze saved!');
+      toast.success(mazeData.id ? TOAST_MESSAGES.SAVE_SUCCESS : TOAST_MESSAGES.SAVE_SUCCESS);
       await loadMazes();
       return result.data;
     } catch (error) {
       console.error('Error saving maze:', error);
-      toast.error('Failed to save maze');
+      toast.error(TOAST_MESSAGES.SAVE_ERROR);
       return null;
     }
   };
@@ -113,11 +90,11 @@ export function useMazeData(profileId: string) {
 
       if (error) throw error;
 
-      toast.success('Maze deleted');
+      toast.success(TOAST_MESSAGES.DELETE_SUCCESS);
       await loadMazes();
     } catch (error) {
       console.error('Error deleting maze:', error);
-      toast.error('Failed to delete maze');
+      toast.error(TOAST_MESSAGES.DELETE_ERROR);
     }
   };
 
