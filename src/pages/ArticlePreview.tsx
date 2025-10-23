@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import mazeLogo from "@/assets/maze-logo.svg";
 import { X } from "lucide-react";
 import { MazeCard } from "@/components/MazeCard";
 import {
@@ -116,7 +117,7 @@ const ArticlePreview = () => {
               </div>
             </div>
             <div>
-              <img src="/src/assets/maze-logo.svg" alt="maze" className="h-8" />
+              <img src={mazeLogo} alt="Maze logo" className="h-8" />
             </div>
           </div>
 

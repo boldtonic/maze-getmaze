@@ -28,6 +28,7 @@ import { Analytics } from "./Analytics";
 import { UpgradeDialog } from "./UpgradeDialog";
 import { AccountSettingsDrawer } from "./AccountSettingsDrawer";
 import mazeIsotype from "@/assets/maze-isotype.png";
+import mazeLogo from "@/assets/maze-logo.svg";
 import { Link as LinkType } from "@/types";
 import {
   DropdownMenu,
@@ -163,7 +164,7 @@ export function MazeDashboard({ initialPremium = false }: MazeDashboardProps) {
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-3 cursor-pointer" onClick={() => navigate("/")}>
               <img src={mazeIsotype} alt="Maze isotype" className="h-10 w-10" />
-              <img src="/src/assets/maze-logo.svg" alt="maze" className="h-8" />
+              <img src={mazeLogo} alt="Maze logo" className="h-8" />
             </div>
             
             <div className="flex items-center space-x-3">
