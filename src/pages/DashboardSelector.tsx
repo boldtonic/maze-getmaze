@@ -116,7 +116,7 @@ const DashboardSelector = () => {
                     {dashboard.options.map((option) => (
                       <Card
                         key={option.name}
-                        className={`cursor-pointer hover:shadow-elevation-3 transition-all duration-300 hover:scale-[1.02] bg-gradient-to-br ${dashboard.gradient} border-2 ${option.isPremium ? 'border-primary' : 'border-transparent'} overflow-hidden group relative`}
+                        className={`cursor-pointer hover:shadow-elevation-3 transition-all duration-300 hover:scale-[1.02] bg-gradient-to-br ${dashboard.gradient} border-2 ${option.isPremium ? 'border-primary' : 'border-transparent'} overflow-hidden group relative [-webkit-font-smoothing:antialiased] [-moz-osx-font-smoothing:grayscale] [backface-visibility:hidden] [transform:translateZ(0)]`}
                         onClick={() => navigate(option.path, { state: { isPremium: option.isPremium } })}
                       >
                         {option.isPremium && (

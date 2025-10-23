@@ -198,6 +198,28 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Improve text rendering during animations */
+  [class*="animate-"],
+  [class*="transition-"] {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform, opacity;
+  }
+  
+  /* Specific fixes for common animated elements */
+  button,
+  .toast,
+  [role="dialog"],
+  [data-state] {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
   /* Typography Scale - Semantic text sizes */
