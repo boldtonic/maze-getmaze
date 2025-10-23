@@ -138,7 +138,7 @@ export function AccountSettingsDrawer({
             <div className="space-y-4">
               {[
                 { label: "Mentions", description: "When someone mentions you" },
-                { label: "Followers", description: "New followers" },
+                { label: "Clicks", description: "When someone clicks your links" },
                 { label: "Comments", description: "Comments on your content" },
                 { label: "Product Tips", description: "Tips to get the most out of Maze" },
               ].map((item) => (
