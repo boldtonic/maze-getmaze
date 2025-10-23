@@ -189,7 +189,7 @@ export function AccountSettingsDrawer({
               <div className="flex items-center justify-between group hover:bg-surface-container-highest/50 transition-colors rounded-lg p-3 -mx-3">
                 <div className="space-y-0.5">
                   <Label className="text-base">Maze Activation</Label>
-                  <p className="text-sm text-on-surface-variant">Activate or deactivate your maze</p>
+                  <p className="text-sm text-on-surface-variant">Select your maze visibility across the internet</p>
                 </div>
                 <Switch defaultChecked className="data-[state=checked]:bg-primary data-[state=checked]:shadow-[0_0_12px_rgba(var(--primary-rgb),0.4)]" />
               </div>
