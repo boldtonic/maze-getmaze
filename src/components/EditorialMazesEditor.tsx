@@ -57,7 +57,7 @@ interface EditorialMazesEditorProps {
     bio: string;
     title: string;
   };
-  onSave: (mazeData: any) => Promise<void>;
+  onSave: (mazeData: any) => Promise<any>;
   savedMazes: any[];
 }
 
@@ -155,7 +155,7 @@ export function EditorialMazesEditor({
     setSaveState('saving');
     try {
       const mazeData = {
-        id: selectedMazeId || undefined,
+        id: (selectedMazeId && selectedMazeId !== "create-new") ? selectedMazeId : undefined,
         title: editorialMaze.theme,
         description: editorialMaze.idea,
         configuration: {
@@ -169,7 +169,13 @@ export function EditorialMazesEditor({
         }
       };
 
-      await onSave(mazeData);
+      const savedMaze = await onSave(mazeData);
+      
+      // Update selectedMazeId to the saved maze's ID if it was a new maze
+      if (savedMaze && (!selectedMazeId || selectedMazeId === "create-new")) {
+        setSelectedMazeId(savedMaze.id);
+      }
+      
       setSaveState('saved');
       setTimeout(() => setSaveState('idle'), 2000);
     } catch (error) {
