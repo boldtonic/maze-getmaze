@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { User, Newspaper, Crown, Check, LogOut } from "lucide-react";
 import mazeIsotype from "@/assets/maze-isotype.png";
+import mazeLogo from "@/assets/maze-logo.svg";
 import { useAuth } from "@/contexts/AuthContext";
 import { ROUTES } from "@/constants";
 
@@ -67,7 +68,7 @@ const DashboardSelector = () => {
         <div className="px-6 py-4 max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <img src={mazeIsotype} alt="Maze isotype" className="h-10 w-10" />
-            <img src="/src/assets/maze-logo.svg" alt="maze" className="h-8" />
+            <img src={mazeLogo} alt="Maze logo" className="h-8" />
           </div>
           {user ? (
             <div className="flex items-center gap-4">
