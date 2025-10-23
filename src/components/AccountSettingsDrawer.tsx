@@ -186,21 +186,12 @@ export function AccountSettingsDrawer({
             </div>
 
             <div className="space-y-4">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between group hover:bg-surface-container-highest/50 transition-colors rounded-lg p-3 -mx-3">
                 <div className="space-y-0.5">
-                  <Label className="text-base">Profile Visibility</Label>
-                  <p className="text-sm text-on-surface-variant">Who can see your profile</p>
+                  <Label className="text-base">Maze Activation</Label>
+                  <p className="text-sm text-on-surface-variant">Activate or deactivate your maze</p>
                 </div>
-                <Select defaultValue="public">
-                  <SelectTrigger className="w-32">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="public">Public</SelectItem>
-                    <SelectItem value="private">Private</SelectItem>
-                    <SelectItem value="unlisted">Unlisted</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Switch defaultChecked className="data-[state=checked]:bg-primary data-[state=checked]:shadow-[0_0_12px_rgba(var(--primary-rgb),0.4)]" />
               </div>
 
               <Separator />
