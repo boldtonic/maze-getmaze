@@ -87,9 +87,16 @@ export function EditorialMazesEditor({
     name: maze.title || 'Untitled Maze'
   }));
 
+  // Initialize to "create-new" state when no mazes exist
+  useEffect(() => {
+    if (savedMazes.length === 0 && selectedMazeId === null) {
+      setSelectedMazeId("create-new");
+    }
+  }, [savedMazes.length]);
+
   // Load selected maze data when selection changes
   useEffect(() => {
-    if (selectedMazeId && savedMazes.length > 0) {
+    if (selectedMazeId && selectedMazeId !== "create-new" && savedMazes.length > 0) {
       const maze = savedMazes.find(m => m.id === selectedMazeId);
       if (maze?.configuration) {
         onEditorialMazeChange({
@@ -98,26 +105,41 @@ export function EditorialMazesEditor({
           context: maze.configuration.context || ""
         });
       }
-    }
-  }, [selectedMazeId]);
-
-  const handleCreateMaze = () => {
-    if (createdMazes.length >= maxMazes) {
-      onUpgradeClick("More Editorial Mazes");
-    } else {
-      setSelectedMazeId(null);
-      // Reset the maze data for the new maze
+    } else if (selectedMazeId === "create-new") {
+      // Reset form for new maze
       onEditorialMazeChange({
         theme: "",
         idea: "",
         context: ""
       });
     }
+  }, [selectedMazeId, savedMazes]);
+
+  const handleCreateMaze = () => {
+    if (createdMazes.length >= maxMazes) {
+      onUpgradeClick("More Editorial Mazes");
+      return;
+    }
+    setSelectedMazeId("create-new");
+    // Reset the maze data for the new maze
+    onEditorialMazeChange({
+      theme: "",
+      idea: "",
+      context: ""
+    });
+    toast.success("Ready to create new maze");
   };
 
   const handleMazeSelection = (value: string) => {
     if (value === "create-new") {
-      handleCreateMaze();
+      setSelectedMazeId("create-new");
+      onEditorialMazeChange({
+        theme: "",
+        idea: "",
+        context: ""
+      });
+    } else if (value === "upgrade-required") {
+      onUpgradeClick("More Editorial Mazes");
     } else {
       setSelectedMazeId(value);
     }
@@ -188,10 +210,10 @@ export function EditorialMazesEditor({
                 Select Maze
               </Label>
               <Select value={selectedMazeId || "create-new"} onValueChange={handleMazeSelection}>
-                <SelectTrigger id="maze-selector" className="w-full bg-primary text-primary-foreground border-primary hover:bg-primary/90 transition-colors">
-                  <SelectValue placeholder="Select a maze" className="text-primary-foreground data-[placeholder]:text-primary-foreground/80" />
+                <SelectTrigger id="maze-selector" className="w-full bg-surface-container text-on-surface border-outline hover:bg-surface-container-high transition-colors">
+                  <SelectValue placeholder="Select or create a maze" />
                 </SelectTrigger>
-                <SelectContent className="bg-surface text-foreground border-border z-50">
+                <SelectContent className="bg-surface-container text-on-surface border-outline z-50">
                   {createdMazes.map((maze) => (
                     <SelectItem key={maze.id} value={maze.id} className="text-foreground hover:bg-primary/15 cursor-pointer focus:bg-primary/20 focus:text-foreground">
                       {maze.name}
