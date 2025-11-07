@@ -17,6 +17,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { StyleCustomizer } from "./StyleCustomizer";
+import { LinksEditor } from "./LinksEditor";
 
 interface Link {
   id: string;
@@ -67,6 +68,7 @@ export function EditorialMazesEditor({
   editorialMaze,
   onEditorialMazeChange,
   links,
+  onLinksChange,
   style,
   onStyleChange,
   onUpgradeClick,
@@ -266,14 +268,20 @@ export function EditorialMazesEditor({
         </CardContent>
       </Card>
 
-      {/* Theme - Design - Preview Tabs */}
+      {/* Theme - Links - Design - Preview Tabs */}
       <Tabs defaultValue="theme" className="w-full">
-        <TabsList className="grid w-full grid-cols-3 bg-surface-container-high rounded-2xl p-1">
+        <TabsList className="grid w-full grid-cols-4 bg-surface-container-high rounded-2xl p-1">
           <TabsTrigger 
             value="theme" 
             className="data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
           >
             Theme
+          </TabsTrigger>
+          <TabsTrigger 
+            value="links" 
+            className="data-[state=active]:bg-surface data-[state=active]:shadow-elevation-0 rounded-xl transition-all duration-200"
+          >
+            Links
           </TabsTrigger>
           <TabsTrigger 
             value="design" 
@@ -396,6 +404,16 @@ export function EditorialMazesEditor({
       </Card>
 
           </TabsContent>
+
+        <TabsContent value="links" className="space-y-6 mt-6">
+          <LinksEditor
+            brandMode={false}
+            links={links}
+            onLinksChange={onLinksChange}
+            onUpgradeClick={onUpgradeClick}
+            isPremium={isPremium}
+          />
+        </TabsContent>
 
         <TabsContent value="design" className="space-y-6 mt-6">
           {/* Style Customization */}
