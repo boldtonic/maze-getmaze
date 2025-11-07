@@ -34,10 +34,11 @@ interface LinksEditorProps {
   onLinksChange: (links: Link[]) => void;
   onUpgradeClick?: (feature: string) => void;
   isPremium?: boolean;
+  maxLinks?: number;
 }
 
-export function LinksEditor({ brandMode, links, onLinksChange, onUpgradeClick, isPremium = false }: LinksEditorProps) {
-  const maxLinks = isPremium ? 3 : 2; // 3rd link is premium
+export function LinksEditor({ brandMode, links, onLinksChange, onUpgradeClick, isPremium = false, maxLinks: propMaxLinks }: LinksEditorProps) {
+  const maxLinks = propMaxLinks ?? (isPremium ? 3 : 2); // Use prop or default to premium logic
   const canAddLink = links.length < maxLinks;
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved'>('idle');
 
@@ -172,22 +173,18 @@ export function LinksEditor({ brandMode, links, onLinksChange, onUpgradeClick, i
           })}
 
           <Button 
-            onClick={() => canAddLink ? addLink() : !isPremium && onUpgradeClick?.('3rd Featured Link')}
+            onClick={addLink}
             variant="primary" 
             size="sm"
             className="w-full h-10 text-label-large"
+            disabled={!canAddLink}
           >
             <Plus className="h-4 w-4 mr-2" />
-            Add Featured Link ({links.length}/3)
+            Add Featured Link ({links.length}/{maxLinks})
           </Button>
-          {!canAddLink && !isPremium && (
+          {!canAddLink && (
             <p className="text-body-small text-muted-foreground text-center">
-              Upgrade for a 3rd featured link (replaces "made with maze")
-            </p>
-          )}
-          {!canAddLink && isPremium && (
-            <p className="text-body-small text-muted-foreground text-center">
-              Maximum 3 featured links reached
+              Maximum {maxLinks} featured links reached. 3rd link replaces "made with maze"
             </p>
           )}
         </CardContent>

@@ -412,6 +412,7 @@ export function EditorialMazesEditor({
             onLinksChange={onLinksChange}
             onUpgradeClick={onUpgradeClick}
             isPremium={isPremium}
+            maxLinks={3}
           />
         </TabsContent>
 
