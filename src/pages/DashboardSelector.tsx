@@ -6,15 +6,25 @@ import { User, Newspaper, Crown, Check, LogOut } from "lucide-react";
 import mazeIsotype from "@/assets/maze-isotype.png";
 import mazeLogo from "@/assets/maze-logo.svg";
 import { useAuth } from "@/contexts/AuthContext";
+import { useSubscription, SubscriptionTier, SubscriptionType } from "@/hooks/useSubscription";
 import { ROUTES } from "@/constants";
 
 const DashboardSelector = () => {
   const navigate = useNavigate();
   const { user, signOut } = useAuth();
+  const { updateSubscription } = useSubscription();
+
+  const handleSelectDashboard = async (path: string, isPremium: boolean, type: SubscriptionType) => {
+    if (user) {
+      const tier: SubscriptionTier = isPremium ? 'premium' : 'free';
+      await updateSubscription(tier, type);
+    }
+    navigate(path, { state: { isPremium } });
+  };
 
   const plans = [
     {
-      type: "user",
+      type: "user" as SubscriptionType,
       title: "User Dashboard",
       icon: User,
       gradient: "from-blue-500/10 to-indigo-500/10",
@@ -37,7 +47,7 @@ const DashboardSelector = () => {
       ]
     },
     {
-      type: "media",
+      type: "media" as SubscriptionType,
       title: "Media Dashboard",
       icon: Newspaper,
       gradient: "from-purple-500/10 to-pink-500/10",
@@ -117,7 +127,7 @@ const DashboardSelector = () => {
                       <Card
                         key={option.name}
                         className={`cursor-pointer hover:shadow-elevation-3 transition-all duration-300 hover:scale-[1.02] bg-gradient-to-br ${dashboard.gradient} border-2 ${option.isPremium ? 'border-primary' : 'border-transparent'} overflow-hidden group relative [-webkit-font-smoothing:antialiased] [-moz-osx-font-smoothing:grayscale] [backface-visibility:hidden] [transform:translateZ(0)]`}
-                        onClick={() => navigate(option.path, { state: { isPremium: option.isPremium } })}
+                        onClick={() => handleSelectDashboard(option.path, option.isPremium, dashboard.type)}
                       >
                         {option.isPremium && (
                           <div className="absolute top-4 right-4">
