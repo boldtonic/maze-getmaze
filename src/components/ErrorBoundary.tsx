@@ -32,6 +32,8 @@ export class ErrorBoundary extends Component<Props, State> {
 
   public render() {
     if (this.state.hasError) {
+      const isDevelopment = import.meta.env.DEV;
+      
       return (
         <div className="min-h-screen flex items-center justify-center bg-background p-4">
           <div className="max-w-md w-full text-center space-y-4">
@@ -40,9 +42,9 @@ export class ErrorBoundary extends Component<Props, State> {
             <p className="text-muted-foreground">
               We apologize for the inconvenience. Please try refreshing the page.
             </p>
-            {this.state.error && (
+            {isDevelopment && this.state.error && (
               <details className="text-left text-sm">
-                <summary className="cursor-pointer text-muted-foreground">Error details</summary>
+                <summary className="cursor-pointer text-muted-foreground">Error details (dev only)</summary>
                 <pre className="mt-2 p-2 bg-muted rounded overflow-auto">
                   {this.state.error.message}
                 </pre>
