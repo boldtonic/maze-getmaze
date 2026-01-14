@@ -106,6 +106,8 @@ export type Database = {
           created_at: string
           display_name: string | null
           id: string
+          subscription_tier: string | null
+          subscription_type: string | null
           updated_at: string
           username: string
         }
@@ -115,6 +117,8 @@ export type Database = {
           created_at?: string
           display_name?: string | null
           id?: string
+          subscription_tier?: string | null
+          subscription_type?: string | null
           updated_at?: string
           username: string
         }
@@ -124,6 +128,8 @@ export type Database = {
           created_at?: string
           display_name?: string | null
           id?: string
+          subscription_tier?: string | null
+          subscription_type?: string | null
           updated_at?: string
           username?: string
         }
